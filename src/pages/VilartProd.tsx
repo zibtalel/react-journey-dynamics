@@ -35,8 +35,8 @@ const VilartProd = () => {
   return (
     <div className="min-h-screen bg-black">
       <div className="relative h-screen">
-        <VideoBackground videoUrl="/aboutvideo.mp4">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/40 backdrop-blur-[2px]">
+        <VideoBackground videoUrl="/VideoProduction.mp4">
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 backdrop-blur-[2px]">
             <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40" />
             <div className="absolute inset-0 flex items-center justify-center text-center">
               <div className="max-w-4xl px-4 relative">
