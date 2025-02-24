@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, CheckCircle2, Clock } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle2 } from 'lucide-react';
 import ParallaxText from '../components/ParallaxText';
-import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
@@ -15,7 +14,7 @@ const Contact = () => {
   });
 
   const mapContainer = useRef<HTMLDivElement>(null);
-  const map = useRef<mapboxgl.Map | null>(null);
+  const map = useRef<L.Map | null>(null);
   
   const banner = {
     image: '/images/banners/digital-banner.jpg',
@@ -38,14 +37,12 @@ const Contact = () => {
       dragging: true
     });
 
-    // 🌑 Dark-themed map tiles
     L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
       attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
       subdomains: 'abcd',
       maxZoom: 20
     }).addTo(map.current);
 
-    // 🟡 Custom gold marker
     const goldIcon = new L.Icon({
       iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-gold.png',
       iconSize: [25, 41],
@@ -63,7 +60,6 @@ const Contact = () => {
       map.current?.remove();
     };
   }, []);
-
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -95,19 +91,9 @@ const Contact = () => {
     }
   };
 
-  const businessHours = [
-    { day: 'Lundi', hours: '9h00 - 18h00' },
-    { day: 'Mardi', hours: '9h00 - 18h00' },
-    { day: 'Mercredi', hours: '9h00 - 18h00' },
-    { day: 'Jeudi', hours: '9h00 - 18h00' },
-    { day: 'Vendredi', hours: '9h00 - 17h00' },
-    { day: 'Samedi', hours: '10h00 - 16h00' },
-    { day: 'Dimanche', hours: 'Fermé' }
-  ];
-
   return (
     <div className="pt-16">
-      <div className="relative h-[50vh] flex items-center justify-center overflow-hidden">
+      <div className="relative h-[40vh] flex items-center justify-center overflow-hidden">
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -127,27 +113,27 @@ const Contact = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="mb-6"
+              className="mb-4"
             >
-              <div className="w-20 h-1 bg-gradient-to-r from-gold-400 to-gold-600 mx-auto rounded-full mb-6" />
-              <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white">
+              <div className="w-20 h-1 bg-gradient-to-r from-gold-400 to-gold-600 mx-auto rounded-full mb-4" />
+              <h1 className="text-4xl md:text-6xl font-bold mb-3 text-white">
                 Contactez-<span className="text-gold-400">nous</span>
               </h1>
-              <div className="w-20 h-1 bg-gradient-to-r from-gold-600 to-gold-400 mx-auto rounded-full mt-6" />
+              <div className="w-20 h-1 bg-gradient-to-r from-gold-600 to-gold-400 mx-auto rounded-full mt-4" />
             </motion.div>
           </div>
         </ParallaxText>
       </div>
 
-      <div className="py-20 px-4 bg-gradient-to-b from-black to-rich-black">
+      <div className="py-12 px-4 bg-gradient-to-b from-black to-rich-black">
         <div className="max-w-7xl mx-auto">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="grid md:grid-cols-2 gap-12"
+            className="grid md:grid-cols-2 gap-8"
           >
-            <motion.div variants={itemVariants} className="space-y-8">
+            <motion.div variants={itemVariants} className="space-y-6">
               <div className="relative group">
                 <div className="absolute -inset-1 bg-gradient-to-r from-gold-600 to-gold-400 rounded-lg blur opacity-10 group-hover:opacity-25 transition duration-1000 group-hover:duration-200" />
                 <div className="relative bg-black/80 backdrop-blur-xl p-8 rounded-lg border border-gold-500/5">
@@ -197,14 +183,11 @@ const Contact = () => {
                 </div>
               </div>
 
-              
-
-                   {/* 🗺️ Dark & Gold Leaflet Map */}
-            <div className="relative group">
-              <div className="relative bg-black/80 backdrop-blur-xl rounded-lg border border-gold-500/5 overflow-hidden">
-                <div ref={mapContainer} className="h-[300px] w-full" />
+              <div className="relative group">
+                <div className="relative bg-black/80 backdrop-blur-xl rounded-lg border border-gold-500/5 overflow-hidden">
+                  <div ref={mapContainer} className="h-[300px] w-full" />
+                </div>
               </div>
-            </div>
             </motion.div>
 
             <motion.div variants={itemVariants}>
