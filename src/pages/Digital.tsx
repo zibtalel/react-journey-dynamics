@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { ArrowRight, X, Palette, Layout, Search, Globe, Smartphone, Code, BrainCircuit, BarChart3, Target, Users, PenTool } from 'lucide-react';
 import { useState } from 'react';
@@ -225,6 +224,33 @@ const Digital = () => {
     }
   ];
 
+  const portfolioExamples = [
+    {
+      title: "Site E-commerce",
+      type: "Website",
+      image: "https://im.runware.ai/image/ws/0.5/ii/ccb25159-876c-45e9-bc0a-d4797cd0f8cb.webp",
+      description: "Plateforme de vente en ligne moderne et responsive"
+    },
+    {
+      title: "Application Mobile",
+      type: "Mobile App",
+      image: "https://im.runware.ai/image/ws/0.5/ii/e2ab0179-7651-4901-b155-273451546398.png",
+      description: "Application de service client intuitive"
+    },
+    {
+      title: "Design Graphique",
+      type: "Graphic Design",
+      image: "https://im.runware.ai/image/ws/0.5/ii/4729d1f8-4b29-4042-8cfc-094123067c1f.png",
+      description: "Identité visuelle et branding complet"
+    },
+    {
+      title: "Application Web",
+      type: "Web App",
+      image: "https://im.runware.ai/image/ws/0.5/ii/270326f0-4113-41c1-8c99-3fe3d9523535.png",
+      description: "Dashboard analytique performant"
+    }
+  ];
+
   return (
     <div className="bg-rich-black text-off-white">
       <VideoBackground
@@ -241,7 +267,6 @@ const Digital = () => {
           />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_black_100%)] opacity-70" />
           
-          {/* Digital pattern overlay with gold theme */}
           <div className="absolute inset-0 opacity-10">
             <div className="h-full w-full"
                  style={{
@@ -340,6 +365,66 @@ const Digital = () => {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Nos Réalisations
+            </h2>
+            <p className="text-xl text-white/80">
+              Découvrez nos derniers projets
+            </p>
+          </div>
+
+          <div className="relative">
+            <div className="overflow-x-auto pb-8 scrollbar-hide">
+              <div className="flex space-x-6 min-w-max px-4">
+                {portfolioExamples.map((example, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex-none w-80"
+                  >
+                    <div className="glass-card rounded-xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300">
+                      <div className="h-48 overflow-hidden">
+                        <img
+                          src={example.image}
+                          alt={example.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="p-6">
+                        <div className="flex items-center justify-between mb-3">
+                          <h3 className="text-xl font-semibold">{example.title}</h3>
+                          <span className="text-sm text-gold-400">{example.type}</span>
+                        </div>
+                        <p className="text-white/70">{example.description}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-rich-black to-transparent pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-rich-black to-transparent pointer-events-none" />
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              to="/contact"
+              className="inline-flex items-center px-8 py-3 bg-gold-600 text-black hover:bg-gold-500 transition-all duration-300 rounded-lg text-lg font-medium group gold-glow"
+            >
+              <span className="relative">
+                Contactez-nous
+                <ArrowRight className="ml-2 w-5 h-5 inline-block transform group-hover:translate-x-1 transition-transform" />
+              </span>
+            </Link>
           </div>
         </div>
       </section>
