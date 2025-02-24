@@ -8,29 +8,29 @@ import { useNavigate } from 'react-router-dom';
 const upcomingEvents = [
   {
     id: 1,
-    title: "Festival International de Jazz",
-    date: "15-17 Juillet 2024",
-    location: "Tunis, Tunisie",
+    title: "Festival d'été",
+    date: "15 Août 2024",
+    location: "Parc des Expositions, Tunis",
     image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819",
-    description: "Trois jours de jazz avec des artistes internationaux",
+    description: "Une expérience musicale avec des artistes de la scène tunisienne",
     price: "À partir de 80 DT"
   },
   {
     id: 2,
-    title: "Soirée Corporate Excellence",
+    title: "Soirée Corporate",
     date: "25 Août 2024",
     location: "Hôtel Four Seasons, Gammarth",
     image: "https://images.unsplash.com/photo-1511578314322-379afb476865",
-    description: "Une soirée exclusive dédiée aux leaders d'entreprise",
+    description: "Une soirée dédiée aux leaders d'entreprise",
     price: "Sur invitation"
   },
   {
     id: 3,
-    title: "Festival Électro Beach",
+    title: "Festival Beach",
     date: "10 Septembre 2024",
     location: "Hammamet, Tunisie",
     image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30",
-    description: "Le plus grand événement électro de l'année",
+    description: "Un événement électro en bord de mer",
     price: "À partir de 120 DT"
   }
 ];
@@ -38,7 +38,7 @@ const upcomingEvents = [
 const services = [
   {
     title: 'Planification d\'Événements',
-    description: 'Services complets de planification et de gestion d\'événements pour des expériences inoubliables.',
+    description: 'Services de planification et de gestion d\'événements pour créer des moments mémorables.',
     features: [
       'Développement de concept',
       'Sélection du lieu',
@@ -49,12 +49,12 @@ const services = [
   },
   {
     title: 'Production de Concerts',
-    description: 'Organisation complète de concerts et festivals avec son et éclairage professionnels.',
+    description: 'Organisation de concerts et festivals avec équipements audio et éclairage adaptés.',
     features: [
       'Réservation d\'artistes',
       'Conception de scène',
       'Ingénierie sonore',
-      'Conception d\'éclairage',
+      'Design d\'éclairage',
       'Production technique'
     ]
   }
@@ -67,7 +67,7 @@ const portfolio: MediaItem[] = [
     url: "https://player.vimeo.com/external/403619009.sd.mp4?s=51fb1fe1c5a2088f1d811e944e6e1231c1f2b21f&profile_id=164&oauth2_token_id=57447761",
     thumbnail: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30",
     title: "Festival d'Été",
-    description: "Une expérience festival d'été incroyable",
+    description: "Une expérience festive en plein air",
     category: "Festival"
   },
   {
@@ -76,7 +76,7 @@ const portfolio: MediaItem[] = [
     url: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819",
     thumbnail: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819",
     title: "Événement Corporate",
-    description: "Production d'événements professionnels",
+    description: "Organisation d'événements d'entreprise",
     category: "Corporate"
   },
   {
@@ -84,8 +84,8 @@ const portfolio: MediaItem[] = [
     type: 'video',
     url: "https://player.vimeo.com/external/434045526.sd.mp4?s=c27eecc69a27dbc4ff2b87d38afc35f1a9e7c02d&profile_id=165&oauth2_token_id=57447761",
     thumbnail: "https://images.unsplash.com/photo-1501281668745-f7f57925c3b4",
-    title: "Concert Privé",
-    description: "Événement concert exclusif",
+    title: "Concert Live",
+    description: "Concert en salle",
     category: "Concert"
   }
 ];

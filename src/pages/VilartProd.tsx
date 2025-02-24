@@ -10,17 +10,17 @@ const VilartProd = () => {
       title: "Production Musicale",
       description: "De l'enregistrement au mastering, nous vous accompagnons dans la réalisation de vos projets musicaux.",
       features: [
-        "Studio d'enregistrement professionnel",
+        "Studio d'enregistrement",
         "Mixage & Mastering",
         "Production musicale",
         "Sound design",
-        "Composition sur mesure",
+        "Composition",
         "Arrangement musical"
       ]
     },
     {
       title: "Production Vidéo",
-      description: "Des clips musicaux aux films publicitaires, nous donnons vie à vos idées avec créativité et professionnalisme.",
+      description: "Des clips musicaux aux films publicitaires, nous donnons vie à vos idées avec créativité.",
       features: [
         "Clips vidéos",
         "Films publicitaires",
@@ -54,7 +54,7 @@ const VilartProd = () => {
                   transition={{ delay: 0.2 }}
                   className="text-xl md:text-2xl text-white/70"
                 >
-                  Un studio de production innovant où la créativité rencontre l'excellence technique
+                  Un studio de production où créativité rencontre technique
                 </motion.p>
               </div>
             </div>
