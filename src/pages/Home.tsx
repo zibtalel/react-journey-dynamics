@@ -8,6 +8,7 @@ const Home = () => {
   const statsRef = useRef<HTMLDivElement>(null);
   const [isStatsVisible, setIsStatsVisible] = useState(false);
   const recipesRef = useRef<HTMLDivElement>(null);
+  const [isRecipesVisible, setIsRecipesVisible] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -60,6 +61,23 @@ const Home = () => {
     }
   }, [isStatsVisible]);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsRecipesVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (recipesRef.current) {
+      observer.observe(recipesRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % CAROUSEL_ITEMS.length);
   };
@@ -70,7 +88,6 @@ const Home = () => {
 
   return (
     <main className="flex-grow">
-      {/* Carousel Section */}
       <section className="relative h-screen">
         {CAROUSEL_ITEMS.map((item, index) => (
           <div
@@ -96,7 +113,6 @@ const Home = () => {
           </div>
         ))}
 
-        {/* Carousel Controls */}
         <div className="absolute bottom-8 left-8 flex items-center space-x-4">
           <button onClick={prevSlide} className="p-2 bg-white/20 rounded-full">
             <ArrowLeft className="text-white" />
@@ -107,11 +123,9 @@ const Home = () => {
         </div>
       </section>
 
-      {/* About Section */}
       <section className="py-24 bg-gradient-to-b from-white to-gray-50">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center gap-12">
-            {/* Logo Side */}
             <div className="lg:w-1/2 relative group">
               <div className="absolute -inset-4 bg-gradient-to-r from-[#96cc39]/30 to-[#64381b]/30 rounded-xl blur-xl opacity-75 group-hover:opacity-100 transition duration-500" />
               <div className="relative">
@@ -132,7 +146,6 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Content Side */}
             <div className="lg:w-1/2 space-y-8">
               <div>
                 <h4 className="text-[#96cc39] font-medium mb-2">Notre Histoire</h4>
@@ -153,7 +166,6 @@ const Home = () => {
                 </p>
               </div>
 
-              {/* Statistics in About Section */}
               <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-8 border-t border-gray-200">
                 {statistics.map((stat, index) => (
                   <div key={index} className="text-center group">
@@ -176,37 +188,59 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Recipes Section */}
-      <section ref={recipesRef} className="py-20 bg-white">
+      <section ref={recipesRef} className="py-24 bg-gradient-to-b from-white to-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Nos Recettes</h2>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h4 className="text-[#96cc39] font-medium mb-2">Délices Culinaires</h4>
+            <h2 className="text-4xl font-playfair font-bold mb-6 text-gray-900">
+              Nos <span className="text-[#64381b]">Recettes</span> Gourmandes
+            </h2>
+            <div className="w-20 h-1 bg-gradient-to-r from-[#96cc39] to-[#64381b] rounded-full mx-auto mb-6" />
+            <p className="text-gray-600">
+              Découvrez notre sélection de recettes exclusives mettant en valeur la richesse 
+              et la versatilité de nos dattes premium.
+            </p>
+          </div>
+
           <div className="grid md:grid-cols-3 gap-8">
             {FEATURED_RECIPES.map((recipe, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:-translate-y-2"
+                className={`group bg-white rounded-2xl shadow-lg overflow-hidden transform transition-all duration-700 hover:-translate-y-2 ${
+                  isRecipesVisible 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-20'
+                }`}
+                style={{
+                  transitionDelay: `${index * 200}ms`
+                }}
               >
-                <div className="relative h-48">
+                <div className="relative h-64 overflow-hidden">
                   <img
                     src={recipe.image}
                     alt={recipe.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <p className="text-sm">{recipe.description}</p>
+                  </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2">{recipe.title}</h3>
-                  <p className="text-gray-600 mb-4">{recipe.description}</p>
-                  <div className="flex items-center justify-between text-sm text-gray-500">
-                    <div className="flex items-center">
-                      <Clock className="w-4 h-4 mr-1" />
+                  <h3 className="text-xl font-playfair font-bold mb-3 text-gray-900 group-hover:text-[#96cc39] transition-colors duration-300">
+                    {recipe.title}
+                  </h3>
+                  <div className="flex items-center justify-between text-sm text-gray-500 border-t border-gray-100 pt-4 mt-4">
+                    <div className="flex items-center space-x-1">
+                      <Clock className="w-4 h-4 text-[#96cc39]" />
                       <span>{recipe.time}</span>
                     </div>
-                    <div className="flex items-center">
-                      <Users className="w-4 h-4 mr-1" />
+                    <div className="flex items-center space-x-1">
+                      <Users className="w-4 h-4 text-[#96cc39]" />
                       <span>{recipe.servings} pers.</span>
                     </div>
-                    <div className="flex items-center">
-                      <ChefHat className="w-4 h-4 mr-1" />
+                    <div className="flex items-center space-x-1">
+                      <ChefHat className="w-4 h-4 text-[#96cc39]" />
                       <span>{recipe.difficulty}</span>
                     </div>
                   </div>

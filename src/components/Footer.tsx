@@ -1,104 +1,112 @@
-import React from 'react';
-import { Instagram, Facebook, Youtube, Mail, Phone, MapPin, Heart, ArrowRight } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-br from-[#64381b] to-[#4e2b15] text-white">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          {/* About Company */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-playfair relative inline-block">
-              Notre Entreprise
-              <span className="absolute bottom-0 left-0 w-1/2 h-0.5 bg-[#96cc39]"></span>
-            </h3>
-            <p className="text-gray-300 text-sm leading-relaxed">
-              Premium Dates est votre source de confiance pour des dattes de la plus haute qualité. 
-              Depuis plus de 20 ans, nous sélectionnons les meilleures variétés pour vous offrir une 
-              expérience gustative exceptionnelle.
+    <footer className="bg-gray-900 text-white py-12">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Company Info */}
+          <div>
+            <h4 className="text-lg font-semibold mb-4">Premium Dates</h4>
+            <p className="text-gray-400">
+              Nous sommes spécialisés dans l'exportation de dattes tunisiennes de qualité supérieure.
             </p>
-            <div className="flex space-x-3">
-              <a href="#" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#96cc39] transition-all duration-300 group">
-                <Instagram size={16} className="group-hover:scale-110 transition-transform" />
+            <div className="flex space-x-4 mt-4">
+              <a href="#" className="hover:text-gray-300 transition">
+                <Facebook size={20} />
               </a>
-              <a href="#" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#96cc39] transition-all duration-300 group">
-                <Facebook size={16} className="group-hover:scale-110 transition-transform" />
+              <a href="#" className="hover:text-gray-300 transition">
+                <Twitter size={20} />
               </a>
-              <a href="#" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#96cc39] transition-all duration-300 group">
-                <Youtube size={16} className="group-hover:scale-110 transition-transform" />
+              <a href="#" className="hover:text-gray-300 transition">
+                <Instagram size={20} />
+              </a>
+              <a href="#" className="hover:text-gray-300 transition">
+                <Youtube size={20} />
               </a>
             </div>
           </div>
 
           {/* Quick Links */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-playfair relative inline-block">
-              Liens Rapides
-              <span className="absolute bottom-0 left-0 w-1/2 h-0.5 bg-[#96cc39]"></span>
-            </h3>
-            <div className="grid grid-cols-2 gap-2 text-sm">
-              <a href="/about" className="group flex items-center space-x-1 hover:text-[#96cc39] transition-colors">
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                <span>À Propos</span>
-              </a>
-              <a href="/products" className="group flex items-center space-x-1 hover:text-[#96cc39] transition-colors">
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                <span>Nos Produits</span>
-              </a>
-              <a href="/certifications" className="group flex items-center space-x-1 hover:text-[#96cc39] transition-colors">
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                <span>Certifications</span>
-              </a>
-              <a href="/blog" className="group flex items-center space-x-1 hover:text-[#96cc39] transition-colors">
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                <span>Blog</span>
-              </a>
-              <a href="/faq" className="group flex items-center space-x-1 hover:text-[#96cc39] transition-colors">
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                <span>FAQ</span>
-              </a>
-            </div>
+          <div>
+            <h4 className="text-lg font-semibold mb-4">Liens Utiles</h4>
+            <ul className="text-gray-400 space-y-2">
+              <li>
+                <a href="#" className="hover:text-gray-300 transition">
+                  Accueil
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-gray-300 transition">
+                  À Propos
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-gray-300 transition">
+                  Produits
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-gray-300 transition">
+                  Contact
+                </a>
+              </li>
+            </ul>
           </div>
 
-          {/* Contact */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-playfair relative inline-block">
-              Contactez-nous
-              <span className="absolute bottom-0 left-0 w-1/2 h-0.5 bg-[#96cc39]"></span>
-            </h3>
-            <div className="space-y-3 text-sm">
-              <a href="mailto:contact@example.com" 
-                className="flex items-center space-x-3 hover:text-[#96cc39] transition-colors group">
-                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-[#96cc39] transition-colors">
-                  <Mail size={14} className="group-hover:scale-110 transition-transform" />
-                </div>
-                <span>contact@example.com</span>
-              </a>
-              <a href="tel:+1234567890" 
-                className="flex items-center space-x-3 hover:text-[#96cc39] transition-colors group">
-                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-[#96cc39] transition-colors">
-                  <Phone size={14} className="group-hover:scale-110 transition-transform" />
-                </div>
-                <span>+1 234 567 890</span>
-              </a>
-              <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
-                  <MapPin size={14} />
-                </div>
-                <span>123 Rue des Dattes, Paris</span>
-              </div>
+          {/* Products */}
+          <div>
+            <h4 className="text-lg font-semibold mb-4">Nos Produits</h4>
+            <ul className="text-gray-400 space-y-2">
+              <li>
+                <a href="#" className="hover:text-gray-300 transition">
+                  Dattes Deglet Nour
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-gray-300 transition">
+                  Dattes Medjool
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-gray-300 transition">
+                  Dattes Branchées
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-gray-300 transition">
+                  Produits Dérivés
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Newsletter */}
+          <div>
+            <h4 className="text-lg font-semibold mb-4">Newsletter</h4>
+            <p className="text-gray-400 mb-4">
+              Inscrivez-vous à notre newsletter pour recevoir les dernières nouvelles et offres.
+            </p>
+            <div className="flex">
+              <input
+                type="email"
+                placeholder="Votre email"
+                className="bg-gray-800 text-white px-4 py-2 rounded-l-md focus:outline-none"
+              />
+              <button className="bg-[#96cc39] hover:bg-[#64381b] text-white px-4 py-2 rounded-r-md transition">
+                S'inscrire
+              </button>
             </div>
           </div>
         </div>
-        
-        <div className="border-t border-white/10 mt-8 pt-6 text-center">
-          <p className="flex items-center justify-center gap-2 text-xs text-gray-300">
-            Fait avec <Heart size={12} className="text-[#96cc39]" /> par Premium Dates © {new Date().getFullYear()}
-          </p>
+
+        {/* Copyright */}
+        <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-500">
+          <p>&copy; {new Date().getFullYear()} Premium Dates. Tous droits réservés.</p>
         </div>
       </div>
     </footer>
   );
 };
 
-export { Footer };
+export default Footer;

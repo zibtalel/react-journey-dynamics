@@ -1,4 +1,4 @@
-import React from 'react';
+
 import type { ClientType } from '../types';
 import { Building2, Users } from 'lucide-react';
 
