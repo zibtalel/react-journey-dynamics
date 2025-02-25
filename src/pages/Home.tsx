@@ -222,14 +222,14 @@ const Home = () => {
                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <p className="text-sm">{recipe.description}</p>
-                  </div>
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-playfair font-bold mb-3 text-gray-900 group-hover:text-[#96cc39] transition-colors duration-300">
                     {recipe.title}
                   </h3>
+                  <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                    {recipe.description}
+                  </p>
                   <div className="flex items-center justify-between text-sm text-gray-500 border-t border-gray-100 pt-4 mt-4">
                     <div className="flex items-center space-x-1">
                       <Clock className="w-4 h-4 text-[#96cc39]" />
