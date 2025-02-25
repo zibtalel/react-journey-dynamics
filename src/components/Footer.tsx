@@ -1,7 +1,7 @@
 import React from 'react';
 import { Instagram, Facebook, Youtube, Mail, Phone, MapPin, Heart, ArrowRight } from 'lucide-react';
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <footer className="bg-gradient-to-br from-[#64381b] to-[#4e2b15] text-white">
       <div className="container mx-auto px-4 py-12">
@@ -100,3 +100,5 @@ export const Footer = () => {
     </footer>
   );
 };
+
+export { Footer };

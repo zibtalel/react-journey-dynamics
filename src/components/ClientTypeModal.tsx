@@ -6,7 +6,7 @@ interface ClientTypeModalProps {
   onSelect: (type: ClientType) => void;
 }
 
-export const ClientTypeModal = ({ onSelect }: ClientTypeModalProps) => {
+const ClientTypeModal = ({ onSelect }: ClientTypeModalProps) => {
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 flex items-center justify-center p-4 animate-[fadeIn_0.3s_ease-in]">
       <div className="bg-white rounded-2xl p-8 max-w-2xl w-full shadow-2xl animate-[slideIn_0.5s_ease-out]">
@@ -56,3 +56,5 @@ export const ClientTypeModal = ({ onSelect }: ClientTypeModalProps) => {
     </div>
   );
 };
+
+export { ClientTypeModal };
