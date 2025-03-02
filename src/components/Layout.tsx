@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { ShoppingCart, Heart, ClipboardList, Search, Menu, X, Percent, ChevronRight, Facebook, Instagram, Youtube, ArrowLeft, MessageSquare } from "lucide-react";
 import Footer from "./Footer";
@@ -11,7 +10,6 @@ import {
   NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
@@ -43,6 +41,14 @@ const CategoryLink = ({
   const navigate = useNavigate();
   const location = useLocation();
 
+  const handleMenuTriggerClick = (e: React.MouseEvent) => {
+    if (subItems && subItems.length > 0) {
+      e.preventDefault();
+    } else {
+      navigate(href);
+    }
+  };
+
   return (
     <NavigationMenuItem>
       <NavigationMenuTrigger 
@@ -50,7 +56,7 @@ const CategoryLink = ({
           "h-auto py-2",
           location.pathname === href && "border-2 border-primary rounded-md bg-transparent text-primary"
         )} 
-        onClick={() => navigate(href)}
+        onClick={handleMenuTriggerClick}
       >
         <div className="flex flex-col text-left min-w-max px-3 rounded-md transition-all">
           <span className="text-sm font-medium text-gray-800 whitespace-nowrap">
@@ -201,7 +207,13 @@ export const Layout = () => {
                         "w-full flex items-center justify-between p-4 hover:bg-gray-50",
                         location.pathname === item.path && "border-2 border-primary text-primary rounded-md"
                       )}
-                      onClick={() => openSubmenu(item)}
+                      onClick={() => {
+                        if (item.subItems && item.subItems.length > 0) {
+                          openSubmenu(item);
+                        } else {
+                          navigate(item.path);
+                        }
+                      }}
                     >
                       <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-full overflow-hidden">
@@ -360,7 +372,6 @@ export const Layout = () => {
         <Outlet />
       </main>
 
-      {/* WhatsApp Help Button */}
       <a
         href="https://wa.me/+33600000000"
         target="_blank"
@@ -371,7 +382,6 @@ export const Layout = () => {
         <span className="font-medium">Besoin d'aide ?</span>
       </a>
 
-      {/* Social Media Links */}
       <div className="fixed right-6 bottom-6 z-50 flex flex-col gap-3">
         <a
           href="https://facebook.com"
@@ -447,7 +457,6 @@ export const Layout = () => {
         </SheetContent>
       </Sheet>
       
-      {/* Cookie Consent Component */}
       <CookieConsent />
     </div>
   );
