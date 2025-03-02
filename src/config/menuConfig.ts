@@ -1,4 +1,3 @@
-
 export interface MenuItem {
   title: string;
   image: string;
@@ -137,11 +136,11 @@ export const menuItems: MenuItem[] = [
     ]
   },
   {
-    title: "Nos packs",
+    title: "Nos packs Complet",
     image: "/Packs/PacksBanner.jpg",
     path: "/nos-packs",
     topText: "Nos",
-    bottomText: "packs",
+    bottomText: "packs Complet",
     subItems: [
       {
         title: "Pack Restaurant",
