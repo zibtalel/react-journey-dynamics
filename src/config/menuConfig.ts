@@ -169,11 +169,11 @@ export const menuItems: MenuItem[] = [
     ]
   },
   {
-    title: "Produits Marketing",
+    title: "Produits Personalisable",
     image: "/ProduitsMarketing/ProduitMarketingBanner.jpg",
     path: "/produits-marketing",
     topText: "Produits",
-    bottomText: "Marketing",
+    bottomText: "Personalisable",
     subItems: [
       {
         title: "Drapeaux",
