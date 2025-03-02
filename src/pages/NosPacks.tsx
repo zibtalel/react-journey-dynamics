@@ -10,10 +10,11 @@ const NosPacks = () => {
     <div className="max-w-7xl mx-auto px-4 py-12">
       {/* Hero Section */}
       <div className="mb-12 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+        <h1 className="text-4xl md:text-5xl font-bold mb-1">
           <span className="text-primary">Nos</span>{" "}
           <span className="text-secondary">Packs</span>
         </h1>
+        <p className="text-2xl text-gray-700 font-medium mb-4">Complet</p>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
           Des solutions complètes adaptées à tous les métiers. Découvrez nos packs professionnels pour équiper votre établissement.
         </p>
