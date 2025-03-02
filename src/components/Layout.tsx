@@ -12,6 +12,7 @@ import {
   NavigationMenuItem,
   NavigationMenuList,
   NavigationMenuTrigger,
+  NavigationMenuLink,
 } from "@/components/ui/navigation-menu";
 import { menuItems } from '../config/menuConfig';
 import { products } from '../config/products';
@@ -74,25 +75,21 @@ const CategoryLink = ({
               <div className="grid grid-cols-4 gap-6">
                 <div className="col-span-3 grid grid-cols-3 gap-6">
                   {subItems.map((item) => (
-                    <NavigationMenuLink
+                    <Link
                       key={item.path}
-                      asChild
+                      to={item.path}
+                      className="block p-4 space-y-2 hover:bg-gray-50 rounded-lg transition-colors"
                     >
-                      <Link
-                        to={item.path}
-                        className="block p-4 space-y-2 hover:bg-gray-50 rounded-lg transition-colors"
-                      >
-                        <div className="aspect-video rounded-lg overflow-hidden bg-gray-100 mb-2">
-                          <img 
-                            src={item.image} 
-                            alt={item.title}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                        <h3 className="font-medium text-gray-900">{item.title}</h3>
-                        <p className="text-sm text-gray-500">{item.description}</p>
-                      </Link>
-                    </NavigationMenuLink>
+                      <div className="aspect-video rounded-lg overflow-hidden bg-gray-100 mb-2">
+                        <img 
+                          src={item.image} 
+                          alt={item.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <h3 className="font-medium text-gray-900">{item.title}</h3>
+                      <p className="text-sm text-gray-500">{item.description}</p>
+                    </Link>
                   ))}
                 </div>
                 <div className="col-span-1">
