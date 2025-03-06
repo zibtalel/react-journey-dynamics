@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { cn } from "@/lib/utils";
@@ -39,7 +40,7 @@ const CategoryLink: React.FC<CategoryLinkProps> = ({
     <NavigationMenuItem>
       <NavigationMenuTrigger 
         className={cn(
-          "h-auto py-2 transition-all duration-300",
+          "h-auto py-1.5 transition-all duration-300", // Reduced padding from py-2 to py-1.5
           isActive 
             ? "border-2 border-primary rounded-md bg-transparent text-primary shadow-sm" 
             : "hover:bg-gray-50"
@@ -59,10 +60,10 @@ const CategoryLink: React.FC<CategoryLinkProps> = ({
         <NavigationMenuContent 
           className="z-50 absolute left-0 w-screen animate-in fade-in-50 data-[side=bottom]:slide-in-from-top-2 data-[side=top]:slide-in-from-bottom-2 duration-300"
         >
-          <div className="flex justify-center py-4 w-full backdrop-blur-sm bg-white/90">
-            <div className="w-[95vw] lg:w-[85vw] xl:w-[80vw] p-4 lg:p-6 bg-white rounded-lg shadow-xl border border-gray-100 animate-fade-in">
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4 lg:gap-6">
-                <div className="col-span-1 md:col-span-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 lg:gap-4">
+          <div className="flex justify-center py-3 w-full backdrop-blur-sm bg-white/90"> {/* Reduced py-4 to py-3 */}
+            <div className="w-[95vw] lg:w-[85vw] xl:w-[80vw] p-3 lg:p-5 bg-white rounded-lg shadow-xl border border-gray-100 animate-fade-in"> {/* Reduced p-4 to p-3 and lg:p-6 to lg:p-5 */}
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-3 lg:gap-5"> {/* Reduced gap-4 to gap-3 and lg:gap-6 to lg:gap-5 */}
+                <div className="col-span-1 md:col-span-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5 lg:gap-3.5"> {/* Reduced gap-3 to gap-2.5 and lg:gap-4 to lg:gap-3.5 */}
                   {subItems.map((item) => {
                     const isItemActive = location.pathname === item.path;
                     return (
@@ -70,7 +71,7 @@ const CategoryLink: React.FC<CategoryLinkProps> = ({
                         key={item.path}
                         to={item.path}
                         className={cn(
-                          "group block p-2 lg:p-3 space-y-1 rounded-lg transition-all duration-300",
+                          "group block p-1.5 lg:p-2.5 space-y-1 rounded-lg transition-all duration-300", /* Reduced p-2 to p-1.5 and lg:p-3 to lg:p-2.5 */
                           isItemActive 
                             ? "bg-gray-50 shadow-sm" 
                             : "hover:bg-gray-50 hover:shadow-md"
@@ -105,14 +106,14 @@ const CategoryLink: React.FC<CategoryLinkProps> = ({
                   })}
                 </div>
                 <div className="col-span-1 flex flex-col items-center md:items-start">
-                  <div className="aspect-[2/3] rounded-lg overflow-hidden bg-gray-100 w-full max-w-[240px] md:max-w-none shadow-md hover:shadow-lg transition-shadow h-[450px]">
+                  <div className="aspect-[2/3] rounded-lg overflow-hidden bg-gray-100 w-full max-w-[240px] md:max-w-none shadow-md hover:shadow-lg transition-shadow h-[380px]"> {/* Reduced h-[450px] to h-[380px] (reduced by ~15%) */}
                     <Image 
                       src={bannerImage} 
                       alt={topText}
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <div className="mt-3 lg:mt-4 text-center md:text-left">
+                  <div className="mt-2.5 lg:mt-3.5 text-center md:text-left"> {/* Reduced mt-3 to mt-2.5 and lg:mt-4 to lg:mt-3.5 */}
                     <h3 className="font-medium text-sm lg:text-base text-gray-900">{topText}</h3>
                   </div>
                 </div>
