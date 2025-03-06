@@ -12,7 +12,7 @@ const PromoBar: React.FC = () => {
 
   return (
     <>
-      <div className="w-full bg-gradient-to-r from-[#333333] to-[#555555] text-white py-2.5">
+      <div className="w-full bg-gray-900 text-white py-2.5">
         <div className="container mx-auto px-4 flex items-center justify-between text-sm">
           <div className="flex items-center gap-4">
             <a href="tel:+21671234567" className="flex items-center gap-1.5 hover:text-[#FFD700] transition-colors">
