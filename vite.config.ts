@@ -18,6 +18,7 @@ export default defineConfig(({ mode }) => ({
       "d9b71f69-443e-4541-9615-d135835a306f.lovableproject.com",
       "c3453c23-2d3f-493d-991b-b9040d78d329.lovableproject.com",
       "60434b6a-2dca-4dce-be4c-71796e816677.lovableproject.com",
+      "ee6a09be-7286-40b2-a92e-84ae4933d384.lovableproject.com",
       "localhost"
     ]
   },
