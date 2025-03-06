@@ -72,7 +72,7 @@ const ValidationSidebar = ({
           
           <Button
             onClick={handleRequestQuote}
-            className="w-full bg-primary hover:bg-primary/90 text-white shadow-lg hover:shadow-xl transition-all duration-200 py-6"
+            className="w-full bg-gray-900 hover:bg-gray-900/90 text-white shadow-lg hover:shadow-xl transition-all duration-200 py-6"
             size="lg"
           >
             <FileText className="mr-2 h-5 w-5" />
