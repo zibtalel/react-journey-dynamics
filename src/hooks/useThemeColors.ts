@@ -31,6 +31,12 @@ export const useThemeColors = () => {
       md: wp(8),
       lg: wp(16),
       full: 9999,
+    },
+    // Additional utility for creating translucent colors
+    opacity: (color: string, alpha: number): string => {
+      // Convert alpha (0-1) to hex (00-FF)
+      const hex = Math.round(alpha * 255).toString(16).padStart(2, '0');
+      return `${color}${hex}`;
     }
   };
 };

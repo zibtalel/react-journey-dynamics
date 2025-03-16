@@ -1,11 +1,12 @@
-
-import { View, StyleSheet, Dimensions, Text, TouchableOpacity, SafeAreaView, Platform } from 'react-native';
+import { View, StyleSheet, Dimensions, Text, TouchableOpacity, SafeAreaView, Platform, Alert } from 'react-native';
 import MapView, { Polyline, Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import { useState, useRef, useEffect } from 'react';
-import { Shield, Navigation, LocateFixed, Menu, Layers } from 'lucide-react-native';
+import { Shield, Navigation, LocateFixed, Menu, Layers, MapPin } from 'lucide-react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useThemeColors } from '../../src/hooks/useThemeColors';
 import { useTheme } from '../../src/contexts/ThemeContext';
+import * as Location from 'expo-location';
+import LocationPermissionModal from '../../src/components/map/LocationPermissionModal';
 
 export default function MapScreen() {
   const mapRef = useRef<MapView>(null);
@@ -13,6 +14,9 @@ export default function MapScreen() {
   const insets = useSafeAreaInsets();
   const { theme } = useTheme();
   const colors = useThemeColors();
+  const [userLocation, setUserLocation] = useState<{latitude: number, longitude: number} | null>(null);
+  const [isLocating, setIsLocating] = useState(false);
+  const [showPermissionModal, setShowPermissionModal] = useState(false);
   
   // Sample route data - would come from your backend in a real app
   const route = [
@@ -71,6 +75,65 @@ export default function MapScreen() {
     setMapType(mapType === 'standard' ? 'satellite' : 'standard');
   };
 
+  // Request and get user location
+  const requestLocationPermission = async () => {
+    setIsLocating(true);
+    
+    try {
+      const { status } = await Location.requestForegroundPermissionsAsync();
+      
+      if (status !== 'granted') {
+        setShowPermissionModal(true);
+        setIsLocating(false);
+        return;
+      }
+      
+      // Permission was granted, get current location
+      await getCurrentLocation();
+    } catch (error) {
+      console.error("Error requesting location permission:", error);
+      Alert.alert("Erreur", "Impossible de demander l'accès à votre localisation.");
+      setIsLocating(false);
+    }
+  };
+
+  const getCurrentLocation = async () => {
+    try {
+      const location = await Location.getCurrentPositionAsync({
+        accuracy: Location.Accuracy.Highest,
+        maximumAge: 10000,
+      });
+      
+      const { latitude, longitude } = location.coords;
+      setUserLocation({ latitude, longitude });
+      
+      // Center map on user location
+      if (mapRef.current) {
+        mapRef.current.animateToRegion({
+          latitude,
+          longitude,
+          latitudeDelta: 0.005,
+          longitudeDelta: 0.005,
+        }, 1000);
+      }
+      
+      setIsLocating(false);
+    } catch (error) {
+      console.error("Error getting current location:", error);
+      Alert.alert("Erreur", "Impossible de récupérer votre position actuelle.");
+      setIsLocating(false);
+    }
+  };
+
+  const handleClosePermissionModal = () => {
+    setShowPermissionModal(false);
+  };
+
+  const handleOpenSettings = async () => {
+    setShowPermissionModal(false);
+    await Location.requestForegroundPermissionsAsync();
+  };
+
   // Choose the appropriate map style based on the theme
   const currentMapStyle = theme === 'dark' ? darkMapStyle : lightMapStyle;
 
@@ -87,7 +150,7 @@ export default function MapScreen() {
           latitudeDelta: 0.01,
           longitudeDelta: 0.01,
         }}
-        showsUserLocation={true}
+        showsUserLocation={false}
         showsMyLocationButton={false}
         showsCompass={false}
         showsScale={true}
@@ -124,6 +187,21 @@ export default function MapScreen() {
             </View>
           </Marker>
         ))}
+        
+        {userLocation && (
+          <Marker
+            coordinate={{
+              latitude: userLocation.latitude,
+              longitude: userLocation.longitude
+            }}
+            title="Votre position"
+            description="Vous êtes ici"
+          >
+            <View style={[styles.userLocationMarker, { backgroundColor: colors.primary }]}>
+              <MapPin size={18} color={colors.card} />
+            </View>
+          </Marker>
+        )}
       </MapView>
       
       {/* Information panel at the top */}
@@ -172,9 +250,14 @@ export default function MapScreen() {
         </TouchableOpacity>
         
         <TouchableOpacity 
-          style={[styles.controlButton, { backgroundColor: `${colors.card}CC` }]}
+          style={[
+            styles.controlButton, 
+            { backgroundColor: isLocating ? `${colors.primary}CC` : `${colors.card}CC` }
+          ]}
+          onPress={requestLocationPermission}
+          disabled={isLocating}
         >
-          <LocateFixed size={20} color={colors.text} />
+          <LocateFixed size={20} color={isLocating ? colors.card : colors.text} />
         </TouchableOpacity>
       </View>
       
@@ -184,6 +267,13 @@ export default function MapScreen() {
           <Text style={[styles.startButtonText, { color: colors.card }]}>Commencer la ronde</Text>
         </TouchableOpacity>
       </View>
+      
+      {/* Location permission modal */}
+      <LocationPermissionModal
+        visible={showPermissionModal}
+        onClose={handleClosePermissionModal}
+        onOpenSettings={handleOpenSettings}
+      />
     </View>
   );
 }
@@ -429,5 +519,23 @@ const styles = StyleSheet.create({
   pendingMarker: {
     backgroundColor: '#FFFFFF',
     borderColor: '#60A5FA',
+  },
+  userLocationMarker: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: '#60A5FA',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 3,
+    borderColor: '#FFFFFF',
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 6,
   },
 });
