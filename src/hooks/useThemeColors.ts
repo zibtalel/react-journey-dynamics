@@ -2,6 +2,10 @@
 import { useTheme } from '../contexts/ThemeContext';
 import { getThemeColors } from '../styles/theme';
 import { wp } from '../utils/responsive';
+import { Platform, Dimensions } from 'react-native';
+
+// Get screen height
+const { height } = Dimensions.get('window');
 
 export const useThemeColors = () => {
   const { theme } = useTheme();
