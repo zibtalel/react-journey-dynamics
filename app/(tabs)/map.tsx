@@ -18,7 +18,6 @@ export default function MapScreen() {
   const [isLocating, setIsLocating] = useState(false);
   const [showPermissionModal, setShowPermissionModal] = useState(false);
   
-  // Sample route data - would come from your backend in a real app
   const route = [
     { latitude: 48.8566, longitude: 2.3522 },
     { latitude: 48.8576, longitude: 2.3532 },
@@ -27,7 +26,6 @@ export default function MapScreen() {
     { latitude: 48.8606, longitude: 2.3562 },
   ];
 
-  // Checkpoint POIs along the route
   const checkpoints = [
     { 
       id: 1,
@@ -65,7 +63,6 @@ export default function MapScreen() {
   };
 
   useEffect(() => {
-    // Center map on route when component mounts
     setTimeout(() => {
       centerOnRoute();
     }, 500);
@@ -75,7 +72,6 @@ export default function MapScreen() {
     setMapType(mapType === 'standard' ? 'satellite' : 'standard');
   };
 
-  // Request and get user location
   const requestLocationPermission = async () => {
     setIsLocating(true);
     
@@ -88,7 +84,6 @@ export default function MapScreen() {
         return;
       }
       
-      // Permission was granted, get current location
       await getCurrentLocation();
     } catch (error) {
       console.error("Error requesting location permission:", error);
@@ -101,13 +96,11 @@ export default function MapScreen() {
     try {
       const location = await Location.getCurrentPositionAsync({
         accuracy: Location.Accuracy.Highest,
-        maximumAge: 10000,
       });
       
       const { latitude, longitude } = location.coords;
       setUserLocation({ latitude, longitude });
       
-      // Center map on user location
       if (mapRef.current) {
         mapRef.current.animateToRegion({
           latitude,
@@ -134,7 +127,6 @@ export default function MapScreen() {
     await Location.requestForegroundPermissionsAsync();
   };
 
-  // Choose the appropriate map style based on the theme
   const currentMapStyle = theme === 'dark' ? darkMapStyle : lightMapStyle;
 
   return (
@@ -197,14 +189,16 @@ export default function MapScreen() {
             title="Votre position"
             description="Vous êtes ici"
           >
-            <View style={[styles.userLocationMarker, { backgroundColor: colors.primary }]}>
-              <MapPin size={18} color={colors.card} />
+            <View style={[styles.userLocationMarker, { 
+              backgroundColor: colors.map.userLocationBg,
+              borderColor: colors.map.userLocationBorder
+            }]}>
+              <MapPin size={22} color="#FFFFFF" />
             </View>
           </Marker>
         )}
       </MapView>
       
-      {/* Information panel at the top */}
       <SafeAreaView style={[styles.topInfoContainer, { paddingTop: insets.top > 0 ? 20 : 40 }]}>
         <View style={[styles.header, { backgroundColor: `${colors.card}CC` }]}>
           <Text style={[styles.headerTitle, { color: colors.text }]}>Ronde - Secteur B</Text>
@@ -233,42 +227,39 @@ export default function MapScreen() {
         </View>
       </SafeAreaView>
       
-      {/* Map controls */}
-      <View style={styles.controlsButtons}>
+      <View style={[styles.controlsButtons, { top: colors.map.controlButtonsTop }]}>
         <TouchableOpacity 
-          style={[styles.controlButton, { backgroundColor: `${colors.card}CC` }]} 
+          style={[styles.controlButton, { backgroundColor: colors.map.actionButtonBg }]} 
           onPress={centerOnRoute}
         >
-          <Navigation size={20} color={colors.text} />
+          <Navigation size={22} color={colors.text} />
         </TouchableOpacity>
         
         <TouchableOpacity 
-          style={[styles.controlButton, { backgroundColor: `${colors.card}CC` }]} 
+          style={[styles.controlButton, { backgroundColor: colors.map.actionButtonBg }]} 
           onPress={toggleMapType}
         >
-          <Layers size={20} color={colors.text} />
+          <Layers size={22} color={colors.text} />
         </TouchableOpacity>
         
         <TouchableOpacity 
           style={[
             styles.controlButton, 
-            { backgroundColor: isLocating ? `${colors.primary}CC` : `${colors.card}CC` }
+            { backgroundColor: isLocating ? `${colors.primary}CC` : colors.map.actionButtonBg }
           ]}
           onPress={requestLocationPermission}
           disabled={isLocating}
         >
-          <LocateFixed size={20} color={isLocating ? colors.card : colors.text} />
+          <LocateFixed size={22} color={isLocating ? colors.card : colors.text} />
         </TouchableOpacity>
       </View>
       
-      {/* Start button above footer */}
       <View style={[styles.buttonContainer, { bottom: insets.bottom + 10 }]}>
         <TouchableOpacity style={[styles.startButton, { backgroundColor: colors.primary }]}>
           <Text style={[styles.startButtonText, { color: colors.card }]}>Commencer la ronde</Text>
         </TouchableOpacity>
       </View>
       
-      {/* Location permission modal */}
       <LocationPermissionModal
         visible={showPermissionModal}
         onClose={handleClosePermissionModal}
@@ -278,7 +269,6 @@ export default function MapScreen() {
   );
 }
 
-// Define map styles for light and dark themes
 const lightMapStyle = [
   {
     "elementType": "geometry",
@@ -455,7 +445,7 @@ const styles = StyleSheet.create({
   },
   controlsButtons: {
     position: 'absolute',
-    top: Platform.OS === 'ios' ? height * 0.25 : height * 0.22,
+    top: Platform.OS === 'ios' ? height * 0.35 : height * 0.32,
     right: 16,
     flexDirection: 'column',
     gap: 12,
@@ -463,11 +453,19 @@ const styles = StyleSheet.create({
   },
   controlButton: {
     backgroundColor: 'rgba(30, 41, 59, 0.8)',
-    width: 44,
-    height: 44,
-    borderRadius: 22,
+    width: 50,
+    height: 50,
+    borderRadius: 25,
     justifyContent: 'center',
     alignItems: 'center',
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   buttonContainer: {
     position: 'absolute',
@@ -521,9 +519,9 @@ const styles = StyleSheet.create({
     borderColor: '#60A5FA',
   },
   userLocationMarker: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: 44,
+    height: 44,
+    borderRadius: 22,
     backgroundColor: '#60A5FA',
     justifyContent: 'center',
     alignItems: 'center',
@@ -532,10 +530,11 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
-      height: 3,
+      height: 4,
     },
-    shadowOpacity: 0.27,
-    shadowRadius: 4.65,
-    elevation: 6,
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 8,
   },
 });
+

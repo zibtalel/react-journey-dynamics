@@ -37,6 +37,13 @@ export const useThemeColors = () => {
       // Convert alpha (0-1) to hex (00-FF)
       const hex = Math.round(alpha * 255).toString(16).padStart(2, '0');
       return `${color}${hex}`;
+    },
+    // Map specific styles
+    map: {
+      controlButtonsTop: Platform.OS === 'ios' ? height * 0.35 : height * 0.32, // Positioned further down
+      userLocationBg: theme === 'dark' ? '#60A5FA' : '#0EA5E9',
+      userLocationBorder: theme === 'dark' ? '#FFFFFF' : '#FFFFFF',
+      actionButtonBg: `${theme === 'dark' ? '#1E293B' : '#FFFFFF'}CC`, // Semi-transparent
     }
   };
 };
