@@ -1,9 +1,11 @@
 
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
-import { Play, Pause, Shield, Bell, MapPin, Clock, ChartBar as BarChart3, Users } from 'lucide-react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, useWindowDimensions } from 'react-native';
+import { Play, Pause, Shield, Bell, MapPin, Clock, ChartBar as BarChart3, Users, Moon, Sun } from 'lucide-react-native';
 import { useState } from 'react';
 import ProfileDropdown from '../../src/components/ProfileDropdown';
 import { useThemeColors } from '../../src/hooks/useThemeColors';
+import { useTheme } from '../../src/contexts/ThemeContext';
+import { wp, hp } from '../../src/utils/responsive';
 
 type ActivityStatus = 'completed' | 'pending' | 'warning';
 type MemberStatus = 'active' | 'break';
@@ -12,6 +14,9 @@ export default function DashboardScreen() {
   const [activeRound, setActiveRound] = useState(false);
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
   const colors = useThemeColors();
+  const { theme, toggleTheme } = useTheme();
+  const { width } = useWindowDimensions();
+  const isTablet = width > 768;
 
   const stats = [
     { icon: Shield, label: 'Rondes', value: '12', subtext: "aujourd'hui" },
@@ -68,17 +73,15 @@ export default function DashboardScreen() {
     },
   ];
 
-  // Fix TypeScript errors by correctly defining the activity record
   const activityDotStyles: Record<ActivityStatus, object> = {
     completed: styles.completedDot,
     pending: styles.pendingDot,
     warning: styles.warningDot,
   };
 
-  // Fix TypeScript errors by correctly defining the badge record
   const badgeStyles: Record<MemberStatus, object> = {
-    active: styles.activeBadge,
-    break: styles.breakBadge,
+    active: [styles.activeBadge, { backgroundColor: `${colors.success}20` }],
+    break: [styles.breakBadge, { backgroundColor: `${colors.warning}20` }],
   };
 
   const toggleProfileDropdown = () => {
@@ -87,17 +90,30 @@ export default function DashboardScreen() {
 
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
+      {/* Header with improved theme toggle and profile */}
       <View style={[styles.header, { backgroundColor: colors.headerBg }]}>
         <View>
           <Text style={[styles.greeting, { color: colors.text }]}>Bonjour, Thomas</Text>
           <Text style={[styles.date, { color: colors.textSecondary }]}>Lundi, 12 Février</Text>
         </View>
-        <TouchableOpacity onPress={toggleProfileDropdown}>
-          <Image
-            source={{ uri: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?fit=crop&w=64&h=64' }}
-            style={styles.avatar}
-          />
-        </TouchableOpacity>
+        <View style={styles.headerRight}>
+          <TouchableOpacity 
+            onPress={toggleTheme} 
+            style={[styles.themeToggleButton, { backgroundColor: colors.primary + '20' }]}
+          >
+            {theme === 'dark' ? (
+              <Sun size={wp(18)} color={colors.primary} />
+            ) : (
+              <Moon size={wp(18)} color={colors.primary} />
+            )}
+          </TouchableOpacity>
+          <TouchableOpacity onPress={toggleProfileDropdown}>
+            <Image
+              source={{ uri: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?fit=crop&w=64&h=64' }}
+              style={[styles.avatar, { borderColor: colors.primary }]}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
 
       {showProfileDropdown && (
@@ -108,6 +124,7 @@ export default function DashboardScreen() {
       )}
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+        {/* Quick action card for round control */}
         <View style={[styles.roundStatus, { backgroundColor: colors.card }]}>
           <View style={styles.roundInfo}>
             <Text style={[styles.roundTitle, { color: colors.text }]}>
@@ -118,21 +135,42 @@ export default function DashboardScreen() {
             </Text>
           </View>
           <TouchableOpacity
-            style={[styles.roundButton, activeRound ? styles.stopButton : styles.startButton]}
+            style={[
+              styles.roundButton, 
+              activeRound ? 
+                { backgroundColor: colors.danger } : 
+                { backgroundColor: colors.primary }
+            ]}
             onPress={() => setActiveRound(!activeRound)}
           >
             {activeRound ? (
-              <Pause color="white" size={24} />
+              <Pause color="white" size={wp(20)} />
             ) : (
-              <Play color="white" size={24} />
+              <Play color="white" size={wp(20)} />
             )}
           </TouchableOpacity>
         </View>
 
-        <View style={styles.statsGrid}>
+        {/* Stats dashboard grid with responsive layout */}
+        <View style={[
+          styles.statsGrid, 
+          isTablet && styles.statsGridTablet
+        ]}>
           {stats.map((stat, index) => (
-            <View key={index} style={[styles.statCard, { backgroundColor: colors.card }]}>
-              <stat.icon size={24} color={colors.primary} />
+            <View 
+              key={index} 
+              style={[
+                styles.statCard, 
+                { 
+                  backgroundColor: colors.card,
+                  borderColor: colors.border,
+                  shadowColor: colors.shadow,
+                }
+              ]}
+            >
+              <View style={[styles.iconCircle, { backgroundColor: colors.primary + '20' }]}>
+                <stat.icon size={wp(20)} color={colors.primary} />
+              </View>
               <Text style={[styles.statValue, { color: colors.text }]}>{stat.value}</Text>
               <Text style={[styles.statLabel, { color: colors.textSecondary }]}>{stat.label}</Text>
               <Text style={[styles.statSubtext, { color: colors.textSecondary }]}>{stat.subtext}</Text>
@@ -140,9 +178,16 @@ export default function DashboardScreen() {
           ))}
         </View>
 
-        <View style={[styles.section, { backgroundColor: colors.card }]}>
+        {/* Activity feed section with improved styling */}
+        <View style={[styles.section, { 
+          backgroundColor: colors.card,
+          borderColor: colors.border,
+          shadowColor: colors.shadow,
+        }]}>
           <View style={styles.sectionHeader}>
-            <BarChart3 size={20} color={colors.primary} />
+            <View style={[styles.iconCircleSmall, { backgroundColor: colors.primary + '20' }]}>
+              <BarChart3 size={wp(16)} color={colors.primary} />
+            </View>
             <Text style={[styles.sectionTitle, { color: colors.text }]}>Activité récente</Text>
           </View>
           {recentActivity.map((activity) => (
@@ -154,11 +199,21 @@ export default function DashboardScreen() {
               </View>
             </View>
           ))}
+          <TouchableOpacity style={[styles.viewAllButton, { borderTopColor: colors.border }]}>
+            <Text style={[styles.viewAllText, { color: colors.primary }]}>Voir toutes les activités</Text>
+          </TouchableOpacity>
         </View>
 
-        <View style={[styles.section, { backgroundColor: colors.card }]}>
+        {/* Team section with improved styling */}
+        <View style={[styles.section, { 
+          backgroundColor: colors.card,
+          borderColor: colors.border,
+          shadowColor: colors.shadow,
+        }]}>
           <View style={styles.sectionHeader}>
-            <Users size={20} color={colors.primary} />
+            <View style={[styles.iconCircleSmall, { backgroundColor: colors.primary + '20' }]}>
+              <Users size={wp(16)} color={colors.primary} />
+            </View>
             <Text style={[styles.sectionTitle, { color: colors.text }]}>Équipe en service</Text>
           </View>
           {teamMembers.map((member) => (
@@ -170,7 +225,7 @@ export default function DashboardScreen() {
                   <Text style={[styles.memberRole, { color: colors.primary }]}>{member.role}</Text>
                 </View>
               </View>
-              <View style={[styles.statusBadge, badgeStyles[member.status]]}>
+              <View style={badgeStyles[member.status]}>
                 <Text style={[
                   styles.statusText, 
                   { color: member.status === 'active' ? colors.success : colors.warning }
@@ -180,6 +235,9 @@ export default function DashboardScreen() {
               </View>
             </View>
           ))}
+          <TouchableOpacity style={[styles.viewAllButton, { borderTopColor: colors.border }]}>
+            <Text style={[styles.viewAllText, { color: colors.primary }]}>Voir toute l'équipe</Text>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </View>
@@ -189,127 +247,166 @@ export default function DashboardScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0F172A',
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#1E293B',
-    padding: 20,
-    paddingTop: 60,
+    padding: wp(20),
+    paddingTop: hp(60),
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(0,0,0,0.05)',
+  },
+  headerRight: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: wp(12),
+  },
+  themeToggleButton: {
+    padding: wp(8),
+    borderRadius: 9999,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   greeting: {
-    fontSize: 24,
+    fontSize: wp(20),
     fontWeight: 'bold',
-    color: 'white',
   },
   date: {
-    fontSize: 14,
-    color: '#94A3B8',
-    marginTop: 4,
+    fontSize: wp(14),
+    marginTop: hp(4),
   },
   avatar: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: wp(40),
+    height: wp(40),
+    borderRadius: wp(20),
     borderWidth: 2,
-    borderColor: '#60A5FA',
   },
   content: {
     flex: 1,
-    padding: 20,
+    padding: wp(20),
   },
   roundStatus: {
-    backgroundColor: '#1E293B',
-    borderRadius: 16,
-    padding: 20,
+    borderRadius: wp(16),
+    padding: wp(20),
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: hp(20),
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   roundInfo: {
     flex: 1,
   },
   roundTitle: {
-    fontSize: 18,
+    fontSize: wp(18),
     fontWeight: 'bold',
-    color: 'white',
-    marginBottom: 4,
+    marginBottom: hp(4),
   },
   roundSubtitle: {
-    fontSize: 14,
-    color: '#94A3B8',
+    fontSize: wp(14),
   },
   roundButton: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
+    width: wp(44),
+    height: wp(44),
+    borderRadius: wp(22),
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  startButton: {
-    backgroundColor: '#2563EB',
-  },
-  stopButton: {
-    backgroundColor: '#DC2626',
   },
   statsGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 16,
-    marginBottom: 20,
+    justifyContent: 'space-between',
+    marginBottom: hp(20),
+  },
+  statsGridTablet: {
+    flexWrap: 'nowrap',
+    gap: wp(12),
   },
   statCard: {
-    backgroundColor: '#1E293B',
-    borderRadius: 16,
-    padding: 16,
-    width: '47%',
+    borderRadius: wp(16),
+    padding: wp(16),
+    width: '48%',
+    marginBottom: hp(12),
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3.84,
+    elevation: 3,
+    borderWidth: 1,
+  },
+  iconCircle: {
+    width: wp(40),
+    height: wp(40),
+    borderRadius: wp(20),
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: hp(12),
+  },
+  iconCircleSmall: {
+    width: wp(32),
+    height: wp(32),
+    borderRadius: wp(16),
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   statValue: {
-    fontSize: 24,
+    fontSize: wp(24),
     fontWeight: 'bold',
-    color: 'white',
-    marginTop: 12,
+    marginBottom: hp(4),
   },
   statLabel: {
-    fontSize: 14,
-    color: '#94A3B8',
-    marginTop: 4,
+    fontSize: wp(14),
+    fontWeight: '500',
   },
   statSubtext: {
-    fontSize: 12,
-    color: '#64748B',
-    marginTop: 2,
+    fontSize: wp(12),
+    marginTop: hp(2),
   },
   section: {
-    backgroundColor: '#1E293B',
-    borderRadius: 16,
-    padding: 20,
-    marginBottom: 20,
+    borderRadius: wp(16),
+    padding: wp(20),
+    marginBottom: hp(20),
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3.84,
+    elevation: 3,
+    borderWidth: 1,
   },
   sectionHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 16,
+    marginBottom: hp(16),
   },
   sectionTitle: {
-    fontSize: 16,
+    fontSize: wp(16),
     fontWeight: 'bold',
-    color: 'white',
-    marginLeft: 8,
+    marginLeft: wp(8),
   },
   activityItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 16,
+    marginBottom: hp(16),
   },
   activityDot: {
-    width: 12,
-    height: 12,
-    borderRadius: 6,
-    marginRight: 12,
+    width: wp(12),
+    height: wp(12),
+    borderRadius: wp(6),
+    marginRight: wp(12),
   },
   completedDot: {
     backgroundColor: '#22C55E',
@@ -324,53 +421,58 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   activityTitle: {
-    fontSize: 14,
-    color: 'white',
-    marginBottom: 4,
+    fontSize: wp(14),
+    fontWeight: '500',
+    marginBottom: hp(4),
   },
   activityTime: {
-    fontSize: 12,
-    color: '#94A3B8',
+    fontSize: wp(12),
   },
   teamMember: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: 16,
+    marginBottom: hp(16),
   },
   memberInfo: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   memberAvatar: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    marginRight: 12,
+    width: wp(40),
+    height: wp(40),
+    borderRadius: wp(20),
+    marginRight: wp(12),
   },
   memberName: {
-    fontSize: 14,
+    fontSize: wp(14),
     fontWeight: '600',
-    color: 'white',
   },
   memberRole: {
-    fontSize: 12,
-    color: '#94A3B8',
-  },
-  statusBadge: {
-    paddingHorizontal: 12,
-    paddingVertical: 6,
-    borderRadius: 12,
+    fontSize: wp(12),
   },
   activeBadge: {
-    backgroundColor: 'rgba(34, 197, 94, 0.2)',
+    paddingHorizontal: wp(12),
+    paddingVertical: hp(6),
+    borderRadius: wp(12),
   },
   breakBadge: {
-    backgroundColor: 'rgba(234, 179, 8, 0.2)',
+    paddingHorizontal: wp(12),
+    paddingVertical: hp(6),
+    borderRadius: wp(12),
   },
   statusText: {
-    fontSize: 12,
+    fontSize: wp(12),
     fontWeight: '500',
-    color: '#22C55E',
+  },
+  viewAllButton: {
+    paddingTop: hp(12),
+    marginTop: hp(8),
+    borderTopWidth: 1,
+    alignItems: 'center',
+  },
+  viewAllText: {
+    fontSize: wp(14),
+    fontWeight: '500',
   },
 });
