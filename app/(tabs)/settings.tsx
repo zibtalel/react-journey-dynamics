@@ -1,10 +1,13 @@
+
 import { View, Text, StyleSheet, ScrollView, Switch, TouchableOpacity, Image } from 'react-native';
-import { Moon, Sun, User, Bell, Palette, Shield, Lock, Languages, CircleHelp as HelpCircle, FileText, LogOut, ChevronRight, Camera, Mail, Phone, MapPin } from 'lucide-react-native';
+import { Moon, Sun, Bell, Languages, CircleHelp as HelpCircle, FileText, LogOut, ChevronRight, Camera, Mail, Phone, MapPin, Lock } from 'lucide-react-native';
 import { useState } from 'react';
 import { router } from 'expo-router';
 import ProfileDropdown from '../../src/components/ProfileDropdown';
 import { useTheme } from '../../src/contexts/ThemeContext';
 import { useThemeColors } from '../../src/hooks/useThemeColors';
+import PasswordChangeModal from '../../src/components/PasswordChangeModal';
+import { wp, hp } from '../../src/utils/responsive';
 
 export default function SettingsScreen() {
   const { theme, toggleTheme } = useTheme();
@@ -15,6 +18,7 @@ export default function SettingsScreen() {
   const [emailNotifs, setEmailNotifs] = useState(true);
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
 
   const userProfile = {
     name: 'Thomas Laurent',
@@ -37,7 +41,7 @@ export default function SettingsScreen() {
         <TouchableOpacity onPress={() => setShowProfileDropdown(!showProfileDropdown)}>
           <Image
             source={{ uri: userProfile.avatar }}
-            style={styles.headerAvatar}
+            style={[styles.headerAvatar, { borderColor: colors.primary }]}
           />
         </TouchableOpacity>
       </View>
@@ -50,12 +54,19 @@ export default function SettingsScreen() {
       )}
 
       <ScrollView style={styles.content}>
-        <View style={[styles.profileSection, { backgroundColor: colors.card }]}>
+        <View style={[styles.profileSection, { 
+          backgroundColor: colors.card,
+          borderColor: colors.border,
+          shadowColor: colors.shadow,
+        }]}>
           <View style={styles.profileHeader}>
             <View style={styles.avatarContainer}>
-              <Image source={{ uri: userProfile.avatar }} style={styles.avatar} />
-              <TouchableOpacity style={styles.cameraButton}>
-                <Camera size={20} color="white" />
+              <Image source={{ uri: userProfile.avatar }} style={[styles.avatar, { borderColor: colors.primary }]} />
+              <TouchableOpacity style={[styles.cameraButton, { 
+                backgroundColor: colors.primary,
+                borderColor: colors.card,
+              }]}>
+                <Camera size={wp(20)} color="white" />
               </TouchableOpacity>
             </View>
             <View style={styles.profileInfo}>
@@ -65,25 +76,29 @@ export default function SettingsScreen() {
           </View>
           <View style={styles.profileDetails}>
             <View style={styles.profileDetail}>
-              <Mail size={20} color={colors.primary} />
+              <Mail size={wp(20)} color={colors.primary} />
               <Text style={[styles.detailText, { color: colors.textSecondary }]}>{userProfile.email}</Text>
             </View>
             <View style={styles.profileDetail}>
-              <Phone size={20} color={colors.primary} />
+              <Phone size={wp(20)} color={colors.primary} />
               <Text style={[styles.detailText, { color: colors.textSecondary }]}>{userProfile.phone}</Text>
             </View>
             <View style={styles.profileDetail}>
-              <MapPin size={20} color={colors.primary} />
+              <MapPin size={wp(20)} color={colors.primary} />
               <Text style={[styles.detailText, { color: colors.textSecondary }]}>{userProfile.location}</Text>
             </View>
           </View>
         </View>
 
-        <View style={[styles.section, { backgroundColor: colors.card }]}>
+        <View style={[styles.section, { 
+          backgroundColor: colors.card,
+          borderColor: colors.border,
+          shadowColor: colors.shadow,
+        }]}>
           <Text style={[styles.sectionTitle, { color: colors.text }]}>Apparence</Text>
-          <View style={styles.settingItem}>
+          <View style={[styles.settingItem, { borderBottomColor: colors.border }]}>
             <View style={styles.settingLeft}>
-              {isDarkMode ? <Moon size={24} color={colors.primary} /> : <Sun size={24} color={colors.primary} />}
+              {isDarkMode ? <Moon size={wp(24)} color={colors.primary} /> : <Sun size={wp(24)} color={colors.primary} />}
               <Text style={[styles.settingText, { color: colors.text }]}>Mode sombre</Text>
             </View>
             <Switch
@@ -93,112 +108,132 @@ export default function SettingsScreen() {
               thumbColor={isDarkMode ? colors.info : '#ffffff'}
             />
           </View>
-          <TouchableOpacity style={styles.settingItem}>
+          <TouchableOpacity style={[styles.settingItem, { borderBottomColor: colors.border }]}>
             <View style={styles.settingLeft}>
-              <Palette size={24} color={colors.primary} />
+              <Sun size={wp(24)} color={colors.primary} />
               <Text style={[styles.settingText, { color: colors.text }]}>Thème</Text>
             </View>
-            <ChevronRight size={20} color={colors.primary} />
+            <ChevronRight size={wp(20)} color={colors.primary} />
           </TouchableOpacity>
         </View>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Notifications</Text>
-          <View style={styles.settingItem}>
+        <View style={[styles.section, { 
+          backgroundColor: colors.card,
+          borderColor: colors.border,
+          shadowColor: colors.shadow,
+        }]}>
+          <Text style={[styles.sectionTitle, { color: colors.text }]}>Notifications</Text>
+          <View style={[styles.settingItem, { borderBottomColor: colors.border }]}>
             <View style={styles.settingLeft}>
-              <Bell size={24} color="#60A5FA" />
-              <Text style={styles.settingText}>Notifications push</Text>
+              <Bell size={wp(24)} color={colors.primary} />
+              <Text style={[styles.settingText, { color: colors.text }]}>Notifications push</Text>
             </View>
             <Switch
               value={notifications}
               onValueChange={setNotifications}
-              trackColor={{ false: '#475569', true: '#2563EB' }}
-              thumbColor={notifications ? '#60A5FA' : '#94A3B8'}
+              trackColor={{ false: colors.secondary, true: colors.primary }}
+              thumbColor={notifications ? colors.info : '#ffffff'}
             />
           </View>
-          <View style={styles.settingItem}>
+          <View style={[styles.settingItem, { borderBottomColor: colors.border }]}>
             <View style={styles.settingLeft}>
-              <Mail size={24} color="#60A5FA" />
-              <Text style={styles.settingText}>Notifications email</Text>
+              <Mail size={wp(24)} color={colors.primary} />
+              <Text style={[styles.settingText, { color: colors.text }]}>Notifications email</Text>
             </View>
             <Switch
               value={emailNotifs}
               onValueChange={setEmailNotifs}
-              trackColor={{ false: '#475569', true: '#2563EB' }}
-              thumbColor={emailNotifs ? '#60A5FA' : '#94A3B8'}
+              trackColor={{ false: colors.secondary, true: colors.primary }}
+              thumbColor={emailNotifs ? colors.info : '#ffffff'}
             />
           </View>
-          <View style={styles.settingItem}>
+          <View style={[styles.settingItem, { borderBottomColor: colors.border }]}>
             <View style={styles.settingLeft}>
-              <Bell size={24} color="#60A5FA" />
-              <Text style={styles.settingText}>Sons</Text>
+              <Bell size={wp(24)} color={colors.primary} />
+              <Text style={[styles.settingText, { color: colors.text }]}>Sons</Text>
             </View>
             <Switch
               value={soundEnabled}
               onValueChange={setSoundEnabled}
-              trackColor={{ false: '#475569', true: '#2563EB' }}
-              thumbColor={soundEnabled ? '#60A5FA' : '#94A3B8'}
+              trackColor={{ false: colors.secondary, true: colors.primary }}
+              thumbColor={soundEnabled ? colors.info : '#ffffff'}
             />
           </View>
         </View>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Sécurité</Text>
-          <TouchableOpacity style={styles.settingItem}>
+        <View style={[styles.section, { 
+          backgroundColor: colors.card,
+          borderColor: colors.border,
+          shadowColor: colors.shadow,
+        }]}>
+          <Text style={[styles.sectionTitle, { color: colors.text }]}>Sécurité</Text>
+          <TouchableOpacity 
+            style={[styles.settingItem, { borderBottomColor: colors.border }]}
+            onPress={() => setShowPasswordModal(true)}
+          >
             <View style={styles.settingLeft}>
-              <Lock size={24} color="#60A5FA" />
-              <Text style={styles.settingText}>Changer le mot de passe</Text>
+              <Lock size={wp(24)} color={colors.primary} />
+              <Text style={[styles.settingText, { color: colors.text }]}>Changer le mot de passe</Text>
             </View>
-            <ChevronRight size={20} color="#60A5FA" />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.settingItem}>
-            <View style={styles.settingLeft}>
-              <Shield size={24} color="#60A5FA" />
-              <Text style={styles.settingText}>Authentification à deux facteurs</Text>
-            </View>
-            <ChevronRight size={20} color="#60A5FA" />
+            <ChevronRight size={wp(20)} color={colors.primary} />
           </TouchableOpacity>
         </View>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Préférences</Text>
-          <TouchableOpacity style={styles.settingItem}>
+        <View style={[styles.section, { 
+          backgroundColor: colors.card,
+          borderColor: colors.border,
+          shadowColor: colors.shadow,
+        }]}>
+          <Text style={[styles.sectionTitle, { color: colors.text }]}>Préférences</Text>
+          <TouchableOpacity style={[styles.settingItem, { borderBottomColor: colors.border }]}>
             <View style={styles.settingLeft}>
-              <Languages size={24} color="#60A5FA" />
-              <Text style={styles.settingText}>Langue</Text>
+              <Languages size={wp(24)} color={colors.primary} />
+              <Text style={[styles.settingText, { color: colors.text }]}>Langue</Text>
             </View>
             <View style={styles.settingRight}>
-              <Text style={styles.settingValue}>Français</Text>
-              <ChevronRight size={20} color="#60A5FA" />
+              <Text style={[styles.settingValue, { color: colors.textSecondary }]}>Français</Text>
+              <ChevronRight size={wp(20)} color={colors.primary} />
             </View>
           </TouchableOpacity>
         </View>
 
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Aide & Support</Text>
-          <TouchableOpacity style={styles.settingItem}>
+        <View style={[styles.section, { 
+          backgroundColor: colors.card,
+          borderColor: colors.border,
+          shadowColor: colors.shadow,
+        }]}>
+          <Text style={[styles.sectionTitle, { color: colors.text }]}>Aide & Support</Text>
+          <TouchableOpacity style={[styles.settingItem, { borderBottomColor: colors.border }]}>
             <View style={styles.settingLeft}>
-              <HelpCircle size={24} color="#60A5FA" />
-              <Text style={styles.settingText}>Centre d'aide</Text>
+              <HelpCircle size={wp(24)} color={colors.primary} />
+              <Text style={[styles.settingText, { color: colors.text }]}>Centre d'aide</Text>
             </View>
-            <ChevronRight size={20} color="#60A5FA" />
+            <ChevronRight size={wp(20)} color={colors.primary} />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.settingItem}>
+          <TouchableOpacity style={[styles.settingItem, { borderBottomColor: colors.border }]}>
             <View style={styles.settingLeft}>
-              <FileText size={24} color="#60A5FA" />
-              <Text style={styles.settingText}>Conditions d'utilisation</Text>
+              <FileText size={wp(24)} color={colors.primary} />
+              <Text style={[styles.settingText, { color: colors.text }]}>Conditions d'utilisation</Text>
             </View>
-            <ChevronRight size={20} color="#60A5FA" />
+            <ChevronRight size={wp(20)} color={colors.primary} />
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
-          <LogOut size={24} color="white" />
+        <TouchableOpacity 
+          style={[styles.logoutButton, { backgroundColor: colors.danger }]} 
+          onPress={handleLogout}
+        >
+          <LogOut size={wp(24)} color="white" />
           <Text style={styles.logoutText}>Déconnexion</Text>
         </TouchableOpacity>
 
-        <Text style={styles.version}>Version 1.0.0</Text>
+        <Text style={[styles.version, { color: colors.textSecondary }]}>Version 1.0.0</Text>
       </ScrollView>
+      
+      <PasswordChangeModal 
+        isVisible={showPasswordModal}
+        onClose={() => setShowPasswordModal(false)}
+      />
     </View>
   );
 }
@@ -206,146 +241,144 @@ export default function SettingsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0F172A',
   },
   header: {
-    backgroundColor: '#1E293B',
-    padding: 20,
-    paddingTop: 60,
+    padding: wp(20),
+    paddingTop: hp(60),
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
   headerAvatar: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: wp(40),
+    height: wp(40),
+    borderRadius: wp(20),
     borderWidth: 2,
-    borderColor: '#60A5FA',
   },
   title: {
-    color: 'white',
-    fontSize: 24,
+    fontSize: wp(24),
     fontWeight: 'bold',
   },
   content: {
     flex: 1,
-    padding: 20,
+    padding: wp(20),
   },
   profileSection: {
-    backgroundColor: '#1E293B',
-    borderRadius: 15,
-    padding: 20,
-    marginBottom: 20,
+    borderRadius: wp(15),
+    padding: wp(20),
+    marginBottom: hp(20),
+    borderWidth: 1,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3.84,
+    elevation: 3,
   },
   profileHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: hp(20),
   },
   avatarContainer: {
     position: 'relative',
   },
   avatar: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
+    width: wp(80),
+    height: wp(80),
+    borderRadius: wp(40),
     borderWidth: 3,
-    borderColor: '#60A5FA',
   },
   cameraButton: {
     position: 'absolute',
     right: -4,
     bottom: -4,
-    backgroundColor: '#2563EB',
-    padding: 8,
-    borderRadius: 20,
+    padding: wp(8),
+    borderRadius: wp(20),
     borderWidth: 3,
-    borderColor: '#1E293B',
   },
   profileInfo: {
-    marginLeft: 20,
+    marginLeft: wp(20),
   },
   profileName: {
-    color: 'white',
-    fontSize: 24,
+    fontSize: wp(24),
     fontWeight: 'bold',
   },
   profileRole: {
-    color: '#60A5FA',
-    fontSize: 16,
-    marginTop: 4,
+    fontSize: wp(16),
+    marginTop: hp(4),
   },
   profileDetails: {
-    marginTop: 15,
+    marginTop: hp(15),
   },
   profileDetail: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 12,
+    marginBottom: hp(12),
   },
   detailText: {
-    color: '#94A3B8',
-    marginLeft: 12,
-    fontSize: 16,
+    marginLeft: wp(12),
+    fontSize: wp(16),
   },
   section: {
-    backgroundColor: '#1E293B',
-    borderRadius: 15,
-    padding: 15,
-    marginBottom: 20,
+    borderRadius: wp(15),
+    padding: wp(15),
+    marginBottom: hp(20),
+    borderWidth: 1,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3.84,
+    elevation: 3,
   },
   sectionTitle: {
-    fontSize: 18,
+    fontSize: wp(18),
     fontWeight: 'bold',
-    marginBottom: 15,
-    color: 'white',
+    marginBottom: hp(15),
   },
   settingItem: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical: 12,
+    paddingVertical: hp(12),
     borderBottomWidth: 1,
-    borderBottomColor: '#334155',
   },
   settingLeft: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 15,
+    gap: wp(15),
   },
   settingRight: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    gap: wp(8),
   },
   settingText: {
-    fontSize: 16,
-    color: 'white',
+    fontSize: wp(16),
   },
   settingValue: {
-    fontSize: 16,
-    color: '#94A3B8',
+    fontSize: wp(16),
   },
   logoutButton: {
-    backgroundColor: '#DC2626',
-    padding: 15,
-    borderRadius: 12,
+    padding: wp(15),
+    borderRadius: wp(12),
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: hp(20),
     flexDirection: 'row',
     justifyContent: 'center',
-    gap: 10,
+    gap: wp(10),
   },
   logoutText: {
     color: 'white',
-    fontSize: 16,
+    fontSize: wp(16),
     fontWeight: 'bold',
   },
   version: {
     textAlign: 'center',
-    color: '#64748B',
-    marginTop: 20,
-    marginBottom: 30,
+    marginTop: hp(20),
+    marginBottom: hp(30),
   },
 });
