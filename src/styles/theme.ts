@@ -1,3 +1,4 @@
+
 // Theme colors for the application
 export const lightTheme = {
   background: '#F6F6F7',
@@ -33,9 +34,6 @@ export const lightTheme = {
   modalBg: '#FFFFFF',
   modalHeaderBg: '#F8FAFC',
   modalDragIndicator: '#CBD5E1',
-  
-  // Logo colors
-  logoBackground: 'transparent', // Allow logo to display with original colors
 };
 
 export const darkTheme = {
@@ -72,9 +70,6 @@ export const darkTheme = {
   modalBg: '#1E293B',
   modalHeaderBg: '#0F172A',
   modalDragIndicator: '#334155',
-  
-  // Logo colors 
-  logoBackground: 'transparent', // Allow logo to display with original colors
 };
 
 export type ThemeColors = typeof lightTheme;
