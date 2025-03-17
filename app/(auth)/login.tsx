@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useCallback } from 'react';
 import { 
   View, 
@@ -212,11 +211,10 @@ function LoginScreen() {
                   { backgroundColor: colors.loginHeaderBg }
                 ]}>
                   <Image 
-                    source={{ uri: 'https://cdn-icons-png.flaticon.com/512/2031/2031434.png' }}
+                    source={require('../../assets/images/logo.png')}
                     style={styles.appLogo}
+                    resizeMode="contain"
                   />
-                  <Text style={styles.appName}>SecuRounds</Text>
-                  <Text style={styles.appTagline}>Gestion de rondes de sécurité</Text>
                 </View>
               </View>
               
@@ -334,8 +332,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   appLogo: {
-    width: wp(60),
-    height: wp(60),
+    width: wp(120),
+    height: wp(120),
     tintColor: 'white',
   },
   appName: {
@@ -359,11 +357,11 @@ const styles = StyleSheet.create({
     paddingBottom: hp(20),
   },
   spacer: {
-    height: hp(30), // Increased from 20 to 30
+    height: hp(30),
   },
   welcomeSection: {
-    marginTop: hp(20), // Added margin top to push welcome text down
-    marginBottom: hp(20), // Increased from implicit margin to explicit larger margin
+    marginTop: hp(20),
+    marginBottom: hp(20),
   },
   welcomeText: {
     fontSize: fp(26),
@@ -374,7 +372,7 @@ const styles = StyleSheet.create({
   },
   formFields: {
     width: '100%',
-    marginTop: hp(10), // Added margin top to push form fields down
+    marginTop: hp(10),
   },
   inputContainer: {
     flexDirection: 'row',

@@ -1,6 +1,5 @@
-
 import { View, Text, StyleSheet, ScrollView, Switch, TouchableOpacity, Image } from 'react-native';
-import { Moon, Sun, Bell, Languages, CircleHelp as HelpCircle, FileText, LogOut, ChevronRight, Camera, Mail, Phone, MapPin, Lock, User, Settings as SettingsIcon } from 'lucide-react-native';
+import { Bell, Languages, CircleHelp as HelpCircle, FileText, LogOut, ChevronRight, Mail, Phone, MapPin, Lock, User, Settings as SettingsIcon } from 'lucide-react-native';
 import { useState } from 'react';
 import { router } from 'expo-router';
 import ProfileDropdown from '../../src/components/ProfileDropdown';
@@ -63,12 +62,6 @@ export default function SettingsScreen() {
           <View style={styles.profileHeader}>
             <View style={styles.avatarContainer}>
               <Image source={{ uri: userProfile.avatar }} style={[styles.avatar, { borderColor: colors.primary }]} />
-              <TouchableOpacity style={[styles.cameraButton, { 
-                backgroundColor: colors.primary,
-                borderColor: colors.card,
-              }]}>
-                <Camera size={wp(20)} color="white" />
-              </TouchableOpacity>
             </View>
             <View style={styles.profileInfo}>
               <Text style={[styles.profileName, { color: colors.text }]}>{userProfile.name}</Text>
@@ -275,14 +268,6 @@ const styles = StyleSheet.create({
     width: wp(80),
     height: wp(80),
     borderRadius: wp(40),
-    borderWidth: 3,
-  },
-  cameraButton: {
-    position: 'absolute',
-    right: -4,
-    bottom: -4,
-    padding: wp(8),
-    borderRadius: wp(20),
     borderWidth: 3,
   },
   profileInfo: {

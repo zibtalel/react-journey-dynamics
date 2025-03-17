@@ -1,6 +1,5 @@
-
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, useWindowDimensions } from 'react-native';
-import { Play, Pause, Shield, Bell, MapPin, Clock, ChartBar as BarChart3, Users, Moon, Sun } from 'lucide-react-native';
+import { Play, Pause, Shield, Bell, MapPin, Clock, ChartBar as BarChart3, Users } from 'lucide-react-native';
 import { useState } from 'react';
 import ProfileDropdown from '../../src/components/ProfileDropdown';
 import { useThemeColors } from '../../src/hooks/useThemeColors';
@@ -14,7 +13,6 @@ export default function DashboardScreen() {
   const [activeRound, setActiveRound] = useState(false);
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
   const colors = useThemeColors();
-  const { theme, toggleTheme } = useTheme();
   const { width } = useWindowDimensions();
   const isTablet = width > 768;
 
@@ -90,30 +88,18 @@ export default function DashboardScreen() {
 
   return (
     <View style={[styles.container, { backgroundColor: colors.background }]}>
-      {/* Header with improved theme toggle and profile */}
+      {/* Header without theme toggle */}
       <View style={[styles.header, { backgroundColor: colors.headerBg }]}>
         <View>
           <Text style={[styles.greeting, { color: colors.text }]}>Bonjour, Thomas</Text>
           <Text style={[styles.date, { color: colors.textSecondary }]}>Lundi, 12 Février</Text>
         </View>
-        <View style={styles.headerRight}>
-          <TouchableOpacity 
-            onPress={toggleTheme} 
-            style={[styles.themeToggleButton, { backgroundColor: colors.primary + '20' }]}
-          >
-            {theme === 'dark' ? (
-              <Sun size={wp(18)} color={colors.primary} />
-            ) : (
-              <Moon size={wp(18)} color={colors.primary} />
-            )}
-          </TouchableOpacity>
-          <TouchableOpacity onPress={toggleProfileDropdown}>
-            <Image
-              source={{ uri: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?fit=crop&w=64&h=64' }}
-              style={[styles.avatar, { borderColor: colors.primary }]}
-            />
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity onPress={toggleProfileDropdown}>
+          <Image
+            source={{ uri: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?fit=crop&w=64&h=64' }}
+            style={[styles.avatar, { borderColor: colors.primary }]}
+          />
+        </TouchableOpacity>
       </View>
 
       {showProfileDropdown && (
@@ -260,7 +246,6 @@ const styles = StyleSheet.create({
   headerRight: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: wp(12),
   },
   themeToggleButton: {
     padding: wp(8),
