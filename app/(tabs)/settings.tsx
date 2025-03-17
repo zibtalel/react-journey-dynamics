@@ -1,5 +1,6 @@
+
 import { View, Text, StyleSheet, ScrollView, Switch, TouchableOpacity, Image } from 'react-native';
-import { Bell, Languages, CircleHelp as HelpCircle, FileText, LogOut, ChevronRight, Mail, Phone, MapPin, Lock, User, Settings as SettingsIcon } from 'lucide-react-native';
+import { Bell, Languages, CircleHelp as HelpCircle, FileText, LogOut, ChevronRight, Mail, Phone, MapPin, Lock, User, Settings as SettingsIcon, Moon, Sun } from 'lucide-react-native';
 import { useState } from 'react';
 import { router } from 'expo-router';
 import ProfileDropdown from '../../src/components/ProfileDropdown';
