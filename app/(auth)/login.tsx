@@ -17,7 +17,7 @@ import {
   ScrollView
 } from 'react-native';
 import { router } from 'expo-router';
-import { Lock, Mail, QrCode, Eye, EyeOff, Moon, Sun } from 'lucide-react-native';
+import { Lock, Mail, QrCode, Eye, EyeOff } from 'lucide-react-native';
 import QRCodeScanner from '../../src/components/auth/QRCodeScanner';
 import { wp, hp, fp } from '../../src/utils/responsive';
 import { useThemeColors } from '../../src/hooks/useThemeColors';
@@ -161,7 +161,6 @@ function LoginScreen() {
       setError('Veuillez remplir tous les champs');
       return;
     }
-    // Navigate to tabs after successful login
     router.replace('/(tabs)');
   }, [email, password]);
 
@@ -175,23 +174,6 @@ function LoginScreen() {
 
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: colors.background }]}>
- 
-      {/* Theme toggle button */}
-      <TouchableOpacity 
-        style={[
-          styles.themeToggle, 
-          { backgroundColor: theme === 'dark' ? colors.card : colors.background }
-        ]}
-        onPress={toggleTheme}
-        accessibilityLabel={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-      >
-        {theme === 'light' ? (
-          <Moon size={wp(20)} color={colors.primary} />
-        ) : (
-          <Sun size={wp(20)} color={colors.primary} />
-        )}
-      </TouchableOpacity>
-      
       <KeyboardAvoidingView 
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         style={styles.container}
@@ -334,7 +316,6 @@ const styles = StyleSheet.create({
   appLogo: {
     width: wp(120),
     height: wp(120),
-    tintColor: 'white',
   },
   appName: {
     fontSize: fp(28),
