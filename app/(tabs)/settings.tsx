@@ -1,12 +1,13 @@
 
 import { View, Text, StyleSheet, ScrollView, Switch, TouchableOpacity, Image } from 'react-native';
-import { Moon, Sun, Bell, Languages, CircleHelp as HelpCircle, FileText, LogOut, ChevronRight, Camera, Mail, Phone, MapPin, Lock } from 'lucide-react-native';
+import { Moon, Sun, Bell, Languages, CircleHelp as HelpCircle, FileText, LogOut, ChevronRight, Camera, Mail, Phone, MapPin, Lock, User, Settings as SettingsIcon } from 'lucide-react-native';
 import { useState } from 'react';
 import { router } from 'expo-router';
 import ProfileDropdown from '../../src/components/ProfileDropdown';
 import { useTheme } from '../../src/contexts/ThemeContext';
 import { useThemeColors } from '../../src/hooks/useThemeColors';
 import PasswordChangeModal from '../../src/components/PasswordChangeModal';
+import UserInfoModal from '../../src/components/UserInfoModal';
 import { wp, hp } from '../../src/utils/responsive';
 
 export default function SettingsScreen() {
@@ -15,10 +16,10 @@ export default function SettingsScreen() {
   const isDarkMode = theme === 'dark';
   
   const [notifications, setNotifications] = useState(true);
-  const [emailNotifs, setEmailNotifs] = useState(true);
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
   const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [showUserInfoModal, setShowUserInfoModal] = useState(false);
 
   const userProfile = {
     name: 'Thomas Laurent',
@@ -88,6 +89,13 @@ export default function SettingsScreen() {
               <Text style={[styles.detailText, { color: colors.textSecondary }]}>{userProfile.location}</Text>
             </View>
           </View>
+          <TouchableOpacity 
+            style={[styles.editProfileButton, { backgroundColor: colors.primary }]} 
+            onPress={() => setShowUserInfoModal(true)}
+          >
+            <User size={wp(18)} color="white" />
+            <Text style={styles.editProfileText}>Modifier mes informations</Text>
+          </TouchableOpacity>
         </View>
 
         <View style={[styles.section, { 
@@ -95,7 +103,7 @@ export default function SettingsScreen() {
           borderColor: colors.border,
           shadowColor: colors.shadow,
         }]}>
-          <Text style={[styles.sectionTitle, { color: colors.text }]}>Apparence</Text>
+          <Text style={[styles.sectionTitle, { color: colors.text }]}>Apparence et préférences</Text>
           <View style={[styles.settingItem, { borderBottomColor: colors.border }]}>
             <View style={styles.settingLeft}>
               {isDarkMode ? <Moon size={wp(24)} color={colors.primary} /> : <Sun size={wp(24)} color={colors.primary} />}
@@ -110,10 +118,13 @@ export default function SettingsScreen() {
           </View>
           <TouchableOpacity style={[styles.settingItem, { borderBottomColor: colors.border }]}>
             <View style={styles.settingLeft}>
-              <Sun size={wp(24)} color={colors.primary} />
-              <Text style={[styles.settingText, { color: colors.text }]}>Thème</Text>
+              <Languages size={wp(24)} color={colors.primary} />
+              <Text style={[styles.settingText, { color: colors.text }]}>Langue</Text>
             </View>
-            <ChevronRight size={wp(20)} color={colors.primary} />
+            <View style={styles.settingRight}>
+              <Text style={[styles.settingValue, { color: colors.textSecondary }]}>Français</Text>
+              <ChevronRight size={wp(20)} color={colors.primary} />
+            </View>
           </TouchableOpacity>
         </View>
 
@@ -133,18 +144,6 @@ export default function SettingsScreen() {
               onValueChange={setNotifications}
               trackColor={{ false: colors.secondary, true: colors.primary }}
               thumbColor={notifications ? colors.info : '#ffffff'}
-            />
-          </View>
-          <View style={[styles.settingItem, { borderBottomColor: colors.border }]}>
-            <View style={styles.settingLeft}>
-              <Mail size={wp(24)} color={colors.primary} />
-              <Text style={[styles.settingText, { color: colors.text }]}>Notifications email</Text>
-            </View>
-            <Switch
-              value={emailNotifs}
-              onValueChange={setEmailNotifs}
-              trackColor={{ false: colors.secondary, true: colors.primary }}
-              thumbColor={emailNotifs ? colors.info : '#ffffff'}
             />
           </View>
           <View style={[styles.settingItem, { borderBottomColor: colors.border }]}>
@@ -184,24 +183,6 @@ export default function SettingsScreen() {
           borderColor: colors.border,
           shadowColor: colors.shadow,
         }]}>
-          <Text style={[styles.sectionTitle, { color: colors.text }]}>Préférences</Text>
-          <TouchableOpacity style={[styles.settingItem, { borderBottomColor: colors.border }]}>
-            <View style={styles.settingLeft}>
-              <Languages size={wp(24)} color={colors.primary} />
-              <Text style={[styles.settingText, { color: colors.text }]}>Langue</Text>
-            </View>
-            <View style={styles.settingRight}>
-              <Text style={[styles.settingValue, { color: colors.textSecondary }]}>Français</Text>
-              <ChevronRight size={wp(20)} color={colors.primary} />
-            </View>
-          </TouchableOpacity>
-        </View>
-
-        <View style={[styles.section, { 
-          backgroundColor: colors.card,
-          borderColor: colors.border,
-          shadowColor: colors.shadow,
-        }]}>
           <Text style={[styles.sectionTitle, { color: colors.text }]}>Aide & Support</Text>
           <TouchableOpacity style={[styles.settingItem, { borderBottomColor: colors.border }]}>
             <View style={styles.settingLeft}>
@@ -233,6 +214,12 @@ export default function SettingsScreen() {
       <PasswordChangeModal 
         isVisible={showPasswordModal}
         onClose={() => setShowPasswordModal(false)}
+      />
+
+      <UserInfoModal 
+        isVisible={showUserInfoModal}
+        onClose={() => setShowUserInfoModal(false)}
+        userProfile={userProfile}
       />
     </View>
   );
@@ -311,6 +298,7 @@ const styles = StyleSheet.create({
   },
   profileDetails: {
     marginTop: hp(15),
+    marginBottom: hp(15),
   },
   profileDetail: {
     flexDirection: 'row',
@@ -320,6 +308,19 @@ const styles = StyleSheet.create({
   detailText: {
     marginLeft: wp(12),
     fontSize: wp(16),
+  },
+  editProfileButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: wp(10),
+    borderRadius: wp(10),
+    gap: wp(8),
+  },
+  editProfileText: {
+    color: 'white',
+    fontWeight: '600',
+    fontSize: wp(14),
   },
   section: {
     borderRadius: wp(15),

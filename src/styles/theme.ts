@@ -28,6 +28,12 @@ export const lightTheme = {
   loginButtonText: '#FFFFFF',
   loginSecondaryButtonBg: '#94A3B8',
   loginSecondaryButtonText: '#FFFFFF',
+  
+  // Modal specific colors
+  modalOverlayBg: 'rgba(0, 0, 0, 0.4)',
+  modalBg: '#FFFFFF',
+  modalHeaderBg: '#F8FAFC',
+  modalDragIndicator: '#CBD5E1',
 };
 
 export const darkTheme = {
@@ -58,6 +64,12 @@ export const darkTheme = {
   loginButtonText: '#FFFFFF',
   loginSecondaryButtonBg: '#64748B',
   loginSecondaryButtonText: '#FFFFFF',
+  
+  // Modal specific colors
+  modalOverlayBg: 'rgba(0, 0, 0, 0.6)',
+  modalBg: '#1E293B',
+  modalHeaderBg: '#0F172A',
+  modalDragIndicator: '#334155',
 };
 
 export type ThemeColors = typeof lightTheme;

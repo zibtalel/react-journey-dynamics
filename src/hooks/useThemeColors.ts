@@ -48,6 +48,11 @@ export const useThemeColors = () => {
       userLocationBg: theme === 'dark' ? '#60A5FA' : '#0EA5E9',
       userLocationBorder: theme === 'dark' ? '#FFFFFF' : '#FFFFFF',
       actionButtonBg: `${theme === 'dark' ? '#1E293B' : '#FFFFFF'}CC`, // Semi-transparent
+    },
+    // Modal specific styles
+    modal: {
+      dragHandleHeight: wp(30),
+      borderRadius: wp(20),
     }
   };
 };
