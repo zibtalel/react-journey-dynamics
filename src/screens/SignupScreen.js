@@ -27,6 +27,7 @@ import { ROUTES } from '../navigation/navigationConstants';
 import SuccessModal from '../../common/SuccessModal';
 import { useTranslation } from 'react-i18next';
 import { SafeAreaView } from 'react-native-safe-area-context';
+
 const { width } = Dimensions.get('window');
 
 const countries = [
@@ -234,10 +235,7 @@ export default function SignupScreen({ navigation }) {
 
   const handleSuccessModalClose = () => {
     setShowSuccessModal(false);
-    navigation.reset({
-      index: 0,
-      routes: [{ name: ROUTES.LOGIN }],
-    });
+    navigation.navigate(ROUTES.LOGIN);
   };
 
   const handleSignup = async () => {
@@ -255,7 +253,6 @@ export default function SignupScreen({ navigation }) {
       const registeredUser = await signup(userData);
       console.log('Registered user:', registeredUser);
       
-      // Show success modal
       setShowSuccessModal(true);
     } catch (error) {
       Alert.alert(t('signup.registerError') || 'Erreur d\'inscription', error.message);
@@ -370,7 +367,6 @@ export default function SignupScreen({ navigation }) {
         </ScrollView>
       </KeyboardAvoidingView>
 
-      {/* Success Modal */}
       <SuccessModal 
         isVisible={showSuccessModal}
         onClose={handleSuccessModalClose}
