@@ -55,7 +55,7 @@ export default function LoginScreen({ navigation }) {
 
   useEffect(() => {
     if (isClerkAuthenticated) {
-      navigation.navigate('Map');
+      navigation.navigate(ROUTES.MAP);
     }
   }, [isClerkAuthenticated, navigation]);
 
@@ -71,14 +71,14 @@ export default function LoginScreen({ navigation }) {
       const userData = await login(email, password);
       console.log('User data after login:', userData);
       
-      // Navigate based on user role - use correct route names from ROUTES constant
+      // Navigate based on user role - using the correct route names from ROUTES constant
       if (userData.role === 'admin') {
         navigation.navigate(ROUTES.ADMIN_DASHBOARD);
       } else if (userData.role === 'provider' || userData.role === 'prestataire') {
         navigation.navigate(ROUTES.PROVIDER_DASHBOARD);
       } else {
-        // Updated to use the correct route name from ROUTES constant
-        navigation.navigate(ROUTES.HOME);
+        // Update to navigate to MAP screen instead of HOME
+        navigation.navigate(ROUTES.MAP);
       }
     } catch (error) {
       setLoginError(t('login.invalidCredentials') || 'Identifiants incorrects. Veuillez réessayer.');

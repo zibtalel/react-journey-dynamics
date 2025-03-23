@@ -58,11 +58,13 @@ const AuthStack = () => {
 const UserStack = () => {
   return (
     <Stack.Navigator
-      initialRouteName={ROUTES.HOME}
+      initialRouteName={ROUTES.MAP}
       screenOptions={{
         headerShown: false,
       }}
     >
+      {/* Map MapScreen component to both MAP and HOME routes for compatibility */}
+      <Stack.Screen name={ROUTES.MAP} component={MapScreen} />
       <Stack.Screen name={ROUTES.HOME} component={MapScreen} />
       <Stack.Screen name={ROUTES.PROFILE} component={ProfileScreen} />
       <Stack.Screen name={ROUTES.SETTINGS} component={SettingsScreen} />

@@ -7,7 +7,8 @@ export const ROUTES = {
   SIGNUP: 'Signup',
   
   // Main Routes
-  HOME: 'Home', // Changed from MAP to HOME for clarity
+  MAP: 'Map',          // Primary route for the map screen
+  HOME: 'Home',        // Alias for MAP, for backward compatibility
   PROFILE: 'Profile', 
   SETTINGS: 'Settings',
   HISTORICAL_PLACES: 'HistoricalPlaces',
