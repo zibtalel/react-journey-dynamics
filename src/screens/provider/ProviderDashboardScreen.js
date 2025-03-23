@@ -62,10 +62,10 @@ const ProviderDashboardScreen = ({ navigation }) => {
       // Use the complete logout function from clerk integration
       await logoutFromClerk();
       
-      // Navigate to Login screen
+      // Navigate to Login screen using the correct route constant
       navigation.reset({
         index: 0,
-        routes: [{ name: 'Login' }],
+        routes: [{ name: ROUTES.LOGIN }],
       });
     } catch (error) {
       console.error('Logout error:', error);
