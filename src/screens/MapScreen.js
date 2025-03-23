@@ -1,5 +1,5 @@
 
-import React, { useState, useRef, useCallback, useEffect } from 'react';
+import React, { useState, useRef, useCallback, useEffect, useMemo } from 'react';
 import { View, StyleSheet, StatusBar, Text, Platform, Alert } from 'react-native';
 import { COLORS } from '../theme/colors';
 import { ROUTES } from '../navigation/navigationConstants';
@@ -122,7 +122,7 @@ const MapScreen = ({ navigation }) => {
         </View>
       </Animatable.View>
       
-      {/* Footer - Updated to set MAP as active route */}
+      {/* Footer - Explicitly set MAP as active route */}
       <FooterNav navigation={navigation} activeScreen={ROUTES.MAP} />
     </SafeAreaView>
   );

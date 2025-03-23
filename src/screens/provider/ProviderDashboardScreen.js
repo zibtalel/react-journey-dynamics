@@ -1,4 +1,3 @@
-
 import React, { useContext } from 'react';
 import { 
   StyleSheet, 
@@ -57,16 +56,7 @@ const ProviderDashboardScreen = ({ navigation }) => {
 
   const handleLogout = async () => {
     try {
-      // Show loading indicator or disable button if needed
-      
-      // Use the complete logout function from clerk integration
       await logoutFromClerk();
-      
-      // Navigate to Login screen using the correct route constant
-      navigation.reset({
-        index: 0,
-        routes: [{ name: ROUTES.LOGIN }],
-      });
     } catch (error) {
       console.error('Logout error:', error);
       Alert.alert(

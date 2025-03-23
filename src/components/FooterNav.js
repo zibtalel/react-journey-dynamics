@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { View, TouchableOpacity, Platform, Text, StyleSheet } from 'react-native';
 import { HomeIcon, UserIcon, Settings, Clock, MapPin, CalendarIcon } from 'lucide-react-native';
@@ -8,11 +9,11 @@ import * as Mixins from '../theme/mixins';
 import { ROUTES } from '../navigation/navigationConstants';
 
 export const FooterNav = ({ navigation, activeScreen }) => {
-  // Home is the main home screen
-  const isHomeActive = activeScreen === ROUTES.HOME;
+  // Consider both Home and Map as the same screen for the Accueil tab
+  const isHomeActive = activeScreen === ROUTES.HOME || activeScreen === ROUTES.MAP;
   
   const handleHomePress = () => {
-    navigation.navigate(ROUTES.HOME);
+    navigation.navigate(ROUTES.MAP);
   };
   
   return (

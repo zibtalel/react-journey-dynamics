@@ -1,3 +1,4 @@
+
 import React, { useState, useContext, useEffect } from 'react';
 import { 
   View, 
@@ -142,12 +143,11 @@ const SettingsScreen = ({ navigation }) => {
 
   const handleLogout = async () => {
     try {
+      // Just clear the auth state without navigation - AuthContext will handle it
       await logoutFromClerk();
       
-      navigation.reset({
-        index: 0,
-        routes: [{ name: ROUTES.LOGIN }],
-      });
+      // Don't do any navigation here - the auth state change will trigger
+      // RootNavigator to show the correct stack
     } catch (error) {
       console.error('Logout error:', error);
       Alert.alert(
