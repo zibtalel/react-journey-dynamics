@@ -1,6 +1,6 @@
 
-import React, { useState, useRef, useCallback } from 'react';
-import { View, StyleSheet,  StatusBar, Text, Platform } from 'react-native';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
+import { View, StyleSheet, StatusBar, Text, Platform, Alert } from 'react-native';
 import { COLORS } from '../theme/colors';
 import { ROUTES } from '../navigation/navigationConstants';
 import { SPACING } from '../theme/spacing';
@@ -33,17 +33,49 @@ const MapScreen = ({ navigation }) => {
   const userLocation = useLocationPermission();
   const { places, isLoading, error, fetchPlaces } = usePlacesData();
   
+  // Handle region change
   const handleRegionChangeComplete = (region) => {
     // Update region if needed
+    console.log('Region changed:', region);
   };
 
+  // Filter places by type
   const toggleFilter = useCallback((type) => {
     setFilterType(filterType === type ? null : type);
   }, [filterType]);
 
-  const filteredPlaces = places && Array.isArray(places) ? 
-    (filterType ? places.filter(place => place.type === filterType) : places) 
-    : [];
+  // Safely extract and validate place data before passing to map
+  const filteredPlaces = useMemo(() => {
+    if (!places || !Array.isArray(places)) {
+      return [];
+    }
+
+    // Filter by type if a filter is active
+    const filtered = filterType 
+      ? places.filter(place => place.type === filterType) 
+      : places;
+
+    // Ensure all places have valid coordinates
+    return filtered.map(place => ({
+      ...place,
+      latitude: parseFloat(place.latitude) || initialRegion.latitude,
+      longitude: parseFloat(place.longitude) || initialRegion.longitude,
+      id: place.id || Math.random().toString() // Ensure each place has a unique ID
+    }));
+  }, [places, filterType]);
+
+  // Effect to handle errors in coordinate data
+  useEffect(() => {
+    if (places && Array.isArray(places)) {
+      const invalidPlaces = places.filter(
+        place => isNaN(parseFloat(place.latitude)) || isNaN(parseFloat(place.longitude))
+      );
+      
+      if (invalidPlaces.length > 0) {
+        console.warn('Warning: Some places have invalid coordinates', invalidPlaces);
+      }
+    }
+  }, [places]);
 
   if (isLoading) {
     return <LoadingState />;
@@ -90,8 +122,8 @@ const MapScreen = ({ navigation }) => {
         </View>
       </Animatable.View>
       
-      {/* Footer - Updated to set HOME as active route */}
-      <FooterNav navigation={navigation} activeScreen={ROUTES.HOME} />
+      {/* Footer - Updated to set MAP as active route */}
+      <FooterNav navigation={navigation} activeScreen={ROUTES.MAP} />
     </SafeAreaView>
   );
 };

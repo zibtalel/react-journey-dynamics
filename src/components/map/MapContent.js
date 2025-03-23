@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import { View, StyleSheet } from 'react-native';
 import MapView, { PROVIDER_GOOGLE, Marker, Callout, Circle } from 'react-native-maps';
 import PlaceCallout from '../PlaceCallout';
@@ -12,6 +12,25 @@ const MapContent = ({
   filteredPlaces, 
   onRegionChangeComplete
 }) => {
+  // Use useMemo to stabilize the place markers and prevent unnecessary re-renders
+  const placeMarkers = useMemo(() => {
+    return filteredPlaces.map((place) => (
+      <Marker
+        key={`place-${place.id}`}
+        identifier={`marker-${place.id}`}
+        coordinate={{
+          latitude: parseFloat(place.latitude) || 0,
+          longitude: parseFloat(place.longitude) || 0,
+        }}
+        pinColor={COLORS.primary}
+      >
+        <Callout tooltip>
+          <PlaceCallout place={place} />
+        </Callout>
+      </Marker>
+    ));
+  }, [filteredPlaces]);
+
   return (
     <View style={styles.mapWrapper}>
       <MapView
@@ -74,20 +93,7 @@ const MapContent = ({
             fillColor={`${COLORS.primary}20`}
           />
         )}
-        {filteredPlaces.map((place) => (
-          <Marker
-            key={place.id}
-            coordinate={{
-              latitude: place.latitude,
-              longitude: place.longitude,
-            }}
-            pinColor={COLORS.primary}
-          >
-            <Callout tooltip>
-              <PlaceCallout place={place} />
-            </Callout>
-          </Marker>
-        ))}
+        {placeMarkers}
       </MapView>
     </View>
   );
