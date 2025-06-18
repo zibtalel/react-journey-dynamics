@@ -1,0 +1,29 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Modularization.Extensions
+@using Crm.Library.Globalization.Extensions
+
+<div role="tabpanel" class="tab-pane animated fadeIn" id="tab-marketinsights" data-bind="with: tabs()['tab-marketinsights']">
+	<ul class="top-menu">
+		<li data-bind="tooltip: true" data-placement="bottom" title="@(Html.Localize("Filter"))">
+			<a href="#" data-trigger="#right-nav">
+				<i class="tm-icon zmdi zmdi-search-in-page"></i>
+			</a>
+		</li>
+		@await Html.PartialAsync("FilterTemplate")
+	</ul>
+	<empty-state-box params="mood: 'sad',
+                         title: 'MarketInsightEmptyStateTitle',
+                         text: 'MarketInsightEmptySlate'"
+					 data-bind="visible: items().length === 0">
+	</empty-state-box>
+	@Html.PluginRenderActions("MaterialGenericListResourceExtensions")
+	<div class="generic-list listview lv-bordered">
+		<div class="lv-body" data-bind="foreach: items">
+			<!-- ko if: $data.ParentProductFamily() === null-->
+			@await Html.PartialAsync("GenericListItemGroup")
+			@await Html.PartialAsync("MarketInsightTemplate")
+			<!-- /ko -->
+		</div>
+	</div>
+	@await Html.PartialAsync("MaterialPaging")
+</div>

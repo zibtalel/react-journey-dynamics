@@ -1,0 +1,28 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Modularization.Extensions
+
+<div role="tabpanel" class="tab-pane animated fadeIn active" id="tab-erp-documents" data-bind="with: tabs()['tab-erp-documents']" style="display: block;">
+	<empty-state-box params="mood: 'sad', title: 'ErpDocumentsEmptyStateTitle', text: 'ContactErpDocumentsEmptyState'" data-bind="visible: !hasErpDocuments()"></empty-state-box>
+	<!-- ko if: hasErpDocuments -->
+	<!-- ko foreach: documentViewModels -->
+	<div class="listview lv-bordered">
+		<div class="lv-body">
+			<div class="lv-header" data-bind="text: caption">
+			</div>
+			<div data-bind="template: { name: entityType, foreach: items }"></div>
+			<!-- ko if: items().length === 0 -->
+				<p class="text-center" data-bind="text: emptyStateText"></p>
+			<!-- /ko -->
+
+			<div class="load-more m-b-20">
+				<a class="bgm-white btn btn-default c-black waves-button waves-effect waves-float" data-bind="attr: { href: showAllLink }">
+					<i class="zmdi zmdi-view-list-alt"></i>
+					<span data-bind="text: showAllText"></span>
+				</a>
+			</div>
+		</div>
+	</div>
+	<!-- /ko -->
+	<!-- /ko -->
+	@Html.PluginRenderActions("MaterialErpDocumentsTab")
+</div>

@@ -1,0 +1,93 @@
+﻿@using Crm.Library.Globalization.Extensions
+@using Crm.Library.Modularization.Extensions
+@inherits Crm.Library.Modularization.CrmViewUserControl
+<div class="lv-item media">
+	<div class="media-body">
+		<div class="row">
+			<div class="col-xs-12 col-sm-3">
+				<div class="lv-title m-b-5">
+					@(Html.Localize("PositionNo")): 
+					<!-- ko if: PositionNo -->
+					<span data-bind="text: PositionNo"> </span>
+					<!-- /ko -->
+					<!-- ko ifnot: PositionNo -->
+					<span data-bind="translatedText: 'Unspecified'"> </span>
+					<!-- /ko -->
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6">
+				<div class="lv-title m-b-5">
+					<!-- ko if: ArticleKey -->
+					<a href="#" data-bind="attr: { href: '#/Crm.Article/Article/DetailsTemplate/' + ArticleKey() }">
+						<!-- ko if: ItemNo() && Description() --> 
+							<span data-bind="text: ItemNo"></span> -
+							<span data-bind="text: Description"></span>
+						<!-- /ko -->
+						<!-- ko ifnot: ItemNo() && Description() --> 
+							<span data-bind="text: Helper.Article.getArticleAutocompleteDisplay(ko.unwrap(Article), $root.currentUser().DefaultLanguageKey)"></span>
+						<!-- /ko -->
+					</a>
+					<!-- /ko -->
+					<!-- ko ifnot: ArticleKey -->
+					<span data-bind="text: ItemNo"></span> -
+					<span data-bind="text: Description"></span>
+					<!-- /ko -->
+				</div>
+				@Html.PluginRenderActions("ErpDocumentPositionArticleExtension")
+				<ul class="lv-attrs">
+					@Html.PluginRenderActions("ErpDocumentPositionArticleAttributes")
+				</ul>
+			</div>
+			<div class="col-sm-3 m-b-5 text-right">
+				<span style="display: inline-block">
+					<span data-bind="money: PricePerUnit"></span>
+					<!-- ko if: window.Crm.ErpExtension.Settings.ErpDocumentPositionDisplayCurrency -->
+					<!-- ko ifnot: CurrencyKey -->
+					<strong data-bind="text: window.Helper.Lookup.getLookupValue($root.lookups.currencies, $root.currencyKey())"></strong>
+					<!-- /ko -->
+					<!-- ko if: CurrencyKey -->
+					<strong data-bind="text: window.Helper.Lookup.getLookupValue($root.lookups.currencies, $data.CurrencyKey())"></strong>
+					<!-- /ko -->
+					<!-- /ko --> x
+				</span>
+				<span style="display: inline-block">
+					<span data-bind="money: Quantity"></span>
+					<span data-bind="text: window.Helper.Lookup.getLookupValue($root.lookups.quantityUnits, $data.QuantityUnit())"></span>
+				</span>
+				<br/>
+				<!-- ko if: DiscountPercentage() !== null -->
+				<small>-<span data-bind="money: DiscountPercentage"></span>%</small>
+				<br/>
+				<!-- /ko -->
+				<strong data-bind="money: TotalWoTaxes"></strong>
+				<!-- ko if: window.Crm.ErpExtension.Settings.ErpDocumentPositionDisplayCurrency -->
+				<!-- ko ifnot: CurrencyKey -->
+				<strong data-bind="text: window.Helper.Lookup.getLookupValue($root.lookups.currencies, $root.currencyKey())"></strong>
+				<!-- /ko -->
+				<!-- ko if: CurrencyKey -->
+				<strong data-bind="text: window.Helper.Lookup.getLookupValue($root.lookups.currencies, $data.CurrencyKey())"></strong>
+				<!-- /ko -->
+				<!-- /ko -->
+				<!-- ko if: VATLevel() !== null -->
+				<br/>
+				<small>+<span data-bind="money: VATLevel"></span>% @Html.Localize("VATLevel")</small>
+				<!-- /ko -->
+				@Html.PluginRenderActions("ErpDocumentPositionCalculationExtension")
+			</div>
+		</div>
+
+		<ul class="lv-attrs">
+			@Html.PluginRenderActions("ErpDocumentPositionAttributes")
+			<!-- ko if: StatusKey -->
+			<li>
+				<span data-bind="text: window.Helper.Lookup.getLookupValue($root.lookups.ErpDocumentStatus, $data.StatusKey())"></span>
+			</li>
+			<!-- /ko -->
+			<li>
+				<span data-bind="translatedText: 'T_GrossAmount'"></span>:
+				<span data-bind="money: Total"></span>
+				<span data-bind="text: window.Helper.Lookup.getLookupValue($root.lookups.currencies, $data.CurrencyKey())"></span>
+			</li>
+		</ul>
+	</div>
+</div>

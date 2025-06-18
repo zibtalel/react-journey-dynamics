@@ -1,0 +1,64 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+
+<div role="tabpanel" class="tab-pane animated fadeIn" id="tab-details">
+
+	<pmb-block params="icon: 'equalizer', caption: 'BackgroundInfo', context: { marketInsight: marketInsight }">
+		<pmbb-view>
+			<!-- ko with: marketInsight -->
+			<span data-bind="text: BackgroundInfo"></span>
+			<span data-bind="translatedText: 'BackgroundInformationEmptyState', ifnot: BackgroundInfo"></span>
+			<!-- /ko -->
+		</pmbb-view>
+		<pmbb-edit>
+			<!-- ko with: marketInsight -->
+			<div class="fg-line">
+				<textarea class="form-control" rows="5" placeholder="@(Html.Localize("BackgroundInfo"))..." data-bind="value: BackgroundInfo"></textarea>
+			</div>
+			<!-- /ko -->
+		</pmbb-edit>
+	</pmb-block>
+
+	<pmb-block params="icon: 'account', caption: 'General', context: { marketInsight: marketInsight }, condition: false">
+		<pmbb-view>
+			<!-- ko with: marketInsight().ProductFamily -->
+			<pmbb-view-entry params="caption: 'ProductFamily'">
+				<a href="#" data-bind="attr: {href: '#/Crm.Article/ProductFamily/DetailsTemplate/' + ko.unwrap(Id) }">
+					<span data-bind="text: Name"></span>
+				</a>
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: Name"></span>
+			</pmbb-view-entry>
+			<!-- /ko -->
+		</pmbb-view>
+	</pmb-block>
+
+
+	<pmb-block params="icon: 'money-box', caption: 'Projects', context: { projectStatusesKeys: projectStatusesKeys }, condition: false">
+		<pmbb-view>
+			<!-- ko foreach: { data: projectStatusesKeys, as: 'typeKey' }-->
+			<pmbb-view-entry params="caption: Helper.Lookup.getLookupValue($root.lookups.projectStatuses, typeKey)">
+				<span data-bind="text: $root.valuePerProjectAndCurrency()[typeKey]?.TotalCount ? $root.valuePerProjectAndCurrency()[typeKey]?.TotalCount : '0'"></span>
+				<!-- ko if: $root.valuePerProjectAndCurrency()[typeKey]?.Currencies -->
+				<span data-bind="foreach: { data: $root.valuePerProjectAndCurrency()[typeKey]?.Currencies, as: 'currency'}">	
+					(<span data-bind="money: currency.CurrencySum"></span>
+					<span data-bind="lookupValue: currency.Currency, lookups: $root.lookups.currencies"></span>)
+				</span>
+				<!-- /ko -->
+			</pmbb-view-entry>
+			
+			<!-- /ko -->
+
+		</pmbb-view>
+	</pmb-block>
+
+	<pmb-block params="icon: 'money', caption: 'Potentials', context: { potentialStatusesKeys: potentialStatusesKeys }, condition: false">
+		<pmbb-view>
+			<!-- ko foreach: { data: potentialStatusesKeys, as: 'typeKey' } -->
+			<pmbb-view-entry params="caption: Helper.Lookup.getLookupValue($root.lookups.potentialStatuses, typeKey)">
+				<span data-bind="text: $root.countOfPotentialsByStatus()[typeKey]?.TotalCount ? $root.countOfPotentialsByStatus()[typeKey]?.TotalCount : '0'"></span>
+			</pmbb-view-entry>
+			<!-- /ko -->
+
+		</pmbb-view>
+	</pmb-block>
+</div>

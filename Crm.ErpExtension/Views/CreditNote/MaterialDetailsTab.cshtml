@@ -1,0 +1,31 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Modularization.Extensions
+
+<div role="tabpanel" class="tab-pane animated fadeIn" id="tab-details">
+    <pmb-block params="icon: 'equalizer', caption: 'Description', context: { ErpDocument: ErpDocument }, condition: false">
+        <pmbb-view>
+            <!-- ko with: ErpDocument -->
+            <span data-bind="text: Description" class="pre-line"></span>
+            <span data-bind="translatedText: 'BackgroundInformationEmptyState', ifnot: Description"></span>
+            <!--/ko -->
+        </pmbb-view>
+    </pmb-block>
+    <pmb-block params="icon: 'account', caption: 'General', context: { ErpDocument: ErpDocument }, condition: false">
+        <pmbb-view>
+            <!-- ko with: ErpDocument -->
+            <pmbb-view-entry params="caption: 'CreditNoteNo'">
+                <span data-bind="if: CreditNoteNo, text: CreditNoteNo"></span>
+                <span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: CreditNoteNo"></span>
+            </pmbb-view-entry>
+            <pmbb-view-entry params="caption: 'CreditNoteDate'">
+                <span data-bind="if: CreditNoteDate, dateText: CreditNoteDate"></span>
+                <span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: CreditNoteDate"></span>
+            </pmbb-view-entry>
+            <!--/ko -->
+            @Html.PluginRenderActions("ErpDocumentMaterialDetailsTabGeneralInfoExtension")
+            @Html.PluginRenderActions("CreditNoteMaterialDetailsTabGeneralInfoExtension")
+        </pmbb-view>
+    </pmb-block>
+    @Html.PluginRenderActions("ErpDocumentMaterialDetailsTabExtensions")
+    @Html.PluginRenderActions("CreditNoteMaterialDetailsTabExtensions")
+</div>

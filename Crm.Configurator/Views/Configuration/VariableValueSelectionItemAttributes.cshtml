@@ -1,0 +1,23 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+
+<div class="c-red" data-bind="visible: $parent.isOption($data)">
+	<em>
+		@(Html.Localize("IsOption"))
+	</em>
+</div>
+<div class="c-red" data-bind="visible: ExtensionValues().IsRequired">
+	<em>
+		@(Html.Localize("ArticleRequiredTitle"))
+	</em>
+</div>
+<div class="c-blue" data-bind="visible: ExtensionValues().IsDefault">
+	<em>
+		@(Html.Localize("DefaultArticle"))
+	</em>
+</div>
+<div class="c-blue" data-bind="visible: Child().HasAccessory">
+	<em>
+		@(Html.Localize("HasAccessory"))
+	</em>
+</div>

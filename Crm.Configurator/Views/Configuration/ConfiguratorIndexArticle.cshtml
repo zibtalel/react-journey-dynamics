@@ -1,0 +1,13 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+
+<div class="lv-item media" data-bind="attr: { id: 'article-' + Id() }">
+	@*<div class="pull-left hidden-xs">
+		<img class="lv-img-sm" src="img/configuration/Radlader_L28F.jpg" alt="">
+	</div>*@
+	<div class="media-body">
+		<div class="lv-title">
+			<a data-bind="text: ItemNo, attr: { href: $parent.getRedirectUrl($data) }"></a>
+		</div>
+		<small class="lv-small" data-bind="text: Description"></small>
+	</div>
+</div>

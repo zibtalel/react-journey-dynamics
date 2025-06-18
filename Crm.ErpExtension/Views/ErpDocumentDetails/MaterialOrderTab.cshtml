@@ -1,0 +1,19 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Modularization.Extensions
+
+<div role="tabpanel" class="tab-pane animated fadeIn" id="tab-order" data-bind="with: tabs()['tab-order']">
+    <empty-state-box params="mood: 'sad', title: 'NoOrderNo', text: ''" data-bind="visible: OrderNo() === '' || !OrderNo()">
+    </empty-state-box>
+    <div data-bind="visible: OrderNo() && OrderNo() !== ''">
+        <!-- ko foreach: documentViewModels-->
+        <div class="listview lv-bordered">
+            <div class="lv-body">
+                <div class="lv-header" data-bind="text: caption">
+                </div>
+                <div data-bind="template: { name: entityType, foreach: items }"></div>
+            </div>
+        </div>
+        <!--/ko -->
+    </div>
+    @Html.PluginRenderActions("MaterialErpDocumentsTab")
+</div>

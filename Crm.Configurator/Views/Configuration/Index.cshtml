@@ -1,0 +1,23 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+
+<div class="container">
+	<div class="card">
+		<div class="card-header ch-alt">
+			<h2>@(Html.Localize("Configuration"))</h2>
+		</div>
+		<div class="card-body card-padding" id="configuration">
+			<div class="row" data-bind="foreach: articleGroups">
+				 @await Html.PartialAsync("ConfiguratorIndexArticleGroup") 
+			</div>
+			<div class="listview lv-bordered">
+				<div class="lv-body" data-bind="foreach: articles">
+					 @await Html.PartialAsync("ConfiguratorIndexArticle") 
+				</div>
+			</div>
+			<div id="article-group-empty-state" data-bind="visible: articleGroups().length === 0 && articles().length === 0">
+				@(Html.Localize("NoArticlesInArticleGroupEmptyState"))
+			</div>
+		</div>
+	</div>
+</div>

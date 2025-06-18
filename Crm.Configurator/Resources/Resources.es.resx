@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Configurator" xml:space="preserve">
+    <value>Configurador</value>
+  </data>
+  <data name="ConfigurationBase" xml:space="preserve">
+    <value>Base de configuración</value>
+    <comment>Edited from "Configuración base" to "Base de configuración"</comment>
+  </data>
+  <data name="CrmConfigurator_ConfigurationBase" xml:space="preserve">
+    <value>Base de configuración</value>
+    <comment>Edited from "Configuración base" to "Base de configuración"</comment>
+  </data>
+  <data name="CrmConfigurator_Variable" xml:space="preserve">
+    <value>Variables del configurador</value>
+  </data>
+  <data name="VariableValueSelectionTitle" xml:space="preserve">
+    <value>Elija las opciones</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Salir</value>
+  </data>
+  <data name="HintRuleAlertMessage" xml:space="preserve">
+    <value>Aclarar la combinación con los siguientes artículos (problemáticos):</value>
+  </data>
+  <data name="DefaultHintRuleAlertMessage" xml:space="preserve">
+    <value>La combinación con la configuración actual es problemática</value>
+  </data>
+  <data name="InclusionRuleAlertMessage" xml:space="preserve">
+    <value>Requiere:</value>
+  </data>
+  <data name="DefaultInclusionRuleAlertMessage" xml:space="preserve">
+    <value>Requiere artículos adicionales</value>
+  </data>
+  <data name="RestrictionRuleAlertMessage" xml:space="preserve">
+    <value>Restringido por:</value>
+  </data>
+  <data name="DefaultRestrictionRuleAlertMessage" xml:space="preserve">
+    <value>Restringido por la configuración actual.</value>
+  </data>
+  <data name="ApplySelection" xml:space="preserve">
+    <value>Aplicar la selección</value>
+  </data>
+  <data name="RequiredChangesToApplySelection" xml:space="preserve">
+    <value>¿Desea aplicar la selección? Esto aplicará los siguientes cambios a la configuración:</value>
+  </data>
+  <data name="FromConfigurationWillBeRemoved" xml:space="preserve">
+    <value>De la configuración se eliminará: {0}</value>
+  </data>
+  <data name="ToConfigurationWillBeAdded" xml:space="preserve">
+    <value>A la configuración se le añadirá: {0}</value>
+  </data>
+  <data name="ArticleRequiredTitle" xml:space="preserve">
+    <value>El artículo es necesario</value>
+  </data>
+  <data name="ArticleRequiredMessage" xml:space="preserve">
+    <value>Este artículo no puede ser eliminado de la configuración.</value>
+  </data>
+  <data name="StandardConfiguration" xml:space="preserve">
+    <value>Configuración estándar</value>
+  </data>
+  <data name="RemovedStandardOptions" xml:space="preserve">
+    <value>Las opciones estándar eliminadas</value>
+    <comment>Edited from "Eliminación las opciones estándar" to "Las opciones estándar eliminadas"</comment>
+  </data>
+  <data name="AdditionalOptions" xml:space="preserve">
+    <value>Opciones adicionales</value>
+  </data>
+  <data name="CrmConfigurator_ConfigurationRule" xml:space="preserve">
+    <value>Reglas de configuración</value>
+  </data>
+  <data name="DefaultArticles" xml:space="preserve">
+    <value>Artículos por defecto</value>
+  </data>
+  <data name="DefaultArticle" xml:space="preserve">
+    <value>Artículo por defecto</value>
+  </data>
+  <data name="ShowInConfigurator" xml:space="preserve">
+    <value>Mostrar en el configurador</value>
+  </data>
+  <data name="ConfigurationRules" xml:space="preserve">
+    <value>Reglas de configuración</value>
+  </data>
+  <data name="AddConfigurationRule" xml:space="preserve">
+    <value>Añadir regla de configuración</value>
+  </data>
+  <data name="EditConfigurationRule" xml:space="preserve">
+    <value>Editar regla</value>
+  </data>
+  <data name="ConfigurationRuleType" xml:space="preserve">
+    <value>Tipo de regla</value>
+  </data>
+  <data name="RuleViolation.VariableValuesRequired" xml:space="preserve">
+    <value>Artículos requeridos</value>
+  </data>
+  <data name="RuleViolation.AffectedVariableValuesRequired" xml:space="preserve">
+    <value>Artículos afectados requeridos</value>
+  </data>
+  <data name="ConfirmDeleteConfigurationRule" xml:space="preserve">
+    <value>¿Desea suprimir realmente esta regla?</value>
+  </data>
+  <data name="NoArticlesInArticleGroupEmptyState" xml:space="preserve">
+    <value>No hay artículos disponibles en este grupo de artículos.</value>
+  </data>
+  <data name="IsRequired" xml:space="preserve">
+    <value>Es requerido</value>
+  </data>
+  <data name="CrmConfigurator_ConfigurationRuleType" xml:space="preserve">
+    <value>Tipos de reglas de configuración</value>
+  </data>
+  <data name="AddOption" xml:space="preserve">
+    <value>Añadir opción</value>
+  </data>
+  <data name="NoConfigurationRulesInfo" xml:space="preserve">
+    <value>Aquí puede gestionar las reglas (por ejemplo, inclusiones, restricciones, sugerencias) entre los artículos para las configuraciones. Actualmente no hay reglas.</value>
+  </data>
+</root>

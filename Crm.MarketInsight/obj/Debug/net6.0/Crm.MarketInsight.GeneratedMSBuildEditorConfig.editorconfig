@@ -1,0 +1,67 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Crm.MarketInsight
+build_property.RootNamespace = Crm.MarketInsight
+build_property.ProjectDir = C:\Source\crm6\src\Crm.Web\Plugins\Crm.MarketInsight\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Source\crm6\src\Crm.Web\Plugins\Crm.MarketInsight
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.MarketInsight/Views/Company/FilterTemplate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxGaWx0ZXJUZW1wbGF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.MarketInsight/Views/Company/MarketInsightsDetailsTab.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxNYXJrZXRJbnNpZ2h0c0RldGFpbHNUYWIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.MarketInsight/Views/Company/MarketInsightsDetailsTabHeader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxNYXJrZXRJbnNpZ2h0c0RldGFpbHNUYWJIZWFkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.MarketInsight/Views/Company/MarketInsightTemplate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGFueVxNYXJrZXRJbnNpZ2h0VGVtcGxhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.MarketInsight/Views/MarketInsightDetails/MaterialDetailsTab.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFya2V0SW5zaWdodERldGFpbHNcTWF0ZXJpYWxEZXRhaWxzVGFiLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.MarketInsight/Views/MarketInsightDetails/MaterialDetailsTabHeader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFya2V0SW5zaWdodERldGFpbHNcTWF0ZXJpYWxEZXRhaWxzVGFiSGVhZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.MarketInsight/Views/MarketInsightDetails/MaterialPotentialsTab.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFya2V0SW5zaWdodERldGFpbHNcTWF0ZXJpYWxQb3RlbnRpYWxzVGFiLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.MarketInsight/Views/MarketInsightDetails/MaterialPotentialsTabHeader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFya2V0SW5zaWdodERldGFpbHNcTWF0ZXJpYWxQb3RlbnRpYWxzVGFiSGVhZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.MarketInsight/Views/MarketInsightDetails/MaterialProjectsTab.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFya2V0SW5zaWdodERldGFpbHNcTWF0ZXJpYWxQcm9qZWN0c1RhYi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.MarketInsight/Views/MarketInsightDetails/MaterialProjectsTabHeader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFya2V0SW5zaWdodERldGFpbHNcTWF0ZXJpYWxQcm9qZWN0c1RhYkhlYWRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.MarketInsight/Views/MarketInsight/DetailsTemplate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFya2V0SW5zaWdodFxEZXRhaWxzVGVtcGxhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.MarketInsight/Views/MarketInsight/EditTemplate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFya2V0SW5zaWdodFxFZGl0VGVtcGxhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 

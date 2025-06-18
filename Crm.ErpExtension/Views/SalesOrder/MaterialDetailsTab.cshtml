@@ -1,0 +1,31 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Modularization.Extensions
+
+<div role="tabpanel" class="tab-pane animated fadeIn" id="tab-details">
+    <pmb-block params="icon: 'equalizer', caption: 'Description', context: { ErpDocument: ErpDocument }, condition: false">
+        <pmbb-view>
+            <!-- ko with: ErpDocument -->
+            <span data-bind="text: Description" class="pre-line"></span>
+            <span data-bind="translatedText: 'BackgroundInformationEmptyState', ifnot: Description"></span>
+            <!--/ko -->
+        </pmbb-view>
+    </pmb-block>
+    <pmb-block params="icon: 'account', caption: 'General', context: { ErpDocument: ErpDocument }, condition: false">
+        <pmbb-view>
+            <!-- ko with: ErpDocument -->
+            <pmbb-view-entry params="caption: 'OrderConfirmationNo'">
+                <span data-bind="if: OrderConfirmationNo, text: OrderConfirmationNo"></span>
+                <span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: OrderConfirmationNo"></span>
+            </pmbb-view-entry>
+            <pmbb-view-entry params="caption: 'OrderConfirmationDate'">
+                <span data-bind="if: OrderConfirmationDate, dateText: OrderConfirmationDate"></span>
+                <span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: OrderConfirmationDate"></span>
+            </pmbb-view-entry>
+            <!--/ko -->
+            @Html.PluginRenderActions("ErpDocumentMaterialDetailsTabGeneralInfoExtension")
+            @Html.PluginRenderActions("SalesOrderMaterialDetailsTabGeneralInfoExtension")
+        </pmbb-view>
+    </pmb-block>
+    @Html.PluginRenderActions("ErpDocumentMaterialDetailsTabExtensions")
+    @Html.PluginRenderActions("SalesOrderMaterialDetailsTabExtensions")
+</div>

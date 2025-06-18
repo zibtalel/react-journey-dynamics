@@ -1,0 +1,79 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+
+<!-- ko with: ErpDocument -->
+<pmbb-view-entry params="caption: 'StatusKey'">
+    <span data-bind="if: StatusKey, lookupValue: StatusKey, lookups: $root.lookups.ErpDocumentStatus"></span>
+    <span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: StatusKey"></span>
+</pmbb-view-entry>
+<pmbb-view-entry params="caption: window.Helper.String.getTranslatedString(ContactType(), '')">
+    <!-- ko if: $root.showContactLink($data) -->
+    <a href="#" data-bind="text: $root.getCompanyText($data), attr: { href: '#/Main/Company/DetailsTemplate/' + ContactKey() }, visible: ContactType() == 'Company'"></a>
+    <a href="#" data-bind="text: $root.getCompanyText($data), attr: { href: '#/Crm.Project/Project/DetailsTemplate/' + ContactKey() }, visible: ContactType() == 'Project'"></a>
+    <!-- /ko -->
+    <!-- ko ifnot: $root.showContactLink($data) -->
+    <span data-bind="text: $root.getCompanyText($data)"></span>
+    <!-- /ko -->
+</pmbb-view-entry>
+<pmbb-view-entry params="caption: 'T_OrderNo'">
+    <span data-bind="if: OrderNo, text: OrderNo"></span>
+    <span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: OrderNo"></span>
+</pmbb-view-entry>
+<pmbb-view-entry params="caption: 'OrderDate'">
+    <span data-bind="if: OrderDate, dateText: OrderDate"></span>
+    <span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: OrderDate"></span>
+</pmbb-view-entry>
+<pmbb-view-entry params="caption: 'OrderType'">
+    <span data-bind="if: OrderNo, text: OrderType"></span>
+    <span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: OrderType"></span>
+</pmbb-view-entry>
+<pmbb-view-entry params="caption: 'T_Reference'">
+    <span data-bind="if: Commission, text: Commission"></span>
+    <span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: Commission"></span>
+</pmbb-view-entry>
+<pmbb-view-entry params="caption: 'T_GrossAmount'">
+    <span data-bind="if: Total() || Total() === 0, lookupValue: CurrencyKey, lookups: $root.lookups.currencies"></span>
+    <span data-bind="money: Total, if: Total() || Total() === 0"></span>
+    <span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: Total() || Total() === 0"></span>
+</pmbb-view-entry>
+<pmbb-view-entry params="caption: 'T_NetAmount'">
+    <span data-bind="if: TotalWoTaxes() || TotalWoTaxes() === 0, lookupValue: CurrencyKey, lookups: $root.lookups.currencies"></span>
+    <span data-bind="money: TotalWoTaxes, if: TotalWoTaxes() || TotalWoTaxes() === 0"></span>
+    <span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: TotalWoTaxes() || TotalWoTaxes() === 0"></span>
+</pmbb-view-entry>
+<pmbb-view-entry params="caption: 'PaymentMethod'">
+	<!-- ko if: !window.Crm.ErpExtension.Settings.PaymentMethodIsLookup -->
+	<span data-bind="text: PaymentMethod"></span>
+	<!-- /ko -->
+	<!-- ko if: window.Crm.ErpExtension.Settings.PaymentMethodIsLookup -->
+	<span data-bind="if: PaymentMethod, lookupValue: PaymentMethod, lookups: $root.lookups.ErpPaymentMethod"></span>
+	<!-- /ko -->
+	<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: PaymentMethod"></span>
+</pmbb-view-entry>
+<pmbb-view-entry params="caption: 'PaymentTerms'">
+	<!-- ko if: !window.Crm.ErpExtension.Settings.PaymentTermsIsLookup -->
+	<span data-bind="text: PaymentTerms"></span>
+	<!-- /ko -->
+	<!-- ko if: window.Crm.ErpExtension.Settings.PaymentTermsIsLookup -->
+	<span data-bind="if: PaymentTerms, lookupValue: PaymentTerms, lookups: $root.lookups.ErpPaymentTerms"></span>
+	<!-- /ko -->
+	<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: PaymentTerms"></span>
+</pmbb-view-entry>
+<pmbb-view-entry params="caption: 'DeliveryMethod'">
+	<!-- ko if: !window.Crm.ErpExtension.Settings.DeliveryMethodIsLookup -->
+	<span data-bind="text: DeliveryMethod"></span>
+	<!-- /ko -->
+	<!-- ko if: window.Crm.ErpExtension.Settings.DeliveryMethodIsLookup -->
+	<span data-bind="if: DeliveryMethod, lookupValue: DeliveryMethod, lookups: $root.lookups.ErpDeliveryMethod"></span>
+	<!-- /ko -->
+	<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: DeliveryMethod"></span>
+</pmbb-view-entry>
+<pmbb-view-entry params="caption: 'TermsOfDelivery'">
+	<!-- ko if: !window.Crm.ErpExtension.Settings.TermsOfDeliveryIsLookup -->
+	<span data-bind="text: TermsOfDelivery"></span>
+	<!-- /ko -->
+	<!-- ko if: window.Crm.ErpExtension.Settings.TermsOfDeliveryIsLookup -->
+	<span data-bind="if: TermsOfDelivery, lookupValue: TermsOfDelivery, lookups: $root.lookups.ErpTermsOfDelivery"></span>
+	<!-- /ko -->
+	<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: TermsOfDelivery"></span>
+</pmbb-view-entry>
+<!--/ko -->

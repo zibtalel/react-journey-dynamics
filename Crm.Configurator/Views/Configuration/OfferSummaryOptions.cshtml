@@ -1,0 +1,97 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+
+<!-- ko if: baseOrder().OrderEntryType() === 'Configuration' -->
+<h5 class="text-uppercase">
+	<i class="zmdi zmdi-view-headline m-r-10"></i>@(Html.Localize("SelectedOptions"))
+</h5>
+<!-- ko foreach: orderItems -->
+<!-- ko if: IsOption() === false && ParentOrderItemId() === null -->
+<div class="card m-b-10 z-depth-1-top">
+	<div class="card-body">
+		<div class="order-item lv-item media">
+			<div class="media-body">
+				<div class="lv-title" data-bind="text: ArticleNo">@*TODO: Variable*@</div>
+				<small class="lv-small" data-bind="text: ArticleDescription"></small>
+				<div class="c-blue" data-bind="visible: ArticleHasAccessory">
+					<em>
+						@(Html.Localize("HasAccessory"))
+					</em>
+				</div>
+				<div class="lv-actions actions dropdown">
+					<a href="#" data-toggle="dropdown" aria-expanded="false" data-bind="visible: $root.isEditable">
+						<i class="zmdi zmdi-more-vert"></i>
+					</a>
+					<ul class="dropdown-menu dropdown-menu-right">
+						<li>
+							<a href="#" data-trigger="#right-nav" data-bind="click: $root.selectItem, visible: $root.isEditable">@(Html.Localize("Edit"))</a>
+						</li>
+						<li data-bind="visible: ArticleHasAccessory, requiredPermission: { name: 'AddAccessory', group: 'Offer' }">
+							<a href="#" data-bind="attr: { 'data-route': 'Crm.Order/Offer/AccessoryList/' + Id() }" data-toggle="modal" data-target="#modal">@(Html.Localize("ShowAccessory"))</a>
+						</li>
+						<li data-bind="requiredPermission: { name: 'AddAlternative', group: 'Offer' }">
+							<a href="#" data-bind="click: $parent.addAlternative">@(Html.Localize("AddAlternative"))</a>
+						</li>
+						<li data-bind="requiredPermission: { name: 'AddOption', group: 'Offer' }">
+							<a href="#" data-bind="click: $parent.asOption">@(Html.Localize("SetIsOption"))</a>
+						</li>
+						<li data-bind="requiredPermission: { name: 'Remove', group: 'OfferItem' }">
+							<a href="#" data-bind="click: $parent.removeOrderItem">@(Html.Localize("Remove"))</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- ko foreach: $parent.getAlternatives($data) -->
+		<div class="order-item-alternative lv-item media">
+			<div class="media-body">
+				<div class="lv-title" data-bind="text: ArticleNo"></div>
+				<small class="lv-small" data-bind="text: ArticleDescription"></small>
+				<div class="lv-actions actions dropdown">
+					<span data-bind="css: { 'c-deeporange': Price() > $parent.Price(), 'c-green': Price() < $parent.Price() }">
+						<span data-bind="visible: Price() >= $parent.Price()">+</span>
+						<span data-bind="visible: Price() < $parent.Price()">-</span>
+						<span data-bind="money: Math.abs($parent.Price() - Price())"></span>
+						<span data-bind="text: $root.getCurrencyValue($root.baseOrder().CurrencyKey())"></span>
+					</span>
+					<a href="#" data-toggle="dropdown" aria-expanded="false" data-bind="visible: $root.isEditable">
+						<i class="zmdi zmdi-more-vert"></i>
+					</a>
+					<ul class="dropdown-menu dropdown-menu-right">
+						<li>
+							<a href="#" data-bind="click: $parentContext.$parent.acceptAlternative">@(Html.Localize("AcceptAlternative"))</a>
+						</li>
+						<li data-bind="requiredPermission: { name: 'AddOption', group: 'Offer' }">
+							<a href="#" data-bind="click: $parentContext.$parent.asOption">@(Html.Localize("SetIsOption"))</a>
+						</li>
+						<li data-bind="requiredPermission: { name: 'Remove', group: 'OfferItem' }">
+							<a href="#" data-bind="click: $parentContext.$parent.removeOrderItem">@(Html.Localize("Remove"))</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- /ko -->
+		<!-- ko foreach: $parent.getSubPositions($data) -->
+		<div class="order-item-subposition lv-item media">
+			<div class="media-body">
+				<div class="lv-title" data-bind="text: ArticleNo"></div>
+				<small class="lv-small" data-bind="text: ArticleDescription"></small>
+				<div class="lv-actions actions dropdown">
+					<a href="#" data-toggle="dropdown" aria-expanded="false" data-bind="visible: $root.isEditable">
+						<i class="zmdi zmdi-more-vert"></i>
+					</a>
+					<ul class="dropdown-menu dropdown-menu-right">
+						<li data-bind="requiredPermission: { name: 'Remove', group: 'OfferItem' }">
+							<a href="#" data-bind="click: $parentContext.$parent.removeOrderItem">@(Html.Localize("Remove"))</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- /ko -->
+	</div>
+</div>
+<!-- /ko -->
+<!-- /ko -->
+<!-- /ko -->

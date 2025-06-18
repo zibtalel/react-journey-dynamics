@@ -1,0 +1,54 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl<CrmModel>
+@using Crm.ViewModels
+@using Crm.Library.Globalization.Extensions
+<div role="tabpanel" class="tab-pane" id="tab-configuration-rules" data-bind="with: tabs()['tab-configuration-rules']">
+	<empty-state-box params="mood: 'sad', title: 'RelationshipsEmptyStateTitle', text: 'NoRelationshipInfo'" data-bind="visible: items().length === 0 && !isFiltered()"></empty-state-box>
+	<div class="generic-list listview lv-bordered">
+		<div class="lv-body">
+			<div data-bind="foreach: items">
+				<div class="lv-item media">
+					<div class="lv-avatar bgm-gray pull-left" data-bind="text: Helper.Article.getArticleTypeAbbreviation(variableValuesArticle(), $root.lookups.articleTypes)"></div>
+					<div class="media-body">
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="lv-title">
+									<a data-bind="attr: { href: '#/Crm.Article/Article/DetailsTemplate/' + variableValuesArticle().Id() }">
+										<span data-bind="text: Helper.Article.getArticleAutocompleteDisplay(variableValuesArticle(), $root.currentUser().DefaultLanguageKey)"></span>
+										<small class="c-gray" data-bind="lookupValue: variableValuesArticle().ArticleTypeKey, lookups: $root.lookups.articleTypes"></small>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="row media-body">
+							<div class="col-xs-6">
+								<small class="small">
+									<strong data-bind="text: Validation"></strong>:
+								</small><small class="small">
+									<a data-bind="attr: { href: '#/Crm.Article/Article/DetailsTemplate/' + affectedVariableValueArticle().Id() }">
+										<span data-bind="text: Helper.Article.getArticleAutocompleteDisplay(affectedVariableValueArticle(), $root.currentUser().DefaultLanguageKey)"></span>
+									</a>
+								</small>
+							</div>
+						</div>
+						<div class="lv-actions actions dropdown">
+							<a href="#" data-toggle="dropdown" aria-expanded="true">
+								<i class="zmdi zmdi-more-vert"></i>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-right">
+								<!-- ko requiredPermission: { name: 'Delete', group: 'Article' } -->
+								<li>
+									<a class="article-delete" href="#" data-bind="click: () => $parent.deleteConfiguration($data)">
+										@(Html.Localize("remove"))
+									</a>
+								</li>
+								<!-- /ko -->
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		@await Html.PartialAsync("MaterialPaging")
+	</div>
+	<floating-action-button data-route="Crm.Configurator/Configuration/EditTemplate/{{$root.article().Id()}}" data-target="#modal" data-toggle="modal" params="title:'Create', icon: 'plus'"></floating-action-button>
+</div>

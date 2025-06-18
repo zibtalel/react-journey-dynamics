@@ -1,0 +1,23 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+
+<div role="tabpanel" class="tab-pane" id="tab-documents" data-bind="with: tabs()['tab-documents']">
+  <div class="listview lv-bordered generic-list">
+	<div class="lv-body">
+	  <div data-bind="foreach: items">
+		 @await Html.PartialAsync("MaterialDocumentAttribute") 
+	  </div>
+	  <!-- ko if: items().length === 0 -->
+	  <div class="lv-item media">
+		<div class="row media-body">
+		  <div class="col-xs-12">
+			<small class="lv-small">@(Html.Localize("M_NoDocsFound"))</small>
+		  </div>
+		</div>
+	  </div>
+	  <!-- /ko -->
+	</div>
+  </div>
+   @await Html.PartialAsync("MaterialPaging") 
+</div>
+

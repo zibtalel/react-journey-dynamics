@@ -1,0 +1,12 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+<small class="small" data-bind="if: $parent.getCompanyText && $parent.getCompanyText($data)">
+	<span data-bind="translatedText: 'For'"></span>
+	<span data-bind="text: window.Helper.String.getTranslatedString(ContactType(), '')"></span>
+	<!-- ko if: $parent.showContactLink($data) -->
+	<a href="#" data-bind="text: $parent.getCompanyText($data), attr: { href: '#/Main/Company/DetailsTemplate/' + ContactKey() }, visible: ContactType() == 'Company'"></a>
+	<a href="#" data-bind="text: $parent.getCompanyText($data), attr: { href: '#/Crm.Project/Project/DetailsTemplate/' + ContactKey() }, visible: ContactType() == 'Project'"></a>
+	<!-- /ko -->
+	<!-- ko ifnot: $parent.showContactLink($data) -->
+	<span data-bind="text: $parent.getCompanyText($data)"></span>
+	<!-- /ko -->
+</small>

@@ -1,0 +1,46 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Modularization.Extensions
+
+<div role="tabpanel" class="tab-pane animated fadeIn" id="tab-details">
+    <pmb-block params="icon: 'equalizer', caption: 'Description', context: { ErpDocument: ErpDocument }, condition: false">
+        <pmbb-view>
+            <!-- ko with: ErpDocument -->
+            <span data-bind="text: Description" class="pre-line"></span>
+            <span data-bind="translatedText: 'BackgroundInformationEmptyState', ifnot: Description"></span>
+            <!--/ko -->
+        </pmbb-view>
+    </pmb-block>
+    <pmb-block params="icon: 'account', caption: 'General', context: { ErpDocument: ErpDocument }, condition: false">
+        <pmbb-view>
+            <!-- ko with: ErpDocument -->
+            <pmbb-view-entry params="caption: 'T_InvoiceNo'">
+                <span data-bind="if: InvoiceNo, text: InvoiceNo"></span>
+                <span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: InvoiceNo"></span>
+            </pmbb-view-entry>
+            <pmbb-view-entry params="caption: 'InvoiceDate'">
+                <span data-bind="if: InvoiceDate, dateText: InvoiceDate"></span>
+                <span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: InvoiceDate"></span>
+            </pmbb-view-entry>
+            <!--/ko -->
+            @Html.PluginRenderActions("ErpDocumentMaterialDetailsTabGeneralInfoExtension")
+            <!-- ko with: ErpDocument -->
+            <pmbb-view-entry params="caption: 'OutstandingBalance'">
+                <span data-bind="if: OutstandingBalance() || OutstandingBalance() === 0, lookupValue: CurrencyKey, lookups: $root.lookups.currencies"></span>
+                <span data-bind="money: OutstandingBalance, if: OutstandingBalance() || OutstandingBalance() === 0"></span>
+                <span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: OutstandingBalance() || OutstandingBalance() === 0"></span>
+            </pmbb-view-entry>
+            <pmbb-view-entry params="caption: 'DueDate'">
+                <span data-bind="if: DueDate, dateText: DueDate"></span>
+                <span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: DueDate"></span>
+            </pmbb-view-entry>
+            <pmbb-view-entry params="caption: 'DunningLevel'">
+                <span data-bind="if: DunningLevel, text: DunningLevel"></span>
+                <span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: DunningLevel"></span>
+            </pmbb-view-entry>
+            <!--/ko -->
+            @Html.PluginRenderActions("InvoiceMaterialDetailsTabGeneralInfoExtension")
+        </pmbb-view>
+    </pmb-block>
+    @Html.PluginRenderActions("ErpDocumentMaterialDetailsTabExtensions")
+    @Html.PluginRenderActions("InvoiceMaterialDetailsTabExtensions")
+</div>

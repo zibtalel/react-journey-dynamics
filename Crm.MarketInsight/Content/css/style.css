@@ -1,0 +1,14 @@
+﻿
+.potential-grid {
+	display: grid;
+	grid-template-columns: 0fr 1fr;
+	grid-gap: 2px;
+}
+.project-grid {
+	display: grid;
+	grid-template-columns: 0fr 1fr 1fr;
+	grid-gap: 2px;
+}
+.min-width-element {
+	min-width: 170px;
+}

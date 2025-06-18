@@ -1,0 +1,13 @@
+import "../Content/js/Rules/Hint.js";
+import "../Content/js/Rules/Inclusion.js";
+import "../Content/js/Rules/Restriction.js";
+import "../Content/js/BaseOrderDetailsViewModelExtensions.js";
+import "../Content/js/BaseOrderSaveModalViewModelExtensions.js";
+import "../Content/js/ConfigurationDetailsCalculationTabViewModel.js";
+import "../Content/js/ConfigurationIndexViewModel.js";
+import "../Content/js/OfflineModel.js";
+import "../Content/js/OfferCreateOrderModalViewModelExtensions.js";
+import "../Content/js/OfferDetailsDocumentsTabViewModel.js";
+import "../Content/js/OfferLoadModalViewModelExtensions.js";
+import "../Content/js/OrderLoadModalViewModelExtensions.js";
+import "../Content/js/ArticleCreateViewModelExtensions.js";

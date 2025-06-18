@@ -1,0 +1,25 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+
+<!-- ko if: ArticleTypeKey() == "Variable" -->
+<div class="row">
+	<div class="col-md-6">
+		<form-element id="ParentId" params="value: ParentId, caption: 'ConfigurationBase', type: 'select'">
+			<select name="ParentId" class="form-control" data-bind="select2autocompleter: {
+		data: value,
+		autocompleteOptions: {
+			table: 'CrmArticle_Article',
+			mapDisplayObject: Helper.Article.mapArticleForSelect2Display,
+			customFilter: function (query) {
+				return query.filter(function (it) {
+					return it.ArticleTypeKey == this.articleType;
+				},
+					{ articleType: 'ConfigurationBase' });
+			},
+			placeholder: placeholder
+		}
+	}">
+			</select>
+		</form-element>
+	</div>
+</div>
+<!-- /ko -->

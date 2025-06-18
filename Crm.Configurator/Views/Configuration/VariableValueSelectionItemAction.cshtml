@@ -1,0 +1,9 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+
+<li data-toggle="dropdown" data-bind="requiredPermission: { name: 'AddOption', group: 'Offer' }">
+	<a href="#" data-bind="click: $parent.toggleIsOption">
+		@(Html.Localize("SetIsOption"))
+		<i class="zmdi zmdi-check" data-bind="visible: $parent.isOption($data)"></i>
+	</a>
+</li>

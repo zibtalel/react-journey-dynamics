@@ -1,0 +1,37 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Modularization.Extensions
+
+<div role="tabpanel" class="tab-pane animated fadeIn" id="tab-details">
+    <pmb-block params="icon: 'equalizer', caption: 'Description', context: { ErpDocument: ErpDocument }, condition: false">
+        <pmbb-view>
+            <!-- ko with: ErpDocument -->
+            <span data-bind="text: Description" class="pre-line"></span>
+            <span data-bind="translatedText: 'BackgroundInformationEmptyState', ifnot: Description"></span>
+            <!--/ko -->
+        </pmbb-view>
+    </pmb-block>
+    <pmb-block params="icon: 'account', caption: 'General', context: { ErpDocument: ErpDocument }, condition: false">
+        <pmbb-view>
+            <!-- ko with: ErpDocument -->
+            <pmbb-view-entry params="caption: 'QuoteNo'">
+                <span data-bind="if: QuoteNo, text: QuoteNo"></span>
+                <span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: QuoteNo"></span>
+            </pmbb-view-entry>
+            <pmbb-view-entry params="caption: 'QuoteDate'">
+                <span data-bind="if: QuoteDate, dateText: QuoteDate"></span>
+                <span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: QuoteDate"></span>
+            </pmbb-view-entry>
+            <!--/ko -->
+            @Html.PluginRenderActions("ErpDocumentMaterialDetailsTabGeneralInfoExtension")
+            <!-- ko with: ErpDocument -->
+            <pmbb-view-entry params="caption: 'DueDate'">
+                <span data-bind="if: DueDate, dateText: DueDate"></span>
+                <span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: DueDate"></span>
+            </pmbb-view-entry>
+            <!--/ko -->
+            @Html.PluginRenderActions("QuoteMaterialDetailsTabGeneralInfoExtension")
+        </pmbb-view>
+    </pmb-block>
+    @Html.PluginRenderActions("ErpDocumentMaterialDetailsTabExtensions")
+    @Html.PluginRenderActions("QuoteMaterialDetailsTabExtensions")
+</div>

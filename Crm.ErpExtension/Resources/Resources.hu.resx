@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="metadata">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" />
+							</xsd:sequence>
+							<xsd:attribute name="name" use="required" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="assembly">
+						<xsd:complexType>
+							<xsd:attribute name="alias" type="xsd:string" />
+							<xsd:attribute name="name" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="Quotations" xml:space="preserve">
+    <value>Ajánlat</value>
+  </data>
+	<data name="EquipmentFiles" xml:space="preserve">
+    <value>Eszközakta</value>
+  </data>
+	<data name="OpenInErp" xml:space="preserve">
+    <value>Megnyitás ERP-ben</value>
+  </data>
+	<data name="T_DeliveryNoteNo" xml:space="preserve">
+    <value>Szállítólevél száma</value>
+  </data>
+	<data name="T_GrossAmount" xml:space="preserve">
+    <value>Bruttó összeg</value>
+  </data>
+	<data name="T_OrderNo" xml:space="preserve">
+    <value>Rendelésszám</value>
+  </data>
+	<data name="T_Status" xml:space="preserve">
+    <value>Státusz</value>
+  </data>
+	<data name="T_InvoiceNo" xml:space="preserve">
+    <value>Számlaszám</value>
+  </data>
+	<data name="T_PrintDate" xml:space="preserve">
+    <value>Nyomtatás dátuma</value>
+  </data>
+	<data name="T_Reference" xml:space="preserve">
+    <value>Hivatkozás</value>
+  </data>
+	<data name="T_SalesOrderNo" xml:space="preserve">
+    <value>Rendelésszám</value>
+  </data>
+	<data name="T_Value" xml:space="preserve">
+    <value>Érték</value>
+  </data>
+	<data name="Months" xml:space="preserve">
+    <value>Hónap</value>
+  </data>
+	<data name="T_Description" xml:space="preserve">
+    <value>Leírás</value>
+  </data>
+	<data name="T_QuoteNo" xml:space="preserve">
+    <value>Ajánlat száma</value>
+  </data>
+	<data name="DocumentTC_Apply" xml:space="preserve">
+    <value>Átvesz</value>
+  </data>
+	<data name="DocumentTC_ApplyTemplate" xml:space="preserve">
+    <value>Minta átvétele</value>
+  </data>
+	<data name="DocumentTC_Cancel" xml:space="preserve">
+    <value>Törlése</value>
+  </data>
+	<data name="DocumentTC_DocumentTemplate" xml:space="preserve">
+    <value>Dokumentum minta</value>
+  </data>
+	<data name="DocumentTC_UploadFile" xml:space="preserve">
+    <value>Adatok feltöltése</value>
+  </data>
+	<data name="DocumentTC_ErrorWrongFormat" xml:space="preserve">
+    <value>Kérjük válasszon egy .rtf </value>
+  </data>
+	<data name="OpenInD3" xml:space="preserve">
+    <value>Megnyitás D3-ban </value>
+  </data>
+	<data name="ArticleGroupTurnoverFactor" xml:space="preserve">
+    <value> (x{1:N0} {0}) cikkcsoport forgalma</value>
+  </data>
+	<data name="ArticleGroupTurnoverPiecesFactor" xml:space="preserve">
+    <value> (x{0:N0} Stk) cikkcsoport forgalma</value>
+  </data>
+	<data name="ThisYearUntilToday" xml:space="preserve">
+    <value>Összesen</value>
+  </data>
+	<data name="PreviousYearUntilEndOfMonth" xml:space="preserve">
+    <value>Vége {0:MMM}</value>
+  </data>
+	<data name="NoTransactionValues" xml:space="preserve">
+    <value>Statisztikai érték nem található</value>
+  </data>
+	<data name="UnknownAllocation" xml:space="preserve">
+    <value>Ismeretlen hozzárendelés</value>
+  </data>
+	<data name="ArticleTurnover" xml:space="preserve">
+    <value>({0}) forgalma</value>
+  </data>
+	<data name="ArticleTurnoverPieces" xml:space="preserve">
+    <value>(Stk) cikk darbonkénti forgalma</value>
+  </data>
+	<data name="TurnoverValue" xml:space="preserve">
+    <value>Forgalom értéke</value>
+  </data>
+	<data name="Quotes" xml:space="preserve">
+    <value>Ajánlat</value>
+  </data>
+	<data name="SalesOrders" xml:space="preserve">
+    <value>Értékesítési rendelések</value>
+  </data>
+	<data name="DeliveryNotes" xml:space="preserve">
+    <value>Szállítólevél</value>
+  </data>
+	<data name="Invoices" xml:space="preserve">
+    <value>Számlák</value>
+  </data>
+	<data name="NoExisting" xml:space="preserve">
+    <value>Nincs {0}.</value>
+  </data>
+	<data name="DeliveryNotesPositions" xml:space="preserve">
+    <value>Szállítólevél pozíciók</value>
+  </data>
+	<data name="InvoicesPositions" xml:space="preserve">
+    <value>Számla pozíciók</value>
+  </data>
+	<data name="QuotesPositions" xml:space="preserve">
+    <value>Ajánlati pozíciók</value>
+  </data>
+	<data name="SalesOrdersPositions" xml:space="preserve">
+    <value>Rendelés pozíciók</value>
+  </data>
+	<data name="Netto2" xml:space="preserve">
+    <value>Netto2</value>
+  </data>
+	<data name="State" xml:space="preserve">
+    <value>Állapot</value>
+  </data>
+	<data name="UpdateLegacySystem" xml:space="preserve">
+    <value>ERP rendszer frissítése</value>
+  </data>
+	<data name="PersonsTitle" xml:space="preserve">
+    <value>Személyek</value>
+  </data>
+	<data name="LegacyUpdateHint" xml:space="preserve">
+    <value>Kérjük a következő sorrendben aktualizáljon: Cégek, címek, személyek, kommunikáció</value>
+  </data>
+	<data name="UpdateLegacyIds" xml:space="preserve">
+    <value>ERP ID frissítése</value>
+  </data>
+	<data name="ShowPieces" xml:space="preserve">
+    <value>Mutasd a darabszámot</value>
+  </data>
+	<data name="ShowCurrency" xml:space="preserve">
+    <value>Mutasd {0}</value>
+  </data>
+	<data name="NoTurnovers" xml:space="preserve">
+    <value>Statisztikai érték nem található</value>
+  </data>
+	<data name="CreditNotes" xml:space="preserve">
+    <value>Hitelek</value>
+  </data>
+	<data name="T_CreditNoteNo" xml:space="preserve">
+    <value>Hitellevél száma</value>
+  </data>
+	<data name="ErpDiscount" xml:space="preserve">
+    <value>Kedvezmény</value>
+  </data>
+	<data name="CreditLimit" xml:space="preserve">
+    <value>Hitel korlát</value>
+  </data>
+	<data name="PartialDeliveryProhibited" xml:space="preserve">
+    <value>Részteljesítési tilalom</value>
+  </data>
+	<data name="ErpDeliveryProhibited" xml:space="preserve">
+    <value>Szállítási tilalom</value>
+  </data>
+	<data name="PaymentTerms" xml:space="preserve">
+    <value>Fizetési feltételek</value>
+  </data>
+	<data name="TermsOfDelivery" xml:space="preserve">
+    <value>Szállítási feltételek</value>
+  </data>
+	<data name="InformationFromErp" xml:space="preserve">
+    <value>Információk az ERP-ből</value>
+  </data>
+	<data name="MasterContracts" xml:space="preserve">
+    <value>Minta rendelés</value>
+  </data>
+	<data name="T_MasterContractNo" xml:space="preserve">
+    <value>Szerődésszám</value>
+  </data>
+	<data name="T_RemainingQuantity" xml:space="preserve">
+    <value>Maradék mennyiség</value>
+  </data>
+	<data name="T_TotalQuantity" xml:space="preserve">
+    <value>Összmennyiség</value>
+  </data>
+	<data name="T_ComplianceRate" xml:space="preserve">
+    <value>Kitöltés dátuma</value>
+  </data>
+	<data name="T_FulFillmentDate" xml:space="preserve">
+    <value>Teljesítás dátuma</value>
+  </data>
+	<data name="OpenItemsTotal" xml:space="preserve">
+    <value>Nyitott tételek összesen</value>
+  </data>
+	<data name="OutstandingInvoiceValue" xml:space="preserve">
+    <value>Szállított, nem számlázott</value>
+  </data>
+	<data name="OutstandingOrderValue" xml:space="preserve">
+    <value>Nyitott szerződések értéke</value>
+  </data>
+	<data name="ArticleGroupTurnover" xml:space="preserve">
+    <value>({0}) Cikkcsoport forgalma </value>
+  </data>
+	<data name="ArticleGroupTurnoverPieces" xml:space="preserve">
+    <value> (Stk) cikkcsoport forgalma</value>
+  </data>
+	<data name="OpenItemsDue" xml:space="preserve">
+    <value>Ebből esedékes</value>
+  </data>
+	<data name="T_QuantityShipped" xml:space="preserve">
+    <value>Számlázandó mennyiség</value>
+  </data>
+	<data name="TurnoverTransaction" xml:space="preserve">
+    <value>TurnoverTransaction</value>
+  </data>
+	<data name="TurnoverTransactionDetails" xml:space="preserve">
+    <value>TurnoverTransactionDetails</value>
+  </data>
+	<data name="ExportToInfor" xml:space="preserve">
+    <value>Exportálás Inforba </value>
+  </data>
+	<data name="ErpDocuments" xml:space="preserve">
+		<value>ERP dokumentumok</value>
+	</data>
+	<data name="NoErpDocumentsMatch" xml:space="preserve">
+		<value>Nincs eredménye a keresésnek</value>
+	</data>
+	<data name="CompanyName" xml:space="preserve">
+		<value>Cég neve</value>
+	</data>
+	<data name="QuantityShipped" xml:space="preserve">
+		<value>Szállított mennyiség</value>
+	</data>
+	<data name="CreditNoteNo" xml:space="preserve">
+		<value>Jóváírás sorszáma</value>
+	</data>
+	<data name="Reference" xml:space="preserve">
+		<value>Referencia</value>
+	</data>
+	<data name="DocumentState" xml:space="preserve">
+		<value>Státusz</value>
+	</data>
+	<data name="DeliveryNoteNo" xml:space="preserve">
+		<value>Fuvarlevél sorszáma</value>
+	</data>
+	<data name="InvoiceNo" xml:space="preserve">
+		<value>Számla sorszáma</value>
+	</data>
+	<data name="QuoteNo" xml:space="preserve">
+		<value>Ajánlat sorszáma</value>
+	</data>
+	<data name="CommunicationsTitle" xml:space="preserve">
+		<value>Kommiunikációk</value>
+	</data>
+	<data name="ExportAll" xml:space="preserve">
+		<value>Összes exportálása</value>
+	</data>
+	<data name="Generate" xml:space="preserve">
+		<value>Generál</value>
+	</data>
+	<data name="Integration" xml:space="preserve">
+		<value>Integráció</value>
+	</data>
+	<data name="RejectEntry" xml:space="preserve">
+		<value>Visszautasít</value>
+	</data>
+	<data name="UpdateAll" xml:space="preserve">
+		<value>Összes frissítése</value>
+	</data>
+	<data name="CreditNoteDate" xml:space="preserve">
+		<value>Jóváírás dátuma</value>
+	</data>
+	<data name="DeliveryNoteDate" xml:space="preserve">
+		<value>Fuvarlevél dátuma</value>
+	</data>
+	<data name="InvoiceDate" xml:space="preserve">
+		<value>Számlázás dátuma</value>
+	</data>
+	<data name="NoErpDocumentsAvailable" xml:space="preserve">
+		<value>Nincsenek elérhető ERP dokumentumok</value>
+	</data>
+	<data name="OrderConfirmationDate" xml:space="preserve">
+		<value>Rendelés megerősítés dátuma</value>
+	</data>
+	<data name="QuoteDate" xml:space="preserve">
+		<value>Ajánlat dátuma</value>
+	</data>
+	<data name="DocumentType" xml:space="preserve">
+		<value>Dokumentum típus</value>
+	</data>
+	<data name="Toggle" xml:space="preserve">
+		<value>Kapcsoló</value>
+	</data>
+	<data name="PositionNo" xml:space="preserve">
+		<value>Pozíció sorszáma</value>
+	</data>
+	<data name="ComplianceRate" xml:space="preserve">
+		<value>Megfelelési arány</value>
+	</data>
+	<data name="BuyingBehavior" xml:space="preserve">
+    <value>Vásárlási magatartás</value>
+  </data>
+	<data name="BuyingBehaviorEmptyState" xml:space="preserve">
+    <value>Nem található rendelés.</value>
+  </data>
+	<data name="ContactErpDocumentsEmptyState" xml:space="preserve">
+    <value>Nem található még ERP-dokumentum ehhez a kapcsolathoz.</value>
+  </data>
+	<data name="CrmErpExtension_CreditNote" xml:space="preserve">
+    <value>Jóváírások</value>
+  </data>
+	<data name="CrmErpExtension_DeliveryNote" xml:space="preserve">
+    <value>Szállítólevél</value>
+  </data>
+	<data name="CrmErpExtension_ErpDocumentStatus" xml:space="preserve">
+    <value>ERP-dokument-státuszok</value>
+  </data>
+	<data name="ErpDocumentStatus" xml:space="preserve">
+    <value>ERP-dokument-státuszok</value>
+  </data>
+	<data name="CrmErpExtension_ErpTurnover" xml:space="preserve">
+    <value>Forgalmak</value>
+  </data>
+	<data name="CrmErpExtension_Invoice" xml:space="preserve">
+    <value>Számlák</value>
+  </data>
+	<data name="CrmErpExtension_MasterContract" xml:space="preserve">
+    <value>Törzs szerződések</value>
+  </data>
+	<data name="CrmErpExtension_Quote" xml:space="preserve">
+    <value>Ajánlatok</value>
+  </data>
+	<data name="CrmErpExtension_SalesOrder" xml:space="preserve">
+    <value>Értékesítői rendelések</value>
+  </data>
+	<data name="DaysSinceLastOrder" xml:space="preserve">
+    <value>Utolsó rendelés óta eltelt napok</value>
+  </data>
+	<data name="ErpBackgroundInformation" xml:space="preserve">
+    <value>ERP-háttér-információ</value>
+  </data>
+	<data name="ErpDocumentsEmptyStateTitle" xml:space="preserve">
+    <value>Nem található ERP-dokumentum</value>
+  </data>
+	<data name="FirstOrder" xml:space="preserve">
+    <value>Első rendelés</value>
+  </data>
+	<data name="LatestOrder" xml:space="preserve">
+    <value>Legutóbbi rendelés</value>
+  </data>
+	<data name="MaterialOpenItemsDue" xml:space="preserve">
+    <value>Függő tételek késedelme</value>
+  </data>
+	<data name="OpenCreditNoteCaption" xml:space="preserve">
+    <value>Függő jóváírások</value>
+  </data>
+	<data name="OpenCreditNoteEmptyStateText" xml:space="preserve">
+    <value>Jelenleg nincsenek függő jóváírások.</value>
+  </data>
+	<data name="OpenDeliveryNoteCaption" xml:space="preserve">
+    <value>Függő szállítások (fennmaradó mennyiség > 0)</value>
+  </data>
+	<data name="OpenDeliveryNoteEmptyStateText" xml:space="preserve">
+    <value>Jelenleg nincsenek függő szállítólevelek.</value>
+  </data>
+	<data name="OpenInvoiceCaption" xml:space="preserve">
+    <value>Függő számlák</value>
+  </data>
+	<data name="OpenInvoiceEmptyStateText" xml:space="preserve">
+    <value>Jelenleg nincsenek függő számlák.</value>
+  </data>
+	<data name="OpenMasterContractCaption" xml:space="preserve">
+    <value>Függő törzs szerződések</value>
+  </data>
+	<data name="OpenMasterContractEmptyStateText" xml:space="preserve">
+    <value>Jelenleg nincsenek függő törzs szerződések.</value>
+  </data>
+	<data name="OpenQuoteCaption" xml:space="preserve">
+    <value>Függő ajánlatok</value>
+  </data>
+	<data name="OpenQuoteEmptyStateText" xml:space="preserve">
+    <value>Jelenleg nincsenek függő ajánlatok.</value>
+  </data>
+	<data name="OpenSalesOrderCaption" xml:space="preserve">
+    <value>Függő értékesítői rendelések</value>
+  </data>
+	<data name="OpenSalesOrderEmptyStateText" xml:space="preserve">
+    <value>Jelenleg nincsenek függő értékesítői rendelések.</value>
+  </data>
+	<data name="OrderEveryXDays" xml:space="preserve">
+    <value>Rendelések minden X napon</value>
+  </data>
+	<data name="ShowAllCreditNote" xml:space="preserve">
+    <value>Összes jóváírás mutatása</value>
+  </data>
+	<data name="ShowAllDeliveryNote" xml:space="preserve">
+    <value>Összes szállítólevél mutatása</value>
+  </data>
+	<data name="ShowAllInvoice" xml:space="preserve">
+    <value>Összes számla mutatása</value>
+  </data>
+	<data name="ShowAllMasterContract" xml:space="preserve">
+    <value>Összes törzs szerződés mutatása</value>
+  </data>
+	<data name="ShowAllQuote" xml:space="preserve">
+    <value>Összes ajánlat mutatása</value>
+  </data>
+	<data name="ShowAllSalesOrder" xml:space="preserve">
+    <value>Összes értékesítői rendelés mutatása</value>
+  </data>
+	<data name="ShowPreviousYears" xml:space="preserve">
+    <value>Előző évek mutatása</value>
+  </data>
+	<data name="TotalOrders" xml:space="preserve">
+    <value>Összes rendelés</value>
+  </data>
+	<data name="TurnoverEmptyState" xml:space="preserve">
+    <value>Jelenleg nem érhető el forglami statisztika ehhez a céghez.</value>
+  </data>
+	<data name="TurnoverEmptyStateTitle" xml:space="preserve">
+    <value>Nincs statisztika</value>
+  </data>
+	<data name="TurnoverStatistics" xml:space="preserve">
+    <value>Statisztikák</value>
+  </data>
+	<data name="TurnoverVolume" xml:space="preserve">
+    <value>Forgalom értéke</value>
+  </data>
+  <data name="VATIdentificationNumber" xml:space="preserve">
+    <value>ÁFA azonosító</value>
+  </data>
+  <data name="DeliveryProhibitedReason" xml:space="preserve">
+    <value>Szállítási tilalom oka</value>
+  </data>
+  <data name="PartialDeliveryProhibitedReason" xml:space="preserve">
+    <value>Részleges szállítási tilalom oka</value>
+  </data>
+  <data name="PaymentMethod" xml:space="preserve">
+    <value>Fizetési mód</value>
+  </data>
+  <data name="DeliveryMethod" xml:space="preserve">
+    <value>Szállítási mód</value>
+  </data>
+  <data name="CrmErpExtension_ErpDeliveryMethod" xml:space="preserve">
+    <value>Szállítási módok</value>
+  </data>
+  <data name="ErpDeliveryMethod" xml:space="preserve">
+    <value>Szállítási módok</value>
+  </data>
+  <data name="CrmErpExtension_ErpDeliveryProhibitedReason" xml:space="preserve">
+    <value>Szállítási tilalom okai</value>
+  </data>
+  <data name="ErpDeliveryProhibitedReason" xml:space="preserve">
+    <value>Szállítási tilalom okai</value>
+  </data>
+  <data name="CrmErpExtension_ErpPartialDeliveryProhibitedReason" xml:space="preserve">
+    <value>Részleges szállítási tilalom okai</value>
+  </data>
+  <data name="ErpPartialDeliveryProhibitedReason" xml:space="preserve">
+    <value>Részleges szállítási tilalom okai</value>
+  </data>
+  <data name="CrmErpExtension_ErpPaymentMethod" xml:space="preserve">
+    <value>Fizetési módok</value>
+  </data>
+  <data name="ErpPaymentMethod" xml:space="preserve">
+    <value>Fizetési módok</value>
+  </data>
+  <data name="CrmErpExtension_ErpPaymentTerms" xml:space="preserve">
+    <value>Fizetési feltételek</value>
+  </data>
+  <data name="ErpPaymentTerms" xml:space="preserve">
+    <value>Fizetési feltételek</value>
+  </data>
+  <data name="CrmErpExtension_ErpTermsOfDelivery" xml:space="preserve">
+    <value>Szállítási feltételek</value>
+  </data>
+  <data name="ErpTermsOfDelivery" xml:space="preserve">
+    <value>Szállítási feltételek</value>
+  </data>
+	<data name="CreditNote" xml:space="preserve">
+		<value>Jóváírás</value>
+	</data>
+	<data name="DunningLevel" xml:space="preserve">
+		<value>Felszólítási szint</value>
+	</data>
+	<data name="Invoice" xml:space="preserve">
+		<value>Számla</value>
+	</data>
+	<data name="OrderConfirmationNo" xml:space="preserve">
+		<value>Rendelés visszaigazoló száma</value>
+	</data>
+	<data name="OutstandingBalance" xml:space="preserve">
+		<value>Tartozási egyenleg</value>
+	</data>
+	<data name="PurchaseOrder" xml:space="preserve">
+		<value>Rendelés</value>
+	</data>
+	<data name="Quote" xml:space="preserve">
+		<value>Árajánlat</value>
+	</data>
+	<data name="SalesOrder" xml:space="preserve">
+		<value>Értékesítési rendelés</value>
+	</data>
+	<data name="T_NetAmount" xml:space="preserve">
+		<value>Nettó összeg</value>
+	</data>
+	<data name="NoOrderNo" xml:space="preserve">
+		<value>Nincs rendelési szám</value>
+	</data>
+	<data name="CrmErpExtension_DeliveryNotePosition" xml:space="preserve">
+		<value>Szállítólevél pozíciók</value>
+	</data>
+	<data name="CrmErpExtension_CreditNotePosition" xml:space="preserve">
+		<value>Jóváírási pozíciók</value>
+	</data>
+	<data name="CrmErpExtension_InvoicePosition" xml:space="preserve">
+		<value>Számla pozíciók</value>
+	</data>
+	<data name="CrmErpExtension_QuotePosition" xml:space="preserve">
+		<value>Ajánlati pozíciók</value>
+	</data>
+	<data name="CrmErpExtension_SalesOrderPosition" xml:space="preserve">
+		<value>Rendelés pozíciók</value>
+	</data>
+	<data name="CrmErpExtension_MasterContractPosition" xml:space="preserve">
+		<value>Főszerződéses pozíciók</value>
+	</data>
+	<data name="Positions" xml:space="preserve">
+		<value>Pozíciók</value>
+	</data>
+	<data name="PositionsEmptyStateTitle" xml:space="preserve">
+		<value>Nem találhatók pozíciók</value>
+	</data>
+	<data name="DeliveryNote" xml:space="preserve">
+		<value>Fuvarlevél</value>
+	</data>
+	<data name="MasterContract" xml:space="preserve">
+		<value>Főszerződés</value>
+	</data>
+</root>

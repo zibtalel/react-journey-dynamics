@@ -1,0 +1,14 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+
+<!-- ko if: baseOrder().OrderEntryType() === 'Configuration' -->
+<h5 class="text-uppercase">
+  <i class="zmdi zmdi-view-headline m-r-10"></i>@(Html.Localize("ConfigurationBase"))
+</h5>
+<div class="lv-item media m-b-30 b-0" data-bind="with: configurationBase">
+  <div class="media-body">
+	<div class="lv-title" data-bind="text: ItemNo"></div>
+	<small class="lv-small" data-bind="text: Description"></small>
+  </div>
+</div>
+<!-- /ko -->

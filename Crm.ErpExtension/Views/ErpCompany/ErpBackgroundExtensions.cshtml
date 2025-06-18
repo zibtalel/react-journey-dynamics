@@ -1,0 +1,122 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl<dynamic>
+
+<pmb-block class="erp-background-extension" params="icon: 'globe', caption: 'ErpBackgroundInformation', context: { company: company }, condition: false">
+	<pmbb-view>
+		<!-- ko with: company().ExtensionValues -->
+			<pmbb-view-entry params="caption: 'PaymentMethod'">
+				<!-- ko if: !window.Crm.ErpExtension.Settings.PaymentMethodIsLookup -->
+				<span data-bind="text: ErpPaymentMethod"></span>
+				<!-- /ko -->
+				<!-- ko if: window.Crm.ErpExtension.Settings.PaymentMethodIsLookup && window.AuthorizationManager.hasPermission("WebAPI::ErpPaymentMethod") -->
+				<span data-bind="if: ErpPaymentMethod, lookupValue: ErpPaymentMethod, lookups: $root.lookups.ErpPaymentMethod"></span>
+				<!-- /ko -->
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: ErpPaymentMethod"></span>
+			</pmbb-view-entry>
+			<pmbb-view-entry params="caption: 'PaymentTerms'">
+				<!-- ko if: !window.Crm.ErpExtension.Settings.PaymentTermsIsLookup -->
+				<span data-bind="text: ErpPaymentTerms"></span>
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: ErpPaymentTerms"></span>
+				<!-- /ko -->
+				<!-- ko if: window.Crm.ErpExtension.Settings.PaymentTermsIsLookup && window.AuthorizationManager.hasPermission("WebAPI::ErpPaymentTerms") -->
+				<span data-bind="if: ErpPaymentTermsKey, lookupValue: ErpPaymentTermsKey, lookups: $root.lookups.ErpPaymentTerms"></span>
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: ErpPaymentTermsKey"></span>
+				<!-- /ko -->
+			</pmbb-view-entry>
+			<pmbb-view-entry params="caption: 'DeliveryMethod'">
+				<!-- ko if: !window.Crm.ErpExtension.Settings.DeliveryMethodIsLookup -->
+				<span data-bind="text: ErpDeliveryMethod"></span>
+				<!-- /ko -->
+				<!-- ko if: window.Crm.ErpExtension.Settings.DeliveryMethodIsLookup && window.AuthorizationManager.hasPermission("WebAPI::ErpDeliveryMethod") -->
+				<span data-bind="if: ErpDeliveryMethod, lookupValue: ErpDeliveryMethod, lookups: $root.lookups.ErpDeliveryMethod"></span>
+				<!-- /ko -->
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: ErpDeliveryMethod"></span>
+			</pmbb-view-entry>
+			<pmbb-view-entry params="caption: 'TermsOfDelivery'">
+				<!-- ko if: !window.Crm.ErpExtension.Settings.TermsOfDeliveryIsLookup -->
+				<span data-bind="text: ErpTermsOfDelivery"></span>
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: ErpTermsOfDelivery"></span>
+				<!-- /ko -->
+				<!-- ko if: window.Crm.ErpExtension.Settings.TermsOfDeliveryIsLookup && window.AuthorizationManager.hasPermission("WebAPI::ErpTermsOfDelivery")-->
+				<span data-bind="if: ErpTermsOfDeliveryKey, lookupValue: ErpTermsOfDeliveryKey, lookups: $root.lookups.ErpTermsOfDelivery"></span>
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: ErpTermsOfDeliveryKey"></span>
+				<!-- /ko -->
+			</pmbb-view-entry>
+			<pmbb-view-entry params="caption: 'Currency'">
+				<span data-bind="lookupValue: ErpCurrency, lookups: $root.lookups.currencies, defaultValue: ErpCurrency"></span>
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: ErpCurrency"></span>
+			</pmbb-view-entry>
+			<pmbb-view-entry params="caption: 'CreditLimit'">
+				<!-- ko if: ErpCreditLimit()-->
+				<span data-bind="money: ErpCreditLimit()"></span>
+				<span data-bind="lookupValue: ErpCurrency, lookups: $root.lookups.currencies, defaultValue: ErpCurrency"></span>
+				<!-- /ko -->
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: ErpCreditLimit"></span>
+			</pmbb-view-entry>
+			<pmbb-view-entry params="caption: 'VATIdentificationNumber'">
+				<span data-bind="text: VATIdentificationNumber()"></span>
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: VATIdentificationNumber"></span>
+			</pmbb-view-entry>
+			<pmbb-view-entry params="caption: 'OpenItemsTotal'">
+				<!-- ko if: ErpOpenItemsTotal()-->
+				<span data-bind="money: ErpOpenItemsTotal()"></span>
+				<span data-bind="lookupValue: ErpCurrency, lookups: $root.lookups.currencies, defaultValue: ErpCurrency"></span>
+				<!-- /ko -->
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: ErpOpenItemsTotal"></span>
+			</pmbb-view-entry>
+			<pmbb-view-entry params="caption: 'MaterialOpenItemsDue'">
+				<!-- ko if: ErpOpenItemsTotal()-->
+				<span data-bind="money: ErpOpenItemsDue()"></span>
+				<span data-bind="lookupValue: ErpCurrency, lookups: $root.lookups.currencies, defaultValue: ErpCurrency"></span>
+				<!-- /ko -->
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: ErpOpenItemsDue"></span>
+			</pmbb-view-entry>
+			<pmbb-view-entry params="caption: 'OutstandingOrderValue'">
+				<!-- ko if: ErpOutstandingOrderValue()-->
+				<span data-bind="money: ErpOutstandingOrderValue()"></span>
+				<span data-bind="lookupValue: ErpCurrency, lookups: $root.lookups.currencies, defaultValue: ErpCurrency"></span>
+				<!-- /ko -->
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: ErpOutstandingOrderValue"></span>
+			</pmbb-view-entry>
+			<pmbb-view-entry params="caption: 'OutstandingInvoiceValue'">
+				<!-- ko if: ErpOutstandingInvoiceValue()-->
+				<span data-bind="money: ErpOutstandingInvoiceValue()"></span>
+				<span data-bind="lookupValue: ErpCurrency, lookups: $root.lookups.currencies, defaultValue: ErpCurrency"></span>
+				<!-- /ko -->
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: ErpOutstandingInvoiceValue"></span>
+			</pmbb-view-entry>
+			<pmbb-view-entry params="caption: 'ErpDiscount'">
+				<span data-bind="text: ErpDiscount()"></span>
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: ErpDiscount"></span>
+			</pmbb-view-entry>
+			
+			<pmbb-view-entry params="caption: 'ErpDeliveryProhibited'">
+				<span data-bind="translatedText: ErpDeliveryProhibited() ? 'Yes' : 'No'"></span>
+			</pmbb-view-entry>
+			<pmbb-view-entry params="caption: 'DeliveryProhibitedReason'">
+				<!-- ko if: !window.Crm.ErpExtension.Settings.ErpPartialDeliveryProhibitedReasonIsLookup -->
+				<span data-bind="text: ErpDeliveryProhibitedReason"></span>
+				<!-- /ko -->
+				<!-- ko if: window.Crm.ErpExtension.Settings.ErpPartialDeliveryProhibitedReasonIsLookup && window.AuthorizationManager.hasPermission("WebAPI::ErpDeliveryProhibitedReason") -->
+				<span data-bind="if: ErpDeliveryProhibitedReason, lookupValue: ErpDeliveryProhibitedReason, lookups: $root.lookups.ErpDeliveryProhibitedReason"></span>
+				<!-- /ko -->
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: ErpDeliveryProhibitedReason"></span>
+			</pmbb-view-entry>
+			<pmbb-view-entry params="caption: 'PartialDeliveryProhibited'">
+				<span data-bind="translatedText: ErpPartialDeliveryProhibited() ? 'Yes' : 'No'"></span>
+			</pmbb-view-entry>
+			<pmbb-view-entry params="caption: 'PartialDeliveryProhibitedReason'">
+				<!-- ko if: !window.Crm.ErpExtension.Settings.ErpPartialDeliveryProhibitedReasonIsLookup -->
+				<span data-bind="text: ErpPartialDeliveryProhibitedReason"></span>
+				<!-- /ko -->
+				<!-- ko if: window.Crm.ErpExtension.Settings.ErpPartialDeliveryProhibitedReasonIsLookup && window.AuthorizationManager.hasPermission("WebAPI::ErpPartialDeliveryProhibitedReason") -->
+				<span data-bind="if: ErpPartialDeliveryProhibitedReason, lookupValue: ErpPartialDeliveryProhibitedReason, lookups: $root.lookups.ErpPartialDeliveryProhibitedReason"></span>
+				<!-- /ko -->
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: ErpPartialDeliveryProhibitedReason"></span>
+			</pmbb-view-entry>
+			<pmbb-view-entry params="caption: 'AccountGroup'">
+				<span data-bind="text: ErpAccountGroup()"></span>
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: ErpAccountGroup"></span>
+			</pmbb-view-entry>
+		<!-- /ko -->
+	</pmbb-view>
+</pmb-block>

@@ -1,0 +1,49 @@
+﻿@inherits Crm.Library.Modularization.CrmViewPage<Crm.Documentation.ViewModel.DocumentationModel>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta id="meta.test-identifier" name="test-identifier" content="for automated tests" />
+
+	<title>@(Model.Title)</title>
+	<style type="text/css">
+		code {
+			white-space: pre;
+		}
+	</style>
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link rel="stylesheet" href="@(Model.ResourcePath)/style/jqtree.css" />
+	<link rel="stylesheet" href="@(Model.ResourcePath)/style/default.css" type="text/css" />
+	<script src="@(Model.ResourcePath)/js/jquery-1.10.2.min.js"></script>
+	<script src="@(Model.ResourcePath)/js/tree.jquery.js"></script>
+	<script src="@(Model.ResourcePath)/js/raphael-min.js"></script>
+	<script src="@(Model.ResourcePath)/js/flowchart.min.js"></script>
+	<script src="@(Model.ResourcePath)/js/system.flowchart.js"></script>
+	<script src="@(Model.ResourcePath)/js/system.navtree.js"></script>
+</head>
+<body>
+	@if (Model.Title != null) { 
+	<header>
+		<h1 class="title">@(Model.Title)</h1>
+		<h2 class="author">@(String.Join(",", Model.Authors))</h2>
+		<h3 class="date">@(Model.Version)</h3>
+	</header>
+	<div class="page-break"></div>
+	 } 
+
+	<div class="navbar-nav nav">
+		<h1>Inhalt</h1>
+		<div class="navtree"></div>
+	</div>
+
+	<div class="content">
+		@(Html.Raw(Model.Body))
+	</div>
+</body>
+</html>
+

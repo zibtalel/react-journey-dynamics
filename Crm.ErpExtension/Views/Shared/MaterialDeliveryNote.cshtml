@@ -1,0 +1,57 @@
+﻿@using Crm.Library.Modularization.Extensions
+@inherits Crm.Library.Modularization.CrmViewUserControl
+<div class="lv-item media">
+	<div class="pull-left">
+		<div class="lv-avatar pull-left" data-bind="text: Helper.ErpDocument.getDocumentAbbreviation($data, $parent.documentStatuses), style: { backgroundColor: window.Helper.ErpDocument.getDocumentColor($data, $parent.documentStatuses) }"></div>
+	</div>
+	<div class="pull-right">
+		<div class="actions dropdown">
+			<a href="#" data-toggle="dropdown" aria-expanded="true">
+				<i class="zmdi zmdi-more-vert"></i>
+			</a>
+			<ul class="dropdown-menu dropdown-menu-right">
+				<li>
+					<a data-bind="translatedText: 'OpenInErp', attr: { href: '/Crm.ErpExtension/ErpDocument/OpenDeliveryNote/' + Id() }" target="_blank"></a>
+				</li>
+				<li>
+					<a data-bind="translatedText: 'Details', attr: { href: '#/Crm.ErpExtension/Invoice/DetailsTemplate/' + Id() }"></a>
+				</li>
+				@Html.PluginRenderActions("ErpDocumentItemTemplateActions")
+			</ul>
+		</div>
+	</div>
+	<div class="media-body">
+		<div class="lv-title">
+			<a data-bind="attr: { href: '#/Crm.ErpExtension/DeliveryNote/DetailsTemplate/' + Id() }">
+				<span data-bind="translatedText: 'T_DeliveryNoteNo'"></span>
+				<span data-bind="text: DeliveryNoteNo"></span>
+			</a>
+		</div>
+		@await Html.PartialAsync("ContactLink")
+		<ul class="lv-attrs">
+			<li>
+				<span data-bind="text: window.Helper.Lookup.getLookupValue($parent.documentStatuses, $data.StatusKey()), style: { color: window.Helper.ErpDocument.getDocumentColor($data, $parent.documentStatuses) }"></span>
+			</li>
+			<li>
+				<span data-bind="translatedText: 'T_GrossAmount'"></span>:
+				<span data-bind="money: Total"></span>
+				<span data-bind="text: window.Helper.Lookup.getLookupValue($parent.currencies, $data.CurrencyKey())"></span>
+			</li>
+			<li data-bind="visible: OrderNo">
+				<span data-bind="translatedText: 'T_OrderNo'"></span>:
+				<span data-bind="text: OrderNo"></span>
+			</li>
+			<li data-bind="visible: DeliveryNoteDate">
+				<span data-bind="translatedText: 'DeliveryNoteDate'"></span>:
+				<span data-bind="dateText: DeliveryNoteDate"></span>
+			</li>
+			<li data-bind="visible: Commission">
+				<span data-bind="translatedText: 'T_Reference'"></span>:
+				<span data-bind="dateText: Commission"></span>
+			</li>
+			@Html.PluginRenderActions("DeliveryNoteAttributes")
+			@Html.PluginRenderActions("ErpDocumentAttributes")
+		</ul>
+	</div>
+</div>
+

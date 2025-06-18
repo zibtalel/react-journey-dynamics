@@ -1,0 +1,157 @@
+﻿@using Crm.Library.Modularization.Extensions
+@inherits Crm.Library.Modularization.CrmViewUserControl
+
+<div role="tabpanel" class="tab-pane animated fadeIn active" id="tab-turnover" data-bind="with: tabs()['tab-turnover']" style="display: block;">
+	<empty-state-box params="mood: 'sad', title: 'TurnoverEmptyStateTitle', text: 'TurnoverEmptyState'" data-bind="visible: !hasTurnoverStatistics()"></empty-state-box>
+	<div class="listview lv-bordered" data-bind="visible: hasTurnoverStatistics">
+		<div class="lv-body">
+			<div class="lv-header" data-bind="translatedText: 'TurnoverStatistics'">
+			</div>
+
+			<div class="lv-item media">
+				<div class="media-body">
+					<flot-chart params="source: turnoverItemsQuery, 
+										mapAndGroupBy: function(query) { return query; },
+										color: getChartColor.bind($data), 
+										label: getChartLabel.bind($data),
+										unit: chartUnit,
+										axisXLabel: 'Year', 
+										axisYLabel: showVolume() ? 'TurnoverVolume' : 'Turnover'">
+					</flot-chart>
+				</div>
+			</div>
+			@Html.PluginRenderActions("MaterialTurnoverChart")
+
+			<div class="lv-header" data-bind="translatedText: 'BuyingBehavior'">
+			</div>
+
+			<div class="lv-item media">
+				<div class="media-body p-l-30">
+					<div class="row" data-bind="visible: totalOrders">
+						<div class="col-sm-6">
+							<dl class="dl-horizontal">
+								<dt data-bind="translatedText: 'CreateDate'"></dt>
+								<dd data-bind="dateText: company().CreateDate"></dd>
+							</dl>
+							<dl class="dl-horizontal">
+								<dt data-bind="translatedText: 'FirstOrder'"></dt>
+								<dd data-bind="dateText: firstOrder"></dd>
+							</dl>
+							<dl class="dl-horizontal">
+								<dt data-bind="translatedText: 'LatestOrder'"></dt>
+								<dd data-bind="dateText: latestOrder"></dd>
+							</dl>
+						</div>
+						<div class="col-sm-6">
+							<dl class="dl-horizontal">
+								<dt data-bind="translatedText: 'TotalOrders'"></dt>
+								<dd data-bind="text: totalOrders"></dd>
+							</dl>
+							<dl class="dl-horizontal">
+								<dt data-bind="translatedText: 'OrderEveryXDays'"></dt>
+								<dd data-bind="text: orderEveryXDays"></dd>
+							</dl>
+							<dl class="dl-horizontal">
+								<dt data-bind="translatedText: 'DaysSinceLastOrder'"></dt>
+								<dd data-bind="text: daysSinceLastOrder"></dd>
+							</dl>
+						</div>
+					</div>
+					@Html.PluginRenderActions("MaterialTurnoverTabBuyingBehavior")
+					<div class="row" data-bind="visible: !totalOrders()">
+						<div class="col-sm-12" data-bind="translatedText: 'BuyingBehaviorEmptyState'">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="lv-header">
+				<span data-bind="translatedText: 'TurnoverValue', visible: !showVolume()"></span>
+				<span data-bind="translatedText: 'TurnoverVolume', visible: showVolume()"></span>
+			</div>
+			<div class="lv-item media">
+				<div class="panel-group m-b-5" id="turnover-articlegroup-accordion-0" data-bind="attr: { id: 'turnover-articlegroup-accordion-0' }" role="tablist" aria-multiselectable="true">
+					<!-- ko with: groupedTurnoverItems -->
+					<!-- ko template: { name: 'turnoverArticleGroup', foreach: ArticleGroups } -->
+					<!-- /ko -->
+					<!-- /ko -->
+				</div>
+			</div>
+
+			<script type="text/html" id="turnoverArticleGroup">
+				<div class="panel panel-collapse">
+					<div class="panel-heading" role="tab" data-bind="click: $root.tabs()['tab-turnover']().toggleSelectedArticleGroup, visible: $parent.Id !== 0 || $parent.HasArticleGroups">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-bind="attr: { 'data-parent': '#turnover-articlegroup-accordion-' + ($parent.Id || 0), 'href': '#collapse-' + Id }" class="collapsed" aria-expanded="false">
+								<span data-bind="text: Key, visible: Key"></span>
+								<span data-bind="translatedText: 'Miscellaneous', visible: !Key"></span>
+								<i class="zmdi zmdi-chevron-down zmdi-hc-lg"></i>
+							</a>
+						</h4>
+					</div>
+					<div class="panel-collapse" data-bind="attr: { id: 'collapse-' + Id }, css: { 'collapse': !Visible() }" aria-expanded="false">
+						<!-- ko if: Visible -->
+						<!-- ko if: HasArticleGroups -->
+						<!-- ko template: { name: 'turnoverArticleGroup', foreach: ArticleGroups } -->
+						<!-- /ko -->
+						<!-- /ko -->
+						<!-- ko ifnot: HasArticleGroups -->
+						<!-- ko foreach: Items -->
+						<div class="lv-item media">
+							<div class="lv-avatar pull-left bgm-green" data-bind="visible: Trend === 'up'">
+								<i class="zmdi zmdi-hc-lg zmdi-trending-up"></i>
+							</div>
+							<div class="lv-avatar pull-left bgm-bluegray" data-bind="visible: Trend === 'flat'">
+								<i class="zmdi zmdi-hc-lg zmdi-trending-flat"></i>
+							</div>
+							<div class="lv-avatar pull-left bgm-deeporange" data-bind="visible: Trend === 'down'">
+								<i class="zmdi zmdi-hc-lg zmdi-trending-down"></i>
+							</div>
+							<div class="media-body">
+								<div class="lv-title col-md-6 p-b-25">
+									<span data-bind="text: Item.ItemNo"></span>
+									-
+							<span data-bind="text: Item.ItemDescription"></span>
+								</div>
+								<div class="col-md-6">
+									<dl class="dl-horizontal">
+										<dt data-bind="translatedText: 'ThisYear'"></dt>
+										<dd class="m-b-5">
+											<span data-bind="money: CurrentYearValue"></span><span data-bind="	text: Unit"></span>
+										</dd>
+										<dt data-bind="dateText: { value: PreviousYear, pattern: { raw: 'MMMM YYYY' } }"></dt>
+										<dd class="m-b-5">
+											<span data-bind="money: PreviousYearCurrentMonth"></span><span data-bind="	text: Unit"></span>
+										</dd>
+										<dt data-bind="dateText: { value: PreviousYear, pattern: { skeleton: 'y' } }"></dt>
+										<dd class="m-b-5">
+											<span data-bind="money: PreviousYearValue"></span><span data-bind="	text: Unit"></span>
+										</dd>
+										<!-- ko foreach: AdditionalYears -->
+										<dt data-bind="text: Year"></dt>
+										<dd class="m-b-5">
+											<span data-bind="money: Value"></span><span data-bind="	text: $parent.Unit"></span>
+										</dd>
+										<!-- /ko -->
+									</dl>
+								</div>
+							</div>
+						</div>
+						<!-- /ko -->
+						<!-- /ko -->
+						<!-- /ko -->
+					</div>
+				</div>
+			</script>
+
+			<div class="load-more m-b-20">
+				<button class="bgm-white c-black z-depth-1 btn btn-default waves-effect" data-bind="click: showAllTurnoverItems.bind($data, true), visible: !showAllTurnoverItems()">
+					<i class="zmdi zmdi-view-list-alt"></i>
+					<span data-bind="translatedText: 'ShowPreviousYears'"></span>
+				</button>
+			</div>
+			@Html.PluginRenderActions("MaterialTurnoverTab")
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,22 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+
+<li class="dropdown" data-bind="visible: $root.currentTabId() === 'tab-turnover', if: $root.currentTabId() === 'tab-turnover', tooltip: true" data-placement="bottom" title="@(Html.Localize("Show"))">
+	<a data-toggle="dropdown" href="#" aria-expanded="true">
+		<i class="tm-icon zmdi zmdi-eye"></i>
+	</a>
+	<ul class="dropdown-menu pull-right" data-bind="with: $root.currentTab">
+		<li role="presentation" class="dropdown-header pull-right" data-bind="translatedText: 'Currency', visible: lookups.currencies.$array.length > 0"></li>
+		<!-- ko foreach: lookups.currencies.$array -->
+		<li class="active" data-bind="css: { 'active': $parent.currency() == $data }, click: $parent.setCurrency.bind($parent, $data)">
+			<a href="#" data-bind="text: Value"></a>
+		</li>
+		<!-- /ko -->
+		<li role="presentation" class="dropdown-header pull-right" data-bind="translatedText: 'QuantityUnit', visible: lookups.quantityUnits.$array.length > 0"></li>
+		<!-- ko foreach: lookups.quantityUnits.$array -->
+		<li class="active" data-bind="css: { 'active': $parent.quantityUnit() == $data }, click: $parent.setQuantityUnit.bind($parent, $data)">
+			<a href="#" data-bind="text: Value"></a>
+		</li>
+		<!-- /ko -->
+	</ul>
+</li>

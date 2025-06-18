@@ -1,0 +1,60 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+
+<!-- ko if: baseOrder().OrderEntryType() === 'Configuration' -->
+<h5 class="text-uppercase">
+	<i class="zmdi zmdi-view-headline m-r-10"></i>@(Html.Localize("OptionalItems"))
+</h5>
+<!-- ko foreach: orderItems -->
+<!-- ko if: IsOption -->
+<div class="card m-b-10 z-depth-1-top">
+	<div class="card-body">
+		<div class="optional-order-item lv-item media">
+			<div class="media-body">
+				<div class="lv-title" data-bind="text: ArticleNo">@*TODO: Variable*@</div>
+				<small class="lv-small" data-bind="text: ArticleDescription"></small>
+				<div class="c-blue" data-bind="visible: ArticleHasAccessory">
+					<em>
+						@(Html.Localize("HasAccessory"))
+					</em>
+				</div>
+				<div class="lv-actions actions dropdown">
+					<span data-bind="text: $root.getCurrencyValue($root.baseOrder().CurrencyKey())"></span> <span data-bind="money: Price"></span>
+					<a href="#" data-toggle="dropdown" aria-expanded="false" data-bind="visible: $root.isEditable">
+						<i class="zmdi zmdi-more-vert"></i>
+					</a>
+					<ul class="dropdown-menu dropdown-menu-right">
+						<li data-bind="visible: ArticleHasAccessory">
+							<a href="#" data-bind="attr: { 'data-route': 'Crm.Order/Offer/AccessoryList/' + Id() }" data-toggle="modal" data-target="#modal">@(Html.Localize("ShowAccessory"))</a>
+						</li>
+						<li>
+							<a href="#" data-bind="click: $parent.removeOrderItem">@(Html.Localize("Remove"))</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- ko foreach: $parent.getSubPositions($data) -->
+		<div class="optional-order-item-subposition lv-item media">
+			<div class="media-body">
+				<div class="lv-title" data-bind="text: ArticleNo"></div>
+				<small class="lv-small" data-bind="text: ArticleDescription"></small>
+				<div class="lv-actions actions dropdown">
+					<span data-bind="text: $root.getCurrencyValue($root.baseOrder().CurrencyKey())"></span> <span data-bind="money: Price"></span>
+					<a href="#" data-toggle="dropdown" aria-expanded="false" data-bind="visible: $root.isEditable">
+						<i class="zmdi zmdi-more-vert"></i>
+					</a>
+					<ul class="dropdown-menu dropdown-menu-right">
+						<li>
+							<a href="#" data-bind="click: $parentContext.$parent.removeOrderItem">@(Html.Localize("Remove"))</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- /ko -->
+	</div>
+</div>
+<!-- /ko -->
+<!-- /ko -->
+<!-- /ko -->

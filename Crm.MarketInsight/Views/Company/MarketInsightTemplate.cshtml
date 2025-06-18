@@ -1,0 +1,115 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+
+<div class="lv-item media">
+	<!-- ko if: marketInsight -->
+	<!-- ko with: marketInsight -->
+	<div class="lv-avatar pull-left" data-bind="text: StatusKey[0], style: { backgroundColor: Helper.Lookup.getLookupColor($parentContext.$parent.lookups.marketInsightStatuses, StatusKey) }"></div>
+	<div class="media-body">
+		<div class="flex flex-wrap">
+			<div class="m-r-10 flex-1 min-width-element ">
+				<div class="lv-title">
+					<!-- ko if: StatusKey !== 'unqualified' -->
+					<a data-bind="text: Name, attr: { href: '#/Crm.MarketInsight/MarketInsight/DetailsTemplate/' + Id }"></a>
+					<!-- /ko -->
+					<!-- ko if: StatusKey === 'unqualified' -->
+					<span data-bind="text: Name"></span>
+					<!-- /ko -->
+				</div>
+				<!-- ko if BackgroundInfo-->
+				<div>
+					<small class="small">
+						<span data-bind="text: BackgroundInfo"></span>
+					</small>
+				</div>
+				<!-- /ko -->
+				<ul class="lv-attrs">
+					<li>
+						<i class="zmdi zmdi-circle" data-bind="style: { color: Helper.Lookup.getLookupColor($parentContext.$parent.lookups.marketInsightStatuses, StatusKey) }"></i> @(Html.Localize("Status")): <span data-bind="lookupValue: StatusKey, lookups: $parentContext.$parent.lookups.marketInsightStatuses"></span>
+					</li>
+				</ul>
+			</div>
+		  <div class="flex-1 min-width-element p-t-10">
+				<strong data-bind="translatedText: 'Potentials'"></strong>
+				<div data-bind="foreach: { data: $parentContext.$parent.potentialStatusesKeys, as: 'typeKey' }">
+					<!-- ko if: $parent.StatusKey !== 'unqualified' -->
+					<a class="potential-grid" data-bind="attr: {  href: '#/Crm.MarketInsight/MarketInsight/DetailsTemplate/' + $parent.Id + '?tab=tab-potentials&status='+typeKey  }">
+						<span data-bind="text: $parents[1].countOfPotentialsByStatus()[typeKey]?.TotalCount ? $parents[1].countOfPotentialsByStatus()[typeKey].TotalCount : 0"></span>
+						<span class="m-l-10" data-bind="lookupValue: typeKey, lookups: $parentContext.$parentContext.$parent.lookups.potentialStatuses"></span>
+					</a>		
+					<!-- /ko -->
+					<!-- ko if: $parent.StatusKey === 'unqualified' -->
+					<div class="potential-grid">
+						<span data-bind="text: $parents[1].countOfPotentialsByStatus()[typeKey]?.TotalCount ?  $parents[1].countOfPotentialsByStatus()[typeKey].TotalCount : 0"></span>
+						<span class="m-l-10" data-bind="lookupValue: typeKey, lookups: $parentContext.$parentContext.$parent.lookups.potentialStatuses"></span>
+					</div>
+					<!-- /ko -->
+				</div>
+			</div>
+		  <div class="flex-1 min-width-element p-t-10">
+				<strong data-bind="translatedText: 'Projects'"></strong>
+				<div data-bind="foreach: { data: $parentContext.$parent.projectStatusesKeys, as: 'typeKey' }">
+					<!-- ko if: $parent.StatusKey !== 'unqualified' -->
+					<a class="project-grid" data-bind="attr: {  href: '#/Crm.MarketInsight/MarketInsight/DetailsTemplate/' + $parent.Id + '?tab=tab-projects&status='+typeKey  }">
+						<span data-bind="text: $parents[1].valuePerProjectAndCurrency()[typeKey]?.TotalCount ?  $parents[1].valuePerProjectAndCurrency()[typeKey].TotalCount : 0"></span>
+						<span class="m-l-10" data-bind="lookupValue: typeKey, lookups: $parentContext.$parentContext.$parent.lookups.projectStatuses"></span>
+						<!-- ko if:  $parents[1].valuePerProjectAndCurrency()[typeKey]?.Currencies -->
+						<div data-bind="foreach: { data: $parents[1].valuePerProjectAndCurrency()[typeKey]?.Currencies, as: 'currency'}">
+							<!-- ko if: $index() === 0 -->
+							<span data-bind="money: currency.CurrencySum"></span>
+							<span data-bind="lookupValue: currency.Currency, lookups: $parentContext.$parentContext.$parentContext.$parent.lookups.currencies"></span>
+							<!-- /ko -->
+						</div>
+						<!-- /ko -->
+					</a>
+					<!-- /ko -->
+					<!-- ko if: $parent.StatusKey == 'unqualified' -->
+					<div class="project-grid">
+						<span data-bind="text: $parents[1].valuePerProjectAndCurrency()[typeKey]?.TotalCount ?  $parents[1].valuePerProjectAndCurrency()[typeKey].TotalCount : 0"></span>
+						<span class="m-l-10" data-bind="lookupValue: typeKey, lookups: $parentContext.$parentContext.$parent.lookups.projectStatuses"></span>
+						<!-- ko if:  $parents[1].valuePerProjectAndCurrency()[typeKey]?.Currencies -->
+						<div data-bind="foreach: { data: $parents[1].valuePerProjectAndCurrency()[typeKey]?.Currencies, as: 'currency'}">
+							<!-- ko if: $index() === 0 -->
+							<span data-bind="money: currency.CurrencySum"></span>
+							<span data-bind="lookupValue: currency.Currency, lookups: $parentContext.$parentContext.$parentContext.$parent.lookups.currencies"></span>
+							<!-- /ko -->
+						</div>
+						<!-- /ko -->
+					</div>
+					<!-- /ko -->
+					<!-- ko ifnot:  $parents[1].valuePerProjectAndCurrency()[typeKey]?.Currencies  -->
+					<div></div>
+					<!-- /ko -->
+				</div>
+			</div>
+			<div class="lv-actions actions dropdown">
+				<a href="#" data-toggle="dropdown" aria-expanded="false">
+					<i class="zmdi zmdi-more-vert" style="float: none"></i>
+				</a>
+				<ul class="dropdown-menu dropdown-menu-right">
+					<!-- ko if: StatusKey !== 'unqualified' -->
+					<li>
+						<!-- ko requiredPermission: { name: 'Read', group: 'MarketInsight' } -->
+						<a href="#" data-bind="attr: { 'href': '#/Crm.MarketInsight/MarketInsight/DetailsTemplate/'+Id}"> @(Html.Localize("Details")) </a>
+						<!-- /ko -->
+					</li>
+					<li>
+						<!-- ko requiredPermission: { name: 'Edit', group: 'MarketInsight' } -->
+						<a href="#" data-bind="attr: { 'data-route': 'Crm.MarketInsight/MarketInsight/EditTemplate/' + ko.unwrap(Id) }" data-toggle="modal" data-target="#modal"> @(Html.Localize("Edit")) </a>
+						<!-- /ko -->
+					</li>
+					<li class="divider"></li>
+					<!-- /ko -->
+					<li>
+						<a href="#" data-bind="attr: { 'href': '#/Crm.Project/Project/CreateTemplate?parentId='+ ko.unwrap(ParentId)+'&productFamilyKey='+ko.unwrap(ProductFamilyKey) }"> @(Html.Localize("AddNewProject")) </a>
+					</li>
+					<li>
+						<a href="#" data-bind="attr: { 'href': '#/Crm.Project/Potential/CreateTemplate?parentId='+ ko.unwrap(ParentId)+'&productFamilyKey='+ko.unwrap(ProductFamilyKey) }"> @(Html.Localize("AddNewPotential")) </a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- /ko -->
+	<!-- /ko -->
+</div>

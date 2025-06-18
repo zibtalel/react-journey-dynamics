@@ -1,0 +1,51 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+@using Crm.Library.Modularization.Extensions
+
+<div role="tabpanel" class="tab-pane animated fadeIn" id="tab-positions">
+	<empty-state-box params="mood: 'sad', title: 'PositionsEmptyStateTitle'" data-bind="visible: $root.ErpDocument().Positions().length === 0">
+	</empty-state-box>
+	<div class="generic-list listview lv-bordered">
+		<div class="lv-body" data-bind="foreach: $root.ErpDocument().Positions()">
+			<!-- ko if: $data.DocumentType() === "InvoicePosition" -->
+			@await Html.PartialAsync("../Shared/MaterialInvoicePosition")
+			<!-- /ko -->
+			<!-- ko if: $data.DocumentType() === "DeliveryNotePosition" -->
+			@await Html.PartialAsync("../Shared/MaterialDeliveryNotePosition")
+			<!-- /ko -->
+			<!-- ko if: $data.DocumentType() === "CreditNotePosition" -->
+			@await Html.PartialAsync("../Shared/MaterialCreditNotePosition")
+			<!-- /ko -->
+			<!-- ko if: $data.DocumentType() === "MasterContractPosition" -->
+			@await Html.PartialAsync("../Shared/MaterialMasterContractPosition")
+			<!-- /ko -->
+			<!-- ko if: $data.DocumentType() === "SalesOrderPosition" -->
+			@await Html.PartialAsync("../Shared/MaterialSalesOrderPosition")
+			<!-- /ko -->
+			<!-- ko if: $data.DocumentType() === "QuotePosition" -->
+			@await Html.PartialAsync("../Shared/MaterialQuotePosition")
+			<!-- /ko -->
+			@Html.PluginRenderActions("MaterialErpDocumentPositionTabItemTemplates")
+		</div>
+	</div>
+	<hr/>
+	<div class="container-fluid">
+		<div class="row" data-bind="with: $root.ErpDocument">
+			<div class="col-sm-12 text-right">
+				<strong>
+					@Html.Localize("T_NetAmount"): <span data-bind="money: TotalWoTaxes"></span>
+					<span data-bind="text: window.Helper.Lookup.getLookupValue($root.lookups.currencies, $root.currencyKey())"></span>
+				</strong>
+				<!-- ko if: VATLevel() || VATLevel() === 0 -->
+				<br/>
+				<small>+<span data-bind="money: VATLevel"></span>% @Html.Localize("VATLevel")</small>
+				<!-- /ko -->
+				<br/>
+				<strong>
+					@Html.Localize("T_GrossAmount"): <span data-bind="money: Total"></span>
+					<span data-bind="text: window.Helper.Lookup.getLookupValue($root.lookups.currencies, $root.currencyKey())"></span>
+				</strong>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,58 @@
+﻿@using Crm.Library.Globalization.Extensions
+@inherits Crm.Library.Modularization.CrmViewUserControl
+
+<aside id="right-nav" class="sidebar c-overflow col-lg-4 col-md-6 col-sm-7
+   col-xs-10 p-l-0 p-r-0 mCS-autoHide toggled"
+	   style="overflow: visible;">
+	<div class="right-nav-content" style="visibility:visible;">
+		<ul class="top-menu bgm-blue p-l-0">
+			<li class="dropdown" data-bind="tooltip: true" data-placement="bottom" title="@(Html.Localize("Close"))">
+				<a id="close-generic-list-filter" href="#" data-trigger="#right-nav">
+					<i class="tm-icon zmdi zmdi-close"></i>
+				</a>
+			</li>
+			<li class="dropdown pull-right" data-bind="tooltip: true" data-placement="bottom" title="@(Html.Localize("Filter"))">
+				<a id="apply-generic-list-filter" href="#" data-trigger="#right-nav" data-bind="click: applyFiltersMarketInsight">
+					<i class="tm-icon zmdi zmdi-check"></i>
+				</a>
+			</li>
+			<li class="dropdown pull-right" data-bind="tooltip: true" data-placement="bottom" title="@(Html.Localize("Reset"))">
+				<a id="reset-generic-list-filter" href="#" data-trigger="#right-nav" data-bind="click: resetFilter">
+					<i class="tm-icon zmdi zmdi-undo"></i>
+				</a>
+			</li>
+		</ul>
+		<div class="listview lv-bordered">
+			<div class="lv-item">
+				<form role="form" action="#">
+					<div class="filter-element form-group" id="name-filter">
+						<div class="fg-line">
+							<form-element id="MarketInsigthStatusFilter"
+										  params="value: marketInsightStatusFilter, caption: 'Status'">
+								<select name="CampaignProductFamilyKeyFilter" class="form-control"
+										data-bind="select2autocompleter: { data: value, autocompleteOptions: Helper.Lookup.getAutocompleteOptions('CrmMarketInsight_MarketInsightStatus'), placeholder: Helper.String.getTranslatedString('All') }">
+								</select>
+							</form-element>
+						</div>
+						<div class="fg-line">
+							<form-element id="MarketInsigthPotentialStatusFilter"
+										  params="value: marketInsightPotentialStatusFilter, caption: 'PotentialStatus', type: 'select'">
+								<select name="CampaignProductFamilyKeyFilter" class="form-control"
+										data-bind="select2autocompleter: { data: value, autocompleteOptions: Helper.Lookup.getAutocompleteOptions('CrmProject_PotentialStatus'), placeholder: Helper.String.getTranslatedString('All')}">
+								</select>
+							</form-element>
+						</div>
+						<div class="fg-line">
+							<form-element id="MarketInsigthProjectStatusFilter"
+										  params="value: marketInsightProjectStatusFilter, caption: 'ProjectStatus'">
+								<select name="CampaignProductFamilyKeyFilter" class="form-control"
+										data-bind="select2autocompleter: { data: value, autocompleteOptions: Helper.Lookup.getAutocompleteOptions('CrmProject_ProjectStatus'), placeholder: Helper.String.getTranslatedString('All')}">
+								</select>
+							</form-element>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</aside>

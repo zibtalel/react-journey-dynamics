@@ -1,0 +1,243 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Crm.ErpExtension
+build_property.RootNamespace = Crm.ErpExtension
+build_property.ProjectDir = C:\Source\crm6\src\Crm.Web\Plugins\Crm.ErpExtension\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Source\crm6\src\Crm.Web\Plugins\Crm.ErpExtension
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/CreditNoteList/MaterialItemTemplate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3JlZGl0Tm90ZUxpc3RcTWF0ZXJpYWxJdGVtVGVtcGxhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/CreditNote/DetailsTemplate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3JlZGl0Tm90ZVxEZXRhaWxzVGVtcGxhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/CreditNote/MaterialDetailsTab.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3JlZGl0Tm90ZVxNYXRlcmlhbERldGFpbHNUYWIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/CreditNote/MaterialDetailsTabHeader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3JlZGl0Tm90ZVxNYXRlcmlhbERldGFpbHNUYWJIZWFkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/DeliveryNoteList/MaterialItemTemplate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVsaXZlcnlOb3RlTGlzdFxNYXRlcmlhbEl0ZW1UZW1wbGF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/DeliveryNote/DetailsTemplate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVsaXZlcnlOb3RlXERldGFpbHNUZW1wbGF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/DeliveryNote/MaterialDetailsTab.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVsaXZlcnlOb3RlXE1hdGVyaWFsRGV0YWlsc1RhYi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/DeliveryNote/MaterialDetailsTabHeader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVsaXZlcnlOb3RlXE1hdGVyaWFsRGV0YWlsc1RhYkhlYWRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/ErpCompany/CompanyDetailsTopMenu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJwQ29tcGFueVxDb21wYW55RGV0YWlsc1RvcE1lbnUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/ErpCompany/ErpBackgroundExtensions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJwQ29tcGFueVxFcnBCYWNrZ3JvdW5kRXh0ZW5zaW9ucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/ErpCompany/MaterialTurnoverTab.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJwQ29tcGFueVxNYXRlcmlhbFR1cm5vdmVyVGFiLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/ErpCompany/MaterialTurnoverTabHeader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJwQ29tcGFueVxNYXRlcmlhbFR1cm5vdmVyVGFiSGVhZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/ErpDocumentDetails/ErpDocumentMaterialDetailsTabGeneralInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJwRG9jdW1lbnREZXRhaWxzXEVycERvY3VtZW50TWF0ZXJpYWxEZXRhaWxzVGFiR2VuZXJhbEluZm8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/ErpDocumentDetails/MaterialOrderTab.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJwRG9jdW1lbnREZXRhaWxzXE1hdGVyaWFsT3JkZXJUYWIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/ErpDocumentDetails/MaterialOrderTabHeader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJwRG9jdW1lbnREZXRhaWxzXE1hdGVyaWFsT3JkZXJUYWJIZWFkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/ErpDocumentDetails/MaterialPositionsTab.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJwRG9jdW1lbnREZXRhaWxzXE1hdGVyaWFsUG9zaXRpb25zVGFiLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/ErpDocumentDetails/MaterialPositionsTabHeader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJwRG9jdW1lbnREZXRhaWxzXE1hdGVyaWFsUG9zaXRpb25zVGFiSGVhZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/ErpDocumentList/HiddenTranslations.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJwRG9jdW1lbnRMaXN0XEhpZGRlblRyYW5zbGF0aW9ucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/ErpDocument/MaterialErpDocumentsCreditNote.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJwRG9jdW1lbnRcTWF0ZXJpYWxFcnBEb2N1bWVudHNDcmVkaXROb3RlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/ErpDocument/MaterialErpDocumentsDeliveryNote.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJwRG9jdW1lbnRcTWF0ZXJpYWxFcnBEb2N1bWVudHNEZWxpdmVyeU5vdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/ErpDocument/MaterialErpDocumentsInvoice.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJwRG9jdW1lbnRcTWF0ZXJpYWxFcnBEb2N1bWVudHNJbnZvaWNlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/ErpDocument/MaterialErpDocumentsMasterContract.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJwRG9jdW1lbnRcTWF0ZXJpYWxFcnBEb2N1bWVudHNNYXN0ZXJDb250cmFjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/ErpDocument/MaterialErpDocumentsQuote.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJwRG9jdW1lbnRcTWF0ZXJpYWxFcnBEb2N1bWVudHNRdW90ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/ErpDocument/MaterialErpDocumentsSalesOrder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJwRG9jdW1lbnRcTWF0ZXJpYWxFcnBEb2N1bWVudHNTYWxlc09yZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/InvoiceList/MaterialItemTemplate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52b2ljZUxpc3RcTWF0ZXJpYWxJdGVtVGVtcGxhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/Invoice/DetailsTemplate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52b2ljZVxEZXRhaWxzVGVtcGxhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/Invoice/MaterialDetailsTab.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52b2ljZVxNYXRlcmlhbERldGFpbHNUYWIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/Invoice/MaterialDetailsTabHeader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52b2ljZVxNYXRlcmlhbERldGFpbHNUYWJIZWFkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/MasterContractList/MaterialItemTemplate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFzdGVyQ29udHJhY3RMaXN0XE1hdGVyaWFsSXRlbVRlbXBsYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/MasterContract/DetailsTemplate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFzdGVyQ29udHJhY3RcRGV0YWlsc1RlbXBsYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/MasterContract/MaterialDetailsTab.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFzdGVyQ29udHJhY3RcTWF0ZXJpYWxEZXRhaWxzVGFiLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/MasterContract/MaterialDetailsTabHeader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFzdGVyQ29udHJhY3RcTWF0ZXJpYWxEZXRhaWxzVGFiSGVhZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/QuoteList/MaterialItemTemplate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVvdGVMaXN0XE1hdGVyaWFsSXRlbVRlbXBsYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/Quote/DetailsTemplate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVvdGVcRGV0YWlsc1RlbXBsYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/Quote/MaterialDetailsTab.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVvdGVcTWF0ZXJpYWxEZXRhaWxzVGFiLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/Quote/MaterialDetailsTabHeader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVvdGVcTWF0ZXJpYWxEZXRhaWxzVGFiSGVhZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/SalesOrderList/MaterialItemTemplate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNPcmRlckxpc3RcTWF0ZXJpYWxJdGVtVGVtcGxhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/SalesOrder/DetailsTemplate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNPcmRlclxEZXRhaWxzVGVtcGxhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/SalesOrder/MaterialDetailsTab.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNPcmRlclxNYXRlcmlhbERldGFpbHNUYWIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/SalesOrder/MaterialDetailsTabHeader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FsZXNPcmRlclxNYXRlcmlhbERldGFpbHNUYWJIZWFkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/Shared/ContactLink.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbnRhY3RMaW5rLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/Shared/MaterialCreditNote.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE1hdGVyaWFsQ3JlZGl0Tm90ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/Shared/MaterialCreditNotePosition.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE1hdGVyaWFsQ3JlZGl0Tm90ZVBvc2l0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/Shared/MaterialDeliveryNote.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE1hdGVyaWFsRGVsaXZlcnlOb3RlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/Shared/MaterialDeliveryNotePosition.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE1hdGVyaWFsRGVsaXZlcnlOb3RlUG9zaXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/Shared/MaterialDocumentsTab.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE1hdGVyaWFsRG9jdW1lbnRzVGFiLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/Shared/MaterialDocumentsTabHeader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE1hdGVyaWFsRG9jdW1lbnRzVGFiSGVhZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/Shared/MaterialErpDocumentPosition.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE1hdGVyaWFsRXJwRG9jdW1lbnRQb3NpdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/Shared/MaterialInvoice.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE1hdGVyaWFsSW52b2ljZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/Shared/MaterialInvoicePosition.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE1hdGVyaWFsSW52b2ljZVBvc2l0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/Shared/MaterialMasterContract.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE1hdGVyaWFsTWFzdGVyQ29udHJhY3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/Shared/MaterialMasterContractPosition.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE1hdGVyaWFsTWFzdGVyQ29udHJhY3RQb3NpdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/Shared/MaterialQuote.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE1hdGVyaWFsUXVvdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/Shared/MaterialQuotePosition.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE1hdGVyaWFsUXVvdGVQb3NpdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/Shared/MaterialSalesOrder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE1hdGVyaWFsU2FsZXNPcmRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ErpExtension/Views/Shared/MaterialSalesOrderPosition.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE1hdGVyaWFsU2FsZXNPcmRlclBvc2l0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 

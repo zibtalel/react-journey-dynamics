@@ -1,0 +1,41 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Modularization.Extensions
+@using Crm.Rest.Model
+
+<ul class="top-menu">
+	@Html.PluginRenderActions("ErpDocumentDetailsTopMenu")
+</ul>
+
+<div class="container">
+	<div class="card" id="profile-main">
+		<div class="pm-overview c-overflow" tabindex="4">
+			<div class="pmo-pic">
+				<div class="p-relative">
+					<div class="p-25 bgm-white">
+						<p class="f-500">
+							<span data-bind="translatedText: 'T_SalesOrderNo'"></span>
+							<span data-bind="text: ErpDocument().OrderNo"></span>
+						</p>
+						<hr/>
+						<!-- ko with: ErpDocument -->
+						@await Html.PartialAsync("ContactLink")<br />
+						<!-- /ko -->
+					</div>
+				</div>
+			</div>
+			@Html.PluginRenderActions("ErpDocumentSidebarExtensions")
+		</div>
+
+		<div class="pm-body clearfix">
+			<ul class="tab-nav tn-justified" role="tablist" tabindex="1">
+				@Html.PluginRenderActions("SalesOrderDetailsMaterialTabHeader")
+				@Html.PluginRenderActions("ErpDocumentDetailsMaterialTabHeader")
+			</ul>
+			<div class="tab-content">
+				@Html.PluginRenderActions("SalesOrderDetailsMaterialTab")
+				@Html.PluginRenderActions("ErpDocumentDetailsMaterialTab")
+			</div>
+		</div>
+	</div>
+
+</div>
