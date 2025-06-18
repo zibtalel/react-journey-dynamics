@@ -1,0 +1,41 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+@using Sms.Einsatzplanung.Connector.Controllers
+@using Crm.Extensions
+@using Sms.Einsatzplanung.Connector.ViewModels
+
+<form id="scheduler-settings-editor" method="POST" enctype="multipart/form-data" autocomplete="off" action="@(Url.Action(nameof(SchedulerController.SaveSettingFiles)))">
+	<div>
+		<pre class="file">app.ico</pre>
+		<input id="scheduler-icon" name="icon" type="file" accept="image/x-icon"/>
+		@(Html.RuleViolationMessageRegion("SchedulerIcon"))
+		<hr/>
+		<pre class="file">app.config transformation</pre>
+		<input id="scheduler-config" name="config" type="file" accept="application/zip,application/x-zip,application/x-zip-compressed,application/xml,.config"/>
+		@(Html.RuleViolationMessageRegion("SchedulerConfig"))
+		<div id="scheduler-config-type">
+			<label id="scheduler-config-type-label" for="scheduler-config-type-select">@(Html.Localize("Type"))</label>
+			<select id="scheduler-config-type-select" name="config-type" class="form-control">
+				<option value="" selected>@(Html.Localize("PleaseSelect"))</option>
+				<option>@(SchedulerConfigType.Debug.ToString())</option>
+				<option>@(SchedulerConfigType.Release.ToString())</option>
+			</select>
+		</div>
+		<br />
+		<h5>@(Html.Localize("expected ZIP structure"))</h5>
+		<h6>A</h6>
+		<pre class="file">
+Einsatzplanung.exe.config
+Einsatzplanung.Service.dll.config
+[etc.]</pre>
+		<br />
+		<h6>B</h6>
+		<pre class="file">
+app.[debug|release].config
+Einsatzplanung.Service\app.[debug|release].config
+[etc.]</pre>
+	</div>
+	<p class="submit">
+		<input type="submit" class="submit btn btn-primary" value="@(Html.Localize("Save"))" data-confirm="@(Html.Localize("SchedulerSettingsSaveConfirmation"))">
+	</p>
+</form>

@@ -1,0 +1,30 @@
+﻿@using Crm.Library.Globalization.Extensions
+@inherits Crm.Library.Modularization.CrmViewUserControl
+
+<div id="{{Id}}" class="lv-item media" data-bind="infiniteScrollItem: { index: $index(), array: $parent.items }">
+	<div class="media-body">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="lv-title">
+					<span data-bind="text: Filename"></span>
+				</div>
+				<div>
+					<strong>v<span data-bind="text: Version"></span></strong>
+					(<span data-bind="dateText: { value: LastWriteTimeUtc, pattern: { datetime: 'medium' } }"></span>)
+				</div>
+			</div>
+		</div>
+		<lv-actions>
+			<li>
+				<a href="#" data-bind="click: $parents[2].createPackage">
+					@(Html.Localize("SchedulerCreatePackage"))
+				</a>
+			</li>
+			<li>
+				<a href="#" data-bind="click: $parents[2].deleteBinary">
+					@(Html.Localize("SchedulerDeleteFile"))
+				</a>
+			</li>
+		</lv-actions>
+	</div>
+</div>

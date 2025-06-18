@@ -1,0 +1,18 @@
+﻿@using Crm.Library.Modularization.Extensions
+@inherits Crm.Library.Modularization.CrmViewPage<Crm.ViewModels.CrmModel>
+
+<div role="tabpanel" class="tab-pane animated fadeIn" id="tab-scheduler-management" data-bind="with: tabs()['tab-scheduler-management']">
+	<empty-state-box params="mood: 'excited', title: 'Scheduler', text: 'NoScheduler'" data-bind="visible: items().length === 0 && !isFiltered()">
+	</empty-state-box>
+	<div class="generic-list listview lv-bordered">
+		<div class="lv-body">
+			<div data-bind="foreach: items">
+				@await Html.PartialAsync("GenericListItemGroup")
+				@await Html.PartialAsync("../SchedulerList/MaterialItemTemplate")
+			</div>
+		</div>
+	</div>
+	<floating-action-button>
+		@Html.PluginRenderActions("SchedulerManagementTabPrimaryAction")
+	</floating-action-button>
+</div>

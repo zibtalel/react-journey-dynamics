@@ -1,0 +1,23 @@
+﻿<div data-bind="if: $root.article().ArticleTypeKey() === 'Service'">
+	<pmb-block params="icon: 'desktop-windows', caption: 'Scheduler', context: { article: article }, condition: window.AuthorizationManager.isAuthorizedForAction($root.contactType(), 'Edit')">
+		<pmbb-view>
+			<!-- ko with: article -->
+			<!-- ko with: ExtensionValues -->
+			<pmbb-view-entry params="caption: 'Export'">
+				<span data-bind="translatedText: 'Yes', visible: ExportToScheduler() === true"></span>
+				<span data-bind="translatedText: 'No', visible: ExportToScheduler() === false"></span>
+			</pmbb-view-entry>
+			<!-- /ko -->
+			<!-- /ko -->
+		</pmbb-view>
+		<pmbb-edit>
+			<!-- ko with: article -->
+			<!-- ko with: ExtensionValues -->
+			<pmbb-edit-entry params="caption: 'Export', validationElement: ExportToScheduler">
+				<input type="checkbox" class="form-control" data-bind="value: ExportToScheduler, checked: ExportToScheduler">
+			</pmbb-edit-entry>
+			<!-- /ko -->
+			<!-- /ko -->
+		</pmbb-edit>
+	</pmb-block>
+</div>

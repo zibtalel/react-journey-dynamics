@@ -1,0 +1,71 @@
+﻿@using Crm.Library.Globalization.Extensions
+@inherits Crm.Library.Modularization.CrmViewUserControl
+
+<div id="{{Id}}" class="lv-item media" data-bind="infiniteScrollItem: { index: $index(), array: $parent.items }">
+	<div class="media-body">
+		<div class="row">
+			<div class="col-md-2">
+				<!-- ko if: IconKey() != null -->
+				<img data-bind="attr:{ 'src': 'data:image/x-icon;base64,' +  $data.Icon().Icon() }"/>
+				<!-- /ko -->
+				<!-- ko if: IconKey() == null -->
+				<img src="@(Url.Content("~/Plugins/Sms.Einsatzplanung.Connector/Content/img/App.ico"))"/>
+				<!-- /ko -->
+			</div>
+			<div class="col-md-12">
+				<div>
+					<span>@(Html.Localize("Scheduler"))</span>
+					<strong>v<span data-bind="text: VersionString"></span></strong>
+					(v<span data-bind="text: ManifestVersion"></span>)
+					(<span data-bind="dateText: { value: ModifyDate, pattern: { datetime: 'medium' } }"></span>)
+				</div>
+				<div>
+					<span>@(Html.Localize("Files")):</span>
+					<span>
+						<a href="@(Url.Content("~/Sms.Einsatzplanung.Connector/Scheduler/DownloadApplicationManifest?id=")){{Id}}">
+							@(Html.Localize("SchedulerManifest"))
+						</a>
+					</span>
+					<!-- ko if: ConfigKey -->
+					<span>&nbsp;|&nbsp;</span>
+					<span>
+						<a href="@(Url.Content("~/Sms.Einsatzplanung.Connector/Scheduler/DownloadConfig?id=")){{ConfigKey}}">
+							app.config
+						</a>
+					</span>
+					<!-- /ko -->
+				</div>
+			</div>
+			<!-- ko if: Warnings -->
+			<div class="col-md-12">
+				<div class="alert alert-danger m-15" data-bind="translatedText: Warnings"></div>
+			</div>
+			<!-- /ko -->
+		</div>
+		<!-- ko if: IsReleased -->
+		<div>
+			<ul class="lv-attrs">
+				<li class="bgm-green c-white">
+					<strong>@(Html.Localize("Released"))</strong>
+				</li>
+			</ul>
+		</div>
+		<!-- /ko -->
+		<lv-actions>
+			<!-- ko ifnot: IsReleased -->
+			<!-- ko if: $parents[2].isReleasable($data.ClickOnceVersion())-->
+			<li>
+				<a href="#" data-bind="click: $parents[2].releasePackage">
+					@(Html.Localize("Release"))
+				</a>
+			</li>
+			<!-- /ko -->
+			<li>
+				<a href="#" data-bind="click: $parents[2].deletePackage">
+					@(Html.Localize("Delete"))
+				</a>
+			</li>
+			<!-- /ko-->
+		</lv-actions>
+	</div>
+</div>

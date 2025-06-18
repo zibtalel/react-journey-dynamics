@@ -1,0 +1,29 @@
+﻿<pmb-block id="home-address" params="icon: 'pin', caption: 'Address', context: { homeAddress: homeAddress }, onSave: $root.saveHomeAddress.bind($root)">
+	<pmbb-view>
+		<pmbb-view-entry params="caption: 'Address'">
+			<!-- ko ifnot: $root.isAddressEmpty -->
+			<!-- ko with: $root.homeAddress -->
+			<address-block params="address: $data, lookups: $root.lookups"></address-block>
+			<!-- /ko -->
+			<!-- /ko -->
+			<span class="c-gray" data-bind="translatedText: 'Unspecified', if: $root.isAddressEmpty"></span>
+		</pmbb-view-entry>
+	</pmbb-view>
+	<pmbb-edit>
+		<!-- ko with: homeAddress -->
+		<pmbb-edit-entry params="caption: 'Street', validationElement: Street">
+			<input type="text" class="form-control" data-bind="value: Street" name="Street">
+		</pmbb-edit-entry>
+		<pmbb-edit-entry params="caption: 'ZipCode', validationElement: ZipCode">
+			<input type="text" class="form-control" data-bind="value: ZipCode" name="ZipCode">
+		</pmbb-edit-entry>
+		<pmbb-edit-entry params="caption: 'City', validationElement: City">
+			<input type="text" class="form-control" data-bind="value: City" name="City">
+		</pmbb-edit-entry>
+		<pmbb-edit-entry id="Country" params="caption: 'Country', validationElement: CountryKey">
+			<select class="form-control" data-bind="select2autocompleter: { data: CountryKey, autocompleteOptions: Helper.Lookup.getAutocompleteOptions('Main_Country'), placeholder: $parent.placeholder }">
+			</select>
+		</pmbb-edit-entry>
+		<!-- /ko -->
+	</pmbb-edit>
+</pmb-block>

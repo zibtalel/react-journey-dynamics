@@ -1,0 +1,87 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Sms.Einsatzplanung.Connector
+build_property.RootNamespace = Sms.Einsatzplanung.Connector
+build_property.ProjectDir = C:\Source\crm6\src\Crm.Web\Plugins\Sms.Einsatzplanung.Connector\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Source\crm6\src\Crm.Web\Plugins\Sms.Einsatzplanung.Connector
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Sms.Einsatzplanung.Connector/Views/Article/ArticleMaterialDetailsTabSchedulerExtensions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWNsZVxBcnRpY2xlTWF0ZXJpYWxEZXRhaWxzVGFiU2NoZWR1bGVyRXh0ZW5zaW9ucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Sms.Einsatzplanung.Connector/Views/SchedulerBinaryList/MaterialItemTemplate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NoZWR1bGVyQmluYXJ5TGlzdFxNYXRlcmlhbEl0ZW1UZW1wbGF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Sms.Einsatzplanung.Connector/Views/SchedulerList/MaterialItemTemplate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NoZWR1bGVyTGlzdFxNYXRlcmlhbEl0ZW1UZW1wbGF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Sms.Einsatzplanung.Connector/Views/SchedulerMaterial/AddBinaryEditor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NoZWR1bGVyTWF0ZXJpYWxcQWRkQmluYXJ5RWRpdG9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Sms.Einsatzplanung.Connector/Views/SchedulerMaterial/Admin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NoZWR1bGVyTWF0ZXJpYWxcQWRtaW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Sms.Einsatzplanung.Connector/Views/SchedulerMaterial/AvailableBinariesTab.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NoZWR1bGVyTWF0ZXJpYWxcQXZhaWxhYmxlQmluYXJpZXNUYWIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Sms.Einsatzplanung.Connector/Views/SchedulerMaterial/AvailableBinariesTabHeader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NoZWR1bGVyTWF0ZXJpYWxcQXZhaWxhYmxlQmluYXJpZXNUYWJIZWFkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Sms.Einsatzplanung.Connector/Views/SchedulerMaterial/MaterialPrimaryActionAddBinary.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NoZWR1bGVyTWF0ZXJpYWxcTWF0ZXJpYWxQcmltYXJ5QWN0aW9uQWRkQmluYXJ5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Sms.Einsatzplanung.Connector/Views/SchedulerMaterial/MaterialPrimaryActionAddConfig.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NoZWR1bGVyTWF0ZXJpYWxcTWF0ZXJpYWxQcmltYXJ5QWN0aW9uQWRkQ29uZmlnLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Sms.Einsatzplanung.Connector/Views/SchedulerMaterial/SchedulerManagementTab.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NoZWR1bGVyTWF0ZXJpYWxcU2NoZWR1bGVyTWFuYWdlbWVudFRhYi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Sms.Einsatzplanung.Connector/Views/SchedulerMaterial/SchedulerManagementTabHeader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NoZWR1bGVyTWF0ZXJpYWxcU2NoZWR1bGVyTWFuYWdlbWVudFRhYkhlYWRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Sms.Einsatzplanung.Connector/Views/SchedulerMaterial/SettingsEditor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NoZWR1bGVyTWF0ZXJpYWxcU2V0dGluZ3NFZGl0b3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Sms.Einsatzplanung.Connector/Views/Scheduler/Schedulers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NoZWR1bGVyXFNjaGVkdWxlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Sms.Einsatzplanung.Connector/Views/Scheduler/SettingsEditor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NoZWR1bGVyXFNldHRpbmdzRWRpdG9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Sms.Einsatzplanung.Connector/Views/User/HomeAddress.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxIb21lQWRkcmVzcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Sms.Einsatzplanung.Connector/Views/User/PublicHolidayRegionEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxQdWJsaWNIb2xpZGF5UmVnaW9uRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Sms.Einsatzplanung.Connector/Views/User/PublicHolidayRegionView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxQdWJsaWNIb2xpZGF5UmVnaW9uVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

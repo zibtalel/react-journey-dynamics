@@ -1,0 +1,9 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+
+<div class="row">
+	<div class="col-md-6">
+		<form-element id="MainResource" params="value: $root.MainResourceId, caption: 'MainResource', type: 'select'">
+			<select class="form-control" data-bind="select2autocompleter: $root.mainResourceSelect2autocompleter()"></select>
+		</form-element>
+	</div>
+</div>

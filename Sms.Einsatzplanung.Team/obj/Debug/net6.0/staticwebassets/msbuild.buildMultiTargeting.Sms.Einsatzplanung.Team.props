@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Sms.Einsatzplanung.Team.props" />
+</Project>

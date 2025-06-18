@@ -1,0 +1,18 @@
+﻿@using Crm.Library.Modularization.Extensions
+@inherits Crm.Library.Modularization.CrmViewPage<Crm.ViewModels.CrmModel>
+
+<div role="tabpanel" class="tab-pane animated fadeIn" id="tab-available-binaries" data-bind="with: tabs()['tab-available-binaries']">
+	<empty-state-box params="mood: 'excited', title: 'SchedulerAvailableBinaries', text: 'NoSchedulerBinaries'" data-bind="visible: items().length === 0 && !isFiltered()">
+	</empty-state-box>
+	<div class="generic-list listview lv-bordered">
+		<div class="lv-body">
+			<div data-bind="foreach: items">
+				@await Html.PartialAsync("GenericListItemGroup")
+				@await Html.PartialAsync("../SchedulerBinaryList/MaterialItemTemplate")
+			</div>
+		</div>
+	</div>
+	<floating-action-button>
+		@Html.PluginRenderActions("AvailableBinariesTabPrimaryAction")
+	</floating-action-button>
+</div>

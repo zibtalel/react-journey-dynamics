@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ConfigAlreadyInUse" xml:space="preserve">
+    <value>Diese Config wird bereits in einem Installationspaket verwendet.</value>
+  </data>
+  <data name="IconAlreadyInUse" xml:space="preserve">
+    <value>Das Icon wird bereits in einem Installationspaket verwendet.</value>
+  </data>
+  <data name="NoScheduler" xml:space="preserve">
+    <value>Keine Plantafel vorhanden</value>
+  </data>
+  <data name="NoSchedulerBinaries" xml:space="preserve">
+    <value>Keine Plantafel Programmdateien vorhanden</value>
+  </data>
+  <data name="RuleViolation.SchedulerBinaryVersion" xml:space="preserve">
+    <value>Einsatzplanung.exe nicht gefunden oder Versionsnummer kann nicht gelesen werden</value>
+  </data>
+  <data name="RuleViolation.SchedulerBinaryZip" xml:space="preserve">
+    <value>Datei ist kein gültiges ZIP-Archiv</value>
+  </data>
+  <data name="RuleViolation.SchedulerConfig" xml:space="preserve">
+    <value>Datei ist keine gültige XML/ZIP, bitte Log überprüfen</value>
+  </data>
+  <data name="RuleViolation.SchedulerIcon" xml:space="preserve">
+    <value>Datei ist kein gültiges .ico Icon</value>
+  </data>
+  <data name="Scheduler" xml:space="preserve">
+    <value>Plantafel</value>
+  </data>
+  <data name="SchedulerAddBinaries" xml:space="preserve">
+    <value>Plantafel Programmdateien hinzufügen</value>
+  </data>
+  <data name="SchedulerAdministration" xml:space="preserve">
+    <value>Plantafel Administration</value>
+  </data>
+  <data name="SchedulerAvailableBinaries" xml:space="preserve">
+    <value>Verfügbare Programmdateien</value>
+  </data>
+  <data name="SchedulerBinaryDeleteConfirmation" xml:space="preserve">
+    <value>Datei {0} löschen?</value>
+  </data>
+  <data name="SchedulerConfigNoIntegratedSecurity" xml:space="preserve">
+    <value>Die Config scheint ein Passwort zu enthalten. Dies stellt ein Sicherheitsrisiko dar und wird nicht empfohlen. Bitte wenn möglich auf "Integrated Security" (Authentifizierung per Active Directory) umstellen.</value>
+  </data>
+  <data name="SchedulerConfiguration" xml:space="preserve">
+    <value>Konfiguration</value>
+  </data>
+  <data name="SchedulerCreatePackage" xml:space="preserve">
+    <value>Installationspaket erstellen</value>
+  </data>
+  <data name="SchedulerCreatePackageSameVersionConfirmation" xml:space="preserve">
+    <value>Es gibt bereits ein veröffentlichtes Installationspaket basierend auf Version {0}. Es wird automatisch eine höhere Versionsnummer erzeugt. Fortfahren?</value>
+  </data>
+  <data name="SchedulerCreatePackageLowerVersionConfirmation" xml:space="preserve">
+    <value>Es gibt bereits ein veröffentlichtes Installationspaket mit einer höheren Version als Version {0}. Es wird automatisch eine höhere Versionsnummer erzeugt. Fortfahren?</value>
+  </data>
+  <data name="SchedulerDeleteConfirmation" xml:space="preserve">
+    <value>Version {0} löschen?</value>
+  </data>
+  <data name="SchedulerDeleteFile" xml:space="preserve">
+    <value>Datei löschen</value>
+  </data>
+  <data name="SchedulerFlavor" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="SchedulerLoginDescription" xml:space="preserve">
+    <value>Alle Informationen auf einen Klick</value>
+  </data>
+  <data name="SchedulerLoginTitle" xml:space="preserve">
+    <value>Plantafel</value>
+  </data>
+  <data name="SchedulerManifest" xml:space="preserve">
+    <value>Manifest (nur zum Testen verwenden!)</value>
+  </data>
+  <data name="SchedulerReleaseConfirmation" xml:space="preserve">
+    <value>Version {0} freigeben?</value>
+  </data>
+  <data name="SchedulerReleaseWarning" xml:space="preserve">
+    <value>Achtung, diese Programmversion ist niedriger als die momentan Freigegebene!</value>
+  </data>
+  <data name="SchedulerSettings" xml:space="preserve">
+    <value>Einstellungen</value>
+  </data>
+  <data name="SchedulerSettingsSaveConfirmation" xml:space="preserve">
+    <value>Vorhandenes Icon / Config wird ersetzt. Fortfahren?</value>
+  </data>
+  <data name="RuleViolation.PasswordRequired" xml:space="preserve">
+    <value>Passwort benötigt</value>
+  </data>
+  <data name="expected ZIP structure" xml:space="preserve">
+    <value>erwartete ZIP Struktur</value>
+  </data>
+  <data name="SettingsOptionA" xml:space="preserve">
+    <value>Option A</value>
+  </data>
+  <data name="SettingsOptionB" xml:space="preserve">
+    <value>Option B</value>
+  </data>
+  <data name="ResetAddress" xml:space="preserve">
+    <value>Adresse zurücksetzen</value>
+  </data>
+  <data name="ResetAddressConfirmation" xml:space="preserve">
+    <value>Wollen Sie diese Adresse wirklich zurücksetzen?</value>
+  </data>
+  <data name="PublicHolidayRegionKey" xml:space="preserve">
+    <value>Feiertagsregion (z.B. DE-BY oder CH-BE)</value>
+  </data>
+  <data name="AddConfig" xml:space="preserve">
+    <value>Konfiguration hinzufügen</value>
+  </data>
+  <data name="RuleViolation.excessIcons" xml:space="preserve">
+    <value>Datei enthält mehr als ein Icon</value>
+  </data>
+  <data name="SchedulerManagement" xml:space="preserve">
+    <value>Plantafelverwaltung</value>
+  </data>
+  <data name="SmsEinsatzplanungConnector_AbsenceDispatch" xml:space="preserve">
+      <value>Abwesenheiten</value>
+  </data>
+  <data name="AbsenceDispatchesTooltip" xml:space="preserve">
+      <value>Abwesenheiten anzeigen, die in der Plantafel erfasst wurden</value>
+  </data>
+  <data name="RuleViolation.SchedulerBinaryFilePath" xml:space="preserve">
+    <value>Dateiname enthält ein unzulässiges Zeichen</value>
+  </data>
+  <data name="RuleViolation.SchedulerBinaryFileName" xml:space="preserve">
+    <value>Unzulässiger Dateiname</value>
+  </data>
+</root>

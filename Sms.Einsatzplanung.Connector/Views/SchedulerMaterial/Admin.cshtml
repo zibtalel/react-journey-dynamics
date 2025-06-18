@@ -1,0 +1,58 @@
+﻿@using Crm.Library.Globalization.Extensions
+@using Crm.Library.Modularization.Extensions
+@inherits Crm.Library.Modularization.CrmViewPage<Crm.ViewModels.CrmModel>
+
+<div class="container">
+	<div class="card" id="profile-main">
+		<div class="pm-overview c-overflow" tabindex="4">
+			<div class="pmo-pic">
+				<div class="p-relative">
+					<div class="p-25 bgm-white">
+						<p class="f-500">@(Html.Localize("SchedulerSettings"))</p>
+						<hr/>
+						<p>
+							@(Html.Localize("Name")):
+							<span data-bind="text: Sms.Einsatzplanung.Connector.Settings.Setup.Name"></span>
+						</p>
+						<!-- ko if: Sms.Einsatzplanung.Connector.Settings.Setup.Flavor -->
+						<p>
+							@(Html.Localize("SchedulerFlavor")):
+							<span data-bind="text: Sms.Einsatzplanung.Connector.Settings.Setup.Flavor"></span>
+						</p>
+						<!-- /ko -->
+						<!-- ko if: icon -->
+						<p>
+							@(Html.Localize("Icon")):
+							<img data-bind="attr:{ 'src': 'data:image/x-icon;base64,' +  icon().Icon() }" style="width: auto;"/>
+							<br/>
+							<button class="btn btn-xs btn-danger waves-effect" data-bind="click: $root.deleteIcon">
+								@(Html.Localize("Delete"))
+							</button>
+						</p>
+						<!-- /ko -->
+						<!-- ko if: config -->
+						<p>
+							@(Html.Localize("SchedulerConfiguration")):
+							<a href="@(Url.Content("~/Sms.Einsatzplanung.Connector/Scheduler/DownloadConfig?id=")){{config().Id()}}" data-bind="text: $root.configFileName"></a>
+							<br/>
+							<button class="btn btn-xs btn-danger waves-effect" data-bind="click: $root.deleteConfig">
+								@(Html.Localize("Delete"))
+							</button>
+						</p>
+						<!-- /ko -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="pm-body clearfix">
+			<div class="card m-b-0">
+				<ul class="tab-nav tn-justified" role="tablist" tabindex="1">
+					@Html.PluginRenderActions("SchedulerManagementTabHeader")
+				</ul>
+				<div class="tab-content">
+					@Html.PluginRenderActions("SchedulerManagementTab")
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

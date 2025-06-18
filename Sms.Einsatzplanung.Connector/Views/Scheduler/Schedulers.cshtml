@@ -1,0 +1,79 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl<System.Linq.IOrderedEnumerable<Sms.Einsatzplanung.Connector.Model.Scheduler>>
+@using Crm.Library.Globalization.Extensions
+@using Sms.Einsatzplanung.Connector.Controllers
+@using Sms.Einsatzplanung.Connector
+
+<div id="scheduler-content">
+	@if (Model.Any() == false) { 
+		<h3 id="scheduler-empty">@(Html.Localize("NoScheduler"))</h3>
+	 } else { 
+		var releasedScheduler = Model.SingleOrDefault(x => x.IsReleased);
+		foreach (var scheduler in Model) { 
+			var isLowerVersion = scheduler.Version < releasedScheduler?.Version;
+			var releasable = releasedScheduler == null || scheduler.ClickOnceVersion > releasedScheduler.ClickOnceVersion;
+			var className = scheduler.IsReleased ? "released" : (!releasable ? "not-releasable" : "");
+			<div class="scheduler @(className)">
+				<div class="left">
+					@if (scheduler.IconKey != null) { 
+						<img class="scheduler-icon" src="data:image/x-icon;base64,@(Convert.ToBase64String(scheduler.Icon.Icon))" />
+					 } else { 
+						<img class="scheduler-icon" src="@(Url.Content($"~/Plugins/{EinsatzplanungConnectorPlugin.PluginName}/Content/img/App.ico"))" />
+					 } 
+				</div>
+				<div class="left">
+					<div>
+						<span>@(Html.Localize("Scheduler"))</span>
+						<span>
+							v<strong>@(scheduler.VersionString)</strong>&nbsp;(@(scheduler.ManifestVersion))
+						</span>
+						<span>(@(scheduler.ModifyDate.ToLocalTime()))</span>
+					</div>
+					@if (scheduler.Warnings != null) { 
+						<div>
+							@foreach (var warning in scheduler.Warnings.Split(';').Select(x => Html.Localize(x))) { 
+								<p class="warning">@(warning)</p>
+							 } 
+						</div>
+					 } 
+					<div>
+						<span>@(Html.Localize("Files")):</span>
+						<span>
+							<a href="@(Url.Action(nameof(SchedulerController.DownloadApplicationManifest), new { id = scheduler.Id }))">
+								@(Html.Localize("SchedulerManifest"))
+							</a>
+						</span>
+						@if (scheduler.ConfigKey != null) { 
+							<span>&nbsp;|&nbsp;</span>
+							<span><a href="@(Url.Action(nameof(SchedulerController.DownloadConfig), new { id = scheduler.ConfigKey }))">
+								<pre class="file">app.config</pre>
+							</a></span>
+						 } 
+					</div>
+				</div>
+				<div class="right scheduler-actions">
+					@if (scheduler.IsReleased == false) { 
+						@if (releasable) { 
+							<div>
+								@{ var releaseWarning = isLowerVersion ? Environment.NewLine + Environment.NewLine + Html.Localize("SchedulerReleaseWarning") : string.Empty; }
+								@{ var releaseConfirmation = Html.Localize("SchedulerReleaseConfirmation", $"{scheduler.Version} ({scheduler.ManifestVersion})") + releaseWarning; }
+								<a class="scheduler-release right" href="@(Url.Action(nameof(SchedulerController.ReleasePackage), new { id = scheduler.Id }))" data-confirm="@(releaseConfirmation)">
+									@(Html.Localize("Release"))
+								</a>
+							</div>
+						 } 
+						<div>
+							<a class="scheduler-delete right" href="@(Url.Action(nameof(SchedulerController.DeletePackage), new { id = scheduler.Id }))" data-confirm="@(Html.Localize("SchedulerDeleteConfirmation", $"{scheduler.Version} ({scheduler.ManifestVersion})"))">
+								@(Html.Localize("Delete"))
+							</a>
+						</div>
+					 } else { 
+						<div>
+							<strong>@(Html.Localize("Released"))</strong>
+						</div>
+					 } 
+				</div>
+			</div>
+			<hr class="clear">
+		 } 
+	 } 
+</div>

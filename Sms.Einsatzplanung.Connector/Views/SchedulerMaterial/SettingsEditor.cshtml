@@ -1,0 +1,37 @@
+﻿@using Crm.Library.Globalization.Extensions
+@inherits Crm.Library.Modularization.CrmViewUserControl
+
+<div class="modal-header card-header ch-alt">
+	<button type="button" class="close" data-dismiss="modal" aria-label="@(Html.Localize("Close"))">
+		<span aria-hidden="true">&times;</span>
+	</button>
+	<h4 class="modal-title">@(Html.Localize("AddConfig"))</h4>
+</div>
+<div class="modal-body card-body card-padding">
+	<form role="form" action="#">
+		<div data-bind="validationElement: icon">
+			<form-element params="value: icon, name: 'icon', caption: 'app.ico', type: 'fileResource', accept: 'image/x-icon'"></form-element>
+			<small class="help-block" data-bind="validationMessage: icon"></small>
+		</div>
+		<div data-bind="validationElement: config">
+			<form-element params="value: config, name: 'config', caption: 'app.config transformation', type: 'fileResource', accept: 'application/zip,application/x-zip,application/x-zip-compressed,application/xml,.config'"></form-element>
+			<small class="help-block" data-bind="validationMessage: config"></small>
+		</div>
+		<form-element params="value: type, caption: 'Type', type: 'select', disable: config().Content() === null">
+			<select class="form-control" data-bind="options: $root.types, optionsText: 'Text', optionsValue: 'Value', value: value, disable: disable"></select>
+		</form-element>
+		<h5>@(Html.Localize("expected ZIP structure"))</h5>
+		<h6>@(Html.Localize("SettingsOptionA"))</h6>
+		<pre class="file">Einsatzplanung.exe.config
+Einsatzplanung.Service.dll.config
+[etc.]</pre>
+		<h6>@(Html.Localize("SettingsOptionB"))</h6>
+		<pre class="file">app.[debug|release].config
+Einsatzplanung.Service\app.[debug|release].config
+[etc.]</pre>
+	</form>
+</div>
+<div class="modal-footer card-header ch-alt p-15">
+	<button type="button" class="btn btn-lg btn-default f-13 waves-effect" data-dismiss="modal">@(Html.Localize("Cancel"))</button>
+	<button type="button" class="btn btn-lg btn-primary f-13 waves-effect" data-bind="click: save, disable: loading">@(Html.Localize("Save"))</button>
+</div>
