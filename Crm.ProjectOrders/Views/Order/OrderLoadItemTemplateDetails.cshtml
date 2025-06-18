@@ -1,0 +1,8 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+
+<div class="small" data-bind="with: Project">
+	@(Html.Localize("Project"))
+	<a class="text-muted" data-bind="attr: { href: '#/Crm.Project/Project/DetailsTemplate/' + Id() }, text: Name"></a>
+</div>
+

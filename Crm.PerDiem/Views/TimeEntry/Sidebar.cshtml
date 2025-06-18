@@ -1,0 +1,92 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+
+<div id="side-container" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+	<div class="card">
+		<div class="card-body ch-alt">
+			<div class="list-group">
+				<div id="l-sidebar-content">
+					<!-- ko with: perDiemReportListViewModel -->
+					<div class="card-header ch-alt">
+						<div id="bookmark" class="filter-element form-group">
+							<div class="fg-line select">
+								<p class="m-b-5">
+									@(Html.Localize("Status"))
+								</p>
+								<select class="form-control" data-bind="select2autocompleter: { data: bookmarks, optionsText: 'Name', optionsValue: 'Key', allowClear: false }, value: bookmarkKey">
+								</select>
+							</div>
+						</div>
+						<div id="userFilter" class="filter-element form-group">
+							<div class="fg-line select">
+								<p class="m-b-5">
+									@(Html.Localize("ResponsibleUser"))
+								</p>
+								<select class="form-control" data-bind="select2autocompleter: { data: selectedUser, autocompleteOptions: { orderBy: ['LastName'], table: 'Main_User', mapDisplayObject: Helper.User.mapForSelect2Display, customFilter: Helper.User.filterUserQuery, onSelect: $root.timeEntryIndexViewModelRefresh, placeholder: Helper.String.getTranslatedString('All') } }, disable: !window.AuthorizationManager.isAuthorizedForAction('PerDiemReport', 'SeeAllUsersPerDiemReports')">
+								</select>
+							</div>
+						</div>
+						<div id="affectedDateFilter" class="filter-element form-group">
+							<form-element params="value: date, caption: 'AffectedDate', type: 'datePicker'"></form-element>
+						</div>
+					</div>
+					<div class="listview lv-bordered">
+						<div class="lv-body row">
+							<div class="col-xs-12">
+								<div data-bind="foreach: items ">
+									<div data-bind="attr: { data-report-id: Id() }" class="lv-item media">
+										<div class="media-body">
+											<div class="lv-title">
+												@(Html.Localize("Status")): <span data-bind="lookupValue: StatusKey, lookups: $root.lookups.perDiemReportStatuses"></span>
+											</div>
+											<ul class="lv-attrs">
+												<li>
+													<i class="zmdi zmdi-account-o"></i>
+													<span data-bind="text: Helper.User.getDisplayName(User)"></span>
+												</li>
+												<li>
+													<i class="zmdi zmdi-calendar"></i>
+													<span>
+														<a href="#" data-bind="click: $root.goTo.bind($root, From, CreateUser), dateText: From">
+														</a>
+													</span>
+													<span>-</span>
+													<span>
+														<a href="#" data-bind="click: $root.goTo.bind($root, To, CreateUser), dateText: To">
+														</a>
+													</span>
+												</li>
+											</ul>
+											<lv-actions>
+												<li>
+													<a href="#" data-toggle="modal" data-target="#modal" data-route="Crm.PerDiem/TimeEntry/Close/{{Id}}">
+														@(Html.Localize("Details"))
+													</a>
+												</li>
+												<li>
+													<a href="#" data-toggle="modal" data-target="#lgModal" data-route="Crm.PerDiem/PerDiemReport/Details/{{Id}}">
+														@(Html.Localize("Preview"))
+													</a>
+												</li>
+												<!-- ko if: !window.Helper.Offline || window.Helper.Offline.transientItemInformation().map((t) => t.Id).indexOf(Id()) === -1 -->
+												<li>
+													<a href=@Url.Content("~/Crm.PerDiem/PerDiemReport/ReportPdf?reportId={{Id}}") >
+														@(Html.Localize("DownloadReport"))
+													</a>
+												</li>
+												<!-- /ko -->
+											</lv-actions>
+										</div>
+									</div>
+								</div>
+								 @await Html.PartialAsync("MaterialPaging") 
+							</div>
+						</div>
+					</div>
+					<!-- /ko -->
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,12 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+
+<!-- ko requiredPermission: { name: 'Create', group: 'TimeEntry' } -->
+<!-- ko if: $root.canAddTimeEntry -->
+<li>
+	<a id="add-timeentry" href="#" data-mfb-label="@(Html.Localize("AddTimeEntry"))" data-route="Crm.PerDiem/TimeEntry/EditTemplate/?selectedDate={{$root.selectedDate().toJSON()}}&username={{$root.username}}" data-toggle="modal" data-target="#modal">
+		<i class="zmdi zmdi-time-interval"></i>
+	</a>
+</li>
+<!-- /ko -->
+<!-- /ko -->

@@ -1,0 +1,44 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+@using Crm.Library.Modularization.Extensions
+
+<div class="row c-black">
+	<div class="generic-list listview lv-bordered">
+		<div class="lv-body">
+			<div class="lv-item media header-container">
+				<div class="col-xs-8 col-sm-4 p-l-0">
+					<i class="zmdi zmdi-card-travel"></i>
+					@(Html.Localize("Expenses"))
+				</div>
+				<div class="col-sm-5 hidden-xs">
+					@(Html.Localize("Description"))
+				</div>
+				<div class="col-xs-3 col-sm-2 p-r-0 text-right f-700">
+					<!-- ko foreach: $parent.expenseSummaries -->
+					<!-- ko if: $data.Values[$parentContext.$index()] -->
+					<div>
+						<span data-bind="text: $data.Format($data.Values[$parentContext.$index()])"></span>&nbsp;<span data-bind="lookupValue: $data.Name, lookups: $root.lookups.currencies"></span>
+					</div>
+					<!-- /ko -->
+					<!-- /ko -->
+				</div>
+			</div>
+			<!-- ko if: $parent.getExpensesForDate($data).length === 0 -->
+			<div class="lv-item media">
+				@(Html.Localize("ThereAreNoExpenses"))
+			</div>
+			<!-- /ko -->
+			<!-- ko foreach: $parent.getExpensesForDate($data) -->
+			<div class="lv-item media expense">
+				<div class="col-xs-3 col-sm-2 col-sm-push-9 col-xs-push-8 text-right p-r-0">
+					<span data-bind="money: Amount"></span>
+					<span data-bind="lookupValue: CurrencyKey, lookups: $root.lookups.currencies"></span>
+				</div>
+				@Html.PluginRenderActions("ExpenseTemplateTableColumns")
+				<lv-actions class="pull-right">@Html.PluginRenderActions("ExpenseTemplateActions")</lv-actions>
+			</div>
+			<!-- /ko -->
+		</div>
+	</div>
+</div>
+<hr />

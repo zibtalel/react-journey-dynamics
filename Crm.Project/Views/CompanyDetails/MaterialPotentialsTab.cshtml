@@ -1,0 +1,25 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+@using Crm.Library.Modularization.Extensions
+
+<div role="tabpanel" class="tab-pane animated fadeIn" id="tab-potentials" data-bind="with: tabs()['tab-potentials']">
+	<empty-state-box params="mood: 'sad', title: 'PotentialsEmptyStateTitle', text: 'NoPotentialsForContact'" data-bind="visible: items().length === 0">
+	</empty-state-box>
+	<ul class="top-menu">
+		@Html.PluginRenderActions("PotentialTabTopMenu")
+		<li data-bind="visible: true, tooltip: true" data-placement="bottom" title="@Html.Localize("Filter")">
+			<a id="open-generic-list-filter" data-trigger="#right-nav" href="#" data-route="Crm.Project/PotentialList/FilterTemplate">
+				<i class="tm-icon zmdi zmdi-search-in-page"></i>
+			</a>
+		</li>
+	</ul>
+	@Html.PluginRenderActions("MaterialGenericListResourceExtensions")
+	<div class="generic-list listview lv-bordered">
+		<div class="lv-body" data-bind="foreach: items">
+			 @await Html.PartialAsync("MaterialPotential") 
+		</div>
+	</div>
+	 @await Html.PartialAsync("MaterialPaging") 
+	<floating-action-button params="href: '#/Crm.Project/Potential/CreateTemplate?companyId=' + $root.company().Id(), title: 'CreatePotential'"></floating-action-button>
+</div>
+

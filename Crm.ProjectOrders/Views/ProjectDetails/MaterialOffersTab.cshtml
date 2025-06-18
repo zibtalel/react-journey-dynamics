@@ -1,0 +1,18 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl<CrmModel>
+@using Crm.Order
+@using Crm.ViewModels
+@using Crm.Library.Model.Authorization.PermissionIntegration
+
+<div role="tabpanel" class="tab-pane" id="tab-offers" data-bind="with: tabs()['tab-offers']">
+	<empty-state-box params="mood: 'sad', title: 'OffersEmptyStateTitle', text: 'NoOffersAvailable'" data-bind="visible: items().length === 0">
+	</empty-state-box>
+	<div class="listview lv-bordered">
+		<div class="lv-body" data-bind="foreach: items">
+			 @await Html.PartialAsync("MaterialOffer") 
+		</div>
+	</div>
+	 @await Html.PartialAsync("MaterialPaging") 
+	@if (Model.AuthorizationManager.IsAuthorizedForAction(Model.User, OrderPlugin.PermissionGroup.Offer, PermissionName.Create)) { 
+		<floating-action-button params="href: '#/Crm.Order/Offer/CreateTemplate?companyId=' + $parent.project().ParentId() + '&projectId=' + $parent.project().Id(), title: 'CreateOffer'"></floating-action-button>
+	 } 
+</div>

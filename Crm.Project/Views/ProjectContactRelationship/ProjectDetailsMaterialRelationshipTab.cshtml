@@ -1,0 +1,47 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl<CrmModel>
+@using Crm.ViewModels
+@using Crm.Library.Modularization.Extensions
+@using Crm.Library.Globalization.Extensions
+
+<div role="tabpanel" class="tab-pane" id="tab-relationships" data-bind="with: tabs()['tab-relationships']">
+	<!-- ko if: isEmptyStateVisible -->
+	<empty-state-box params="mood: 'sad', title: 'RelationshipsEmptyStateTitle', text: 'NoRelationshipInfo'"></empty-state-box>
+	<!-- /ko -->
+	<!-- ko ifnot: isEmptyStateVisible -->
+		<div id="generic-list-project-contact-relationships" class="card generic-list">
+			<!-- ko if: projectContactRelationships().length -->
+			<div class="card-header ch-alt">
+				<h2>@(Html.Localize("ProjectContactRelationships"))</h2>
+			</div>
+			<!-- /ko -->
+			<!-- ko with: projectContactRelationships.index.RelationshipTypeKey -->
+			@Html.PluginRenderActions("MaterialGenericListResourceExtensions")
+			<div class="generic-list listview lv-bordered">
+				<div class="lv-body" data-bind="foreach: { data: Object.keys($data).sort(), as: 'typeKey' }">
+					<div class="lv-header" data-bind="lookupValue: typeKey, lookups: $root.tabs()['tab-relationships']().lookups.projectContactsRelationshipTypes"></div>
+					<!-- ko foreach: $parent[typeKey] -->
+						<!-- ko with: { company: ChildCompany, lookups: $root.tabs()['tab-relationships']().lookups } -->
+							<!-- ko with: company -->
+								 @await Html.PartialAsync("../CompanyList/MaterialItemTemplate") 
+							<!-- /ko -->
+						<!-- /ko -->
+						<!-- ko with: { person: ChildPerson, lookups: $root.tabs()['tab-relationships']().lookups } -->
+							<!-- ko with: person -->
+								 @await Html.PartialAsync("../PersonList/MaterialItemTemplate") 
+							<!-- /ko -->
+						<!-- /ko -->
+					<!-- /ko -->
+				</div>
+			</div>
+			<!-- /ko -->
+			<!-- ko with: genericProjectContactRelationships -->
+			 @await Html.PartialAsync("MaterialPaging") 
+			<!-- /ko -->
+		</div>
+		@Html.PluginRenderActions("ProjectDetailsRelationshipTypeExtension")
+	<!-- /ko -->
+	<floating-action-button>
+		 @await Html.PartialAsync("MaterialRelationshipAction") 
+		@Html.PluginRenderActions("ProjectDetailsRelationshipTypeActionExtension")
+	</floating-action-button>
+</div>

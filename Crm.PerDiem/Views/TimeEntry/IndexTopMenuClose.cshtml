@@ -1,0 +1,8 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+
+<li data-bind="visible: true, tooltip: true" data-placement="bottom" title="@(Html.Localize("Complete"))">
+	<a href="#" id="close" data-route="Crm.PerDiem/TimeEntry/Close/" data-toggle="modal" data-target="#modal">
+		<i class="tm-icon zmdi zmdi-mail-send"></i>
+	</a>
+</li>

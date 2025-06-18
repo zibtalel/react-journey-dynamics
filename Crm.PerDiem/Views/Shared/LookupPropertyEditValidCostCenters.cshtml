@@ -1,0 +1,12 @@
+<!-- ko if: $root.table === "CrmPerDiem_TimeEntryType" && Name === "ValidCostCenters" -->
+<form-element params="value: Value, caption: 'ValidCostCenters', type: 'select'">
+    <select class="form-control" multiple="multiple" data-bind="select2autocompleter: { data: $root.getCostCentersFromKeys.call($root, $root.lookup().ValidCostCenters()), autocompleteOptions: Helper.Lookup.getAutocompleteOptions('Main_CostCenter') }, selectedOptions: $root.lookup().ValidCostCenters">
+    </select>
+</form-element>
+<!-- /ko -->
+<!-- ko if: $root.table === "CrmPerDiem_ExpenseType" && Name === "ValidCostCenters" -->
+<form-element params="value: Value, caption: 'ValidCostCenters', type: 'select'">
+    <select class="form-control" multiple="multiple" data-bind="select2autocompleter: { data: $root.getCostCentersFromKeys.call($root, $root.lookup().ValidCostCenters()), autocompleteOptions: Helper.Lookup.getAutocompleteOptions('Main_CostCenter') }, selectedOptions: $root.lookup().ValidCostCenters">
+    </select>
+</form-element>
+<!-- /ko -->

@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Project" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="Projects" xml:space="preserve">
+    <value>Projects</value>
+  </data>
+  <data name="AddNewProject" xml:space="preserve">
+    <value>Add project</value>
+  </data>
+  <data name="DeleteProject" xml:space="preserve">
+    <value>Delete project</value>
+  </data>
+  <data name="EditProject" xml:space="preserve">
+    <value>Edit project</value>
+  </data>
+  <data name="ProjectVisibilityQuestion" xml:space="preserve">
+    <value>Who can see this project?</value>
+  </data>
+  <data name="InvalidProjectName" xml:space="preserve">
+    <value>Invalid project name</value>
+  </data>
+  <data name="ThisProject" xml:space="preserve">
+    <value>this Project</value>
+  </data>
+  <data name="ProjectStatus" xml:space="preserve">
+    <value>Project status</value>
+  </data>
+  <data name="PotentialStatus" xml:space="preserve">
+    <value>Potential status</value>
+  </data>
+  <data name="ProjectCategory" xml:space="preserve">
+    <value>Project category</value>
+  </data>
+  <data name="ProjectCreatedBy" xml:space="preserve">
+    <value>Project created by {0} {1}</value>
+  </data>
+  <data name="ProjectCreated" xml:space="preserve">
+    <value>New project created</value>
+  </data>
+  <data name="ProjectStatusSetBy" xml:space="preserve">
+    <value>Project status set by {0} {1}</value>
+  </data>
+  <data name="ProjectStatusSet" xml:space="preserve">
+    <value>Project status set to {0}</value>
+  </data>
+  <data name="NoContactsFromProject" xml:space="preserve">
+    <value>There are no contacts associated with this project.</value>
+  </data>
+  <data name="CreateProject" xml:space="preserve">
+    <value>Add a project</value>
+  </data>
+  <data name="NoProjectsForContact" xml:space="preserve">
+    <value>No project found for this contact.</value>
+  </data>
+  <data name="EditProjectCategory" xml:space="preserve">
+    <value>Edit project categories</value>
+  </data>
+  <data name="ProjectFrom" xml:space="preserve">
+    <value>Project from</value>
+  </data>
+  <data name="LostProject" xml:space="preserve">
+    <value>Why was the project lost?</value>
+  </data>
+  <data name="EditProjectLostReasonCategory" xml:space="preserve">
+    <value>Edit categories for lost projects</value>
+  </data>
+  <data name="ProjectRating" xml:space="preserve">
+    <value>Rating</value>
+  </data>
+  <data name="ProjectLostReasonCategory" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="ExportProjects" xml:space="preserve">
+    <value>Export project list (.csv)</value>
+  </data>
+  <data name="ListOfProjects" xml:space="preserve">
+    <value>List of projects - CRM</value>
+  </data>
+  <data name="AddContactsToProject" xml:space="preserve">
+    <value>The chosen contact will be added to this project.</value>
+  </data>
+  <data name="ListOfNotesHeaderProject" xml:space="preserve">
+    <value>Notes about this project</value>
+  </data>
+  <data name="ProjectCategoryGroups" xml:space="preserve">
+    <value>Project category groups</value>
+  </data>
+  <data name="ProjectLost" xml:space="preserve">
+    <value>Project lost</value>
+  </data>
+  <data name="ProjectStatusChangeConfirmation" xml:space="preserve">
+    <value>Are you sure you want to change the project status?</value>
+  </data>
+  <data name="PotentialStatusChangeConfirmation" xml:space="preserve">
+    <value>Are you sure you want to change the potential status?</value>
+  </data>
+  <data name="NoProjectsInfo" xml:space="preserve">
+    <value>Use the projects to track your proposals, quotes and sales. You can keep notes and tasks about each project in addition to key information like the amount you bid and the deal's status: pending, won, or lost.</value>
+  </data>
+  <data name="ProjectsAmountingTo" xml:space="preserve">
+    <value>Amounting to</value>
+  </data>
+  <data name="UpcomingProjectEmailBody" xml:space="preserve">
+    <value>Dear {0},
+		
+we would like to remind you, that there are {1} projects due this week.
+Perhaps any of these need your attention?
+We would be grateful if you would log in and update their status according to your latest information.
+
+Upcoming and overdue projects this week:
+	</value>
+  </data>
+  <data name="UpcomingProjectEmailSubject" xml:space="preserve">
+    <value>L-mobile: Upcoming and due projects until {0:d}</value>
+  </data>
+  <data name="GeneratedEmailMessage" xml:space="preserve">
+    <value>You receive this information because the L-mobile server generated this message for you.
+Please do not reply to this message.</value>
+  </data>
+  <data name="OverdueProjects" xml:space="preserve">
+    <value>Overdue projects</value>
+  </data>
+  <data name="OpenProjects" xml:space="preserve">
+    <value>Open projects</value>
+  </data>
+  <data name="OwnOverdueProjects" xml:space="preserve">
+    <value>Own overdue projects</value>
+  </data>
+  <data name="StandardAddressCity" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="StandardAddressZipCode" xml:space="preserve">
+    <value>Zip code</value>
+  </data>
+  <data name="ProjectValue" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="ProjectWeightedValue" xml:space="preserve">
+    <value>Weighted value</value>
+  </data>
+  <data name="DetachProject" xml:space="preserve">
+    <value>Detach project</value>
+  </data>
+  <data name="WonCustomer" xml:space="preserve">
+    <value>Customer for won project</value>
+  </data>
+  <data name="ProjectNo" xml:space="preserve">
+    <value>Project no.</value>
+  </data>
+  <data name="ProjectParentName" xml:space="preserve">
+    <value>Belongs to</value>
+  </data>
+  <data name="CrmProject_Project" xml:space="preserve">
+    <value>Projects</value>
+  </data>
+  <data name="CrmProject_ProjectStatus" xml:space="preserve">
+    <value>Project status</value>
+  </data>
+  <data name="ProjectsEmptyStateTitle" xml:space="preserve">
+    <value>No projects</value>
+  </data>
+  <data name="ProjectList" xml:space="preserve">
+    <value>Project list</value>
+  </data>
+  <data name="RemovContactRelationship" xml:space="preserve">
+    <value>Remove contact relationship</value>
+  </data>
+  <data name="CrmProject_ProjectLostReasonCategory" xml:space="preserve">
+    <value>Categories for lost projects</value>
+  </data>
+  <data name="CrmProject_ProjectCategory" xml:space="preserve">
+    <value>Project categories</value>
+  </data>
+  <data name="CrmProject_ProjectContactRelationship" xml:space="preserve">
+    <value>Project-contact relationships</value>
+  </data>
+  <data name="CrmProject_ProjectContactRelationshipType" xml:space="preserve">
+    <value>Project-contact relationship types</value>
+  </data>
+  <data name="ProjectContactRelationships" xml:space="preserve">
+    <value>Project-contact relationships</value>
+  </data>
+  <data name="AddProjectRelationship" xml:space="preserve">
+    <value>Add project relationship</value>
+  </data>
+  <data name="AddPotentialRelationship" xml:space="preserve">
+    <value>Add potential relationship</value>
+  </data>
+  <data name="NoProjectDropboxAddress" xml:space="preserve">
+    <value>With the generation of your personal dropbox E-mail address, a project related dropbox E-mail address will be generated for each project which will be displayed in this box. You will also have the possibility to import the project-related dropbox E-mail address as vCard into your E-mail application.</value>
+  </data>
+  <data name="ProjectDropboxAddressDescription" xml:space="preserve">
+    <value>A project related dropbox E-mail address allows you to directly add outgoing or incoming e-mails to the note list of this project. If you open the editor of your E-mail client via a person's contact link on this page, the project-related dropbox E-mail address is automatically inserted into the BCC field so that the E-mail is added to the project's note list on dispatching the E-mail. If you want to add the E-mail to the  recipient's or sender's note list instead, then please use your personal dropbox E-mail address which you can find on your "&lt;a href="{0}"&gt;{1}&lt;/a&gt;" page.</value>
+  </data>
+  <data name="CrmProject_ProjectCategoryGroups" xml:space="preserve">
+    <value>Project category groups</value>
+  </data>
+  <data name="ProjectContactRelationship" xml:space="preserve">
+    <value>Project contact relationship</value>
+  </data>
+  <data name="ProjectContactRelationshipType" xml:space="preserve">
+    <value>Project contact relationship type</value>
+  </data>
+  <data name="ProjectLostReasonCategoryKey" xml:space="preserve">
+    <value>Project lost reason category key</value>
+  </data>
+  <data name="ProjectTab" xml:space="preserve">
+    <value>Project tab</value>
+  </data>
+  <data name="AttachProjectTo" xml:space="preserve">
+    <value>Attach project to</value>
+  </data>
+  <data name="GenerateAndAttachProjects" xml:space="preserve">
+    <value>Generate and attach projects</value>
+  </data>
+  <data name="ProjectLostReason" xml:space="preserve">
+    <value>Reason for lost project</value>
+  </data>
+  <data name="WeightedContributionMargin" xml:space="preserve">
+    <value>Weighted contribution margin</value>
+  </data>
+  <data name="AddNewPotential" xml:space="preserve">
+    <value>Add new potential</value>
+  </data>
+  <data name="PotentialNo" xml:space="preserve">
+    <value>Potential No.</value>
+  </data>
+  <data name="Potentials" xml:space="preserve">
+    <value>Potentials</value>
+  </data>
+  <data name="EditPotential" xml:space="preserve">
+    <value>Edit Potential</value>
+  </data>
+  <data name="Potential" xml:space="preserve">
+    <value>Potential</value>
+  </data>
+  <data name="ConvertToProject" xml:space="preserve">
+    <value>Convert to a project</value>
+  </data>
+  <data name="PotentialsEmptyStateTitle" xml:space="preserve">
+    <value>No potentials</value>
+  </data>
+  <data name="CrmProject_PotentialContactRelationship" xml:space="preserve">
+    <value>Potential-Relationships</value>
+  </data>
+  <data name="CrmProject_PotentialContactRelationshipType" xml:space="preserve">
+    <value>Potential-Relationship types</value>
+  </data>
+  <data name="PotentialContactRelationships" xml:space="preserve">
+    <value>Potential-contact relationships</value>
+  </data>
+  <data name="ThisPotential" xml:space="preserve">
+    <value>this potential</value>
+  </data>
+  <data name="NoPotentialsForContact" xml:space="preserve">
+    <value>No Potential found for this Contact</value>
+  </data>
+  <data name="MyOpenedPotentials" xml:space="preserve">
+    <value>My opened Potentials</value>
+  </data>
+  <data name="NoPotentialsMatchingSearchCriteria" xml:space="preserve">
+    <value>No potentials were found matching the given search criteria</value>
+  </data>
+  <data name="DropBoxEmptySlate" xml:space="preserve">
+    <value>No dropbox E-mail address found for this project</value>
+  </data>
+  <data name="NoPotentialDropboxAddress" xml:space="preserve">
+    <value>With the generation of your personal dropbox E-mail address, a project related dropbox E-mail address will be generated for each project which will be displayed in this box. You will also have the possibility to import the project-related dropbox E-mail address as vCard into your E-mail application.</value>
+  </data>
+  <data name="ContactHistory" xml:space="preserve">
+    <value>Contact History</value>
+  </data>
+  <data name="DocumentEntryEmptySlate" xml:space="preserve">
+    <value>No entries available</value>
+  </data>
+  <data name="OtherPersons" xml:space="preserve">
+    <value>Other persons</value>
+  </data>
+  <data name="PersonsWorkingHere" xml:space="preserve">
+    <value>Persons working here</value>
+  </data>
+  <data name="AddEntry" xml:space="preserve">
+    <value>Add entry</value>
+  </data>
+  <data name="SendDate" xml:space="preserve">
+    <value>Sent at</value>
+  </data>
+  <data name="FeedbackReceived" xml:space="preserve">
+    <value>Feedback received</value>
+  </data>
+  <data name="ToggleFeedbackReceived" xml:space="preserve">
+    <value>Toggle Feedback Received</value>
+  </data>
+  <data name="ArticleKey" xml:space="preserve">
+    <value>Article</value>
+  </data>
+  <data name="PersonKey" xml:space="preserve">
+    <value>Person</value>
+  </data>
+  <data name="SendMailToPotential" xml:space="preserve">
+    <value>Send an E-mail to this potential</value>
+  </data>
+  <data name="RecipientBelongsTo" xml:space="preserve">
+    <value>Recipient Belongs To</value>
+  </data>
+  <data name="SalesRelated" xml:space="preserve">
+    <value>Sales related</value>
+  </data>
+  <data name="WonAt" xml:space="preserve">
+    <value>Won at</value>
+  </data>
+  <data name="LastNoteDate" xml:space="preserve">
+    <value>Last activity</value>
+  </data>
+  <data name="ClosedPotentials" xml:space="preserve">
+    <value>Closed potentials</value>
+  </data>
+  <data name="LostProjects" xml:space="preserve">
+    <value>Lost projects</value>
+    </data>
+  <data name="CrmProject_DocumentEntry" xml:space="preserve">
+    <value>Document entries</value>
+    </data>
+  <data name="AllOpenProjects" xml:space="preserve">
+    <value>All open projects</value>
+  </data>
+  <data name="OpenPotentials" xml:space="preserve">
+    <value>Open potentials</value>
+  </data>
+  <data name="WonProjects" xml:space="preserve">
+    <value>Won projects</value>
+   </data>
+  <data name="AllLostProjects" xml:space="preserve">
+    <value>All lost projects</value>
+    </data>
+  <data name="CrmProject_Potential" xml:space="preserve">
+    <value>Potentials</value>
+  </data>
+  <data name="AllOpenProjectsFromTheMonthAfterTheNextMonth" xml:space="preserve">
+    <value>All open Projects from the month after the next Month</value>
+    </data>
+  <data name="CrmProject_PotentialPriority" xml:space="preserve">
+    <value>Potentials priority</value>
+  </data>
+  <data name="AllWonProjects" xml:space="preserve">
+    <value>All won projects</value>
+    </data>
+  <data name="CrmProject_PotentialStatus" xml:space="preserve">
+    <value>Potential Statuses</value>
+  </data>
+  <data name="OwnOpenProjects" xml:space="preserve">
+    <value>Own open projects</value>
+  </data>
+  <data name="OwnOpenProjectsNextMonth" xml:space="preserve">
+    <value>Own open Projects next Month</value>
+  </data>
+  <data name="OwnOpenProjectsThisMonth" xml:space="preserve">
+    <value>Own open projects this month</value>
+  </data>
+</root>

@@ -1,0 +1,14 @@
+﻿@using Crm.Library.Globalization.Extensions
+@inherits Crm.Library.Modularization.CrmViewUserControl
+
+<div class="small m-b-10 m-t-10" data-bind="with: Project">
+	@Html.Localize("Project"):
+	<!-- ko requiredPermission: { name: 'Read', group: 'Project' } -->
+	<a href="#/Crm.Project/Project/DetailsTemplate/{{Id}}">
+		<span data-bind="text: Helper.Project.getName($data)"></span>
+	</a>
+	<!-- /ko -->
+	<!-- ko noRequiredPermission: { name: 'Read', group: 'Project' } -->
+	<span data-bind="text: Helper.Project.getName($data)"></span>
+	<!-- /ko -->
+</div>

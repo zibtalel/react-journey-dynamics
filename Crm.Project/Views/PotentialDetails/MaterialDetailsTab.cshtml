@@ -1,0 +1,108 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+@using Crm.Library.Modularization.Extensions
+
+<div role="tabpanel" class="tab-pane animated fadeIn" id="tab-details">
+	<pmb-block params="icon: 'equalizer', caption: 'BackgroundInfo', context: { potential: potential }">
+		<pmbb-view>
+			<!-- ko with: potential -->
+			<span data-bind="text: BackgroundInfo"></span>
+			<span data-bind="translatedText: 'BackgroundInformationEmptyState', ifnot: BackgroundInfo"></span>
+			<!-- /ko -->
+		</pmbb-view>
+		<pmbb-edit>
+			<!-- ko with: potential -->
+			<div class="fg-line">
+				<textarea class="form-control" rows="5" placeholder="@(Html.Localize("BackgroundInfo"))..." data-bind="value: BackgroundInfo"></textarea>
+			</div>
+			<!-- /ko -->
+		</pmbb-edit>
+	</pmb-block>
+	<pmb-block id="general-pmb" params="icon: 'account', caption: 'General', context: { potential: potential }, onSave: $root.onSavePmbBlock.bind($root), condition: window.AuthorizationManager.isAuthorizedForAction('Potential', 'Edit')">
+		<pmbb-view>
+			<!-- ko with: potential -->
+			<!-- ko ifnot: window.Crm.Project.Settings.PotentialNoIsEditable == false && window.Crm.Project.Settings.PotentialNoIsGenerated == false && window.Crm.Project.Settings.PotentialNoIsCreateable == false && PotentialNo() == null -->
+			<pmbb-view-entry params="caption: 'PotentialNo'">
+				<span data-bind="text: PotentialNo"></span>
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: PotentialNo"></span>
+			</pmbb-view-entry>
+			<!-- /ko -->
+			<pmbb-view-entry params="caption: 'Name'">
+				<span data-bind="text: Name"></span>
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: Name"></span>
+			</pmbb-view-entry>
+			<pmbb-view-entry params="caption: 'ParentName'">
+				<span data-bind="text: Helper.Company.getDisplayName(Parent())"></span>
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: Parent().Name()"></span>
+			</pmbb-view-entry>
+			<pmbb-view-entry params="caption: 'ResponsibleUser'">
+				<!-- ko if: ResponsibleUserUser -->
+				<span data-bind="text: Helper.User.getDisplayName(ResponsibleUserUser)"></span>
+				<!-- /ko -->
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: ResponsibleUserUser"></span>
+			</pmbb-view-entry>
+		
+			<pmbb-view-entry params="caption: 'ProductFamily'">
+				<!-- ko if: ProductFamily() -->
+				<a href="#" data-bind="attr: { href: '#/Crm.Article/ProductFamily/DetailsTemplate/' + ProductFamily().Id() }">
+					<span data-bind="text: ProductFamily().Name()"></span>
+				</a>
+				<!-- /ko -->	
+			  <!-- ko if: ProductFamily() === null -->
+					<span class="c-gray" data-bind="translatedText: 'Unspecified'"></span>
+				<!-- /ko -->
+			</pmbb-view-entry>
+			<pmbb-view-entry params="caption: 'SourceTypeKey'">
+				<span data-bind="if: SourceTypeKey, lookupValue: SourceTypeKey, lookups: $root.lookups.sourceTypes"></span>
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: SourceTypeKey"></span>
+			</pmbb-view-entry>
+				@Html.PluginRenderActions("ContactDetailsCampaignSource")
+			<pmbb-view-entry params="caption: 'Rating'">
+				<span data-bind="if: PriorityKey, lookupValue: PriorityKey, lookups: $root.lookups.potentialPriorities"></span>
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: PriorityKey"></span>
+			</pmbb-view-entry>
+			<pmbb-view-entry params="caption: 'LastNoteDate'">
+				<span data-bind="if: LastNoteDate, dateText: { value: LastNoteDate, pattern: {datetime: 'medium'} }"></span>
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: LastNoteDate"></span>
+			</pmbb-view-entry>
+			<!-- /ko -->
+		</pmbb-view>
+		<pmbb-edit>
+			<!-- ko with: potential -->
+			<!-- ko ifnot: (window.Crm.Project.Settings.PotentialNoIsEditable == false && window.Crm.Project.Settings.PotentialNoIsGenerated == false && window.Crm.Project.Settings.PotentialNoIsCreateable == false && PotentialNo() == null) || (window.Helper.Offline !== undefined ? window.Helper.Offline.status=='offline' : false) -->
+			<pmbb-edit-entry params="caption: 'PotentialNo', validationElement: PotentialNo">
+				<input id="PotentialNo" type="text" class="form-control" data-bind="value: PotentialNo, disable: window.Crm.Project.Settings.Potential.PotentialNoIsEditable == false">
+			</pmbb-edit-entry>
+			<!-- /ko -->
+			<pmbb-edit-entry params="caption: 'Name', validationElement: Name">
+				<input type="text" class="form-control" data-bind="value: Name">
+			</pmbb-edit-entry>
+			<pmbb-edit-entry params="caption: 'ParentName', validationElement: ParentId">
+				<select name="ParentId" class="form-control" data-bind="select2autocompleter: { data: ParentId, autocompleteOptions: { table: 'Main_Company', orderBy: ['Name'], joins: ['Addresses.Emails', 'Addresses.Phones'], customFilter: Helper.Company.getSelect2Filter, mapDisplayObject: Helper.Company.mapDisplayNameWithAddressForSelect2, placeholder: $parent.placeholder, onSelect: function(company) { $data.Parent(company.asKoObservable()); $data.Parent().Name(company.Name); } } }" >
+				</select>
+			</pmbb-edit-entry>
+			<pmbb-edit-entry params="caption: 'ResponsibleUser', validationElement: ResponsibleUser">
+				<select class="form-control" data-bind="select2autocompleter: { data: ResponsibleUser, autocompleteOptions: { orderBy: ['LastName'], table: 'Main_User', mapDisplayObject: Helper.User.mapForSelect2Display, customFilter: Helper.User.filterUserQuery, onSelect: user => $data.ResponsibleUserUser(user), placeholder: $parent.placeholder } }">
+				</select>
+			</pmbb-edit-entry>
+			<pmbb-edit-entry params="caption: 'ProductFamily', validationElement: ProductFamilyKey">
+				<select name="ProductFamilyKey" class="form-control" data-bind="select2autocompleter: { data: ProductFamilyKey, autocompleteOptions: { table: 'CrmArticle_ProductFamily', orderBy: ['Name'], mapDisplayObject: function (c) { return { id: c.Id, text: c.Name, item: c }; }, customFilter: Helper.ProductFamily.getSelect2Filter, onSelect: ProductFamily, confirmChange : $root.onConfirmProductFamily.bind($root), placeholder: $parent.placeholder} }">
+				</select>
+			</pmbb-edit-entry>
+			<pmbb-edit-entry params="caption: 'SourceTypeKey', validationElement: SourceTypeKey">
+				<select class="form-control" data-bind="select2autocompleter: { data: SourceTypeKey, autocompleteOptions: Helper.Lookup.getAutocompleteOptions('Main_SourceType'), placeholder: $parent.placeholder}">
+				</select>
+			</pmbb-edit-entry>
+			@Html.PluginRenderActions("ContactDetailsEditCampaignSource")
+			<pmbb-edit-entry params="caption: 'Rating', validationElement: PriorityKey">
+				<select class="form-control" data-bind="select2autocompleter: { data: PriorityKey, autocompleteOptions: Helper.Lookup.getAutocompleteOptions('CrmProject_PotentialPriority'), placeholder: $parent.placeholder}">
+				</select>
+			</pmbb-edit-entry>
+			<!-- /ko -->
+		</pmbb-edit>
+	</pmb-block>
+	@Html.PluginRenderActions("PotentialMaterialDetailsTabExtensions")
+	@Html.PluginRenderActions("ContactMaterialDetailsTabExtensions")
+</div>
+
+

@@ -1,0 +1,65 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Extensions
+@using Crm.Library.Globalization.Extensions
+@using Crm.Library.Modularization.Extensions
+
+<div class="container">
+	<div class="card">
+		<div class="card-header ch-alt" data-bind="with: project">
+			<h2>@(Html.Localize("AddNewProject"))</h2>
+		</div>
+		<div class="card-body card-padding">
+			<form role="form" data-bind="with: project">
+				<form-element params="value: Name, caption: 'Name', type: 'text'"></form-element>
+				<!-- ko if: window.Crm.Project.Settings.ProjectNoIsCreateable && (!window.Helper.Offline || window.Helper.Offline.status === 'online') -->
+				<div class="form-group" data-bind="validationElement: ProjectNo" title="">
+					<div class="fg-line">
+						<label class="fg-label control-label" data-bind="visible: 'ProjectNo'">
+							<span>@Html.Localize("ProjectNo")</span>
+						</label>
+						<input type="text" class="form-control fg-input" name="ProjectNo" data-bind="value: ProjectNo, attr: { maxlength: 20}">
+					</div>
+					<small class="help-block pre-line" data-bind="validationMessage: ProjectNo" style="display: none;"></small>
+				</div>
+				<!-- /ko -->
+				<form-element id="PotentialId" params="value: PotentialId, caption: 'Potential'">
+					<select name="PotentialId" class="form-control" data-bind="select2autocompleter: { data: $parent.PotentialId, autocompleteOptions: { table: 'CrmProject_Potential', orderBy: ['Name'], mapDisplayObject: function (c) { return { id: c.Id, text: c.Name }; }, placeholder: placeholder } }">
+					</select>
+				</form-element>
+				<form-element id="ParentId" params="value: ParentId, caption: 'ParentId'">
+					<select name="ParentId" class="form-control" data-bind="select2autocompleter: { data: $parent.ParentId, autocompleteOptions: { table: 'Main_Company', orderBy: ['Name'], joins: Helper.Company.getAutocompleteJoins(), customFilter: Helper.Company.getSelect2Filter, mapDisplayObject: Helper.Company.mapDisplayNameWithAddressForSelect2, placeholder: placeholder } }">
+					</select>
+				</form-element>
+				<form-element id="CategoryKey" params="value: CategoryKey, caption: 'ProjectCategory', type: 'select'">
+					<select name="CategoryKey" class="form-control" data-bind="select2autocompleter: {data: value, default: Helper.Lookup.getLookupValue($root.lookups.categories, value), autocompleteOptions:  Helper.Lookup.getAutocompleteOptions('CrmProject_ProjectCategory'), placeholder: placeholder}">
+					</select>
+				</form-element>
+				<form-element id="ProductFamilyKey" params="value: ProductFamilyKey, caption: 'ProductFamily'">
+					<select name="ProductFamilyKey" class="form-control" data-bind="select2autocompleter: { data: $parent.ProductFamilyKey, autocompleteOptions: { table: 'CrmArticle_ProductFamily', orderBy: ['Name'], mapDisplayObject: function (c) { return { id: c.Id, text: c.Name, item: c }; }, key: 'Id', onSelect: $root.onConfirmProductFamily.bind($root), placeholder: placeholder } }" >
+					</select>
+				</form-element>
+				<form-element params="value: DueDate, caption: 'DueDate', type: 'datePicker'"></form-element>
+				<form-element params="value: Value, caption: 'Value', type: 'money', min: 0"></form-element>
+				<form-element params="value: ContributionMargin, caption: 'ContributionMargin', type: 'money', min: 0"></form-element>
+				<form-element id="CurrencyKey" params="value: CurrencyKey, caption: 'Currency', type: 'select'">
+					<select name="CurrencyKey" class="form-control" data-bind="select2autocompleter: { data: value, default: Helper.Lookup.getLookupValue($root.lookups.currencies, value), autocompleteOptions: Helper.Lookup.getAutocompleteOptions('Main_Currency'), placeholder: placeholder}">
+					</select>
+				</form-element>
+				<form-element id="SourceTypeKey" params="value: SourceTypeKey, caption: 'SourceTypeKey', type: 'select'">
+					<select name="SourceTypeKey" class="form-control" data-bind="select2autocompleter: { data: value, default: Helper.Lookup.getLookupValue($root.lookups.sourceTypes, value), autocompleteOptions: Helper.Lookup.getAutocompleteOptions('Main_SourceType'), placeholder: placeholder}">
+					</select>
+				</form-element>
+				@Html.PluginRenderActions("CreateContactCampaignSource")
+				<form-element id="ResponsibleUserKeyProject" params="value: ResponsibleUser, caption: 'ResponsibleUser', type: 'select'">
+					<select name="ResponsibleUserKeyProject" class="form-control" data-bind="select2autocompleter: { data: value, autocompleteOptions: { orderBy: ['LastName'], table: 'Main_User', mapDisplayObject: Helper.User.mapForSelect2Display, customFilter: Helper.User.filterUserQuery, placeholder: placeholder }}">
+					</select>
+				</form-element>
+				<form-element params="value: BackgroundInfo, caption: 'BackgroundInfo', type: 'textarea'"></form-element>
+				<!-- ko with: $root.visibilityViewModel -->
+				@Html.RenderAction("Selection", "Visibility")
+				<!-- /ko -->
+			</form>
+		</div>
+		 @await Html.PartialAsync("CreateFormFooter") 
+	</div>
+</div>

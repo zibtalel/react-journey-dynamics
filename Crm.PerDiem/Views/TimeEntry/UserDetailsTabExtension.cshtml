@@ -1,0 +1,17 @@
+﻿<pmb-block params="icon: 'time-interval', caption: 'TimeTableAndExpenses', context: { user: user }">
+	<pmbb-view>
+		<!-- ko with: user().ExtensionValues -->
+		<pmbb-view-entry params="caption: 'WorkingHoursPerDay', hint: 'WorkingHoursPerDayInTimeEntryHint'">
+			<span data-bind="text: WorkingHoursPerDay"></span>
+			<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: WorkingHoursPerDay"></span>
+		</pmbb-view-entry>
+		<!-- /ko -->
+	</pmbb-view>
+	<pmbb-edit>
+		<!-- ko with: user().ExtensionValues -->
+		<pmbb-edit-entry params="caption: 'WorkingHoursPerDay'">
+			<form-element params="value: WorkingHoursPerDay, type: 'number'"></form-element>
+		</pmbb-edit-entry>
+		<!-- /ko -->
+	</pmbb-edit>
+</pmb-block>

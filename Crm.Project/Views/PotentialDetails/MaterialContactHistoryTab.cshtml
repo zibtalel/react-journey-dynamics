@@ -1,0 +1,89 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Modularization.Extensions
+@using Crm.Library.Globalization.Extensions
+
+<div role="tabpanel" class="tab-pane animated fadeIn" id="tab-contact-history" data-bind="with: tabs()['tab-contact-history']">
+	<empty-state-box params="mood: 'sad', title: 'DocumentEntryEmptySlate', text: 'NoEntriesInfo'" data-bind="visible: items().length === 0">
+	</empty-state-box>
+	@Html.PluginRenderActions("MaterialGenericListResourceExtensions")
+	<div class="generic-list listview lv-bordered">
+		<div class="lv-body" data-bind="foreach: items">		
+			<div class="lv-item media">
+				<div class="lv-avatar bgm-gray pull-left" data-bind="text: $data.Document().DocumentCategoryKey()[0]"></div>
+				<div class="media-body">
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="lv-title">
+								<span id="document-description" data-bind="text: $data.Document().Description"></span>
+							</div>
+							<div>
+								<small class="small">
+									@(Html.Localize("Recipient")) :
+									<!-- ko requiredPermission: { name: 'Read', group: 'Person' } -->
+									<a id="cperson-name" data-bind="attr: { href: '#/Main/Person/DetailsTemplate/' + $data.Person().Id() }, text: Helper.Person.getDisplayName($data.Person())"></a>
+									<!-- /ko -->
+								</small>
+							</div>
+							<div>
+								<small class="small">
+								@(Html.Localize("RecipientBelongsTo")) :
+								<!-- ko requiredPermission: { name: 'Read', group: 'Person' } -->
+								<a id="cperson-name" data-bind="attr: { href: '#/Main/Company/DetailsTemplate/' + ko.unwrap($data.Person().ParentId) }, text: Helper.Person.getParentDisplayName($data.Person())"></a>
+								<!-- /ko -->
+								</small>
+							</div>
+							<ul class="lv-attrs">
+								<li>
+									<span data-bind="lookupValue: $data.Document().DocumentCategoryKey, lookups: $root.lookups.documentCategory"></span>
+								</li>
+							</ul>
+						</div>
+						<div class="col-sm-4">
+							<div class="row">
+								<small>
+									@(Html.Localize("SendDate")):
+									<span data-bind="dateText: SendDate"></span>
+								</small>
+							</div>
+							<div class="row">
+									<small>
+										@(Html.Localize("FeedbackReceived")):
+										<span data-bind="text: FeedbackReceived() === true ? 'Yes' : 'No'"></span>
+								</small>
+							</div>
+						</div>
+						<div class="lv-actions actions dropdown documents">
+							<a href="#" data-toggle="dropdown" aria-expanded="true">
+								<i class="zmdi zmdi-more-vert"></i>
+							</a>
+							<ul class="dropdown-menu dropdown-menu-right">
+								<li>
+									<a href="#" data-bind="translatedText: 'ToggleFeedbackReceived', click: $parent.toggleFeedbackReceived.bind($parent, $data)"></a>
+								</li>
+								<li class="divider"></li>
+								<!-- ko requiredPermission: { name: 'Delete', group: 'DocumentEntry' } -->
+								<li>
+									<a id="remove-entry" href="#" data-bind="click: $parent.deleteEntry.bind($parent, $data)">@(Html.Localize("Delete"))</a>
+								</li>
+								<!-- /ko -->
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	 @await Html.PartialAsync("MaterialPaging") 
+	<floating-action-button>	
+		<li>
+			<a id="add-contact-person-here" href="#" data-mfb-label="@($"{Html.Localize("Add")} ({Html.Localize("PersonsWorkingHere")})")" data-route="Crm.Project/ContactPerson/EditTemplate/?personTypes=Same&parentId={{$parent.companyId}}" data-toggle="modal" data-target="#modal">
+				<i class="zmdi zmdi-accounts"></i>
+			</a>
+		</li>
+		<li>
+			<a id="add-contact-person" href="#" data-mfb-label="@($"{Html.Localize("Add")} ({Html.Localize("OtherPersons")})")" data-route="Crm.Project/ContactPerson/EditTemplate/?personTypes=Other&parentId={{$parent.companyId}}" data-toggle="modal" data-target="#modal">
+				<i class="zmdi zmdi-account"></i>
+			</a>
+		</li>
+	</floating-action-button>
+</div>

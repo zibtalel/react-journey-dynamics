@@ -1,0 +1,159 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Crm.PerDiem
+build_property.RootNamespace = Crm.PerDiem
+build_property.ProjectDir = C:\Source\crm6\src\Crm.Web\Plugins\Crm.PerDiem\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Source\crm6\src\Crm.Web\Plugins\Crm.PerDiem
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/Expense/EditTemplate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhwZW5zZVxFZGl0VGVtcGxhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/Expense/TemplateActionDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhwZW5zZVxUZW1wbGF0ZUFjdGlvbkRlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/Expense/TemplateActionEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhwZW5zZVxUZW1wbGF0ZUFjdGlvbkVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/Expense/TemplateTableColumns.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXhwZW5zZVxUZW1wbGF0ZVRhYmxlQ29sdW1ucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/PerDiemReport/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyRGllbVJlcG9ydFxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/PerDiemReport/PerDiemReport.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyRGllbVJlcG9ydFxQZXJEaWVtUmVwb3J0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/PerDiemReport/PerDiemReportAttachments.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyRGllbVJlcG9ydFxQZXJEaWVtUmVwb3J0QXR0YWNobWVudHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/PerDiemReport/PerDiemReportOverviewEntryUserExpense.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyRGllbVJlcG9ydFxQZXJEaWVtUmVwb3J0T3ZlcnZpZXdFbnRyeVVzZXJFeHBlbnNlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/PerDiemReport/PerDiemReportOverviewEntryUserTimeEntry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyRGllbVJlcG9ydFxQZXJEaWVtUmVwb3J0T3ZlcnZpZXdFbnRyeVVzZXJUaW1lRW50cnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/PerDiemReport/PerDiemReportOverviewTable.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyRGllbVJlcG9ydFxQZXJEaWVtUmVwb3J0T3ZlcnZpZXdUYWJsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/PerDiemReport/PerDiemReportOverviewTableHead.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyRGllbVJlcG9ydFxQZXJEaWVtUmVwb3J0T3ZlcnZpZXdUYWJsZUhlYWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/PerDiemReport/PerDiemReportOverviewTitle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyRGllbVJlcG9ydFxQZXJEaWVtUmVwb3J0T3ZlcnZpZXdUaXRsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/PerDiemReport/PerDiemReportOverviewUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyRGllbVJlcG9ydFxQZXJEaWVtUmVwb3J0T3ZlcnZpZXdVc2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/PerDiemReport/PerDiemReportStatusUsers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyRGllbVJlcG9ydFxQZXJEaWVtUmVwb3J0U3RhdHVzVXNlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/PerDiemReport/PerDiemReportTitle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyRGllbVJlcG9ydFxQZXJEaWVtUmVwb3J0VGl0bGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/PerDiemReport/PerDiemReportUsers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyRGllbVJlcG9ydFxQZXJEaWVtUmVwb3J0VXNlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/PerDiemReport/Report.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyRGllbVJlcG9ydFxSZXBvcnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/PerDiemReport/ReportResources.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyRGllbVJlcG9ydFxSZXBvcnRSZXNvdXJjZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/Shared/LookupPropertyEditValidCostCenters.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXExvb2t1cFByb3BlcnR5RWRpdFZhbGlkQ29zdENlbnRlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/TimeEntry/Close.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGltZUVudHJ5XENsb3NlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/TimeEntry/CloseModalCustom.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGltZUVudHJ5XENsb3NlTW9kYWxDdXN0b20uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/TimeEntry/CloseModalEntries.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGltZUVudHJ5XENsb3NlTW9kYWxFbnRyaWVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/TimeEntry/CloseModalMonthly.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGltZUVudHJ5XENsb3NlTW9kYWxNb250aGx5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/TimeEntry/CloseModalWeekly.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGltZUVudHJ5XENsb3NlTW9kYWxXZWVrbHkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/TimeEntry/EditTemplate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGltZUVudHJ5XEVkaXRUZW1wbGF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/TimeEntry/IndexTemplate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGltZUVudHJ5XEluZGV4VGVtcGxhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/TimeEntry/IndexTopMenuClose.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGltZUVudHJ5XEluZGV4VG9wTWVudUNsb3NlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/TimeEntry/PrimaryActionAddExpense.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGltZUVudHJ5XFByaW1hcnlBY3Rpb25BZGRFeHBlbnNlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/TimeEntry/PrimaryActionAddTimeEntry.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGltZUVudHJ5XFByaW1hcnlBY3Rpb25BZGRUaW1lRW50cnkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/TimeEntry/Sidebar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGltZUVudHJ5XFNpZGViYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/TimeEntry/TemplateActionDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGltZUVudHJ5XFRlbXBsYXRlQWN0aW9uRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/TimeEntry/TemplateActionEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGltZUVudHJ5XFRlbXBsYXRlQWN0aW9uRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/TimeEntry/TimeEntryDayTabExpenses.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGltZUVudHJ5XFRpbWVFbnRyeURheVRhYkV4cGVuc2VzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/TimeEntry/TimeEntryDayTabTimeEntries.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGltZUVudHJ5XFRpbWVFbnRyeURheVRhYlRpbWVFbnRyaWVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.PerDiem/Views/TimeEntry/UserDetailsTabExtension.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGltZUVudHJ5XFVzZXJEZXRhaWxzVGFiRXh0ZW5zaW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 

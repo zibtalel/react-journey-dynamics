@@ -1,0 +1,71 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Crm.ProjectOrders
+build_property.RootNamespace = Crm.ProjectOrders
+build_property.ProjectDir = C:\Source\crm6\src\Crm.Web\Plugins\Crm.ProjectOrders\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Source\crm6\src\Crm.Web\Plugins\Crm.ProjectOrders
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ProjectOrders/Views/Offer/OfferLoadItemTemplateDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJcT2ZmZXJMb2FkSXRlbVRlbXBsYXRlRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ProjectOrders/Views/Offer/OfferSaveForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJcT2ZmZXJTYXZlRm9ybS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ProjectOrders/Views/Offer/OfferSummaryGeneral.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT2ZmZXJcT2ZmZXJTdW1tYXJ5R2VuZXJhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ProjectOrders/Views/Order/ItemTemplateLeftColumn.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcSXRlbVRlbXBsYXRlTGVmdENvbHVtbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ProjectOrders/Views/Order/OrderFormProjectInformation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcT3JkZXJGb3JtUHJvamVjdEluZm9ybWF0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ProjectOrders/Views/Order/OrderLoadItemTemplateDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcT3JkZXJMb2FkSXRlbVRlbXBsYXRlRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ProjectOrders/Views/Order/OrderSaveForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcT3JkZXJTYXZlRm9ybS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ProjectOrders/Views/Order/OrderSummaryGeneral.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcT3JkZXJTdW1tYXJ5R2VuZXJhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ProjectOrders/Views/ProjectDetails/MaterialOffersTab.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdERldGFpbHNcTWF0ZXJpYWxPZmZlcnNUYWIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ProjectOrders/Views/ProjectDetails/MaterialOffersTabHeader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdERldGFpbHNcTWF0ZXJpYWxPZmZlcnNUYWJIZWFkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ProjectOrders/Views/ProjectDetails/MaterialOrdersTab.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdERldGFpbHNcTWF0ZXJpYWxPcmRlcnNUYWIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ProjectOrders/Views/ProjectDetails/MaterialOrdersTabHeader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdERldGFpbHNcTWF0ZXJpYWxPcmRlcnNUYWJIZWFkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Source/crm6/src/Crm.Web/Plugins/Crm.ProjectOrders/Views/Shared/BaseOrderItemTemplateDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEJhc2VPcmRlckl0ZW1UZW1wbGF0ZURldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 

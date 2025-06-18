@@ -1,0 +1,23 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+@using Crm.Offline.Extensions
+@using Crm.Project.Rest.Model
+
+@using (Html.TemplateContext("$root.project")) { 
+	<div class="first-fieldset">
+		<h3 class="fieldset-header">@(Html.Localize("Project"))</h3>
+		<div class="row-fluid">
+			<div class="span6">
+				<div class="row-fluid">
+					<div class="span12">
+						<p>
+							@(Html.TemplateLink<ProjectRest>(Html.TemplateText<ProjectRest>(x => x.LegacyName).ToString(), Url.Content("~/Crm.Project/Project/Details/"), x => x.Id))
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br />
+	</div>
+ } 
+

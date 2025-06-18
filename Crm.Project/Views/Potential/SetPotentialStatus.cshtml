@@ -1,0 +1,28 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+@using Crm.Library.Modularization.Extensions
+
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-label="@(Html.Localize("Close"))">
+		<span aria-hidden="true">&times;</span>
+	</button>
+	<h4 class="modal-title">
+		@(Html.Localize("PotentialStatus"))
+	</h4>
+</div>
+<div class="modal-body">
+	<p>
+		@(Html.Localize("PotentialStatusChangeConfirmation"))
+	</p>
+	<form data-bind="with: potential">
+		@Html.PluginRenderActions("SetPotentialStatusModalBody")
+	</form>
+</div>
+<div class="modal-footer">
+	<button type="button" class="btn btn-default waves-effect" data-dismiss="modal" data-bind="click: cancel">
+		@(Html.Localize("Cancel"))
+	</button>
+	<button type="button" class="btn btn-primary waves-effect" data-dismiss="modal" data-bind="click: save">
+		@(Html.Localize("Save"))
+	</button>
+</div>

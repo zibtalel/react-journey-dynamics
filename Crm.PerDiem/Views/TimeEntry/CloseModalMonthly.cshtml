@@ -1,0 +1,26 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+
+<!-- ko if: $root.perDiemReportTypeKey() == 'Monthly' -->
+<!-- ko if: $root.distinctFromDates().length == 0 -->
+<p>
+	@(Html.Localize("NoReportExisting"))
+</p>
+<!-- /ko -->
+<!-- ko if: $root.distinctFromDates().length > 0 -->
+<div>
+	<label class="fg-label control-label">
+		@(Html.Localize("ReportForMonth"))
+	</label>
+	<!-- ko foreach: $root.distinctFromDates -->
+	<div class="radio m-b-15">
+		<label>
+			<input type="radio" data-bind="checked: $root.selectedDate, value: $data">
+			<i class="input-helper"></i>
+			<span data-bind="dateText: { value: $root.getToDate($data), pattern: { raw: 'LLLL' } }"></span> (<span data-bind="dateText: $root.getFromDate($data)"></span> - <span data-bind="dateText: $root.getToDate($data)"></span>)
+		</label>
+	</div>
+	<!-- /ko -->
+</div>
+<!-- /ko -->
+<!-- /ko -->

@@ -1,0 +1,18 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+
+<!-- ko if: $root.perDiemReportTypeKey() == 'Custom' -->
+<div class="row">
+	<div class="col-md-6">
+		<form-element params="value: From, caption: 'From', type: 'datePicker', datePickerOptions: { config: { showClear: false } }, disable: $root.perDiemReportId"></form-element>
+	</div>
+	<div class="col-md-6">
+		<form-element params="value: To, caption: 'To', type: 'datePicker', datePickerOptions: { config: { showClear: false } }, disable: $root.perDiemReportId"></form-element>
+	</div>
+</div>
+<!-- ko if: $root.reportEntries().length == 0 -->
+<p>
+	@(Html.Localize("NoReportExisting"))
+</p>
+<!-- /ko -->
+<!-- /ko -->

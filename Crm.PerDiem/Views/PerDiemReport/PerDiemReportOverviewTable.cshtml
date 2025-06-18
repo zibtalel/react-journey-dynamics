@@ -1,0 +1,26 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Modularization.Extensions
+
+<table class="table">
+	<thead>
+	<tr>
+		@Html.PluginRenderActions("PerDiemReportOverviewTableHead")
+	</tr>
+	</thead>
+	<!-- ko foreach: getGroupedReportEntries() -->
+	<tbody>
+	<!-- ko foreach: Users -->
+	<!-- ko if: User -->
+	<tr>
+		@Html.PluginRenderActions("PerDiemReportOverviewUser")
+	</tr>
+	<!-- /ko -->
+	<!-- ko foreach: Entries -->
+		<tr>
+		@Html.PluginRenderActions("PerDiemReportOverviewEntry")
+		</tr>
+	<!-- /ko -->
+	<!-- /ko -->
+	</tbody>
+	<!-- /ko -->
+</table>

@@ -1,0 +1,20 @@
+﻿@using Crm.Library.Globalization.Extensions
+@inherits Crm.Library.Modularization.CrmViewUserControl
+
+<!-- ko if: $data.innerInstance instanceof database.CrmPerDiem_UserExpense.CrmPerDiem_UserExpense -->
+<div class="col-xs-8 col-xs-pull-3 col-sm-pull-2 col-sm-4 p-l-0" data-bind="lookupValue: ExpenseTypeKey, lookups: $root.lookups.expenseTypes"></div>
+<div>
+	<div class="col-xs-12 col-sm-pull-2 col-sm-5">
+		<span class="f-500 visible-xs p-t-5" data-bind="if: Description"> @(Html.Localize("Description")):</span>
+		<div data-bind="text: Description"></div>
+		<small class="text-muted" data-bind="lookupValue: CostCenterKey, lookups: $root.lookups.costCenters, visible: CostCenterKey"></small>
+		<!-- ko if: FileResource -->
+		<p>
+			<i class="zmdi zmdi-file"></i>
+			<a class="text-muted small" data-bind="text: FileResource().Filename, attr: { href: '@Url.Action("OpenFile","File", new { plugin = "Main" })/'+ FileResource().Id() }" target="_blank"></a>
+		</p>
+		<!-- /ko -->
+	</div>
+</div>
+<!-- /ko -->
+

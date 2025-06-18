@@ -1,0 +1,12 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+
+<div id="ProjectId" class="form-group" data-bind="validationElement: ExtensionValues().ProjectId">
+  <div class="fg-line">
+	  <label class="fg-label control-label">@(Html.Localize("Project")) <span class="required">*</span></label>
+	  <select name="ProjectId" class="form-control" data-bind="select2autocompleter: { data: $root.baseOrder().ExtensionValues().ProjectId, autocompleteOptions: { table: 'CrmProject_Project', orderBy: ['Name'], customFilter: $root.filterByCompany, mapDisplayObject: Helper.Project.mapDisplayNameForSelect2, onSelect: $root.onProjectSelect } }" >
+	  </select>
+  </div>
+  <small class="help-block" data-bind="validationMessage: ExtensionValues().ProjectId"></small>
+</div>
+

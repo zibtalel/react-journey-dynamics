@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Project" xml:space="preserve">
+    <value>Projekt</value>
+  </data>
+  <data name="Projects" xml:space="preserve">
+    <value>Projektek</value>
+  </data>
+  <data name="AddNewProject" xml:space="preserve">
+    <value>Új projekt hozzáadása</value>
+  </data>
+  <data name="DeleteProject" xml:space="preserve">
+    <value>Projekt törlése</value>
+  </data>
+  <data name="EditProject" xml:space="preserve">
+    <value>Projekt szerkesztése</value>
+  </data>
+  <data name="ProjectVisibilityQuestion" xml:space="preserve">
+    <value>Ki tekinthet be ebbe a projektbe?</value>
+  </data>
+  <data name="InvalidProjectName" xml:space="preserve">
+    <value>Érvénytelen Projekt név</value>
+  </data>
+  <data name="ThisProject" xml:space="preserve">
+    <value>ez a projekt</value>
+  </data>
+  <data name="ProjectStatus" xml:space="preserve">
+    <value>Projekt státusza</value>
+  </data>
+  <data name="PotentialStatus" xml:space="preserve">
+    <value>Potenciál státusza</value>
+  </data>
+  <data name="ProjectCategory" xml:space="preserve">
+    <value>Projektkategória</value>
+  </data>
+  <data name="ProjectCreatedBy" xml:space="preserve">
+    <value>Projekt létrehozva {0} által {1}</value>
+  </data>
+  <data name="ProjectCreated" xml:space="preserve">
+    <value>Új prokekt létrehozva</value>
+  </data>
+  <data name="ProjectStatusSetBy" xml:space="preserve">
+    <value>Projekt státusz megváltoztatva {0} által {1}</value>
+  </data>
+  <data name="ProjectStatusSet" xml:space="preserve">
+    <value>Projekt státusza megváltozott erre: "{0}"</value>
+  </data>
+  <data name="NoContactsFromProject" xml:space="preserve">
+    <value>Ehhez a Projekthez eddig még nem lett csatolva kapcsolattartó</value>
+  </data>
+  <data name="CreateProject" xml:space="preserve">
+    <value>Új projekt létrehozása</value>
+  </data>
+  <data name="NoProjectsForContact" xml:space="preserve">
+    <value>Ehhez a Kapcsolathoz nem található projekt</value>
+  </data>
+  <data name="EditProjectCategory" xml:space="preserve">
+    <value>Projektkategóriák átdolgozása</value>
+  </data>
+  <data name="ProjectFrom" xml:space="preserve">
+    <value>Projektgazda</value>
+  </data>
+  <data name="LostProject" xml:space="preserve">
+    <value>Miért veszett el a projekt?</value>
+  </data>
+  <data name="EditProjectLostReasonCategory" xml:space="preserve">
+    <value>Az elveszett projektek kategóriáinak átdolgozása</value>
+  </data>
+  <data name="ProjectRating" xml:space="preserve">
+    <value>Értékelés</value>
+  </data>
+  <data name="ProjectLostReasonCategory" xml:space="preserve">
+    <value>Vesztett projekt kategória</value>
+  </data>
+  <data name="ExportProjects" xml:space="preserve">
+    <value>Projektlisták exportálása (.csv)</value>
+  </data>
+  <data name="ListOfProjects" xml:space="preserve">
+    <value>Projekt lista -CRM</value>
+  </data>
+  <data name="AddContactsToProject" xml:space="preserve">
+    <value>A kiválasztott kapcsolat ehhez a projekthez kerül hozzáfűzésre</value>
+  </data>
+  <data name="ListOfNotesHeaderProject" xml:space="preserve">
+    <value>Megjegyzések ehhez a projekthez</value>
+  </data>
+  <data name="ProjectCategoryGroups" xml:space="preserve">
+    <value>Projektkategória-csoportok</value>
+  </data>
+  <data name="ProjectLost" xml:space="preserve">
+    <value>Elvesztett projekt</value>
+  </data>
+  <data name="ProjectStatusChangeConfirmation" xml:space="preserve">
+    <value>Biztosan megváltoztatja a projekt státuszát?</value>
+  </data>
+  <data name="PotentialStatusChangeConfirmation" xml:space="preserve">
+    <value>Biztosan megváltoztatja a potenciál státuszát?</value>
+  </data>
+  <data name="NoProjectsInfo" xml:space="preserve">
+    <value>Itt követheti értékesítési lehetőségeit, ajánlatait, és kötéseit. Itt kezelni tudja ugyanúgy a megjegyzéseket, feladatokat az értékesítési projektjeihez, mint a háttérinformációkat, a projekt értékeit, és az állapotot: Nyitott, megnyert, elvesztett</value>
+  </data>
+  <data name="ProjectsAmountingTo" xml:space="preserve">
+    <value>...értékben</value>
+  </data>
+  <data name="UpcomingProjectEmailBody" xml:space="preserve">
+    <value>Kedves {0},
+		
+Emlékeztetni szeretném {1} projektekre, melyek ezen a héten esedékesek.
+Talán valamelyiknek szüksége van az ön ellenőrzésére?
+Hálásak lennénk ha bejelentkezne és frissítené az állapotukat a legutóbbi információi alapján.
+
+Közelgő és lejárt projektek ezen a héten:
+	</value>
+  </data>
+  <data name="UpcomingProjectEmailSubject" xml:space="preserve">
+    <value>L-mobile: Közelgő és esedékes projektek eddig: {0:d}</value>
+  </data>
+  <data name="GeneratedEmailMessage" xml:space="preserve">
+    <value> L-mobile server generálta ezt az üzenetet. 
+Kérem ne válaszoljon rá.</value>
+  </data>
+  <data name="OverdueProjects" xml:space="preserve">
+    <value>Határidőn túli projektek</value>
+  </data>
+  <data name="OpenProjects" xml:space="preserve">
+    <value>Nyitott projektek</value>
+  </data>
+  <data name="OwnOverdueProjects" xml:space="preserve">
+    <value>Egy határidőn túli projekt</value>
+  </data>
+  <data name="StandardAddressCity" xml:space="preserve">
+    <value>Város</value>
+  </data>
+  <data name="StandardAddressZipCode" xml:space="preserve">
+    <value>Postai irányítószám</value>
+  </data>
+  <data name="ProjectValue" xml:space="preserve">
+    <value>Értékelés</value>
+  </data>
+  <data name="ProjectWeightedValue" xml:space="preserve">
+    <value>Súlyozott érték</value>
+  </data>
+  <data name="DetachProject" xml:space="preserve">
+    <value>Projekt leválasztása</value>
+  </data>
+  <data name="WonCustomer" xml:space="preserve">
+    <value>Nyertes projektekhez tartozó ügyfelek </value>
+  </data>
+  <data name="ProjectNo" xml:space="preserve">
+    <value>A projekt száma</value>
+  </data>
+  <data name="ProjectParentName" xml:space="preserve">
+    <value>Itt</value>
+  </data>
+  <data name="AttachProjectTo" xml:space="preserve">
+    <value>Projekt hozzáadás</value>
+  </data>
+  <data name="GenerateAndAttachProjects" xml:space="preserve">
+    <value>Projekt generálás és hozzáadás</value>
+  </data>
+  <data name="WeightedContributionMargin" xml:space="preserve">
+    <value>Súlyozott közreműködés</value>
+  </data>
+  <data name="ProjectLostReason" xml:space="preserve">
+    <value>Projektvesztés oka</value>
+  </data>
+  <data name="RemovContactRelationship" xml:space="preserve">
+    <value>Kontakt kapcsolatának eltávolítása</value>
+  </data>
+  <data name="CrmProject_Project" xml:space="preserve">
+    <value>Projektek</value>
+  </data>
+  <data name="CrmProject_ProjectStatus" xml:space="preserve">
+    <value>Projekt státusz</value>
+  </data>
+  <data name="ProjectsEmptyStateTitle" xml:space="preserve">
+    <value>Nincs projekt</value>
+  </data>
+  <data name="ProjectList" xml:space="preserve">
+    <value>Projekt lista</value>
+  </data>
+  <data name="CrmProject_ProjectCategoryGroups" xml:space="preserve">
+    <value>Project kategória csoportok</value>
+  </data>
+  <data name="CrmProject_ProjectContactRelationship" xml:space="preserve">
+    <value>Projekt-kontakt kapcsolatok</value>
+  </data>
+  <data name="CrmProject_ProjectCategory" xml:space="preserve">
+    <value>Projekt kategóriák</value>
+  </data>
+  <data name="CrmProject_ProjectContactRelationshipType" xml:space="preserve">
+    <value>Projekt-kontakt kapcsolat típusok</value>
+  </data>
+  <data name="CrmProject_ProjectLostReasonCategory" xml:space="preserve">
+    <value>Vesztett projekt kategóriák</value>
+  </data>
+  <data name="NoProjectDropboxAddress" xml:space="preserve">
+    <value>Az Ön személyes dropbox E-mail címének generálásával egyidejüleg minden projekt számára a projektre vonatkozó E-mail cím generálásra kerül, amelyet ez a box is kijelez.  Ezenkívül lehetséges a projektre vonatkozó E-mail címnek vCard-ként az Ön E-mail programjába történő importálása. </value>
+  </data>
+  <data name="ProjectContactRelationship" xml:space="preserve">
+    <value>Projekt kapcsolatok</value>
+  </data>
+  <data name="ProjectContactRelationshipType" xml:space="preserve">
+    <value>Projekt kapcsolat típus</value>
+  </data>
+  <data name="ProjectDropboxAddressDescription" xml:space="preserve">
+    <value>Egy projektre vonatkozó dropbox E-mail cím lehetővé teszi,  a kimenő vagy bejövő e-maileknek közvetlenül az adott a projektekhez történő csatolását. Nyisson meg egy új e-mailt   a projekt egyik kapcsolattartó személyének linkjén keresztül, igy a projekthez tartozó dropbox E-mail cím automatikusan a BCC mezőbe bevitelre kerül, így az E-mail a projekt megjegyzés-listájának elküldéskor csatolásra kerül. Ha Ön ezzel szemben az e-mailt nem a projektnek a megjegyzéslistájához, hanem a címzett, illetve a feladó megjegyzéslistájához akarja csatolni, ehhez használja az Ön személyes dropbox E-mail címét, amely az Ön "&lt;a href="{0}"&gt;{1}&lt;/a&gt;" oldalán található</value>
+  </data>
+  <data name="AddProjectRelationship" xml:space="preserve">
+    <value>Projekt kapcsolat hozzáadása</value>
+  </data>
+  <data name="AddPotentialRelationship" xml:space="preserve">
+    <value>Potenciális kapcsolat hozzáadása</value>
+  </data>
+  <data name="ProjectContactRelationships" xml:space="preserve">
+    <value>Projekt-kontakt kapcsolatok</value>
+  </data>
+  <data name="ProjectLostReasonCategoryKey" xml:space="preserve">
+    <value>Projektvesztés kategória</value>
+  </data>
+  <data name="ProjectTab" xml:space="preserve">
+    <value>Projekt tab</value>
+  </data>
+  <data name="DropBoxEmptySlate" xml:space="preserve">
+    <value>Nem áll rendelkezésre dropbox E-mail ehhez a projekthez</value>
+  </data>
+  <data name="SendMailToPotential" xml:space="preserve">
+    <value>E-mail küldése a potenciál</value>
+  </data>
+  <data name="Potential" xml:space="preserve">
+    <value>potenciális</value>
+  </data>
+  <data name="Potentials" xml:space="preserve">
+    <value>Potenciálok</value>
+  </data>
+  <data name="ConvertToProject" xml:space="preserve">
+    <value>Átalakítás egy projekthez</value>
+  </data>
+  <data name="PotentialsEmptyStateTitle" xml:space="preserve">
+    <value>Nincs potenciál</value>
+  </data>
+  <data name="CrmProject_PotentialContactRelationship" xml:space="preserve">
+    <value>Lehetséges-kapcsolatok</value>
+  </data>
+  <data name="CrmProject_PotentialContactRelationshipType" xml:space="preserve">
+    <value>Potenciális kapcsolattípusok</value>
+  </data>
+  <data name="PotentialContactRelationships" xml:space="preserve">
+    <value>potenciálokat-kontakt kapcsolatok</value>
+  </data>
+  <data name="ThisPotential" xml:space="preserve">
+    <value>ezt a lehetőséget</value>
+  </data>
+  <data name="NoPotentialsForContact" xml:space="preserve">
+    <value>Ehhez a Kapcsolathoz nem található potenciális</value>
+  </data>
+  <data name="EditPotential" xml:space="preserve">
+    <value>Potenciál szerkesztése</value>
+  </data>
+  <data name="AddNewPotential" xml:space="preserve">
+    <value>Új potenciál létrehozása</value>
+  </data>
+  <data name="PotentialNo" xml:space="preserve">
+    <value>Potenciális szám</value>
+  </data>
+  <data name="MyOpenedPotentials" xml:space="preserve">
+    <value>Nyílt lehetőségem</value>
+  </data>
+  <data name="NoPotentialsMatchingSearchCriteria" xml:space="preserve">
+    <value>A kiválasztott szűrő számára nem találtak potenciálokat</value>
+  </data>
+  <data name="NoPotentialDropboxAddress" xml:space="preserve">
+    <value>A személyes dropbox E-mail cím generálásával minden egyes projekthez létrehoz egy projekthez kapcsolódó dropbox E-mail cím, amely ebben a mezőben jelenik meg. A projekthez kapcsolódó dropbox E-mail címet vCard formátumban is importálhatja E-mail alkalmazásába.</value>
+  </data>
+  <data name="ContactHistory" xml:space="preserve">
+    <value>Kapcsolattartás</value>
+  </data>
+  <data name="DocumentEntryEmptySlate" xml:space="preserve">
+    <value>Nincsenek bejegyzések</value>
+  </data>
+  <data name="OtherPersons" xml:space="preserve">
+    <value>más személyek</value>
+  </data>
+  <data name="PersonsWorkingHere" xml:space="preserve">
+    <value>PUgyanazon társaság személyei</value>
+  </data>
+  <data name="AddEntry" xml:space="preserve">
+    <value>Bejegyzés hozzáadása</value>
+  </data>
+  <data name="SendDate" xml:space="preserve">
+    <value>Szállítottak</value>
+  </data>
+  <data name="FeedbackReceived" xml:space="preserve">
+    <value>Visszajelzés érkezett</value>
+  </data>
+  <data name="ToggleFeedbackReceived" xml:space="preserve">
+    <value>A visszajelzés módosítása fogadott</value>
+  </data>
+  <data name="ArticleKey" xml:space="preserve">
+    <value>Cikk</value>
+  </data>
+  <data name="PersonKey" xml:space="preserve">
+    <value>Személy</value>
+  </data>
+  <data name="RecipientBelongsTo" xml:space="preserve">
+    <value>Címzett hovatartozása</value>
+  </data>
+  <data name="SalesRelated" xml:space="preserve">
+    <value>Eladáshoz kapcsolódó</value>
+  </data>
+  <data name="ClosedPotentials" xml:space="preserve">
+    <value>Lezárt projektek</value>
+   </data>
+  <data name="WonAt" xml:space="preserve">
+    <value>Megnyerve</value>
+  </data>
+  <data name="LostProjects" xml:space="preserve">
+    <value>Elvesztett projektek</value>
+    </data>
+  <data name="LastNoteDate" xml:space="preserve">
+    <value>Utolsó aktivitás</value>
+  </data>
+  <data name="OpenPotentials" xml:space="preserve">
+    <value>Potenciális projektek</value>
+  </data>
+  <data name="WonProjects" xml:space="preserve">
+    <value>Megnyert projektek</value>
+  </data>
+  <data name="AllOpenProjects" xml:space="preserve">
+    <value>Nyitott projektek</value>
+    </data>
+  <data name="CrmProject_DocumentEntry" xml:space="preserve">
+    <value>Dokumentumok</value>
+  </data>
+  <data name="AllLostProjects" xml:space="preserve">
+    <value>Elvesztett projektek</value>
+    </data>
+  <data name="CrmProject_Potential" xml:space="preserve">
+    <value>Potenciálok</value>
+  </data>
+  <data name="AllOpenProjectsFromTheMonthAfterTheNextMonth" xml:space="preserve">
+    <value>Nyitott projektek a jövőben</value>
+    </data>
+  <data name="CrmProject_PotentialPriority" xml:space="preserve">
+    <value>Potenciál prioritás</value>
+  </data>
+  <data name="AllWonProjects" xml:space="preserve">
+    <value>Megnyert projektek</value>
+    </data>
+  <data name="CrmProject_PotentialStatus" xml:space="preserve">
+    <value>Potenciál státuszok</value>
+  </data>
+  <data name="OwnOpenProjects" xml:space="preserve">
+    <value>Saját nyitott projektek</value>
+  </data>
+  <data name="OwnOpenProjectsNextMonth" xml:space="preserve">
+    <value>Saját nyitott projektek a következő hónapban</value>
+  </data>
+  <data name="OwnOpenProjectsThisMonth" xml:space="preserve">
+    <value>Saját nyitott projektek ebben a hónapban</value>
+  </data>
+</root>

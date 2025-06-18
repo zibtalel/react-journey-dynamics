@@ -1,0 +1,78 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+@using Crm.Library.Modularization.Extensions
+
+<div class="text-center" data-bind="visible: $root.loading">
+	<div class="preloader">
+		<svg class="pl-circular" viewBox="25 25 50 50">
+			<circle class="plc-path" cx="50" cy="50" r="20"></circle>
+		</svg>
+	</div>
+</div>
+<div data-bind="visible: $root.loading() === false && $root.reportEntries().length > 0">
+	<div class="generic-list listview lv-bordered">
+		<div class="lv-body">
+			<div class="lv-item media header-container">
+				<div class="col-xs-4 col-sm-3 p-l-0">
+					@(Html.Localize("Date"))
+				</div>
+				<div class="col-xs-4 col-sm-2">
+					@(Html.Localize("User"))
+				</div>
+				<div class="col-sm-5 hidden-xs">
+					@(Html.Localize("Description"))
+				</div>
+				<div class="col-xs-4 col-sm-2 p-r-0 text-right">
+					@(Html.Localize("Time")) / @(Html.Localize("Amount"))
+				</div>
+			</div>
+			<!-- ko foreach: $root.sortedReportEntries -->
+			<div class="lv-item media">
+				<div class="col-xs-4 col-sm-3 p-l-0">
+					<span data-bind="dateText: { value: Date, pattern: { date: 'short' } }"></span>
+				</div>
+				<div class="col-xs-4 col-sm-2">
+					<!-- ko if: $data.ResponsibleUserObject -->
+					<span data-bind="text: Helper.User.getDisplayName($data.ResponsibleUserObject)"></span>
+					<!-- /ko -->
+					<!-- ko if: $data.User -->
+					<span data-bind="text: Helper.User.getDisplayName($data.User)"></span>
+					<!-- /ko -->
+				</div>
+				<div class="col-xs-4 col-sm-push-5 col-sm-2 p-r-0 text-right">
+					<!-- ko if: $data.From -->
+					<span data-bind="dateText: { value: From, pattern: { time: 'short' } }"></span><br>
+					<!-- /ko -->
+					<!-- ko if: $data.To -->
+					<span data-bind="dateText: { value: To, pattern: { time: 'short' } }"></span>
+					<!-- /ko -->
+					<!-- ko if: $data.Amount -->
+					<span data-bind="money: Amount"></span> <span data-bind="lookupValue: CurrencyKey, lookups: $root.lookups.currencies"></span>
+					<!-- /ko -->
+				</div>
+				<div class="col-xs-12 col-sm-pull-2 col-sm-5">
+					@Html.PluginRenderActions("TimeEntryReportEntryDetails")
+					<!-- ko if: $data.TimeEntryTypeKey -->
+					<span data-bind="lookupValue: TimeEntryTypeKey, lookups: $root.lookups.timeEntryTypes"></span>
+					<!-- /ko -->
+					<!-- ko if: $data.ExpenseTypeKey -->
+					<span data-bind="lookupValue: ExpenseTypeKey, lookups: $root.lookups.expenseTypes"></span>
+					<!-- /ko -->
+					<!-- ko if: $data.ItemNo && $data.ItemDescription -->
+					<span data-bind="text: ItemNo"></span> - <span data-bind="text: ItemDescription"></span>
+					<!-- /ko -->
+					<!-- ko if: $data.Description -->
+					<br>
+					<small class="text-muted" data-bind="text: Description"></small>
+					<!-- /ko -->
+					<!-- ko if: $data.Kilometers -->
+					<br>
+					<small class="text-muted" data-bind="text: Kilometers"></small>
+					<small class="text-muted">@(Html.Localize("Kilometers"))</small>
+					<!-- /ko -->
+				</div>
+			</div>
+			<!-- /ko -->
+		</div>
+	</div>
+</div>

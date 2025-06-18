@@ -1,0 +1,104 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+@using Crm.Library.Modularization.Extensions
+
+<ul class="top-menu">
+	@Html.PluginRenderActions("TimeEntryIndexTopMenu")
+</ul>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12 col-xs-12 col-lg-8 col-md-8">
+			<div class="card">
+				<div class="card-header ch-alt">
+					<div class="row">
+						<div class="col-xs-12 col-sm-2 text-center flex-xs">
+							<!-- ko foreach: summary -->
+							<h4 class="p-10">
+								<span data-bind="text: $data.Format($data.Value)"></span>
+								<br>
+								<small data-bind="text: Name"></small>
+							</h4>
+							<!-- /ko -->
+						</div>
+						<div class="col-xs-12 col-sm-5 col-sm-offset-1 p-10">
+							<div class="col-sm-3 col-xs-2 col-xs-offset-2 col-sm-offset-0 text-center">
+								<a href="#" class="btn bgm-bluegray btn-icon waves-effect waves-circle" data-bind="click: goToPreviousWeek, tooltip: true" title="@(Html.Localize("TimeAgoLastWeek"))">
+									<i class="zmdi zmdi-chevron-left"></i>
+								</a>
+							</div>
+							<div class="col-sm-6 col-xs-4 text-center">
+								<a href="#" onclick="$('#selected-date').data('DateTimePicker').show()">
+									<h2 class="max-width-100">
+										<i class="zmdi zmdi-calendar"></i>
+										@(Html.Localize("CalendarWeekAbbreviation"))
+										<span data-bind="dateText: { value: dates()[1], pattern: { raw: 'ww/yyyy' } }"></span>
+										<small data-bind="dateRange: { start: moment.utc(selectedDate()).local(true).startOf('isoWeek'), end: moment.utc(selectedDate()).local(true).endOf('isoWeek') }"></small>
+										<input id="selected-date" type="hidden" data-bind="datePicker: selectedDate, datePickerOptions: { config: { showClear: false } }" />
+									</h2>
+								</a>
+							</div>
+							<div class="col-sm-3 col-xs-2 text-center">
+								<a href="#" class="btn bgm-bluegray btn-icon waves-effect waves-circle" data-bind="click: goToNextWeek, tooltip: true" title="@Html.Localize("T_NextWeekTasks")">
+									<i class="zmdi zmdi-chevron-right"></i>
+								</a>
+							</div>
+						</div>
+						<!-- ko if: window.AuthorizationManager.isAuthorizedForAction("PerDiemReport", "SeeAllUsersPerDiemReports") -->
+						<div class="col-xs-8 col-sm-4 col-xs-offset-2 col-sm-offset-0 p-10">
+							<select class="form-control" data-bind="select2autocompleter: { data: username, autocompleteOptions: { orderBy: ['LastName'], table: 'Main_User', mapDisplayObject: Helper.User.mapForSelect2Display, customFilter: Helper.User.filterUserQuery, onSelect: $root.timeEntryIndexViewModelRefresh }, allowClear: false }">
+							</select>
+						</div>
+						<!-- /ko -->
+					</div>
+				</div>
+				<div class="card-body card-padding">
+					<div class="row">
+						<ul class="tab-nav tn-justified" role="tablist">
+							<!-- ko foreach: dates -->
+							<li role="presentation" data-bind="css: { active: moment($parent.selectedDate()).isSame(moment($data)) }">
+								<a class="col-xs-4" role="tab" data-toggle="tab" data-bind="click: $parent.selectedDate, attr: { 'aria-expanded': moment($parent.selectedDate()).isSame(moment($data)) ? 'true' : 'false', href: '#tab-' + $index(), 'aria-controls': 'tab-' + $index() }">
+									<i class="zmdi zmdi-circle" data-bind="css: $parent.getCircleColor($index(), $data), visible: $parent.getCircleColor($index(), $data)"></i>
+									<span data-bind="dateText: { value: moment.utc($data).local(true).toDate(), pattern: { skeleton: 'E' } }"></span>
+									<br/>
+									<span data-bind="dateText: { value: moment.utc($data).local(true).toDate(), pattern: { skeleton: 'Md' } }"></span>
+								</a>
+							</li>
+							<!-- /ko -->
+						</ul>
+						<!-- ko if: summaries().length != 0 -->
+						<ul class="tab-nav tn-justified" role="tablist">
+							<!-- ko foreach: dates -->
+							<li role="presentation" data-bind="css: { active: moment($parent.selectedDate()).isSame(moment($data)) }">
+								<div class="hidden-xs p-b-25">
+									<!-- ko foreach: $parent.summaries() -->
+									<!-- ko if: $index() !== 0 -->
+									<hr class="m-t-5 m-b-5">
+									<!-- /ko -->
+									<h5>
+										<span data-bind="text: $data.Format($data.Values[$parentContext.$index()])"></span>
+										<br />
+										<small data-bind="text: Name"></small>
+									</h5>
+									<!-- /ko -->
+								</div>
+							</li>
+							<!-- /ko -->
+						</ul>
+						<!-- /ko -->
+					</div>
+					<div class="tab-content">
+						<!-- ko foreach: dates -->
+						<div role="tabpanel" class="tab-pane animated fadeIn" data-bind="attr: { id: 'tab-' + $index() }, css: { active: moment($parent.selectedDate()).isSame(moment($data)) }">
+							@Html.PluginRenderActions("TimeEntryDayTab")
+							<floating-action-button>
+								@Html.PluginRenderActions("TimeEntryIndexPrimaryAction")
+							</floating-action-button>
+						</div>
+						<!-- /ko -->
+					</div>
+				</div>
+			</div>
+		</div>
+		@Html.PluginRenderActions("TimeEntryIndexSidebar")
+	</div>
+</div>

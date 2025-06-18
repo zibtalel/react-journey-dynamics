@@ -1,0 +1,39 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+
+<div class="modal-header card-header ch-alt" data-bind="with: documententry">
+<button type="button" class="close" data-dismiss="modal" aria-label="@(Html.Localize("Close"))">
+	<span aria-hidden="true">&times;</span>
+</button>
+<h4 class="modal-title" data-bind="text: Helper.String.getTranslatedString('AddEntry')"></h4>
+<h5 class="modal-title" data-bind="text: $parent.personTypes() === 'Same' ? Helper.String.getTranslatedString('PersonsWorkingHere') : Helper.String.getTranslatedString('OtherPersons')"></h5>
+</div>
+<div class="modal-body card-body card-padding">
+	<form role="form" action="#" data-bind="with: documententry">
+
+		<form-element id="PersonKey" params="value: PersonKey, caption: 'Person', type: 'select'">
+			<select name="PersonKey" class="form-control" data-bind="select2autocompleter: { data: value, autocompleteOptions: $root.getAutoCompleterOptions.call($root), placeholder: placeholder }, disable: disable"></select>
+		</form-element>
+
+		<form-element params="value: SendDate, caption: 'SendDate', type: 'datePicker'"></form-element>
+		
+		<form-element id="CategorySelector" params="value: $root.categoryKey, caption: 'Category', type: 'select'">				
+			<select name="CategorySelector" class="form-control" data-bind="select2autocompleter: { data: value, autocompleteOptions: $root.getAutocompleterOptionsDocumentCategory(), placeholder: placeholder} "></select>
+		</form-element>	
+
+		<form-element id="DocSelector" params="value: DocumentKey, caption: 'Documents', type: 'select'">				
+			<select name="DocSelector" class="form-control" data-bind="select2autocompleter: { data: value, autocompleteOptions: { table: 'Main_DocumentAttribute', mapDisplayObject: $root.mapLookupForSelect2Display.bind($root), templateResult: $root.formatResult.bind($root), customFilter: $root.getDocumentSelect2Filter.bind($root), placeholder: placeholder} }, disable: $root.disable"></select>
+		</form-element>
+
+	</form>
+</div>
+<div class="modal-footer card-header ch-alt p-15">
+	<button name="Cancel" type="button" class="btn btn-lg btn-default f-13 waves-effect" data-bind="click: Helper.Database.clearTrackedEntities" data-dismiss="modal">
+		@(Html.Localize("Cancel"))
+	</button>
+	<button name="Save" type="button" class="btn btn-lg btn-primary f-13 waves-effect" data-bind="click: save">
+		@(Html.Localize("Save"))
+	</button>
+</div>
+
+

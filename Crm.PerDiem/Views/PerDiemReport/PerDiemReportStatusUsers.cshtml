@@ -1,0 +1,16 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+
+<div class="row" data-bind="with: perDiemReport">
+	<div class="col-xs-3">
+		<h4>@(Html.Localize("CreatedBy"))</h4>
+		<p data-bind="userDisplayName: { UserName: CreateUser, Users: $root.users }"></p>
+	</div>
+	<div class="col-xs-3" data-bind="visible: !!ApprovedBy()">
+		<h4>@(Html.Localize("ApprovedBy"))</h4>
+		<p data-bind="userDisplayName: { UserName: ApprovedBy, Users: $root.users }"></p>
+	</div>
+	<div class="col-xs-6">
+		&nbsp;
+	</div>
+</div>

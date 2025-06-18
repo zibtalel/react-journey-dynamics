@@ -1,0 +1,6 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+<!-- ko requiredPermission: 'Project::Index' -->
+<div class="col-sm">
+	<mini-chart params="caption: 'OverdueProjects', count: Helper.Project.getOverdueProjectsCount, color: 'red', url: '#/Crm.Project/ProjectList/IndexTemplate?bookmark=%7B%22Category%22%3A%22Filter%22%2C%22Name%22%3A%22Overdue%20projects%22%2C%22Key%22%3A%22OverdueProjects%22%7D&amp;filters=%7B%22ResponsibleUser%22%3A%7B%22Value%22%3A%22' + window.Helper.User.getCurrentUserName() + '%22%2C%22Operator%22%3A%22%3D%3D%3D%22%7D%7D'"></mini-chart>
+</div>
+<!-- /ko -->

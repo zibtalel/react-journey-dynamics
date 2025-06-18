@@ -1,0 +1,172 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+@using Crm.Library.Modularization.Extensions
+@using Crm.Project.Model.Lookups
+
+<div role="tabpanel" class="tab-pane animated fadeIn" id="tab-details">
+	<pmb-block params="icon: 'equalizer', caption: 'BackgroundInfo', context: { project: project }, condition: window.AuthorizationManager.isAuthorizedForAction('Project', 'Edit')">
+		<pmbb-view>
+			<!-- ko with: project -->
+			<span data-bind="text: BackgroundInfo"></span>
+			<span data-bind="translatedText: 'BackgroundInformationEmptyState', ifnot: BackgroundInfo"></span>
+			<!-- /ko -->
+		</pmbb-view>
+		<pmbb-edit>
+			<!-- ko with: project -->
+			<div class="fg-line">
+				<textarea class="form-control" rows="5" placeholder="@(Html.Localize("BackgroundInfo"))..." data-bind="value: BackgroundInfo"></textarea>
+			</div>
+			<!-- /ko -->
+		</pmbb-edit>
+	</pmb-block>
+	<pmb-block id="general-pmb" params="icon: 'account', caption: 'General', context: { project: project }, onSave: $root.onSavePmbBlock.bind($root), condition: window.AuthorizationManager.isAuthorizedForAction('Project', 'Edit')">
+		<pmbb-view>
+			<!-- ko with: project -->
+			<pmbb-view-entry params="caption: 'Name'">
+				<span data-bind="text: Name"></span>
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: Name"></span>
+			</pmbb-view-entry>
+			<!-- ko ifnot: window.Crm.Project.Settings.ProjectNoIsEditable == false && window.Crm.Project.Settings.ProjectNoIsGenerated == false && window.Crm.Project.Settings.ProjectNoIsCreateable == false && ProjectNo() == null -->
+			<pmbb-view-entry params="caption: 'ProjectNo'">
+				<span data-bind="text: ProjectNo"></span>
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: ProjectNo"></span>
+			</pmbb-view-entry>
+			<!-- /ko -->
+			<pmbb-view-entry params="caption: 'ParentName'">
+				<span data-bind="text: Helper.Company.getDisplayName(Parent())"></span>
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: Parent().Name()"></span>
+			</pmbb-view-entry>
+			<!-- ko if: Potential() -->
+			<pmbb-view-entry params="caption: 'Potential'">
+				<a href="#" data-bind="attr: { href: '#/Crm.Project/Potential/DetailsTemplate/' + Potential().Id() }">
+					<span data-bind="text: Potential().Name()"></span>
+				</a>
+			</pmbb-view-entry>
+			<!-- /ko -->
+			<pmbb-view-entry params="caption: 'ProductFamily'">
+			<!-- ko if: ProductFamily() -->
+			  <a href="#" data-bind="attr: { href: '#/Crm.Article/ProductFamily/DetailsTemplate/' + ProductFamily().Id() }">
+					 <span data-bind="text: ProductFamily().Name()"></span>
+			  </a>
+			<!-- /ko -->
+			<!-- ko if: ProductFamily() === null -->
+			  <span class="c-gray" data-bind="translatedText: 'Unspecified'"></span>
+			<!-- /ko -->
+			</pmbb-view-entry>
+			
+			<!-- ko if: StatusKey() === "@(ProjectStatus.LostKey)" -->
+			<pmbb-view-entry params="caption: 'ProjectLost'">
+				<span data-bind="dateText: StatusDate"></span>
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: StatusDate"></span>
+			</pmbb-view-entry>
+			<pmbb-view-entry params="caption: 'Competitor'">
+				<!-- ko with: Competitor -->
+				<a href="#" data-bind="attr: { href: '#/Main/Company/DetailsTemplate/' + Id() }">
+					<span data-bind="text: Helper.Company.getDisplayName($data)"></span>
+				</a>
+				<!-- /ko -->
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: CompetitorId"></span>
+			</pmbb-view-entry>
+			<pmbb-view-entry params="caption: 'ProjectLostReasonCategory'">
+				<span data-bind="if: ProjectLostReasonCategoryKey, lookupValue: ProjectLostReasonCategoryKey, lookups: $root.lookups.projectLostReasonCategories"></span>
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: ProjectLostReasonCategoryKey"></span>
+			</pmbb-view-entry>
+			<pmbb-view-entry params="caption: 'ProjectLostReason'">
+				<span data-bind="text: ProjectLostReason"></span>
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: ProjectLostReason"></span>
+			</pmbb-view-entry>
+			<!-- /ko -->
+			<pmbb-view-entry params="caption: 'ContributionMargin'">
+				<!-- ko if: ContributionMargin -->
+				<span data-bind="if: CurrencyKey, lookupValue: CurrencyKey, lookups: $root.lookups.currencies"></span>
+				<span data-bind="money: ContributionMargin"></span>
+				(<span data-bind="money: WeightedContributionMargin"></span>)
+				<!-- /ko -->
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: ContributionMargin"></span>
+			</pmbb-view-entry>
+			<pmbb-view-entry params="caption: 'ProjectCategory'">
+				<span data-bind="if: CategoryKey, lookupValue: CategoryKey, lookups: $root.lookups.categories"></span>
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: CategoryKey"></span>
+			</pmbb-view-entry>
+			<pmbb-view-entry params="caption: 'ResponsibleUser'">
+				<!-- ko if: ResponsibleUserUser -->
+				<span data-bind="text: Helper.User.getDisplayName(ResponsibleUserUser)"></span>
+				<!-- /ko -->
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: ResponsibleUserUser"></span>
+			</pmbb-view-entry>
+			<pmbb-view-entry params="caption: 'SourceTypeKey'">
+				<span data-bind="if: SourceTypeKey, lookupValue: SourceTypeKey, lookups: $root.lookups.sourceTypes"></span>
+				<span class="c-gray" data-bind="translatedText: 'Unspecified', ifnot: SourceTypeKey"></span>
+			</pmbb-view-entry>
+			@Html.PluginRenderActions("ContactDetailsCampaignSource")
+			<!-- /ko -->
+		</pmbb-view>
+		<pmbb-edit>
+			<!-- ko with: project -->
+			<pmbb-edit-entry params="caption: 'Name', validationElement: Name">
+				<input type="text" class="form-control" data-bind="value: Name">
+			</pmbb-edit-entry>
+			<!-- ko ifnot: (window.Crm.Project.Settings.ProjectNoIsEditable == false && window.Crm.Project.Settings.ProjectNoIsGenerated == false && window.Crm.Project.Settings.ProjectNoIsCreateable == false && ProjectNo() == null) || (window.Helper.Offline !== undefined ? window.Helper.Offline.status=='offline' : false) -->
+			<pmbb-edit-entry params="caption: 'ProjectNo', validationElement: ProjectNo">
+				<input id="ProjectNo" type="text" class="form-control" data-bind="value: ProjectNo, disable: window.Crm.Project.Settings.ProjectNoIsEditable == false">
+			</pmbb-edit-entry>
+			<!-- /ko -->
+			<pmbb-edit-entry params="caption: 'ParentName', validationElement: ParentId">
+				<select name="ParentId" class="form-control" data-bind="select2autocompleter: { data: ParentId, autocompleteOptions: { table: 'Main_Company', orderBy: ['Name'], joins: ['Addresses.Emails', 'Addresses.Phones'], customFilter: Helper.Company.getSelect2Filter, mapDisplayObject: Helper.Company.mapDisplayNameWithAddressForSelect2, onSelect: $root.setCompany.bind($parentContext.$parentContext.$parent), placeholder: $parent.placeholder } }" >
+				</select>
+			</pmbb-edit-entry>
+			<pmbb-edit-entry params="caption: 'Potential', validationElement: PotentialId">
+				<select name="PotentialId" class="form-control" data-bind="select2autocompleter: { data: PotentialId, autocompleteOptions: { table: 'CrmProject_Potential', orderBy: ['Name'],customFilter: function(query, term) { return Helper.Potential.getSelect2Filter(query, term, $data.ParentId()) }, mapDisplayObject: function (c) { return { id: c.Id, text: c.Name, item:c }; }, onSelect: Potential, placeholder: $parent.placeholder } }" >
+				</select>
+			</pmbb-edit-entry>
+			<pmbb-edit-entry params="caption: 'ProductFamily', validationElement: ProductFamilyKey">
+				<select name="ProductFamilyKey" class="form-control" data-bind="select2autocompleter: { data: ProductFamilyKey, autocompleteOptions: { table: 'CrmArticle_ProductFamily', orderBy: ['Name'], mapDisplayObject: function (c) { return { id: c.Id, text: c.Name, item: c }; }, customFilter: Helper.ProductFamily.getSelect2Filter, onSelect: ProductFamily, confirmChange : $root.onConfirmProductFamily.bind($root), placeholder: $parent.placeholder} }">
+				</select>
+			</pmbb-edit-entry>
+			<!-- ko if: StatusKey() === "@(ProjectStatus.LostKey)" -->
+			<pmbb-edit-entry params="caption: 'ProjectLost', validationElement: StatusDate">
+				<input type="text" class="form-control date-picker" data-bind="datePicker: StatusDate" placeholder="@(Html.Localize("ClickHere"))">
+			</pmbb-edit-entry>
+			<pmbb-edit-entry params="caption: 'Competitor', validationElement: CompetitorId">
+				<select name="CompetitorId" class="form-control" data-bind="select2autocompleter: { data: CompetitorId, autocompleteOptions: { table: 'Main_Company', orderBy: ['Name'], joins: ['Addresses'], customFilter: $root.competitorFilter.bind($root), mapDisplayObject: Helper.Company.mapDisplayNameWithAddressForSelect2, onSelect: Competitor, placeholder: $parent.placeholder } }">
+				</select>
+			</pmbb-edit-entry>
+			<pmbb-edit-entry params="caption: 'ProjectLostReasonCategory', validationElement: ProjectLostReasonCategoryKey">
+				<select name="ProjectLostReasonCategoryKey" class="form-control" data-bind="select2autocompleter: { data: ProjectLostReasonCategoryKey, autocompleteOptions: Helper.Lookup.getAutocompleteOptions('CrmProject_ProjectLostReasonCategory'), placeholder: $parent.placeholder}">
+				</select>
+			</pmbb-edit-entry>
+			<pmbb-edit-entry params="caption: 'ProjectLostReason', validationElement: ProjectLostReason">
+				<div class="fg-line">
+					<textarea class="form-control" data-bind="value: ProjectLostReason, autosize: true"></textarea>
+				</div>
+			</pmbb-edit-entry>
+			<!-- /ko -->
+			<pmbb-edit-entry params="caption: 'ContributionMargin', validationElement: ContributionMargin">
+				<input type="number" min="0" step="0.01" class="form-control" data-bind="value: ContributionMargin">
+			</pmbb-edit-entry>
+			<pmbb-edit-entry params="caption: 'Currency', validationElement: CurrencyKey">
+				<select name="Currency" class="form-control" data-bind="select2autocompleter: { data: CurrencyKey, autocompleteOptions: Helper.Lookup.getAutocompleteOptions('Main_Currency'), placeholder: $parent.placeholder}">
+				</select>
+			</pmbb-edit-entry>
+			<pmbb-edit-entry params="caption: 'ProjectCategory', validationElement: CategoryKey">
+				<select name="ProjectCategory" class="form-control" data-bind="select2autocompleter: { data: CategoryKey, autocompleteOptions: Helper.Lookup.getAutocompleteOptions('CrmProject_ProjectCategory'), placeholder: $parent.placeholder}">
+				</select>
+			</pmbb-edit-entry>
+			<pmbb-edit-entry params="caption: 'ResponsibleUser', validationElement: ResponsibleUser">
+				<select name="ResponsibleUser" class="form-control" data-bind="select2autocompleter: { data: ResponsibleUser, autocompleteOptions: { orderBy: ['LastName'], table: 'Main_User', mapDisplayObject: Helper.User.mapForSelect2Display, customFilter: Helper.User.filterUserQuery, onSelect: user => $data.ResponsibleUserUser(user), placeholder: $parent.placeholder } }">
+				</select>
+			</pmbb-edit-entry>
+			<pmbb-edit-entry params="caption: 'SourceTypeKey', validationElement: SourceTypeKey">
+				<select name="Source" class="form-control" data-bind="select2autocompleter: { data: SourceTypeKey, autocompleteOptions: Helper.Lookup.getAutocompleteOptions('Main_SourceType'), placeholder: $parent.placeholder}">
+				</select>
+			</pmbb-edit-entry>
+			@Html.PluginRenderActions("ContactDetailsEditCampaignSource")
+			<!-- /ko -->
+		</pmbb-edit>
+	</pmb-block>
+	<!-- ko if: Crm.Project.Settings.Configuration.BravoActiveForProjects -->
+	@await Html.PartialAsync("Bravo/BravoList")
+	<!-- /ko -->
+	@Html.PluginRenderActions("ProjectMaterialDetailsTabExtensions")
+	@Html.PluginRenderActions("ContactMaterialDetailsTabExtensions")
+</div>

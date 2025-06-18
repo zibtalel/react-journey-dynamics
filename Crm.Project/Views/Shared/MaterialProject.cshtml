@@ -1,0 +1,144 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+@using Crm.Library.Modularization.Extensions
+<div class="lv-item media">
+	@await Html.PartialAsync("GenericListBulkControl")
+	<div class="lv-avatar pull-left" data-bind="text: Helper.Lookup.getLookupValue($parent.lookups.projectCategories, $data.CategoryKey).substring(0,1), style: { backgroundColor: Helper.Lookup.getLookupColor($parent.lookups.projectCategories, $data.CategoryKey) }, visible: !$parent.selectedItems || $parent.selectedItems().length === 0"></div>
+	<div class="lv-title">
+		<!-- ko requiredPermission: { name: 'Read', group: 'Project' } -->
+		<a href="#/Crm.Project/Project/DetailsTemplate/{{Id}}">
+			<span data-bind="text: Helper.Project.getName($data)"></span>
+		</a>
+		<!-- /ko -->
+		<!-- ko noRequiredPermission: { name: 'Read', group: 'Project' } -->
+		<span data-bind="text: Helper.Project.getName($data)"></span>
+		<!-- /ko -->
+	</div>
+	<div class="media-body">
+		<div class="row" data-bind="visible: $parent.isEditing && $parent.isEditing() !== Id() || ($root.currentTabId && $root.currentTabId() === 'tab-relationships')">
+			<div class="col-sm-6">
+				<!-- ko if: BackgroundInfo() !== null-->
+				<div>
+					<span data-bind="text: { value: BackgroundInfo, expand: true }"></span>
+				</div>
+				<!-- /ko -->
+				<!-- ko if: !$root.company || $root.company && $root.company().Id() !== ParentId() -->
+				<div>
+					<small class="small">
+						@(Html.Localize("ProjectParentName"))
+						<a data-bind="attr: { href: '#/Main/Company/DetailsTemplate/' + ParentId() }, text: Helper.Company.getDisplayName(Parent)"></a>
+					</small>
+				</div>
+				<!-- /ko -->
+				<!-- ko if: ProductFamily -->
+				<div data-bind="with: ProductFamily">
+					<small class="small">
+						@(Html.Localize("ProductFamily")):
+						<a data-bind="attr: { href: '#/Crm.Article/ProductFamily/DetailsTemplate/' + ko.unwrap(Id) }, text: Name"></a>
+					</small>
+				</div>
+				<!-- /ko -->
+				<ul class="lv-attrs">
+					<!-- ko if: StatusKey -->
+					<li>
+						<i class="zmdi zmdi-circle" data-bind="style: {color: Helper.Lookup.getLookupColor($parent.lookups.projectStatuses, $data.StatusKey)}"></i>
+						@(Html.Localize("Status")):
+						<span data-bind="lookupValue: StatusKey, lookups: $parent.lookups.projectStatuses"></span>
+					</li>
+					<!-- /ko -->
+					<li>
+						<span data-bind="lookupValue: CategoryKey, lookups: $parent.lookups.projectCategories"></span>
+					</li>
+					<!-- ko if: ResponsibleUserUser -->
+					<li>
+						<i class="zmdi zmdi-account-o"></i>
+						<span data-bind="text: Helper.User.getDisplayName(ResponsibleUserUser)"></span>
+					</li>
+					<!-- /ko -->
+					<li data-bind="visible: Value">
+						<span data-bind="lookupValue: CurrencyKey, lookups: $parent.lookups.currencies"></span>
+						<span data-bind="money: Value"></span>
+						(<span data-bind="money: WeightedValue"></span>)
+					</li>
+					<li data-bind="visible: ContributionMargin">
+						@(Html.Localize("ContributionMargin")):
+						<span data-bind="lookupValue: CurrencyKey, lookups: $parent.lookups.currencies"></span>
+						<span data-bind="money: ContributionMargin"></span>
+						(<span data-bind="money: WeightedContributionMargin"></span>)
+					</li>
+					<li>
+						<span data-bind="foreach: [1,2,3,4,5]">
+							<i class="zmdi" data-bind="css: { 'zmdi-star c-amber': $parent.Rating() >= $data, 'zmdi-star-outline c-black': $parent.Rating() < $data }"></i>
+						</span>
+					</li>
+				</ul>
+			</div>
+			<div class="col-sm-3">
+				<ul class="lv-attrs" data-bind="foreach: Tags">
+					<li data-bind="text: Name"></li>
+				</ul>
+			</div>
+			<div class="col-sm-3">
+				<div>
+					<strong data-bind="translatedText: 'DueDate'"></strong>:
+					<span data-bind="dateText: DueDate"></span>
+				</div>
+				<!-- ko if: StatusKey() === '102' && StatusDate() !== null -->
+				<div>
+					<strong data-bind="translatedText: 'ProjectLost'"></strong>:
+					<span data-bind="dateText: StatusDate"></span>
+				</div>
+				<!-- /ko -->
+				<!-- ko if: StatusKey() === '101' && StatusDate() !== null  -->
+				<div>
+					<strong data-bind="translatedText: 'WonAt'"></strong>:
+					<span data-bind="dateText: StatusDate"></span>
+				</div>
+				<!-- /ko -->
+			</div>
+		</div>
+		<!-- ko if: $parent.isEditing && $parent.isEditing() !== Id() || ($root.currentTabId && $root.currentTabId() === 'tab-relationships') -->
+		<lv-actions>
+			@Html.PluginRenderActions("ProjectItemTemplateActions")
+		</lv-actions>
+		<!-- /ko -->
+		@Html.PluginRenderActions("MaterialProjectItemExtensions")
+		@Html.PluginRenderActions("MaterialContactItemExtensions")
+	</div>
+	<div class="inline-editor" data-bind="if: $parent.isEditing && $parent.isEditing() === Id()">
+		<inline-editor params="context: $data ">
+			<div class="row">
+				<div class="col-xs-6">
+					<form-element params="value: Name, caption: 'Name', type: 'text'"></form-element>
+				</div>
+				<div class="col-xs-6">
+					<form-element id="ProjectValueInlineEditor" params="value: Value, caption: 'Value'">
+						(<span data-bind="lookupValue: $parent.CurrencyKey, lookups: $root.lookups.currencies"></span>)
+						<input type="number" min="0" step="0.01" class="form-control" data-bind="value: value">
+					</form-element>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-6">
+					<form-element id="CategoryKeyInlineEditor" params="value: CategoryKey, caption: 'Category', type: 'select'">
+						<select name="CategoryKeyInlineEditor" class="form-control" data-bind="select2autocompleter: { data: value, default: Helper.Lookup.getLookupValue($root.lookups.projectCategories, value), autocompleteOptions: Helper.Lookup.getAutocompleteOptions('CrmProject_ProjectCategory')}"> </select>
+					</form-element>
+				</div>
+				<div class="col-xs-6">
+					<form-element id="RatingInlineEditor" params="value: Rating, caption: 'Rating', type: 'select'">
+						<select name="RatingInlineEditor" class="form-control" data-bind="options: Helper.Project.getRatingValues(), optionsText: Helper.Project.getRatingDisplayName, value: value">
+						</select>
+					</form-element>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-6">
+					<form-element params="value: DueDate, caption: 'DueDate', type: 'datePicker'"></form-element>
+				</div>	
+				<div class="col-xs-6">
+					<form-element params="value: BackgroundInfo, caption: 'BackgroundInfo', type: 'textarea'"></form-element>
+				</div>
+			</div>
+		</inline-editor>
+	</div>
+</div>

@@ -1,0 +1,7 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Modularization.Extensions
+
+ @await Html.PartialAsync("Report/Header") 
+@Html.PluginRenderActions("PerDiemReport")
+ @await Html.PartialAsync("Report/Footer") 
+

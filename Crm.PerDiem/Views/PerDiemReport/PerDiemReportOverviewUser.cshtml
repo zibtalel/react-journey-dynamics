@@ -1,0 +1,31 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+
+<td>
+	<strong data-bind="dateText: $parent.Date, visible: $index() === 0"></strong>
+</td>
+<td>
+	<strong data-bind="text: Helper.User.getDisplayName(User)"></strong>
+	<div data-bind="if: User.PersonnelId">
+		<small class="c-gray" data-bind="text: User.PersonnelId"></small>
+	</div>
+</td>
+<td>
+	<!-- ko if: Duration.asMinutes() > 0 -->
+	<strong>
+		<span data-bind="dateText: { value: From, pattern: { time: 'short' } }"></span>
+		-
+		<span data-bind="dateText: { value: To, pattern: { time: 'short' } }"></span>
+	</strong>
+	<!-- /ko -->
+</td>
+<td class="text-right">
+	<strong data-bind="durationText: Duration"></strong>
+</td>
+<td class="text-right">
+	<strong>
+		<span data-bind="foreach: Sums">
+			<br data-bind="visible: $index() > 0"/>
+			<span data-bind="money: $data[1]"></span>&nbsp;<span data-bind="lookupValue: $data[0], lookups: $root.lookups.currencies"></span>
+		</span>
+	</strong>
+</td>

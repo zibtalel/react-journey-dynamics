@@ -1,0 +1,12 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+
+<!-- ko requiredPermission: { name: 'Create', group: 'Expense' } -->
+<!-- ko if: $root.canAddExpense -->
+<li>
+	<a id="add-expense" href="#" data-mfb-label="@(Html.Localize("AddExpense"))" data-route="Crm.PerDiem/Expense/EditTemplate/?selectedDate={{$root.selectedDate().toJSON()}}&username={{$root.username}}" data-toggle="modal" data-target="#modal">
+		<i class="zmdi zmdi-card-travel"></i>
+	</a>
+</li>
+<!-- /ko -->
+<!-- /ko -->

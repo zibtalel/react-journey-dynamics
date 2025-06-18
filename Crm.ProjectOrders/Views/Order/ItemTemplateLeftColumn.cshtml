@@ -1,0 +1,10 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+@using Crm.Offline.Extensions
+@using Crm.Order.Rest.Model
+@using Crm.ProjectOrders.Model
+
+@using (Html.TemplateContext<BaseOrderRest>(x => x.ExtensionValues)) { 
+	<strong>@(Html.Localize("Project"))</strong>@(":") @(Html.TemplateLink<OrderExtension>(Html.TemplateText<OrderExtension>(x => x.ProjectLegacyName).ToString(), Url.Content("~/Crm.Project/Project/Details/"), x => x.ProjectId))
+	<br />
+ } 

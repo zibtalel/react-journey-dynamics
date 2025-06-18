@@ -1,0 +1,26 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+@using Crm.Library.Modularization.Extensions
+
+<div role="tabpanel" class="tab-pane animated fadeIn" id="tab-projects" data-bind="with: tabs()['tab-projects']">
+	<empty-state-box params="mood: 'sad', title: 'ProjectsEmptyStateTitle', text: 'NoProjectsForContact'" data-bind="visible: items().length === 0">
+	</empty-state-box>
+	<ul class="top-menu">
+		@Html.PluginRenderActions("ProjectTabTopMenu")
+		<li data-bind="visible: true, tooltip: true" data-placement="bottom" title="@Html.Localize("Filter")">
+			<a id="open-generic-list-filter" data-trigger="#right-nav" href="#" data-route="Crm.Project/ProjectList/FilterTemplate">
+				<i class="tm-icon zmdi zmdi-search-in-page"></i>
+			</a>
+		</li>
+	</ul>
+	@Html.PluginRenderActions("MaterialGenericListResourceExtensions")
+	<div class="generic-list listview lv-bordered">
+		<div class="lv-body" data-bind="foreach: items">
+			@await Html.PartialAsync("GenericListItemGroup") 
+			 @await Html.PartialAsync("MaterialProject") 
+		</div>
+	</div>
+	 @await Html.PartialAsync("MaterialPaging") 
+	<floating-action-button params="href: '#/Crm.Project/Project/CreateTemplate?companyId=' + $root.company().Id(), title: 'CreateProject'"></floating-action-button>
+</div>
+

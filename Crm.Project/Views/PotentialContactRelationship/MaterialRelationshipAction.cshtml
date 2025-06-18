@@ -1,0 +1,24 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+
+<!-- ko requiredPermission: { name: 'EditContactRelationship', group: 'Potential' } -->
+<!-- ko if: $root.contactType() !== "Potential" -->
+<li data-bind="with: $root">
+	<a id="add-potential-contact-relationship" href="#" data-mfb-label="@(Html.Localize("AddPotentialRelationship"))" data-route="Crm.Project/PotentialContactRelationship/EditTemplate/" data-toggle="modal" data-target="#modal">
+		<i class="zmdi zmdi-file"></i>
+	</a>
+</li>
+<!-- /ko -->
+<!-- ko if: $root.contactType() === "Potential" -->
+<li data-bind="with: $root">
+	<a id="add-potential-company-relationship" href="#" data-mfb-label="@($"{Html.Localize("AddPotentialRelationship")} ({Html.Localize("Company")})")" data-route="Crm.Project/PotentialContactRelationship/EditTemplate/?contactType=Company" data-toggle="modal" data-target="#modal">
+		<i class="zmdi zmdi-accounts"></i>
+	</a>
+</li>
+<li data-bind="with: $root">
+	<a id="add-potential-person-relationship" href="#" data-mfb-label="@($"{Html.Localize("AddPotentialRelationship")} ({Html.Localize("Person")})")" data-route="Crm.Project/PotentialContactRelationship/EditTemplate/?contactType=Person" data-toggle="modal" data-target="#modal">
+		<i class="zmdi zmdi-account"></i>
+	</a>
+</li>
+<!-- /ko -->
+<!-- /ko -->

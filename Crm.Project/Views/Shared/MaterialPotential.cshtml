@@ -1,0 +1,105 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl 
+@using Crm.Library.Globalization.Extensions
+@using Crm.Library.Modularization.Extensions
+
+<div class="lv-item media">
+	@await Html.PartialAsync("GenericListBulkControl")
+	<div class="lv-avatar pull-left" data-bind="text: Helper.Lookup.getLookupValue($parent.lookups.sourceType, $data.SourceTypeKey).substring(0,1), style: { backgroundColor: Helper.Lookup.getLookupColor($parent.lookups.sourceType, $data.SourceTypeKey) }, visible: !$parent.selectedItems || $parent.selectedItems().length === 0"></div>
+	<div class="lv-title">
+		<a data-bind="attr: { href: '#/Crm.Project/Potential/DetailsTemplate/' + Id(), requiredPermission: { name: 'Read', group: 'Potential' } }"> <span data-bind="text: PotentialNo"></span> <span data-bind="visible: PotentialNo + ' '"></span> <span data-bind="text: Name"></span> </a>
+	</div>
+	<div class="media-body">
+		<div class="row" data-bind="visible: $parent.isEditing && $parent.isEditing() !== Id() || ($root.currentTabId && $root.currentTabId() === 'tab-relationships')">
+			<div class="col-sm-4">
+				<!-- ko if: BackgroundInfo() !== null-->
+				<div> <span data-bind="text: { value: BackgroundInfo, expand: true }"></span> </div>
+				<!-- /ko -->
+				<!-- ko if: !$root.company || $root.company && $root.company().Id() !== ParentId() -->
+				<div> <small class="small" data-bind="requiredPermission: { name: 'Read', group: 'Potential' }">
+						@(Html.Localize("ParentName"))
+						<a  data-bind="attr: { href: '#/Main/Company/DetailsTemplate/' + ParentId() }, text: Helper.Company.getDisplayName(Parent)"></a>
+					</small> </div>
+				<!-- /ko -->
+				<!-- ko if: ProductFamily -->
+				<div data-bind="with: ProductFamily"> <small class="small">
+						@(Html.Localize("ProductFamily")):
+						<a data-bind="attr: { href: '#/Crm.Article/ProductFamily/DetailsTemplate/' + ko.unwrap(Id) }, text: Name"></a>
+					</small> </div>
+				<!-- /ko -->
+				<ul class="lv-attrs">
+					<!-- ko if: StatusKey -->
+					<li> <i class="zmdi zmdi-circle" data-bind="style: {color: Helper.Lookup.getLookupColor($parent.lookups.potentialStatuses, $data.StatusKey)}"></i> @(Html.Localize("Status")): <span data-bind="lookupValue: StatusKey, lookups: $parent.lookups.potentialStatuses"></span> </li>
+					<!-- /ko -->
+					<!-- ko if: ResponsibleUserUser -->
+					<li> <i class="zmdi zmdi-account-o"></i> <span data-bind="text: Helper.User.getDisplayName(ResponsibleUserUser)"></span> </li>
+					<!-- /ko -->
+					<!-- ko if: PriorityKey -->
+					<li> <span data-bind="lookupValue: PriorityKey, lookups: $parent.lookups.potentialPriorities"></span> </li>
+					<!-- /ko -->
+				</ul>
+				@Html.PluginRenderActions("MaterialContactItemExtensions")
+			</div>
+			<div class="col-sm-4">
+				<ul class="lv-attrs" data-bind="foreach: Tags">
+					<li data-bind="text: Name"></li>
+				</ul>
+			</div>
+			<div class="col-sm-3">
+				<div> <strong data-bind="translatedText: 'CreateDate'"></strong>: <span data-bind="dateText: { value: CreateDate, pattern: { datetime: 'medium'} }"></span> </div>
+				<!-- ko if: StatusKey() === 'closed' && CloseDate() !== null -->
+				<div> <strong data-bind="translatedText: 'Closed'"></strong>: <span data-bind="dateText: { value: CloseDate, pattern: { datetime: 'medium'} }"></span> </div>
+				<!-- /ko -->
+				<!-- ko if: LastNoteDate() !== null -->
+				<div> <strong data-bind="translatedText: 'LastNoteDate'"></strong>: <span data-bind="dateText: { value: LastNoteDate, pattern: {datetime: 'medium'} }"></span> </div>
+				<!-- /ko -->
+			</div>
+		</div>
+		<!-- ko if: $parent.isEditing && $parent.isEditing() !== Id() || ($root.currentTabId && $root.currentTabId() === 'tab-relationships') -->
+		<lv-actions>@Html.PluginRenderActions("PotentialItemTemplateActions")</lv-actions>
+		<!-- /ko -->
+		@Html.PluginRenderActions("MaterialPotentialItemExtensions")
+		</div>
+		<div class="inline-editor" data-bind="if: $parent.isEditing && $parent.isEditing() === Id() ">
+		<inline-editor params="context: $data ">
+			<div class="row">
+				<div class="col-xs-6">
+					<form-element params="value: Name, caption: 'Name', type: 'text'"></form-element>
+				</div>
+				<div class="col-xs-6">
+					<form-element id="SourceTypeKeyInlineEditor" params="value:SourceTypeKey, caption: 'SourceTypeKey', type: 'select'">
+						<select name="SourceTypeKeyInlineEditor" class="form-control" data-bind="select2autocompleter: { data: value, autocompleteOptions: Helper.Lookup.getAutocompleteOptions('Main_SourceType'), placeholder: placeholder}"> </select>
+					</form-element>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-6">
+					<form-element id="ParentIdInlineEditor" params="value: ParentId, caption: 'ParentId'">
+						<select name="ParentIdInlineEditor" class="form-control" data-bind="select2autocompleter: { data: value, autocompleteOptions: { table: 'Main_Company', orderBy: ['Name'], joins: Helper.Company.getAutocompleteJoins(), customFilter: Helper.Company.getSelect2Filter, mapDisplayObject: Helper.Company.mapDisplayNameWithAddressForSelect2, placeholder: placeholder } }"> </select>
+					</form-element>
+				</div>
+				<div class="col-xs-6">
+					<form-element id="ProductFamilyKeyInlineEditor" params="value: ProductFamilyKey, caption: 'ProductFamily'">
+						<select name="ProductFamilyKeyInlineEditor" class="form-control" data-bind="select2autocompleter: { data: value, autocompleteOptions: { table: 'CrmArticle_ProductFamily', orderBy: ['Name'], mapDisplayObject: function (c) { return { id: c.Id, text: c.Name, item: c }; }, key: 'Id', placeholder: placeholder} }"> </select>
+					</form-element>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-6">
+					<form-element id="PriorityKeyInlineEditor" params="value:PriorityKey, caption: 'Priority', type: 'select'">
+						<select name="PriorityKeyInlineEditor" class="form-control" data-bind="select2autocompleter: { data: value, default: Helper.Lookup.getLookupValue($root.lookups.priorities, value), autocompleteOptions: Helper.Lookup.getAutocompleteOptions('CrmProject_PotentialPriority'), placeholder: placeholder}"> </select>
+					</form-element>
+				</div>
+				<div class="col-xs-6">
+					<form-element id="ResponsibleUserKeyPotentialInlineEditor" params="value: ResponsibleUser, caption: 'ResponsibleUser', type: 'select'">
+						<select name="ResponsibleUserKeyPotentialInlineEditor" class="form-control" data-bind="select2autocompleter: { data: value, autocompleteOptions: { orderBy: ['LastName'], table: 'Main_User', mapDisplayObject: Helper.User.mapForSelect2Display, customFilter: Helper.User.filterUserQuery, placeholder: placeholder }}"> </select>
+					</form-element>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-6">
+					<form-element params="value: BackgroundInfo, caption: 'BackgroundInfo', type: 'textarea'"></form-element>
+				</div>
+			</div>
+		</inline-editor>
+	</div>
+</div>

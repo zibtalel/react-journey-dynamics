@@ -1,0 +1,20 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+
+<!-- ko if: $root.currentTabId && $root.currentTabId() === 'tab-relationships' && window.AuthorizationManager.isAuthorizedForAction('Project', 'RelationshipsTab')  -->
+	<!-- ko with: ko.utils.arrayFirst($parents, function(x) { return x instanceof window.$data.KoObservableEntity 
+		&& x.innerInstance instanceof database.CrmProject_ProjectContactRelationship.CrmProject_ProjectContactRelationship }) -->
+	<li data-bind="requiredPermission: { name: 'EditContactRelationship', group: 'Project' }">
+		<a data-test="edit-project-contact-relationship" href="#" data-bind="attr: { 'data-route': 'Crm.Project/ProjectContactRelationship/EditTemplate/' + Id() }" data-toggle="modal" data-target="#modal">
+			@(Html.Localize("Edit"))
+		</a>
+	</li>
+	<!-- ko with: $root.tabs()['tab-relationships'] -->
+		<li data-bind="requiredPermission: { name: 'RemoveContactRelationship', group: 'Project' }">
+			<a data-test="delete-project-contact-relationship" href="#" data-bind="click: $data.deleteRelationship.bind($data, $parent)">
+				@(Html.Localize("Delete"))
+			</a>
+		</li>
+	<!-- /ko -->
+	<!-- /ko -->
+<!-- /ko -->

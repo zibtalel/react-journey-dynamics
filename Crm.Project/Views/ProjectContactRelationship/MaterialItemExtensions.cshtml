@@ -1,0 +1,15 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+
+<!-- ko if: $root.currentTabId && $root.currentTabId() === 'tab-relationships' && window.AuthorizationManager.isAuthorizedForAction('Project', 'RelationshipsTab') -->
+	<!-- ko with: ko.utils.arrayFirst($parents, function(x) { return x instanceof window.$data.KoObservableEntity 
+		&& x.innerInstance instanceof database.CrmProject_ProjectContactRelationship.CrmProject_ProjectContactRelationship }) -->
+		<!-- ko if: Information -->
+		<div class="media">
+			<div class="media-body">
+				<i class="zmdi zmdi-info-outline"></i>
+				<span data-test="project-contact-relationship-information" data-bind="text: Information"></span>
+			</div>
+		</div>
+		<!-- /ko -->
+	<!-- /ko -->
+<!-- /ko -->

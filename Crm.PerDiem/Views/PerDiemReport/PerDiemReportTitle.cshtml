@@ -1,0 +1,14 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+
+<h1 class="text-right">
+	@(Html.Localize("PerDiemReportTitle"))
+</h1>
+
+<!-- ko with: perDiemReport -->
+<h4 class="text-right c-gray">
+	<span class="c-gray" data-bind="dateText: { value: From, pattern: { date: 'full' } }"></span>
+	-
+	<span class="c-gray" data-bind="dateText: { value: To, pattern: { date: 'full' } }"></span>
+</h4>
+<!-- /ko -->

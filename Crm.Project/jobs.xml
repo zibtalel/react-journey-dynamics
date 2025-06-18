@@ -1,0 +1,29 @@
+﻿<job-scheduling-data xmlns="http://quartznet.sourceforge.net/JobSchedulingData"
+                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     version="2.0">
+
+	<processing-directives>
+		<overwrite-existing-data>true</overwrite-existing-data>
+	</processing-directives>
+
+	<schedule>
+		<job>
+			<name>UpcomingProjectNotifier</name>
+			<group>Crm.Project</group>
+			<description>Sends a kind reminder to the users reminding them of overdue and upcoming projects</description>
+			<job-type>Crm.Project.BackgroundServices.UpcomingProjectNotifier, Crm.Project</job-type>
+			<durable>true</durable>
+			<recover>false</recover>
+		</job>
+		<trigger>
+			<cron>
+				<name>UpcomingProjectNotifierTrigger</name>
+				<group>Crm.Project</group>
+				<description>Runs once a week (preferrably on monday mornings) to remind users</description>
+				<job-name>UpcomingProjectNotifier</job-name>
+				<job-group>Crm.Project</job-group>
+				<cron-expression>0 30 8 ? * MON</cron-expression>
+			</cron>
+		</trigger>
+	</schedule>
+</job-scheduling-data>

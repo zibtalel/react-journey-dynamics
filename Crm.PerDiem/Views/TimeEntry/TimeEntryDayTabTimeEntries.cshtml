@@ -1,0 +1,91 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+@using Crm.Library.Modularization.Extensions
+
+<div class="row m-t-20 c-black">
+	<div class="generic-list listview lv-bordered">
+		<div class="lv-body">
+			<div class="lv-item media header-container">
+				<div class="col-xs-8 col-sm-4 p-l-0">
+					<i class="zmdi zmdi-time"></i>
+					@(Html.Localize("Time"))
+				</div>
+				<div class="col-sm-5 hidden-xs">
+					@(Html.Localize("Description"))
+				</div>
+				<div class="col-xs-3 col-sm-2 p-r-0 text-right f-700">
+					<!-- ko if: $parent.timeSummaries()[0].Values[$index()] -->
+					<span data-bind="text: $parent.timeSummaries()[0].Format($parent.timeSummaries()[0].Values[$index()])"></span>&nbsp;@(Html.Localize("HourAbbreviation"))
+					<!-- /ko -->
+					<lv-actions class="pull-right"></lv-actions>
+				</div>
+			</div>
+			<!-- ko if: $parent.getTimesForDate($data).length === 0 -->
+			<div class="lv-item media">
+				@(Html.Localize("ThereAreNoTimeEntries"))
+			</div>
+			<!-- /ko -->
+			<!-- ko foreach: $parent.getTimesForDate($data).sort(function(a, b){ return a.From() > b.From() ? 1 : -1; }) -->
+			<div class="lv-item media time-entry">
+				<div class="col-xs-8 col-sm-4 p-l-0">
+					<span data-bind="dateText: { value: From, pattern: { time: 'short' } }"></span><br>
+					<span data-bind="dateText: { value: To, pattern: { time: 'short' } }"></span>
+					<span data-bind="ifnot: To">&nbsp;</span>
+				</div>
+				<div class="col-xs-3 col-sm-2 col-sm-push-5 text-right p-r-0">
+					<!-- ko if: Duration -->
+					<span data-bind="durationText: Duration"></span>&nbsp;@(Html.Localize("HourAbbreviation"))
+					<!-- /ko -->
+				</div>
+				<div class="col-xs-12 col-sm-pull-2 col-sm-5">
+					@Html.PluginRenderActions("TimeEntryDayTabDescription")
+					<!-- ko if: $data.TimeEntryTypeKey -->
+					<span data-bind="lookupValue: TimeEntryTypeKey, lookups: $root.lookups.timeEntryTypes"></span>
+					<!-- /ko -->
+					<!-- ko ifnot: $root.loading -->
+					<!-- ko if: $data.ItemNo && $data.ItemDescription -->
+					<span data-bind="text: ItemNo"></span>- <span data-bind="text: ItemDescription"></span>
+					<!-- /ko -->
+					<!-- /ko -->
+					<!-- ko if: ko.unwrap($data.Latitude) && ko.unwrap($data.Longitude) -->
+					<br>
+					<a target="_blank" data-bind="attr: { href: 'https://maps.google.com/maps?q=' + $data.Latitude() + ',' + $data.Longitude() }">
+						<span data-bind="text: Latitude().toFixed(4)"></span>
+						/
+						<span data-bind="text: Longitude().toFixed(4)"></span>
+					</a>
+					<!-- /ko -->
+					<!-- ko if: ko.unwrap($data.ServiceOrderDispatch) && !!$data.ServiceOrderDispatch().LatitudeOnDispatchStart() && !!$data.ServiceOrderDispatch().LongitudeOnDispatchStart() -->
+					<br>
+					<a target="_blank" data-bind="attr: { href: 'https://maps.google.com/maps?q=' + $data.ServiceOrderDispatch().LatitudeOnDispatchStart() + ',' + $data.ServiceOrderDispatch().LongitudeOnDispatchStart() }">
+						<span data-bind="text: ServiceOrderDispatch().LatitudeOnDispatchStart().toFixed(4)"></span>
+						/
+						<span data-bind="text: ServiceOrderDispatch().LongitudeOnDispatchStart().toFixed(4)"></span>
+					</a>
+					<!-- /ko -->
+					<!-- ko if: $data.ServiceOrder -->
+					<br>
+					<small class="text-muted" data-bind="text: ServiceOrder().OrderNo"></small>
+					<!-- /ko -->
+					<!-- ko if: $data.Description -->
+					<br>
+					<small class="text-muted" data-bind="text: Description"></small>
+					<!-- /ko -->
+					<!-- ko if: $data.Kilometers -->
+					<br>
+					<small class="text-muted" data-bind="text: Kilometers"></small>
+					<small class="text-muted">@(Html.Localize("Kilometers"))</small>
+					<!-- /ko -->
+					<!-- ko if: $data.canViewCurrentUser && !$data.canViewCurrentUser() -->
+					<br>
+					<small class="text-muted">@(Html.Localize("CreatedBy"))</small>
+					<small class="text-muted" data-bind="text: CreateUser"></small>
+					<!-- /ko -->
+				</div>
+				<lv-actions class="pull-right">@Html.PluginRenderActions("TimeEntryTemplateActions")</lv-actions>
+			</div>
+			<!-- /ko -->
+		</div>
+	</div>
+</div>
+<hr />

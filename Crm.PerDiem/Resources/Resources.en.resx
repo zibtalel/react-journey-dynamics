@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddExpense" xml:space="preserve">
+    <value>Add expense</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="ClosedExpenseReports" xml:space="preserve">
+    <value>Closed expense reports</value>
+  </data>
+  <data name="ClosedTimeEntryReports" xml:space="preserve">
+    <value>Closed time entry reports</value>
+  </data>
+  <data name="ConfirmCloseExpenseReport" xml:space="preserve">
+    <value>Do you really want to close this expense report?</value>
+  </data>
+  <data name="ConfirmCloseTimeEntryReport" xml:space="preserve">
+    <value>Do you really want to close this time entry report?</value>
+  </data>
+  <data name="ConfirmDeleteExpense" xml:space="preserve">
+    <value>Do you really want to delete this expense?</value>
+  </data>
+  <data name="ConfirmDeleteTimeEntry" xml:space="preserve">
+    <value>Do you really want to delete this time entry?</value>
+  </data>
+  <data name="ConfirmOpenExpenseReport" xml:space="preserve">
+    <value>Do you really want to set the status of this expense report to "Open"?</value>
+  </data>
+  <data name="ConfirmOpenTimeEntryReport" xml:space="preserve">
+    <value>Do you really want to set the status of this time entry report to "Open"?</value>
+  </data>
+  <data name="ConfirmResendExpenseReport" xml:space="preserve">
+    <value>This expense report was already sent. Do you really want to send it again?</value>
+  </data>
+  <data name="ConfirmResendTimeEntryReport" xml:space="preserve">
+    <value>This time entry report was already sent. Do you really want to send it again?</value>
+  </data>
+  <data name="CrmPerDiem_UserExpense" xml:space="preserve">
+    <value>Expenses</value>
+  </data>
+  <data name="CrmPerDiem_ExpenseReport" xml:space="preserve">
+    <value>Expense reports</value>
+  </data>
+  <data name="CrmPerDiem_ExpenseReportStatus" xml:space="preserve">
+    <value>Expense report status</value>
+  </data>
+  <data name="CrmPerDiem_ExpenseReportType" xml:space="preserve">
+    <value>Expense report type</value>
+  </data>
+  <data name="CrmPerDiem_ExpenseType" xml:space="preserve">
+    <value>Expense types</value>
+  </data>
+  <data name="CrmPerDiem_TimeEntryReport" xml:space="preserve">
+    <value>Time entry reports</value>
+  </data>
+  <data name="CrmPerDiem_TimeEntryReportStatus" xml:space="preserve">
+    <value>Time entry report status</value>
+  </data>
+  <data name="CrmPerDiem_TimeEntryReportType" xml:space="preserve">
+    <value>Time entry report type</value>
+  </data>
+  <data name="CrmPerDiem_TimeEntryType" xml:space="preserve">
+    <value>Time entry types</value>
+  </data>
+  <data name="CrmPerDiem_UserTimeEntry" xml:space="preserve">
+    <value>Time entries</value>
+  </data>
+  <data name="DecreasesCapacity" xml:space="preserve">
+    <value>Decreases capacity</value>
+  </data>
+  <data name="DefaultDurationInMinutes" xml:space="preserve">
+    <value>Default duration in minutes</value>
+  </data>
+  <data name="DurationType" xml:space="preserve">
+    <value>Duration type</value>
+  </data>
+  <data name="EditExpense" xml:space="preserve">
+    <value>Edit expense</value>
+  </data>
+  <data name="Expense" xml:space="preserve">
+    <value>Expense</value>
+  </data>
+  <data name="ExpenseReport" xml:space="preserve">
+    <value>Expense reports</value>
+  </data>
+  <data name="ExpenseReportFromUserCalendarWeek" xml:space="preserve">
+    <value>Expense report from {0} for calendar week {1}</value>
+  </data>
+  <data name="ExpenseReportFromUserCustomPeriod" xml:space="preserve">
+    <value>Expense report from {0} for custom period [{1}; {2}]</value>
+  </data>
+  <data name="ExpenseReportSentTo" xml:space="preserve">
+    <value>The expense report was sent to the following recipients: {0}.</value>
+  </data>
+  <data name="ExpenseReportStatus" xml:space="preserve">
+    <value>Expense report status</value>
+  </data>
+  <data name="ExpenseReportType" xml:space="preserve">
+    <value>Expense report type</value>
+  </data>
+  <data name="Expenses" xml:space="preserve">
+    <value>Expenses</value>
+  </data>
+  <data name="ExpenseType" xml:space="preserve">
+    <value>Expense type</value>
+  </data>
+  <data name="ListExpense" xml:space="preserve">
+    <value>List expenses</value>
+  </data>
+  <data name="NoClosedExpenseReports" xml:space="preserve">
+    <value>Currently there are no closed expense reports to display.</value>
+  </data>
+  <data name="NoClosedTimeEntryReports" xml:space="preserve">
+    <value>Currently there are no closed time entry reports to display.</value>
+  </data>
+  <data name="NonClosedExpenseReports" xml:space="preserve">
+    <value>Non-closed expense reports</value>
+  </data>
+  <data name="NonClosedTimeEntryReports" xml:space="preserve">
+    <value>Non-closed time entry reports</value>
+  </data>
+  <data name="NoNonClosedExpenseReports" xml:space="preserve">
+    <value>Currently there are no non-closed expense reports to display.</value>
+  </data>
+  <data name="NoNonClosedTimeEntryReports" xml:space="preserve">
+    <value>Currently there are no non-closed time entry reports to display.</value>
+  </data>
+  <data name="OverlappingByTimeEntries" xml:space="preserve">
+    <value>Overlapping by time entry ({0} - {1} o'clock)</value>
+  </data>
+  <data name="ShowInMobileClient" xml:space="preserve">
+    <value>Show in mobile client</value>
+  </data>
+  <data name="ShowInScheduler" xml:space="preserve">
+    <value>Show in scheduler</value>
+  </data>
+  <data name="TimeEntries" xml:space="preserve">
+    <value>Time entries</value>
+  </data>
+  <data name="TimeEntryReport" xml:space="preserve">
+    <value>Time entry reports</value>
+  </data>
+  <data name="TimeEntryReportFromUserCalendarWeek" xml:space="preserve">
+    <value>Time entry report from {0} for calendar week {1}</value>
+  </data>
+  <data name="TimeEntryReportFromUserCustomPeriod" xml:space="preserve">
+    <value>TimeEntry report from {0} for custom period [{1}; {2}]</value>
+  </data>
+  <data name="TimeEntryReportSentTo" xml:space="preserve">
+    <value>The time entry report was sent to the following recipients: {0}.</value>
+  </data>
+  <data name="TimeEntryReportStatus" xml:space="preserve">
+    <value>Time entry report status</value>
+  </data>
+  <data name="TimeEntryReportType" xml:space="preserve">
+    <value>Time entry report type</value>
+  </data>
+  <data name="TimeEntryTypeKey" xml:space="preserve">
+    <value>Time entry type</value>
+  </data>
+  <data name="TimeTable" xml:space="preserve">
+    <value>Timetable</value>
+  </data>
+  <data name="TimeTableAndExpenses" xml:space="preserve">
+    <value>Times &amp; expenses</value>
+  </data>
+  <data name="TimeTableTimeEntryType" xml:space="preserve">
+    <value>Time entry type</value>
+  </data>
+  <data name="UserTimeEntry" xml:space="preserve">
+    <value>User time entry</value>
+  </data>
+  <data name="ValidCostCenters" xml:space="preserve">
+    <value>Cost centers</value>
+  </data>
+  <data name="PerDiemReportOverview" xml:space="preserve">
+    <value>Expense overview</value>
+  </data>
+  <data name="PerDiemReportTitle" xml:space="preserve">
+    <value>Expense report</value>
+  </data>
+  <data name="RefundAmount" xml:space="preserve">
+    <value>Amount to refund</value>
+  </data>
+  <data name="ApprovedBy" xml:space="preserve">
+    <value>Approved by</value>
+  </data>
+  <data name="PerDiemReportFromUserMonth" xml:space="preserve">
+    <value>Expense report from {0} for month {1}</value>
+  </data>
+  <data name="PerDiemReportFromUserCalendarWeek" xml:space="preserve">
+    <value>Expense report from {0} for calendar week {1}</value>
+  </data>
+  <data name="PerDiemReportFromUserCustomPeriod" xml:space="preserve">
+    <value>Expense report from {0} for custom period {1} - {2}</value>
+  </data>
+  <data name="CrmPerDiem_PerDiemReport" xml:space="preserve">
+    <value>Expense reports</value>
+  </data>
+  <data name="CrmPerDiem_PerDiemReportStatus" xml:space="preserve">
+    <value>Expense report status</value>
+  </data>
+  <data name="CrmPerDiem_PerDiemReportType" xml:space="preserve">
+    <value>Expense report type</value>
+  </data>
+  <data name="AffectedDate" xml:space="preserve">
+    <value>Affected date</value>
+  </data>
+  <data name="DownloadReport" xml:space="preserve">
+    <value>Download report</value>
+  </data>
+  <data name="WorkingHoursPerDay" xml:space="preserve">
+    <value>Working hours per day</value>
+  </data>
+  <data name="WorkingHoursPerDayInTimeEntryHint" xml:space="preserve">
+    <value>Amount of working hours per day. Used for all day time entries.</value>
+  </data>
+</root>

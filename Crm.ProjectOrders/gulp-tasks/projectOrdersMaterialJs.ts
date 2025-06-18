@@ -1,0 +1,12 @@
+import "../Content/js/Helper.ProjectOrder.js";
+import "../Content/js/BaseOrderCreateViewModelExtensions.js";
+import "../Content/js/BaseOrderListIndexViewModelExtensions.js"
+import "../Content/js/BaseOrderSaveModalViewModelExtensions.js";
+import "../Content/js/OfferCreateOrderModalViewModelExtensions.js";
+import "../Content/js/OfferDetailsViewModelExtensions.js";
+import "../Content/js/OfferLoadModalViewModelExtensions.js";
+import "../Content/js/OrderDetailsViewModelExtensions.js";
+import "../Content/js/OrderLoadModalViewModelExtensions.js";
+import "../Content/js/ProjectDetailsOffersTabViewModel.js";
+import "../Content/js/ProjectDetailsOrdersTabViewModel.js";
+import "../Content/js/validation-rules.js";

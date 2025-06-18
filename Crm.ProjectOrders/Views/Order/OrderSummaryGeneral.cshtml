@@ -1,0 +1,15 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+
+<div class="lv-item media m-b-30 b-0" data-bind="with: project, visible: project">
+	<div class="media-body">
+		<div class="lv-title">
+			@(Html.Localize("Project"))
+		</div>
+		<small class="lv-small">
+			<a href="#" data-bind="attr: { href: '#/Crm.Project/Project/DetailsTemplate/' + Id() }">
+				<span data-bind="text: window.Helper.Project.getName($data)"></span>
+			</a>
+		</small>
+	</div>
+</div>

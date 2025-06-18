@@ -1,0 +1,14 @@
+﻿@inherits Crm.Library.Modularization.CrmViewUserControl
+@using Crm.Library.Globalization.Extensions
+
+<li>
+	<a href="#/Crm.Project/Potential/DetailsTemplate/{{Id}}">
+		@(Html.Localize("Details"))
+	</a>
+</li>
+
+<li data-bind="if: $parents[2].setEditing">
+	<a href="#" data-bind="click: $parents[2].setEditing.bind($data, $parents[2])">
+		@(Html.Localize("Edit"))
+	</a>
+</li>
