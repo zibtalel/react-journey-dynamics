@@ -1,102 +1,148 @@
-
 namespace Customer.Kagema.BackgroundServices
 {
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
+	using Crm.DynamicForms.Model;
 	using Crm.Library.Data.Domain.DataInterfaces;
 	using Crm.Library.Helper;
-	using Crm.Service.Model;
-	using Main.BackgroundServices;
-	using Sms.Checklists.Model;
+	using Crm.Library.Logging;
+	using Crm.Lmobile.Model;
+	using Crm.Lmobile.Model.Lookups;
 
-	public class ChecklistAttacherForImportedOrder : BaseAgent
+	public class ChecklistAttacherForImportedOrder : BackgroundServiceBase
 	{
-		private readonly IRepositoryWithTypedId<ServiceOrderHead, Guid> serviceOrderHeadRepository;
-		private readonly IRepositoryWithTypedId<Installation, Guid> installationRepository;
-		private readonly IRepositoryWithTypedId<ServiceOrderChecklist, Guid> serviceOrderChecklistRepository;
-		private readonly IRepositoryWithTypedId<ChecklistInstallationTypeRelationship, Guid> checklistInstallationTypeRelationshipRepository;
-		private readonly Func<ServiceOrderChecklist> serviceOrderChecklistFactory;
+		private readonly IRepository<ServiceOrderHead> serviceOrderRepository;
+		private readonly IRepository<DynamicFormReference> dynamicFormReferenceRepository;
+		private readonly IRepository<Checklist> checklistRepository;
+		private readonly IRepository<DynamicForm> dynamicFormRepository;
 		private readonly IAppSettingsProvider appSettingsProvider;
+		private readonly ILogger logger;
 
 		public ChecklistAttacherForImportedOrder(
-			IRepositoryWithTypedId<ServiceOrderHead, Guid> serviceOrderHeadRepository,
-			IRepositoryWithTypedId<Installation, Guid> installationRepository,
-			IRepositoryWithTypedId<ServiceOrderChecklist, Guid> serviceOrderChecklistRepository,
-			IRepositoryWithTypedId<ChecklistInstallationTypeRelationship, Guid> checklistInstallationTypeRelationshipRepository,
-			Func<ServiceOrderChecklist> serviceOrderChecklistFactory,
-			IAppSettingsProvider appSettingsProvider)
+			IRepository<ServiceOrderHead> serviceOrderRepository,
+			IRepository<DynamicFormReference> dynamicFormReferenceRepository,
+			IRepository<Checklist> checklistRepository,
+			IRepository<DynamicForm> dynamicFormRepository,
+			IAppSettingsProvider appSettingsProvider,
+			ILogger logger)
 		{
-			this.serviceOrderHeadRepository = serviceOrderHeadRepository;
-			this.installationRepository = installationRepository;
-			this.serviceOrderChecklistRepository = serviceOrderChecklistRepository;
-			this.checklistInstallationTypeRelationshipRepository = checklistInstallationTypeRelationshipRepository;
-			this.serviceOrderChecklistFactory = serviceOrderChecklistFactory;
+			this.serviceOrderRepository = serviceOrderRepository;
+			this.dynamicFormReferenceRepository = dynamicFormReferenceRepository;
+			this.checklistRepository = checklistRepository;
+			this.dynamicFormRepository = dynamicFormRepository;
 			this.appSettingsProvider = appSettingsProvider;
+			this.logger = logger;
 		}
 
 		protected override void DoWork()
 		{
-			var importedOrders = serviceOrderHeadRepository.GetAll().Where(x => x.ExternalKey != null && x.InstallationId != null).Take(50).ToList();
-			foreach (var order in importedOrders)
+			var newOrders = serviceOrderRepository.GetAll()
+				.Where(x => x.StatusKey == ServiceOrderStatus.DispatchedKey && x.ChecklistsAttached != true)
+				.ToList();
+
+			foreach (var order in newOrders)
 			{
-				AttachChecklistsToOrder(order, order.InstallationId.Value);
+				AttachChecklistsToOrder(order.ServiceOrderNumber, order);
+
+				order.ChecklistsAttached = true;
+				serviceOrderRepository.SaveOrUpdate(order);
 			}
 
-			var refreshEnabled = appSettingsProvider.GetValue("Customer.Kagema/RefreshChecklistsOnFormUpdate", true);
-			if (refreshEnabled)
+			if (appSettingsProvider.GetAppSetting("RefreshChecklistsOnFormUpdate", "true") == "true")
 			{
 				RefreshExistingChecklists();
 			}
 		}
 
-		protected virtual void AttachChecklistsToOrder(ServiceOrderHead serviceOrderHead, Guid installationId)
+		private void RefreshExistingChecklists()
 		{
-			var installation = installationRepository.Get(installationId);
-			if (installation == null)
+			try
+			{
+				var serviceOrders = serviceOrderRepository.GetAll()
+					.Where(x => x.StatusKey != ServiceOrderStatus.FinishedKey && x.StatusKey != ServiceOrderStatus.CancelledKey)
+					.ToList();
+
+				foreach (var serviceOrder in serviceOrders)
+				{
+					AttachChecklistsToOrder(serviceOrder.ServiceOrderNumber, serviceOrder);
+				}
+
+				logger.Info($"Refreshed checklists for {serviceOrders.Count} service orders");
+			}
+			catch (Exception ex)
+			{
+				logger.Error($"Error refreshing existing checklists: {ex.Message}", ex);
+			}
+		}
+
+		private void AttachChecklistsToOrder(string orderNumber, ServiceOrderHead serviceOrder = null)
+		{
+			var checklists = checklistRepository.GetAll()
+				.Where(x => x.AppliesTo == ChecklistAppliesTo.ServiceOrder && x.IsActive)
+				.ToList();
+
+			if (!checklists.Any())
+			{
+				logger.Info($"No active checklists found for service orders.");
 				return;
+			}
 
-			var checklistRelationships = GetChecklistsToAttach(installation.InstallationTypeKey, serviceOrderHead.TypeKey);
-			foreach (ChecklistInstallationTypeRelationship checklistRelationship in checklistRelationships)
+			if (serviceOrder == null)
 			{
-				var existingChecklist = serviceOrderChecklistRepository.GetAll()
-					.FirstOrDefault(x => x.ReferenceKey == serviceOrderHead.Id && x.DynamicFormKey == checklistRelationship.DynamicFormKey);
+				serviceOrder = serviceOrderRepository.GetAll()
+					.FirstOrDefault(x => x.ServiceOrderNumber == orderNumber);
 
-				if (existingChecklist == null)
+				if (serviceOrder == null)
 				{
-					var serviceOrderChecklist = serviceOrderChecklistFactory();
-					serviceOrderChecklist.RequiredForServiceOrderCompletion = checklistRelationship.RequiredForServiceOrderCompletion;
-					serviceOrderChecklist.SendToCustomer = checklistRelationship.SendToCustomer;
-					serviceOrderChecklist.ServiceOrder = serviceOrderHead;
-					serviceOrderChecklist.DynamicFormKey = checklistRelationship.DynamicFormKey;
-					serviceOrderChecklist.DynamicForm = checklistRelationship.DynamicForm;
-					serviceOrderChecklist.ReferenceKey = serviceOrderHead.Id;
-					serviceOrderChecklistRepository.SaveOrUpdate(serviceOrderChecklist);
+					logger.Warn($"Service order with number {orderNumber} not found.");
+					return;
 				}
 			}
-		}
 
-		protected virtual void RefreshExistingChecklists()
-		{
-			var existingChecklists = serviceOrderChecklistRepository.GetAll().Take(100).ToList();
-			foreach (var checklist in existingChecklists)
+			if (serviceOrder != null)
 			{
-				var relationship = checklistInstallationTypeRelationshipRepository.GetAll()
-					.FirstOrDefault(x => x.DynamicFormKey == checklist.DynamicFormKey);
-				
-				if (relationship != null)
+				var existingChecklists = dynamicFormReferenceRepository.GetAll()
+					.Where(x => x.ReferenceKey == serviceOrder.ServiceOrderId.ToString())
+					.ToList();
+
+				if (existingChecklists.Any())
 				{
-					checklist.RequiredForServiceOrderCompletion = relationship.RequiredForServiceOrderCompletion;
-					checklist.SendToCustomer = relationship.SendToCustomer;
-					serviceOrderChecklistRepository.SaveOrUpdate(checklist);
+					foreach (var existing in existingChecklists)
+					{
+						dynamicFormReferenceRepository.Delete(existing);
+					}
 				}
 			}
-		}
 
-		protected virtual List<ChecklistInstallationTypeRelationship> GetChecklistsToAttach(string installationType, string serviceOrderType)
-		{
-			var relationships = checklistInstallationTypeRelationshipRepository.GetAll().Where(x => x.InstallationTypeKey == installationType && x.ServiceOrderTypeKey == serviceOrderType).ToList();
-			return relationships;
+			foreach (var checklist in checklists)
+			{
+				var dynamicForm = dynamicFormRepository.GetAll()
+					.FirstOrDefault(x => x.Id == checklist.DynamicFormId);
+
+				if (dynamicForm == null)
+				{
+					logger.Warn($"Dynamic form with id {checklist.DynamicFormId} not found for checklist {checklist.Id}.");
+					continue;
+				}
+
+				var dynamicFormReference = new DynamicFormReference
+				{
+					DynamicFormId = dynamicForm.Id,
+					ReferenceKey = serviceOrder.ServiceOrderId.ToString(),
+					ReferenceType = "ServiceOrder",
+					Name = dynamicForm.Name,
+					Description = dynamicForm.Description,
+					CreateDate = DateTime.UtcNow,
+					CreateUser = "System",
+					ModifyDate = DateTime.UtcNow,
+					ModifyUser = "System"
+				};
+
+				dynamicFormReferenceRepository.SaveOrUpdate(dynamicFormReference);
+
+				logger.Info($"Attached checklist {checklist.Id} to service order {orderNumber}.");
+			}
 		}
 	}
 }
